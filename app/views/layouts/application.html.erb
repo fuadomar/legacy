@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Legacy</title>
+  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag "jquery-ui" %>
+  <%= stylesheet_link_tag "bootstrap.min" %>
+
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery-ui" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="#">Legacy</a>
+      <ul class="nav">
+        <%= render('shared/top_navigation') -%>
+      </ul>
+      <%= render('shared/login_form') %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="content">
+    <div class="page-header">
+
+     <%= render('shared/page_header')%>
+    </div>
+    <div class="row">
+      <div class="span10">
+        <%= yield %>
+      </div>
+      <div class="span4">
+        <%= render('shared/right_panel') -%>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <%= render('shared/footer') -%>
+  </footer>
+
+</div>
+<!-- /container -->
+</body>
+</html>

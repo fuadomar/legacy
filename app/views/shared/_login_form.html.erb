@@ -1,0 +1,12 @@
+<!--<form action="" class="pull-right">-->
+<!--<input class="input-small" type="text" placeholder="Username">-->
+<!--<input class="input-small" type="password" placeholder="Password">-->
+<!--<button class="btn" type="submit">Sign in</button>-->
+<!--</form>-->
+<% if (user_signed_in?) %>
+    <div class="pull-right">
+      <span style="color: #ffffff;">Hi <strong><%= current_user.full_name %></strong></span>
+
+      <%= link_to('Logout', destroy_user_session_path(), :method => :delete) %>
+    </div>
+<% end %>

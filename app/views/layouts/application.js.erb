@@ -1,0 +1,13 @@
+<%= yield -%>
+
+<% if(flash.any?) %>
+$("#flash").html("");
+
+<% flash.each do |name, msg| %>
+$("#flash").html("<%= escape_javascript(content_tag(:div, flash.delete(name), :id => "flash_#{name}", :class => name)).html_safe -%>");
+<% end %>
+
+$("#flash").delay(500).fadeIn(1500);
+$("#flash").delay(4000).fadeOut(1500);
+<% end %>
+$("#ajax-indicator").hide();
