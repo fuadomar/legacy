@@ -1,0 +1,12 @@
+<div id="flash" class="flash">
+  <% is_flash_present = flash.size > 0 %>
+  <% flash.each do |name, msg| %>
+    <div class="<%= name -%>" id="flash_<%= name -%>"><%= flash.delete(name) -%></div>
+  <% end %>
+</div>
+<% if(is_flash_present) %>
+  <script type="text/javascript">
+    $("#flash").delay(500).fadeIn(1500);
+    $("#flash").delay(4000).fadeOut(1500);
+  </script>
+<% end %>

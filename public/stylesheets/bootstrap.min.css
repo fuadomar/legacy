@@ -2699,3 +2699,8 @@ body {
     border: 0;
 }
 
+#flash{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}

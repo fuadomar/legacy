@@ -30,6 +30,12 @@
      <%= render('shared/page_header')%>
     </div>
     <div class="row">
+
+      <div>
+                <%= render(:partial => "shared/flash_message") -%>
+
+              </div>
+
       <div class="span10">
         <%= yield %>
       </div>
