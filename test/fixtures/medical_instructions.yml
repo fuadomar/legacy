@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  wish: MyText
+  incurable_condition_choice: MyString
+  incurable_condition_comment: MyText
+  irreversible_damage_choice: MyString
+  irreversible_damage_comment: MyString
+  unable_to_decide_choice: MyString
+  unable_to_decide_comment: MyString
+
+two:
+  wish: MyText
+  incurable_condition_choice: MyString
+  incurable_condition_comment: MyText
+  irreversible_damage_choice: MyString
+  irreversible_damage_comment: MyString
+  unable_to_decide_choice: MyString
+  unable_to_decide_comment: MyString
