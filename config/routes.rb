@@ -1,4 +1,8 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :medical_instructions
+
+  resources :agents
+
   devise_for :users
 
   get "publics/index"
