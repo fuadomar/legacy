@@ -1,0 +1,45 @@
+<%= form_for(@medical_instruction) do |f| %>
+  <% if @medical_instruction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@medical_instruction.errors.count, "error") %> prohibited this medical_instruction from being saved:</h2>
+
+      <ul>
+      <% @medical_instruction.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wish %><br />
+    <%= f.text_area :wish %>
+  </div>
+  <div class="field">
+    <%= f.label :incurable_condition_choice %><br />
+    <%= f.text_field :incurable_condition_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :incurable_condition_comment %><br />
+    <%= f.text_area :incurable_condition_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :irreversible_damage_choice %><br />
+    <%= f.text_field :irreversible_damage_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :irreversible_damage_comment %><br />
+    <%= f.text_area :irreversible_damage_comment %>
+  </div>
+  <div class="field">
+    <%= f.label :unable_to_decide_choice %><br />
+    <%= f.text_field :unable_to_decide_choice %>
+  </div>
+  <div class="field">
+    <%= f.label :unable_to_decide_comment %><br />
+    <%= f.text_area :unable_to_decide_comment %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

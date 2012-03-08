@@ -1,0 +1,35 @@
+<h1>Listing medical_instructions</h1>
+
+<table>
+  <tr>
+    <th>Wish</th>
+    <th>Incurable condition choice</th>
+    <th>Incurable condition comment</th>
+    <th>Irreversible damage choice</th>
+    <th>Irreversible damage comment</th>
+    <th>Unable to decide choice</th>
+    <th>Unable to decide comment</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @medical_instructions.each do |medical_instruction| %>
+  <tr>
+    <td><%= medical_instruction.wish %></td>
+    <td><%= medical_instruction.incurable_condition_choice %></td>
+    <td><%= medical_instruction.incurable_condition_comment %></td>
+    <td><%= medical_instruction.irreversible_damage_choice %></td>
+    <td><%= medical_instruction.irreversible_damage_comment %></td>
+    <td><%= medical_instruction.unable_to_decide_choice %></td>
+    <td><%= medical_instruction.unable_to_decide_comment %></td>
+    <td><%= link_to 'Show', medical_instruction %></td>
+    <td><%= link_to 'Edit', edit_medical_instruction_path(medical_instruction) %></td>
+    <td><%= link_to 'Destroy', medical_instruction, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medical instruction', new_medical_instruction_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Wish:</b>
+  <%= @medical_instruction.wish %>
+</p>
+
+<p>
+  <b>Incurable condition choice:</b>
+  <%= @medical_instruction.incurable_condition_choice %>
+</p>
+
+<p>
+  <b>Incurable condition comment:</b>
+  <%= @medical_instruction.incurable_condition_comment %>
+</p>
+
+<p>
+  <b>Irreversible damage choice:</b>
+  <%= @medical_instruction.irreversible_damage_choice %>
+</p>
+
+<p>
+  <b>Irreversible damage comment:</b>
+  <%= @medical_instruction.irreversible_damage_comment %>
+</p>
+
+<p>
+  <b>Unable to decide choice:</b>
+  <%= @medical_instruction.unable_to_decide_choice %>
+</p>
+
+<p>
+  <b>Unable to decide comment:</b>
+  <%= @medical_instruction.unable_to_decide_comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_medical_instruction_path(@medical_instruction) %> |
+<%= link_to 'Back', medical_instructions_path %>
