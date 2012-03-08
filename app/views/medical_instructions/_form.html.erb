@@ -1,45 +1,111 @@
 <%= form_for(@medical_instruction) do |f| %>
-  <% if @medical_instruction.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@medical_instruction.errors.count, "error") %> prohibited this medical_instruction from being saved:</h2>
+    <% if @medical_instruction.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@medical_instruction.errors.count, "error") %> prohibited this medical_instruction from
+            being saved:</h2>
 
-      <ul>
-      <% @medical_instruction.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @medical_instruction.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :wish, 'We strongly encourage you to write your own wishes', :style => "width: auto;" %>
+      <br/><br/>
+      <%= f.text_area :wish, :style => "width: 400px" %>
     </div>
-  <% end %>
+    
+    <p>
+    Answer the following questions to provide specific instructions for your agent and doctors.
+    </p>
 
-  <div class="field">
-    <%= f.label :wish %><br />
-    <%= f.text_area :wish %>
-  </div>
-  <div class="field">
-    <%= f.label :incurable_condition_choice %><br />
-    <%= f.text_field :incurable_condition_choice %>
-  </div>
-  <div class="field">
-    <%= f.label :incurable_condition_comment %><br />
-    <%= f.text_area :incurable_condition_comment %>
-  </div>
-  <div class="field">
-    <%= f.label :irreversible_damage_choice %><br />
-    <%= f.text_field :irreversible_damage_choice %>
-  </div>
-  <div class="field">
-    <%= f.label :irreversible_damage_comment %><br />
-    <%= f.text_area :irreversible_damage_comment %>
-  </div>
-  <div class="field">
-    <%= f.label :unable_to_decide_choice %><br />
-    <%= f.text_field :unable_to_decide_choice %>
-  </div>
-  <div class="field">
-    <%= f.label :unable_to_decide_comment %><br />
-    <%= f.text_area :unable_to_decide_comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="field">
+      <p>
+          Under the following circumstances what type of treatment do you want
+            <ul>
+              <li>You have an incurable condition that cause your death shortly</li>
+              <li>You are unconscious and your doctors believe that you will not wake up</li>
+              <li>The risks and potential pain of treatment outweigh the potential benefits</li>
+            </ul>
+          </p>
+      <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+      <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+
+    </div>
+    <div class="field">
+      Comments:
+      <%= f.text_area :incurable_condition_comment %>
+    </div>
+    <div class="field">
+      <p>
+                Under the following circumstances what type of treatment do you want
+                  <ul>
+                    <li>You have permanent irreversible mental damage</li>
+                    <li>You may be awake at times but cannot recognize people or communicate meaningfully </li>
+                    <li>You will require life support to keep you alive (for example feeding tubes, ventilator, dialysis, CPR, pacemaker, transfusions, etc) for the rest of your life</li>
+                    <li>Your doctors do not believe you will ever have significant quality of life improvement </li>
+                  </ul>
+                </p>
+
+      <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+      <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+    </div>
+    <div class="field">
+      Comments:
+      <%= f.text_area :irreversible_damage_comment %>
+    </div>
+    <div class="field">
+      <p>
+                      Under the following circumstances what type of treatment do you want
+                        <ul>
+                          <li>You are no longer able to make your own health care decisions </li>
+                          <li>You may be awake at times but cannot recognize people or communicate meaningfully </li>
+                          <li>You will require life support to keep you alive (for example feeding tubes, ventilator, dialysis, CPR, pacemaker, transfusions, etc) for the rest of your life</li>
+                          <li>Your doctors do not believe you will ever have significant quality of life improvement </li>
+                        </ul>
+                      </p>
+      <br/>
+      <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+      <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+
+    </div>
+    <div class="field">
+      <%= f.label :unable_to_decide_comment %>
+      <br/>
+      <%= f.text_area :unable_to_decide_comment %>
+    </div>
+
+    <p>
+      In case your first choice is not able, not willing, or not available to make medical decisions for you, who would you like to name as your alternate agent? You can name as many as you like (Optional)
+    </p>
+    <p><strong>Agent's Information</strong></p>
+    <div class="field">
+      
+      <%= fields_for @agent do |agent| %>
+          <%= agent.label :name %>
+          <%= agent.text_field :name -%> <br/>    <br/>
+          <%= agent.label :home_phone %>
+          <%= agent.text_field :home_phone -%>    <br/>      <br/>
+          <%= agent.label :cell_phone %>
+          <%= agent.text_field :cell_phone -%>      <br/>            <br/>
+          <%= agent.label :address %>
+          <%= agent.text_area :address, :rows => 5 -%>          <br/>               <br/>
+          <%= agent.label :city %>
+          <%= agent.text_field :city -%>              <br/>              <br/>
+          <%= agent.label :state %>
+          <%= agent.text_field :state -%>                <br/>               <br/>
+          <%= agent.label :zip %>
+          <%= agent.text_field :zip -%>                   <br/>             <br/>
+          <%= agent.label :relationship %>
+          <%= agent.text_field :relationship -%>           <br/>               <br/>
+
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

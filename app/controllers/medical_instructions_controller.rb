@@ -25,6 +25,7 @@ class MedicalInstructionsController < ApplicationController
   # GET /medical_instructions/new.xml
   def new
     @medical_instruction = MedicalInstruction.new
+    @agent = Agent.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,11 +42,14 @@ class MedicalInstructionsController < ApplicationController
   # POST /medical_instructions.xml
   def create
     @medical_instruction = MedicalInstruction.new(params[:medical_instruction])
+    @agent = Agent.new(params[:agent])
 
     respond_to do |format|
-      if @medical_instruction.save
-        format.html { redirect_to(@medical_instruction, :notice => 'Medical instruction was successfully created.') }
-        format.xml  { render :xml => @medical_instruction, :status => :created, :location => @medical_instruction }
+      if @medical_instruction.save && @agent.save
+        session[:agent_id] = @agent.id
+        session[:medical_instruction_id] = @medical_instruction.id
+        format.html { redirect_to(new_user_registration_path(), :notice => 'Medical instruction was successfully created.') }
+        #format.xml  { render :xml => @medical_instruction, :status => :created, :location => @medical_instruction }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @medical_instruction.errors, :status => :unprocessable_entity }

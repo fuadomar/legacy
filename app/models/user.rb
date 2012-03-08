@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  has_many :authentications, :dependent => :destroy
+  has_many :agents
+  has_many :medical_instructions
 
   def full_name
     return "#{first_name} #{last_name}"

@@ -624,6 +624,7 @@ label {
     width: 130px;
     text-align: right;
     color: #404040;
+    margin-right: 10px;
 }
 
 form .input {
@@ -690,7 +691,7 @@ select[multiple] {
 }
 
 textarea {
-    height: auto;
+    height: 100px;
 }
 
 .uneditable-input {
