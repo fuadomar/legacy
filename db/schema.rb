@@ -10,7 +10,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111229114653) do
+ActiveRecord::Schema.define(:version => 20120309063639) do
+
+  create_table "agents", :force => true do |t|
+    t.string   "name"
+    t.string   "home_phone"
+    t.string   "cell_phone"
+    t.text     "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "relationship"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "medical_instructions", :force => true do |t|
+    t.text     "wish"
+    t.string   "incurable_condition_choice"
+    t.text     "incurable_condition_comment"
+    t.string   "irreversible_damage_choice"
+    t.text     "irreversible_damage_comment"
+    t.string   "unable_to_decide_choice"
+    t.text     "unable_to_decide_comment"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -29,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20111229114653) do
     t.string   "last_name"
     t.string   "location"
     t.string   "phone_number"
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.string   "address"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
