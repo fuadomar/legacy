@@ -49,15 +49,16 @@ class MedicalInstructionsController < ApplicationController
       session[:medical_instruction_attributes] = @medical_instruction.attributes
       session[:user_attributes] = @user.attributes
       session[:redirect_to] = save_session_data_medical_instructions_path
-      redirect_to(new_session_path(User), :notice => "Please login to continue saving your instructions")
+      redirect_to(new_session_path(User), :notice => "Please Login or Create an account, So we can save your progress")
     else
+      flash[:notice] = "Failed to save your instructions. Please correct your errors."
       render :new
     end
   end
 
   def save_session_data
     if (current_user.blank?)
-      redirect_to(new_session_path(User), :notice => "Please login to continue saving your instructions")
+      redirect_to(new_session_path(User), :notice => "Please Login or Create an account, So we can save your progress")
       return
     end
 
@@ -88,16 +89,17 @@ class MedicalInstructionsController < ApplicationController
   # POST /medical_instructions
   # POST /medical_instructions.xml
   def create
-    @medical_instruction = MedicalInstruction.new(params[:medical_instruction])
-    @agent = Agent.new(params[:agent])
+    @medical_instruction = current_user.medical_instructions.new(params[:medical_instruction])
+    @agent = current_user.agents.new(params[:agent])
 
     respond_to do |format|
-      if @medical_instructheightion.save && @agent.save
-        session[:agent_id] = @agent.id
-        session[:medical_instruction_id] = @medical_instruction.id
-        format.html { redirect_to(new_user_registration_path(), :notice => 'Please Login or Create an account, So we can save your progress') }
+      if @medical_instruction.save && @agent.save
+        #session[:agent_id] = @agent.id
+        #session[:medical_instruction_id] = @medical_instruction.id
+        format.html { redirect_to(publics_plan_path(), :notice => "Your instructions saved successfully.") }
         #format.xml  { render :xml => @medical_instruction, :status => :created, :location => @medical_instruction }
       else
+        flash[:notice] = "Failed to save your instructions. Please correct your errors."
         format.html { render :action => "new" }
         format.xml  { render :xml => @medical_instruction.errors, :status => :unprocessable_entity }
       end

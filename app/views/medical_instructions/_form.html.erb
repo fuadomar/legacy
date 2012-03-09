@@ -112,8 +112,23 @@
         <li>The risks and potential pain of treatment outweigh the potential benefits</li>
       </ul>
       </p>
-      <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
-      <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+
+      <div class="decission-container">
+          <div class="decission-box">
+            <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_ON) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+            <br/><br/>
+            Remove artificial life support, make me comfortable, and let nature take it’s course
+          </div>
+          <div class="decission-seperator"></div>
+          <div class="decission-box">
+            <%= f.radio_button(:incurable_condition_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+            <br/><br/>
+            Use any medically reasonable treatments to keep me alive.
+          </div>
+          <div style="clear: both;"></div>
+      </div>
 
     </div>
     <div class="field">
@@ -133,8 +148,22 @@
       </ul>
       </p>
 
-      <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
-      <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+      <div class="decission-container">
+          <div class="decission-box">
+            <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_ON) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+            <br/><br/>
+            Remove artificial life support, make me comfortable, and let nature take it’s course
+          </div>
+          <div class="decission-seperator"></div>
+          <div class="decission-box">
+            <%= f.radio_button(:irreversible_damage_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+            <br/><br/>
+            Use any medically reasonable treatments to keep me alive.
+          </div>
+          <div style="clear: both;"></div>
+      </div>
     </div>
     <div class="field">
       Comments:
@@ -153,10 +182,24 @@
       </ul>
       </p>
       <br/>
-      <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_ON) %> <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
-      <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %> <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
-
+      <div class="decission-container">
+          <div class="decission-box">
+            <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_ON) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_ON.humanize %>
+            <br/><br/>
+            Remove artificial life support, make me comfortable, and let nature take it’s course
+          </div>
+          <div class="decission-seperator"></div>
+          <div class="decission-box">
+            <%= f.radio_button(:unable_to_decide_choice, MedicalInstruction::LIFE_SUPPORT_OFF) %>
+            <%= MedicalInstruction::LIFE_SUPPORT_OFF.humanize %>
+            <br/><br/>
+            Use any medically reasonable treatments to keep me alive.
+          </div>
+          <div style="clear: both;"></div>
+      </div>
     </div>
+
     <div class="field">
       <%= f.label :unable_to_decide_comment %>
       <br/>
