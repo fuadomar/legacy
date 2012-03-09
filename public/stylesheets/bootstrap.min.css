@@ -2704,3 +2704,25 @@ body {
     font-weight: bold;
     font-size: 16px;
 }
+
+div.decission-container{
+    clear: both;
+    border: 1px solid gray;
+    width: 542px;
+}
+
+div.decission-box{
+    float: left;
+    display: inline-block;
+    width: 255px;
+    padding: 5px;
+}
+
+div.decission-seperator{
+    float: left;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-left: 1px solid gray;
+    height: 80px;
+}
