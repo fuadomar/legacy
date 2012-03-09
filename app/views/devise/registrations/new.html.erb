@@ -1,5 +1,12 @@
 <h2>Sign up</h2>
 
+<% if(resource.class == User && session[:user_attributes].present?) %>
+    <% resource.name ||= session[:user_attributes]["name"] %>
+    <% resource.address ||= session[:user_attributes]["address"] %>
+    <% resource.phone_number ||= session[:user_attributes]["phone_number"] %>
+    <% resource.date_of_birth ||= session[:user_attributes]["date_of_birth"] %>
+<% end %>
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 

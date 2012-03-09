@@ -1,5 +1,10 @@
 NasceniaRailsTemplate::Application.routes.draw do
-  resources :medical_instructions
+  resources :medical_instructions do
+    collection do
+      post 'save_tmp_data'
+      get 'save_session_data'
+    end
+  end
 
   resources :agents
 

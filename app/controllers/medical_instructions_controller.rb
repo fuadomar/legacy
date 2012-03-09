@@ -24,12 +24,59 @@ class MedicalInstructionsController < ApplicationController
   # GET /medical_instructions/new
   # GET /medical_instructions/new.xml
   def new
-    @medical_instruction = MedicalInstruction.new
-    @agent = Agent.new
+    @medical_instruction = MedicalInstruction.new((session[:medical_instruction_attributes] || {}))
+    @agent = Agent.new((session[:agent_attributes] || {}))
+    @user = User.new((session[:user_attributes] || {}))
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @medical_instruction }
+    end
+  end
+
+  def save_tmp_data()
+    if(current_user.present?)
+      redirect_to(new_medical_instruction_path())
+      return
+    end
+
+    @agent = Agent.new(params[:agent])
+    @medical_instruction = MedicalInstruction.new(params[:medical_instruction])
+    @user = User.new(params[:user])
+
+    if(@agent.valid? && @medical_instruction.valid?)
+      session[:agent_attributes] = @agent.attributes
+      session[:medical_instruction_attributes] = @medical_instruction.attributes
+      session[:user_attributes] = @user.attributes
+      session[:redirect_to] = save_session_data_medical_instructions_path
+      redirect_to(new_session_path(User), :notice => "Please login to continue saving your instructions")
+    else
+      render :new
+    end
+  end
+
+  def save_session_data
+    if (current_user.blank?)
+      redirect_to(new_session_path(User), :notice => "Please login to continue saving your instructions")
+      return
+    end
+
+    session[:agent_attributes].delete("user_id")
+    session[:medical_instruction_attributes].delete("user_id")
+    @agent = current_user.agents.new(session[:agent_attributes])
+    @medical_instruction = current_user.medical_instructions.new(session[:medical_instruction_attributes])
+    @user = current_user
+
+    if (@agent.valid? && @medical_instruction.valid?)
+      @agent.save
+      @medical_instruction.save
+      session[:agent_attributes] = nil
+      session[:medical_instruction_attributes] = nil
+      session[:user_attributes] = nil
+      redirect_to(publics_plan_path, :notice => "Your instructions saved successfully.")
+    else
+      message = "Failed to save your instruction."
+      render(:new)
     end
   end
 
@@ -45,7 +92,7 @@ class MedicalInstructionsController < ApplicationController
     @agent = Agent.new(params[:agent])
 
     respond_to do |format|
-      if @medical_instruction.save && @agent.save
+      if @medical_instructheightion.save && @agent.save
         session[:agent_id] = @agent.id
         session[:medical_instruction_id] = @medical_instruction.id
         format.html { redirect_to(new_user_registration_path(), :notice => 'Please Login or Create an account, So we can save your progress') }

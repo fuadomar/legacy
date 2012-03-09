@@ -1,4 +1,5 @@
-<%= form_for(@medical_instruction) do |f| %>
+<% url = current_user.present? ? url_for(@medical_instruction) : save_tmp_data_medical_instructions_path() %>
+<%= form_for(@medical_instruction, :url => url) do |f| %>
     <% if @medical_instruction.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@medical_instruction.errors.count, "error") %> prohibited this medical_instruction from
@@ -17,13 +18,26 @@
 
     <% if (current_user.present?) %>
         Name: <%= current_user.name -%> <br/>
-        Date of Birth: <%= current_user.date_of_birth.strftime("%B %d, %Y") if(current_user.date_of_birth.present?) -%> <br/>
+        Date of Birth: <%= current_user.date_of_birth.strftime("%B %d, %Y") if (current_user.date_of_birth.present?) -%>
+        <br/>
         Address: <%= current_user.address -%> <br/>
         Phone number: <%= current_user.phone_number -%> <br/> <br/>
     <% else %>
-        You are not logged in yet.
-        Please <%= link_to("login", new_session_path(User)) -%> or
-        <%= link_to("register", new_registration_path(User)) -%>
+        <div class="field">
+          <%= fields_for @user do |user| %>
+              <%= user.label :name %>
+              <%= user.text_field :name -%> <br/> <br/>
+              <%= user.label :date_of_birth %>
+              <%= user.date_select(:date_of_birth, {:default => 40.years.ago,
+                                                 :order => [:year, :month, :day], :start_year => Date.today.year - 70,
+                                                 :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
+                                {:style => "width: 71px;"}) -%>    <br/> <br/>
+              <%= user.label :address %>
+              <%= user.text_area :address -%>      <br/> <br/>
+              <%= user.label :phone_number %>
+              <%= user.text_field :phone_number -%>      <br/> <br/>
+          <% end %>
+        </div>
     <% end %>
 
     <p>YOUR AGENT - Who do you want to make decisions for you when you can’t?</p>
