@@ -48,7 +48,7 @@ class MedicalInstructionsController < ApplicationController
       if @medical_instruction.save && @agent.save
         session[:agent_id] = @agent.id
         session[:medical_instruction_id] = @medical_instruction.id
-        format.html { redirect_to(new_user_registration_path(), :notice => 'Medical instruction was successfully created.') }
+        format.html { redirect_to(new_user_registration_path(), :notice => 'Please Login or Create an account, So we can save your progress') }
         #format.xml  { render :xml => @medical_instruction, :status => :created, :location => @medical_instruction }
       else
         format.html { render :action => "new" }
