@@ -1,0 +1,149 @@
+#main_content
+{
+    width: 900px;
+    margin: auto;
+    height: auto;
+    background-color: #e6e6e6;
+}
+
+#header
+{
+    background-color: white;
+    width: 900px;
+    height: 85px;
+    margin-bottom: 19px
+
+}
+
+#header_img
+{
+
+    display: inline;
+    float:left;
+}
+
+#header_right
+{
+
+    display: inline;
+    float:right;
+    margin-right: 83px;
+}
+
+.field_form
+{
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.field_form input[type=text]
+{
+    border: solid 2px  #CCCCCC
+}
+
+#content
+{
+
+    background-color: #e3e3e3;
+    height: 600px;
+    padding: 15px;
+
+}
+
+.content_left
+{
+
+    display: inline-block;
+    background-color: #f2f2f2;
+    margin-right:15px;
+    width: 152px;
+    height:auto;
+    vertical-align: top;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid white;
+}
+
+.guid_text
+{
+    border-bottom: 1px solid #EEE;
+    border-right: 1px solid #EEE;
+    font-family: 'Myriad Pro';
+    font-size: 21px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    width: 90px;
+}
+
+.guid_field
+{
+    border: 0 none;
+    font-family: 'Myriad Pro';
+    font-size: 21px;
+    height: 92px;
+    margin-left: 15px;
+    resize: none;
+    width: 500px;
+}
+
+.image
+{
+    margin-right: 64px;
+    margin-left: 40px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: super;
+}
+.selected_image
+{
+    margin-right: 64px;
+    display: inline-block;
+    text-align: center;
+    boder:solid 2px green;
+
+}
+
+
+#content_main
+{
+    display: inline-block;
+    background-color: #f2f2f2;
+    width: 600px;
+    height: auto;
+    vertical-align:top;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    padding: 27px;
+    vertical-align:top;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    box-shadow: 1px 1px 12px 2px #888888;
+
+}
+
+#text
+{
+
+    height: 141px;
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    box-shadow: 0px 0px 1px 1px #888888;
+    margin-bottom: 50px;
+
+}
+
+#content_info
+{
+
+    height: auto;
+    padding: 7px;
+    background-color: #ebe6e1 ;
+    vertical-align:top;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
