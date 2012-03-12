@@ -1,4 +1,8 @@
 <%#= link_to(image_tag('/images/get-started.jpg'), publics_plan_path()) -%>
+<div id="text">
+  <div class="guid_text">Guide</div>
+  <textarea class="guid_field"> </textarea>
+</div>
 
 <div id="content_info">
   <div style=" margin-bottom: 10px; color: #0071bc;  font-size: 18px;">Are you creating a plan for yourself or
@@ -30,7 +34,9 @@
   <div style=" margin-top: 58px; color: #0071bc; font-size: 18px;">Where do you want to get started?</div>
   <div class="get-started-tips" style="display: inline-block">
     <ul>
-      <li><img src="images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path()) -%></li>
+      <li>
+        <img src="images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path()) -%>
+      </li>
       <li><img src="images/memorial_icon.png"/> <a herf="">Memorial</a></li>
       <li><img src="images/my_things.png"/> <a herf="">My things</a></li>
       <li><img src="images/fanincial.png"/> <a herf="">Financial</a></li>

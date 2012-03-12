@@ -3,6 +3,12 @@
     <img src="/images/logo.png"/>
   </div>
   <div id="header_right">
-    <a herf="" style="margin-right: 10px">My Account</a> <a herf=" ">Sign out</a>
+    <% if (current_user.present?) -%>
+        <%= link_to("My Account", edit_user_registration_path(), :style => "margin-right: 10px;") -%>
+        <%= link_to("Sign out", destroy_user_session_path(), :method => :delete) -%>
+    <% else %>
+        <%= link_to("Sign in", user_session_path()) -%>
+    <% end %>
   </div>
 </div>
+

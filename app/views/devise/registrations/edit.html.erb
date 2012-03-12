@@ -1,25 +1,99 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="page-banner">
+  <img src="/images/my-profile-banner.png"/>
+  <label>My Profile</label>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="edit-profile">
+  <div class="sections">
+    <div class="section">My Profile</div>
+    <div class="section inactive">My Family</div>
+    <div class="section last inactive">My Friends</div>
+  </div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <!--h2>Edit <%= resource_name.to_s.humanize %></h2-->
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+      <%= devise_error_messages! %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+      <div style="float: left; margin-right: 20px;">
+         <div class="field">
+           <%= f.text_field :first_name, :size => 11 %>
+         </div>
+         <div class="field">
+           <img src="/images/no-profile-image.png"/>
+         </div>
+         Upload Picture
+         <br/><br/>
+         Upload docs
+      </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
+      <div style="float: left;">
+        <div class="field">
+          <%= f.text_field :middle_name, :size => 13 %>&nbsp;
+          <%= f.text_field :last_name, :size => 13 %>
+        </div>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+        <div class="field">
+          <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
+                                       :order => [:month, :day, :year], :start_year => Date.today.year - 70,
+                                       :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
+                      {:style => "width: 77px;"}) -%>
+        </div>
 
+        <div class="field">
+          <%= f.text_area :address, :rows => 1, :cols => 30 %>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :area_code_part1, :size => 8 %>
+          <%= f.text_field :area_code_part2, :size => 7 %>
+          <%= f.text_field :area_code_part3, :size => 7 %>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :email, :size => 30 %>
+        </div>
+
+        <div class="field">
+          <%#= f.label :password %> <!--i>(leave blank if you don't want to change it)</i-->
+          <%= f.password_field :password, :size => 30 %>
+        </div>
+
+        <div class="field"><%#= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, :size => 30 %>
+        </div>
+
+        <div class="field"><%#= f.label :current_password %> <!--i>(we need your current password to confirm your changes)</i-->
+          <%= f.password_field :current_password, :size => 30 %>
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div><%= f.submit "Update" %></div>
+  <% end %>
+
+  <!--
 <h3>Cancel my account</h3>
-
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+-->
 
-<%= link_to "Back", :back %>
+<%#= link_to "Back", :back %>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+     $("#user_email").watermark("Email", {useNative: false});
+     $("#user_first_name").watermark("First Name", {useNative: false});
+      $("#user_middle_name").watermark("Middle Name", {useNative: false});
+      $("#user_last_name").watermark("Last Name", {useNative: false});
+      $("#user_address").watermark("Address", {useNative: false});
+      $("#user_area_code_part1").watermark("Area Code", {useNative: false});
+      $("#user_area_code_part2").watermark("xxx", {useNative: false});
+      $("#user_area_code_part3").watermark("xxx", {useNative: false});
+      $("#user_password").watermark("Password", {useNative: false});
+      $("#user_password_confirmation").watermark("Password Confirmation", {useNative: false});
+      $("#user_current_password").watermark("Current Password(to confirm your changes)", {useNative: false});
+  });
+</script>

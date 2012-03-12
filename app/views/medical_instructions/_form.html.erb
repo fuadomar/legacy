@@ -33,7 +33,7 @@
                                                  :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
                                 {:style => "width: 71px;"}) -%>    <br/> <br/>
               <%= user.label :address %>
-              <%= user.text_area :address -%>      <br/> <br/>
+              <%= user.text_area :address, :rows => 5 -%>      <br/> <br/>
               <%= user.label :phone_number %>
               <%= user.text_field :phone_number -%>      <br/> <br/>
           <% end %>
@@ -98,7 +98,7 @@
     <div class="field">
       <%= f.label :wish, 'We strongly encourage you to write your own wishes', :style => "width: auto;" %>
       <br/><br/>
-      <%= f.text_area :wish, :style => "width: 400px" %>
+      <%= f.text_area :wish, :rows => 5, :cols => 60 %>
     </div>
     <p>
       Answer the following questions to provide specific instructions for your agent and doctors.
@@ -132,8 +132,8 @@
 
     </div>
     <div class="field">
-      Comments:
-      <%= f.text_area :incurable_condition_comment %>
+      <%= f.label :incurable_condition_comment, "Comments" -%>
+      <%= f.text_area :incurable_condition_comment, :rows => 5 %>
     </div>
     <div class="field">
       <p>
@@ -166,8 +166,8 @@
       </div>
     </div>
     <div class="field">
-      Comments:
-      <%= f.text_area :irreversible_damage_comment %>
+      <%= f.label :irreversible_damage_comment, "Comments" -%>
+      <%= f.text_area :irreversible_damage_comment, :rows => 5 %>
     </div>
     <div class="field">
       <p>
@@ -201,9 +201,9 @@
     </div>
 
     <div class="field">
-      <%= f.label :unable_to_decide_comment %>
+      <%= f.label :unable_to_decide_comment, :style => "width: 100%;" %>
       <br/>
-      <%= f.text_area :unable_to_decide_comment %>
+      <%= f.text_area :unable_to_decide_comment, :rows => 5, :cols => 60 %>
     </div>
 
 

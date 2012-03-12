@@ -3,10 +3,10 @@
 <head>
   <title>Legacy</title>
   <%= stylesheet_link_tag "jquery-ui" %>
-  <%= stylesheet_link_tag "bootstrap.minx", "application" %>
+  <%= stylesheet_link_tag "bootstrap.minx", "application", "scaffold" %>
 
   <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery-ui" %>
+  <%= javascript_include_tag "jquery-ui", "jquery.watermark" %>
   <%= csrf_meta_tag %>
 </head>
 
@@ -28,12 +28,6 @@
       <%= render(:partial => "shared/left_panel") -%>
 
       <div id="content_main">
-        <div id="text">
-          <div class="guid_text">Guide</div>
-          <textarea class="guid_field"> </textarea>
-
-        </div>
-
         <%= yield -%>
       </div>
     </div>

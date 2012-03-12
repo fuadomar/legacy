@@ -41,7 +41,16 @@ body
     vertical-align: top;
 }
 
-input[type=text]
+.field{
+    margin-bottom: 10px;
+}
+
+.field label{
+    width: 120px;
+    display: inline-block;
+}
+
+input, textarea, select
 {
     border: solid 1px #CCCCCC;
     padding: 4px;
@@ -135,7 +144,7 @@ input[type=text]
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
-    padding: 27px;
+    padding: 25px;
     vertical-align:top;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
@@ -177,4 +186,85 @@ input[type=text]
 .get-started-tips ul li a{
     color: orange;
     text-decoration: none;
+}
+
+#flash{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+div.decission-container{
+    clear: both;
+    border: 1px solid gray;
+    width: 542px;
+    margin-bottom: 15px;
+}
+
+div.decission-box{
+    float: left;
+    display: inline-block;
+    width: 255px;
+    padding: 5px;
+}
+
+div.decission-seperator{
+    float: left;
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-left: 1px solid gray;
+    height: 110px;
+}
+
+.edit-profile{
+    background-color: #EBE6E1;
+    border: 1px solid #888888;
+    border-radius: 6px 6px 6px 6px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    padding: 10px;
+    width: 370px;
+}
+
+.edit-profile .sections{
+    margin: -10px -10px 0px -10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+}
+
+.edit-profile .sections .section{
+    border-right: 1px solid white;
+    display: inline-block;
+    width: 105px;
+    text-align: center;
+    padding: 8px;
+    font-size: 18px;
+}
+
+.edit-profile .sections .section.last{
+    border-right: 0px;
+}
+
+.edit-profile .sections .section.inactive{
+    color: gray;
+}
+
+img{
+    border: 0px;
+}
+
+.page-banner{
+    position: relative;
+    margin: -12px -12px 20px;
+}
+
+.page-banner label{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    display: inline-block;
+    color: white;
+    font-size: 45px;
+    font-style: italic;
 }
