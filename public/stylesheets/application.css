@@ -1,6 +1,5 @@
-.body_all
+body
 {
-
     font-family: "Myriad Pro", "Helvetica";
 }
 
@@ -30,10 +29,9 @@
 
 #header_right
 {
-
     display: inline;
     float:right;
-    margin-right: 83px;
+    margin: 20px 83px;
 }
 
 .field_form
@@ -43,23 +41,21 @@
     vertical-align: top;
 }
 
-.field_form input[type=text]
+input[type=text]
 {
-    border: solid 2px  #CCCCCC
+    border: solid 1px #CCCCCC;
+    padding: 4px;
 }
 
 #content
 {
-
     background-color: #e3e3e3;
     height: 600px;
     padding: 15px;
-
 }
 
 .content_left
 {
-
     display: inline-block;
     background-color: #f2f2f2;
     margin-right:15px;
@@ -70,6 +66,23 @@
     -webkit-border-radius: 6px;
     border-radius: 6px;
     border: 1px solid white;
+}
+
+.content_left ul.menu{
+    list-style-type: none; padding: 0px;font-size: 12px;
+}
+
+.content_left ul.menu li{
+    padding:0.5em;
+}
+
+.content_left ul.menu li a{
+    vertical-align: text-bottom;
+    text-decoration: none;
+}
+
+.content_left ul.menu li a:hover{
+    text-decoration: underline;
 }
 
 .guid_text
@@ -144,12 +157,24 @@
 
 #content_info
 {
-
     height: auto;
-    padding: 7px;
+    padding: 10px;
     background-color: #ebe6e1 ;
     vertical-align:top;
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;
     border-radius: 6px;
+}
+
+.get-started-tips ul{
+    list-style-type: none;padding: 0px;font-size: 16px;
+}
+
+.get-started-tips ul li{
+    padding:0.5em;
+}
+
+.get-started-tips ul li a{
+    color: orange;
+    text-decoration: none;
 }
