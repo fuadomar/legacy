@@ -12,17 +12,21 @@
 
   <!--h2>Edit <%= resource_name.to_s.humanize %></h2-->
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put}) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true}) do |f| %>
       <%= devise_error_messages! %>
 
-      <div style="float: left; margin-right: 20px;">
+      <div style="float: left; margin-right: 20px; overflow: hidden;">
          <div class="field">
            <%= f.text_field :first_name, :size => 11 %>
          </div>
          <div class="field">
-           <img src="/images/no-profile-image.png"/>
+           <%= image_tag((f.object.profile_image.present? ? f.object.profile_image_url : '/images/no-profile-image.png'), :width => 100) %>
+           <br/><br/>
+           <%= f.file_field :profile_image, :value => "Upload Picture", :class => "file-input", :style => "width: 100px" -%>
+           <br/>
+           <%= f.hidden_field :profile_image_cache, :class => "file-cache" %>
+           Upload Photo
          </div>
-         Upload Picture
          <br/><br/>
          Upload docs
       </div>

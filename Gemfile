@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'devise', '1.4.9'
 gem 'oa-oauth', :require => 'omniauth/oauth'
 gem 'fb_graph'
+gem 'carrierwave'
 
 # Use unicorn as the web server
 # gem 'unicorn'
