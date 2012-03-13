@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312213114) do
+ActiveRecord::Schema.define(:version => 20120312221940) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -37,6 +37,11 @@ ActiveRecord::Schema.define(:version => 20120312213114) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "relation"
+    t.integer  "creator_id"
   end
 
   create_table "users", :force => true do |t|
@@ -63,6 +68,7 @@ ActiveRecord::Schema.define(:version => 20120312213114) do
     t.string   "area_code_part1"
     t.string   "area_code_part2"
     t.string   "area_code_part3"
+    t.string   "profile_image"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

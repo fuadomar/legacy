@@ -3,7 +3,7 @@ class AddTitleToMedicalInstructions < ActiveRecord::Migration
     add_column(:medical_instructions, :title, :string)
     add_column(:medical_instructions, :first_name, :string)
     add_column(:medical_instructions, :last_name, :string)
-    add_column(:medical_instructions, :relation, :string)
+    add_column(:medical_instructions, :relationship, :string)
     add_column(:medical_instructions, :creator_id, :integer)
   end
 
