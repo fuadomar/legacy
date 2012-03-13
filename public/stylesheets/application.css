@@ -200,11 +200,16 @@ input[type=submit]
 
 #content_info .form-container .image img.selected{
     border: solid 4px #0071bc;
+    cursor: default;
 }
 
 #content_info .form-container .image img.normal{
     border: solid 4px #ebe6e1;
     cursor: pointer;
+}
+
+#content_info .form-container .image img.normal:hover{
+    border: solid 4px #0071bc;
 }
 
 .get-started-tips .title{

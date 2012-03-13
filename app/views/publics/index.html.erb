@@ -93,22 +93,21 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
+    $(".form-container .image img").click(function(){
+      $(".form-container .image img").removeClass('selected');
+      $(".form-container .image img").addClass('normal');
+      $(this).removeClass('normal');
+      $(this).addClass("selected");
+    });
+
     $('#myself').click(function(){
-       $('#loved-one').css('border','solid 4px #ebe6e1');
-       $('#loved-one').css('cursor','pointer');
-       $(this).css('border','solid 4px #0071bc');
-       $(this).css('cursor','default');
-       $('#relationship').val('myself');
-       $('#relationship').hide();
+      $('#relationship').val('myself');
+      $('#relationship').hide();
     });
 
     $('#loved-one').click(function(){
-       $('#myself').css('border','solid 4px #ebe6e1');
-       $('#myself').css('cursor','pointer');
-       $(this).css('border','solid 4px #0071bc');
-       $(this).css('cursor','default');
-       $('#relationship').val('');
-       $('#relationship').show();
+      $('#relationship').val('');
+      $('#relationship').show();
     });
   });
 </script>
