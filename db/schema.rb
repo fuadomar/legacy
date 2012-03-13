@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120312221940) do
     t.string   "title"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "relation"
+    t.string   "relationship"
     t.integer  "creator_id"
   end
 

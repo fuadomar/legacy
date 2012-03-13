@@ -11,7 +11,7 @@ class AddTitleToMedicalInstructions < ActiveRecord::Migration
     remove_column(:medical_instructions, :title)
     remove_column(:medical_instructions, :first_name)
     remove_column(:medical_instructions, :last_name)
-    remove_column(:medical_instructions, :relation)
+    remove_column(:medical_instructions, :relationship)
     remove_column(:medical_instructions, :creator_id)
   end
 end
