@@ -17,7 +17,7 @@
     <h2>BASIC INFORMATION ABOUT YOU:</h2>
 
     <% if (current_user.present?) %>
-        Name: <%= current_user.name -%> <br/>
+        Name: <%= current_user.full_name -%> <br/>
         Date of Birth: <%= current_user.date_of_birth.strftime("%B %d, %Y") if (current_user.date_of_birth.present?) -%>
         <br/>
         Address: <%= current_user.address -%> <br/>

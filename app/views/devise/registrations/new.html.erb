@@ -1,7 +1,8 @@
 <!--h2>Sign up</h2-->
 
 <% if (resource.class == User && session[:user_attributes].present?) %>
-    <% resource.name ||= session[:user_attributes]["name"] %>
+    <% resource.first_name ||= (session[:user_attributes]["name"] || "").split(" ").first %>
+    <% resource.last_name ||= (session[:user_attributes]["name"] || "").split(" ").last %>
     <% resource.address ||= session[:user_attributes]["address"] %>
     <% resource.phone_number ||= session[:user_attributes]["phone_number"] %>
     <% resource.date_of_birth ||= session[:user_attributes]["date_of_birth"] %>
