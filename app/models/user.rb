@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :agents
   has_many :medical_instructions
 
-  validates_presence_of :name, :address, :date_of_birth
+  validates_presence_of :first_name, :last_name, :address, :date_of_birth
 
   mount_uploader :profile_image, ProfileImageUploader
 
