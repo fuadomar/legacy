@@ -19,14 +19,14 @@
       <span> Loved one </span>
     </div>
     <div class="field_form">
-      <input type="text" name=" " value="" placeholder="First Name" size="10"/>
-      <input type="text" name=" " value="" placeholder="Last Name" size="10"/>
+      <input type="text" name=" " id="first_name" value="" placeholder="First Name" size="10"/>
+      <input type="text" name=" " id="last_name" value="" placeholder="Last Name" size="10"/>
 
       <div style="margin: 5px 0;">
-        <input type="text" name=" " value="" placeholder="Email Address" size="24"/>
+        <input type="text" name=" " id="email_address" value="" placeholder="Email Address" size="24"/>
       </div>
       <div style="margin: 5px 0;">
-        <input type="text" name=" " value="" placeholder="Relationship" size="24"/>
+        <input type="text" name=" " id="relationship" value="" placeholder="Relationship" size="24"/>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@
   <div class="get-started-tips" style="display: inline-block">
     <ul>
       <li>
-        <img src="images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path()) -%>
+        <img src="images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path(), :id => "medical_directives_link") -%>
       </li>
       <li><img src="images/memorial_icon.png"/> <a herf="">Memorial</a></li>
       <li><img src="images/my_things.png"/> <a herf="">My things</a></li>
@@ -57,3 +57,12 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $("#medical_directives_link").click(function(){
+      //alert($(this).attr('href'));
+      document.location.href = $(this).attr('href') + "?first_name=" + $("#first_name").val() + "&last_name=" + $("#last_name").val() +
+              "&email_address=" + $("#email_address").val() + "&relationship=" + $("#relationship").val();
+      return false;
+  });
+</script>

@@ -94,6 +94,13 @@
       <li>Example 2</li>
     </ul>
 
+    <% f.object.first_name = params[:first_name] if(params[:first_name]) %>
+    <% f.object.last_name = params[:last_name] if(params[:last_name]) %>
+    <% f.object.relationship = params[:relationship] if(params[:relationship]) %>
+
+    <%= f.hidden_field(:first_name) -%>
+    <%= f.hidden_field(:last_name) -%>
+    <%= f.hidden_field(:relationship) -%>
 
     <div class="field">
       <%= f.label :wish, 'We strongly encourage you to write your own wishes', :style => "width: auto;" %>
