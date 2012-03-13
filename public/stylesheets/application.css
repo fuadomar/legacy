@@ -183,12 +183,47 @@ input[type=submit]
     border-radius: 6px;
 }
 
+#content_info .title{
+    margin-bottom: 10px;
+    color: #0071bc;
+    font-size: 18px;
+}
+
+
+#content_info .form-container{
+    display: inline-block;
+    height: 205px;  /* fixed height is used to make stable size, when relationship text field will be hide */
+}
+
+#content_info .form-container .image{
+}
+
+#content_info .form-container .image img.selected{
+    border: solid 4px #0071bc;
+}
+
+#content_info .form-container .image img.normal{
+    border: solid 4px #ebe6e1;
+    cursor: pointer;
+}
+
+.get-started-tips .title{
+    margin-top: 58px;
+    color: #0071bc;
+    font-size: 18px;
+}
+
 .get-started-tips ul{
     list-style-type: none;padding: 0px;font-size: 16px;
 }
 
 .get-started-tips ul li{
     padding:0.5em;
+}
+
+.get-started-tips ul li .tips-link{
+    float: left;
+    width: 195px;
 }
 
 .get-started-tips ul li a{

@@ -5,18 +5,18 @@
 </div>
 
 <div id="content_info">
-  <div style=" margin-bottom: 10px; color: #0071bc;  font-size: 18px;">Are you creating a plan for yourself or
-    for a loved one?
+  <div class="title">
+    Are you creating a plan for yourself or for a loved one?
   </div>
 
-  <div style="display: inline-block">
+  <div class="form-container">
     <div class="image">
-      <img src="images/myself.png"/> <br/>
-      <span> Myself </span>
+      <%= image_tag('/images/myself.png', :class => 'normal', :id => 'myself') %>
+      <br/><span> Myself </span>
     </div>
-    <div class="selected_image">
-      <img src="images/myself.png" style="border: solid 4px #0071bc;"/> <br/>
-      <span> Loved one </span>
+    <div class="image">
+      <%= image_tag('/images/myself.png', :class => 'selected', :id => 'loved-one') %>
+      <br/><span> Loved one </span>
     </div>
     <div class="field_form">
       <input type="text" name=" " id="first_name" value="" placeholder="First Name" size="10"/>
@@ -31,28 +31,51 @@
     </div>
   </div>
 
-  <div style=" margin-top: 58px; color: #0071bc; font-size: 18px;">Where do you want to get started?</div>
-  <div class="get-started-tips" style="display: inline-block">
+  <div class="get-started-tips">
+    <div class="title">Where do you want to get started?</div>
     <ul>
       <li>
-        <img src="images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path(), :id => "medical_directives_link") -%>
+        <div class="tips-link">
+          <%= image_tag('/images/medical_directives_icon.png') %>
+          <%= link_to("Medical directives", new_medical_instruction_path(), :id => "medical_directives_link") -%>
+        </div>
+        make important medical decisions before its too late
       </li>
-      <li><img src="images/memorial_icon.png"/> <a herf="">Memorial</a></li>
-      <li><img src="images/my_things.png"/> <a herf="">My things</a></li>
-      <li><img src="images/fanincial.png"/> <a herf="">Financial</a></li>
-      <li><img src="images/gaurdianship.png"/> <a herf="">Guardianship</a></li>
-      <li><img src="images/will_and_trust.png"/> <a herf="">Will and Trust</a></li>
-    </ul>
-  </div>
-
-  <div style="display: inline-block">
-    <ul style="list-style-type: none; vertical-align:top;font-size: 16px;">
-      <li style="padding:0.5em;">make important medical decisions before its too late</li>
-      <li style="padding:0.5em; ">plan aspects of your memorial service ahead of time</li>
-      <li style="padding:0.5em;"> organize you assets and gifting</li>
-      <li style="padding:0.5em;">store important acount information</li>
-      <li style="padding:0.5em;">set up guardianship for your children and pets</li>
-      <li style="padding:0.5em;">create legally binding documents</li>
+      <li>
+        <div class="tips-link">
+          <%= image_tag('/images/memorial_icon.png') %>
+          <%= link_to "Memorial", '' %>
+        </div>
+        plan aspects of your memorial service ahead of time
+      </li>
+      <li>
+        <div class="tips-link">
+          <%= image_tag('/images/my_things.png') %>
+          <%= link_to "My things", '' %>
+        </div>
+        organize you assets and gifting
+      </li>
+      <li>
+        <div class="tips-link">
+          <%= image_tag('/images/fanincial.png') %>
+          <%= link_to "Financial", '' %>
+        </div>
+        store important account information
+      </li>
+      <li>
+        <div class="tips-link">
+          <%= image_tag('/images/gaurdianship.png') %>
+          <%= link_to "Guardianship", '' %>
+        </div>
+        set up guardianship for your children and pets
+      </li>
+      <li>
+        <div class="tips-link">
+          <%= image_tag('/images/will_and_trust.png') %>
+          <%= link_to "Will and Trust", '' %>
+        </div>
+        create legally binding documents
+      </li>
     </ul>
   </div>
 
@@ -60,9 +83,32 @@
 
 <script type="text/javascript">
   $("#medical_directives_link").click(function(){
-      //alert($(this).attr('href'));
-      document.location.href = $(this).attr('href') + "?first_name=" + $("#first_name").val() + "&last_name=" + $("#last_name").val() +
-              "&email_address=" + $("#email_address").val() + "&relationship=" + $("#relationship").val();
-      return false;
+    //alert($(this).attr('href'));
+    document.location.href = $(this).attr('href') + "?first_name=" + $("#first_name").val() + "&last_name=" + $("#last_name").val() +
+      "&email_address=" + $("#email_address").val() + "&relationship=" + $("#relationship").val();
+    return false;
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#myself').click(function(){
+       $('#loved-one').css('border','solid 4px #ebe6e1');
+       $('#loved-one').css('cursor','pointer');
+       $(this).css('border','solid 4px #0071bc');
+       $(this).css('cursor','default');
+       $('#relationship').val('myself');
+       $('#relationship').hide();
+    });
+
+    $('#loved-one').click(function(){
+       $('#myself').css('border','solid 4px #ebe6e1');
+       $('#myself').css('cursor','pointer');
+       $(this).css('border','solid 4px #0071bc');
+       $(this).css('cursor','default');
+       $('#relationship').val('');
+       $('#relationship').show();
+    });
   });
 </script>
