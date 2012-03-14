@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
                   :name, :address, :date_of_birth, :phone_number, :first_name, :last_name, :middle_name,
       :area_code_part1, :area_code_part2, :area_code_part3, :profile_image, :profile_image_cache
 
-  has_many :agents
-  has_many :medical_instructions
+#  has_many :agents
+#  has_many :medical_instructions
+
+  has_many :plans
 
   validates_presence_of :first_name, :last_name, :address, :date_of_birth
 

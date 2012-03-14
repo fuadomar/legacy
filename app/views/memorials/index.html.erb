@@ -1,0 +1,35 @@
+<h1>Listing memorials</h1>
+
+<table>
+  <tr>
+    <th>Plan</th>
+    <th>Organizer name</th>
+    <th>Organizer preferences</th>
+    <th>Prepared services</th>
+    <th>Service preferences</th>
+    <th>Remains</th>
+    <th>Additional notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @memorials.each do |memorial| %>
+  <tr>
+    <td><%= memorial.plan_id %></td>
+    <td><%= memorial.organizer_name %></td>
+    <td><%= memorial.organizer_preferences %></td>
+    <td><%= memorial.prepared_services %></td>
+    <td><%= memorial.service_preferences %></td>
+    <td><%= memorial.remains %></td>
+    <td><%= memorial.additional_notes %></td>
+    <td><%= link_to 'Show', memorial %></td>
+    <td><%= link_to 'Edit', edit_memorial_path(memorial) %></td>
+    <td><%= link_to 'Destroy', memorial, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Memorial', new_memorial_path %>

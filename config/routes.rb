@@ -1,4 +1,8 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :memorials
+
+  resources :plans
+
   resources :medical_instructions do
     collection do
       post 'save_tmp_data'

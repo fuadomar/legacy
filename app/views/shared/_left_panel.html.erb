@@ -1,8 +1,17 @@
 <div class=" content_left">
   <ul class="menu">
-    <li><img src="/images/welcome.png"/> <%= link_to("Welcome", root_path()) -%></li>
-    <li><img src="/images/medical_directives_icon.png"/> <%= link_to("Medical directives", new_medical_instruction_path()) -%></li>
-    <li><img src="/images/memorial_icon.png"/> <a herf="">Memorial</a></li>
+    <li>
+      <%= image_tag('/images/welcome.png') %>
+      <%= link_to("Welcome", root_path()) -%>
+    </li>
+    <li>
+      <%= image_tag('/images/medical_directives_icon.png') %>
+      <%= link_to("Medical directives", new_medical_instruction_path()) -%>
+    </li>
+    <li>
+      <%= image_tag('/images/memorial_icon.png') %>
+      <%= link_to "Memorial", new_memorial_path %>
+    </li>
     <li><img src="/images/will_and_trust.png"/> <a herf="">Will and Trust</a></li>
     <li><img src="/images/my_things.png"/> <a herf="">My things</a></li>
     <li><img src="/images/fanincial.png"/> <a herf="">Financial</a></li>

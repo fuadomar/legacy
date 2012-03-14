@@ -1,34 +1,39 @@
 <div class="page-banner">
   <img src="/images/my-profile-banner.png"/>
   <label>My Profile</label>
+  <br/>Share your plans and information with friends and family.
+  With my legacy Plan, you control who has access to what information and
+  how they can access the information.
 </div>
 
 <div class="edit-profile">
   <div class="sections">
-    <div class="section">My Profile</div>
-    <div class="section inactive">My Family</div>
-    <div class="section last inactive">My Friends</div>
+    <div class="section" id="sub-menu-profile">My Profile</div>
+    <div class="section inactive" id="sub-menu-family">My Family</div>
+    <div class="section last inactive" id="sub-menu-friends">My Friends</div>
   </div>
 
+
+  <div class="sub-menu-content" id="profile">
   <!--h2>Edit <%= resource_name.to_s.humanize %></h2-->
 
-  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true}) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true}) do |f| %>
       <%= devise_error_messages! %>
 
       <div style="float: left; margin-right: 20px; overflow: hidden;">
-         <div class="field">
-           <%= f.text_field :first_name, :size => 11 %>
-         </div>
-         <div class="field">
-           <%= image_tag((f.object.profile_image.present? ? f.object.profile_image_url : '/images/no-profile-image.png'), :width => 100) %>
-           <br/><br/>
-           <%= f.file_field :profile_image, :value => "Upload Picture", :class => "file-input", :style => "width: 100px" -%>
-           <br/>
-           <%= f.hidden_field :profile_image_cache, :class => "file-cache" %>
-           Upload Photo
-         </div>
-         <br/><br/>
-         Upload docs
+        <div class="field">
+          <%= f.text_field :first_name, :size => 11 %>
+        </div>
+        <div class="field">
+          <%= image_tag((f.object.profile_image.present? ? f.object.profile_image_url : '/images/no-profile-image.png'), :width => 100) %>
+          <br/><br/>
+          <%= f.file_field :profile_image, :value => "Upload Picture", :class => "file-input", :style => "width: 100px" -%>
+          <br/>
+          <%= f.hidden_field :profile_image_cache, :class => "file-cache" %>
+          Upload Photo
+        </div>
+        <br/><br/>
+        Upload docs
       </div>
 
       <div style="float: left;">
@@ -39,9 +44,9 @@
 
         <div class="field">
           <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
-                                       :order => [:month, :day, :year], :start_year => Date.today.year - 70,
-                                       :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
-                      {:style => "width: 77px;"}) -%>
+              :order => [:month, :day, :year], :start_year => Date.today.year - 70,
+              :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
+            {:style => "width: 77px;"}) -%>
         </div>
 
         <div class="field">
@@ -59,7 +64,7 @@
         </div>
 
         <div class="field">
-          <%#= f.label :password %> <!--i>(leave blank if you don't want to change it)</i-->
+  <%#= f.label :password %> <!--i>(leave blank if you don't want to change it)</i-->
           <%= f.password_field :password, :size => 30 %>
         </div>
 
@@ -75,29 +80,43 @@
       <div style="clear: both;"></div>
 
       <div style="text-align: right; padding-right: 10px; padding-top: 10px;"><%= f.submit "Update account" %></div>
-  <% end %>
+    <% end %>
 
-  <!--
-<h3>Cancel my account</h3>
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
--->
+    <!--
+  <h3>Cancel my account</h3>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+    -->
 
 <%#= link_to "Back", :back %>
+  </div>
 
 </div>
 
 <script type="text/javascript">
   $(function(){
-     $("#user_email").watermark("Email", {useNative: false});
-     $("#user_first_name").watermark("First Name", {useNative: false});
-      $("#user_middle_name").watermark("Middle Name", {useNative: false});
-      $("#user_last_name").watermark("Last Name", {useNative: false});
-      $("#user_address").watermark("Address", {useNative: false});
-      $("#user_area_code_part1").watermark("Area Code", {useNative: false});
-      $("#user_area_code_part2").watermark("xxx", {useNative: false});
-      $("#user_area_code_part3").watermark("xxx", {useNative: false});
-      $("#user_password").watermark("Password", {useNative: false});
-      $("#user_password_confirmation").watermark("Password Confirmation", {useNative: false});
-      $("#user_current_password").watermark("Current Password(to confirm your changes)", {useNative: false});
+    $("#user_email").watermark("Email", {useNative: false});
+    $("#user_first_name").watermark("First Name", {useNative: false});
+    $("#user_middle_name").watermark("Middle Name", {useNative: false});
+    $("#user_last_name").watermark("Last Name", {useNative: false});
+    $("#user_address").watermark("Address", {useNative: false});
+    $("#user_area_code_part1").watermark("Area Code", {useNative: false});
+    $("#user_area_code_part2").watermark("xxx", {useNative: false});
+    $("#user_area_code_part3").watermark("xxx", {useNative: false});
+    $("#user_password").watermark("Password", {useNative: false});
+    $("#user_password_confirmation").watermark("Password Confirmation", {useNative: false});
+    $("#user_current_password").watermark("Current Password(to confirm your changes)", {useNative: false});
+  });
+
+  $(document).ready(function(){
+    $('.inactive').bind('click', function(){
+     var id = $(this).attr('id');
+     id = id.replace('sub-menu-','')
+     $('.sub-menu-content').hide();
+     $(id).show();
+
+     $('.section').removeClass('inactive');
+     $('.section').addClass('inactive');
+     $(this).removeClass('inactive');
+    });
   });
 </script>

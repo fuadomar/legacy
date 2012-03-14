@@ -1,3 +1,3 @@
 class Agent < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :medical_instruction
 end

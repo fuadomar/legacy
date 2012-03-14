@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plan_id: 1
+  organizer_name: MyString
+  organizer_preferences: MyText
+  prepared_services: MyText
+  service_preferences: MyText
+  remains: MyText
+  additional_notes: MyText
+
+two:
+  plan_id: 1
+  organizer_name: MyString
+  organizer_preferences: MyText
+  prepared_services: MyText
+  service_preferences: MyText
+  remains: MyText
+  additional_notes: MyText

@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @memorial.plan.title %>
+</p>
+
+<p>
+  <b>Organizer name:</b>
+  <%= @memorial.organizer_name %>
+</p>
+
+<p>
+  <b>Organizer preferences:</b>
+  <%= @memorial.organizer_preferences %>
+</p>
+
+<p>
+  <b>Prepared services:</b>
+  <%= @memorial.prepared_services %>
+</p>
+
+<p>
+  <b>Service preferences:</b>
+  <%= @memorial.service_preferences %>
+</p>
+
+<p>
+  <b>Remains:</b>
+  <%= @memorial.remains %>
+</p>
+
+<p>
+  <b>Additional notes:</b>
+  <%= @memorial.additional_notes %>
+</p>
+<%= link_to 'Back', new_memorial_path %>
+
+<%#= link_to 'Edit', edit_memorial_path(@memorial) %> 
+<%#*|%>
+<%#= link_to 'Back', memorials_path %>

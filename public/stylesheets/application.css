@@ -45,7 +45,7 @@ body
     margin-bottom: 10px;
 }
 
-.field label{
+.new_medical_instructions .field label{
     width: 120px;
     display: inline-block;
 }
@@ -296,6 +296,7 @@ div.decission-seperator{
 
 .edit-profile .sections .section.inactive{
     color: gray;
+    cursor: pointer;
 }
 
 img{
