@@ -21,7 +21,7 @@ div.clear {
 }
 
 #full_container{
-    width: 1561px;
+    width: 100%;
 }
 
 div#header-container {
@@ -29,6 +29,8 @@ div#header-container {
     background: url('/images/header_back.png');
     height: 102px;
     margin-bottom: 1px;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 #header-container #header{
@@ -94,8 +96,15 @@ div#header-container {
 }
 
 
+#banner-outer-container{
+   background: url('/images/banner_outer_bk.png');
+}
+
 #banner-container{
+	width: 1280px;
     height: 407px;
+	margin-left: auto;
+	margin-right: auto;
     background: url('/images/banner_bk.png');
 }
 
@@ -209,6 +218,7 @@ div#header-container {
 #body-container .body .right-side-bar .video-container .video{
     border: 4px solid #fff;
     border-radius: 5px;
+	min-height: 215px;
 }
 
 
@@ -216,6 +226,9 @@ div#header-container {
     background: url('/images/footer_bg.png');
     height: 130px;
     margin-bottom: 100px;
+	width: 1280px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #footer-container .footer{
