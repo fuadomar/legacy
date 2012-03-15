@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plan_id: 1
+  relationship_id: 1
+  information_type: MyString
+  condition: MyString
+  conditional_parameter: 1
+
+two:
+  plan_id: 1
+  relationship_id: 1
+  information_type: MyString
+  condition: MyString
+  conditional_parameter: 1

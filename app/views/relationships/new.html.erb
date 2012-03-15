@@ -1,0 +1,27 @@
+<div class="edit-profile">
+  <div class="sections">
+    <div class="section" id="sub-menu-family">My Family</div>
+    <div class="section last inactive" id="sub-menu-friend">My Friends</div>
+  </div>
+
+  <div class="sub-menu-content" id="family">
+    <%= render :partial => 'form', :locals => { :relation_type => 'family'} %>
+  </div>
+
+</div>
+<%= link_to 'Back', relationships_path %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.section').bind('click', function(){
+      var id = $(this).attr('id');
+      id = id.replace('sub-menu-','')
+      <%#*$('.sub-menu-content').hide();%>
+      <%#*$('#'+id).show();%>
+      $('#relationship_type').val(id);
+      $('.section').removeClass('inactive');
+      $('.section').addClass('inactive');
+      $(this).removeClass('inactive');
+    });
+  });
+</script>

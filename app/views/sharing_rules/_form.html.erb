@@ -1,0 +1,43 @@
+<%= form_for([ @plan, @sharing_rule ]) do |f| %>
+  <!--
+  <%# if @plan.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@plan.errors.count, "error") %> prohibited this sharing_rule from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @plan.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <div class="field">
+    <%= f.label :plan_id %><br />
+    <%= f.select(:plan_id, current_user.plans.find(:all).collect { |p| [p.title, p.id] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :relationship_id, "Share With" %><br />
+    <%= f.select(:relationship_id, current_user.relationships.find(:all).collect { |r| ["#{r.first_name} #{r.middle_name} #{r.last_name} (#{r.type})", r.id] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :information_type %><br />
+    <%= f.select(:information_type, [['Medical Directive', 'Medical Directive'],
+        ['Memorial', 'Memorial'], ['My Things', 'My Things'], ['Will & Trust', 'Will & Trust'],
+        ['Financial & Accounts', 'Financial & Accounts'], ['Guardianship', 'Guardianship']], options ={:prompt => "- Select one -"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :condition %><br />
+    <%= f.select(:condition, [['Share Now', 'Share Now'], ['Become Hospitalized', 'Become Hospitalized'],
+        ['I Turn', 'I Turn'], ['{He/She} Turns', '{He/She} Turns']], options ={:prompt => "- Select one -"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :conditional_parameter %><br />
+    <%= f.text_field :conditional_parameter, :value => '65' %>
+  </div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>

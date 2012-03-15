@@ -1,7 +1,15 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :relationships
+
   resources :memorials
 
-  resources :plans
+  resources :plans do
+    resources :sharing_rules do
+      collection do
+        get 'get_form_tiny'
+      end
+    end
+  end
 
   resources :medical_instructions do
     collection do

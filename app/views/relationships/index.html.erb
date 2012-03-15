@@ -1,0 +1,5 @@
+<%= render :partial => 'list_relationships', :locals => { :relationships => @families, :type => 'families'} %>
+<%= render :partial => 'list_relationships', :locals => { :relationships => @friends, :type => 'friends'} %>
+<br />
+
+<%= link_to 'New Relationship', new_relationship_path %>

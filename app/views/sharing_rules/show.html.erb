@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @sharing_rule.plan.title %>
+</p>
+
+<p>
+  <b>Relationship:</b>
+  <%= @sharing_rule.relationship.first_name %>
+</p>
+
+<p>
+  <b>Information type:</b>
+  <%= @sharing_rule.information_type %>
+</p>
+
+<p>
+  <b>Condition:</b>
+  <%= @sharing_rule.condition %>
+</p>
+
+<p>
+  <b>Conditional parameter:</b>
+  <%= @sharing_rule.conditional_parameter %>
+</p>
+
+
+<%#= link_to 'Edit', edit_sharing_rule_path(@sharing_rule) %> |
+<%#= link_to 'Back', sharing_rules_path %>

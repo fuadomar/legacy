@@ -7,6 +7,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @plans.each do |plan| %>
@@ -16,6 +17,7 @@
     <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
     <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Sharing Rules', plan_sharing_rules_path(plan) %> </td>
   </tr>
 <% end %>
 </table>

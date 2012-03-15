@@ -1,0 +1,38 @@
+<tr>
+  <%= form_for([ @plan, sharing_rule ]) do |f| %>
+    <%= hidden_field_tag(:relationship_id, :value => relationship_id) %>
+    <%= hidden_field_tag(:plan_id, :value => @plan.id) %>
+    <td>
+      <%= f.select(:information_type, [['Medical Directive', 'Medical Directive'],
+          ['Memorial', 'Memorial'], ['My Things', 'My Things'], ['Will & Trust', 'Will & Trust'],
+          ['Financial & Accounts', 'Financial & Accounts'], ['Guardianship', 'Guardianship']], :selected => sharing_rule.information_type) %>
+    </td>
+    <td>
+      <%= f.select(:condition, [['Share Now', 'Share Now'], ['Become Hospitalized', 'Become Hospitalized'],
+          ['I Turn', 'I Turn'], ['{He/She} Turns', '{He/She} Turns']], :selected => sharing_rule.condition) %>
+    </td>
+    <td width="50">
+      <%= f.text_field :conditional_parameter, :placeholder => 'age', :class => 'age' if sharing_rule.conditional_parameter.present? %>
+      <%= f.text_field :conditional_parameter, :placeholder => 'age', :class => 'age' if sharing_rule.id.blank? %>
+    </td>
+    <td>
+      <div class="action">
+        <%= link_to((f.object.new_record? ? "Save" : "Update"),'', :id => (f.object.new_record? ? "save" : "update")) %>
+      </div>
+    </td>
+    <td>
+      <div class="action">
+        <%= link_to 'Delete', '', :id => 'delete' %>
+      </div>
+    </td>
+  <% end %>
+</tr>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#sharing_rule_condition').change(function() {
+      var conditional_parameter = $('#sharing_rule_conditional_parameter').val();
+
+    });
+  });
+</script>

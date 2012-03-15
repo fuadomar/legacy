@@ -1,0 +1,80 @@
+#sharing-rules{
+}
+
+
+#sharing-rules .relationship{
+    margin-bottom: 25px;
+}
+
+#sharing-rules .relationship .name{
+    font-size: 16px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#sharing-rules .relationship .notice{
+    padding-left: 3px;
+    margin-bottom: 5px;
+}
+
+#sharing-rules .relationship .sharing-rules{
+
+}
+
+#sharing-rules .relationship .sharing-rules .share-more-button{
+    text-align: center;
+    font-size: 14px;
+    width: 100px;
+    border: 1px solid #888;
+    background-color: #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+}
+
+#sharing-rules .relationship .sharing-rules .share-more-button:hover{
+    background-color: #ddd;
+}
+
+#sharing-rules .add-family-button{
+    text-align: center;
+    font-size: 18px;
+    width: 230px;
+    border: 1px solid #888;
+    background-color: #ccc;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#sharing-rules .add-family-button:hover{
+    background-color: #ddd;
+}
+
+#sharing-rules a{
+    background-color: transparent;
+    color: #333;
+    text-decoration: none;
+}
+
+#sharing-rules input.age{
+    width: 50px;
+}
+
+#sharing-rules .action{
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #888;
+    background-color: #ccc;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 20px;
+    padding-top: 2px;
+}
+
+#sharing-rules .action:hover{
+    background-color: #ddd;
+}

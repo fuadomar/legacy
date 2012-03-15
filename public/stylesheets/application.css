@@ -3,6 +3,18 @@ body
     font-family: "Myriad Pro", "Helvetica";
 }
 
+.clear{
+    clear: both;
+}
+
+.hidden{
+    display: none;
+}
+
+.transparent{
+    background-color: transparent;
+}
+
 #main_content
 {
     width: 900px;
