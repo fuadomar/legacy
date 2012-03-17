@@ -3,7 +3,10 @@ class PlansController < ApplicationController
   # GET /plans.xml
   def index
     @plans = current_user.plans.all
-
+    @relation = Relationship.find_by_login_user_id(current_user.id)
+    @parent = User.find(@relation.user_id) if @relation.present?
+    @parent_plans = @parent.plans if @parent.present?
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @plans }

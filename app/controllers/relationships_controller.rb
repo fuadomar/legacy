@@ -49,13 +49,19 @@ class RelationshipsController < ApplicationController
     elsif(params[:relationship][:type] == 'friend')
       @relationship = current_user.friends.new(params[:relationship])
     end
-
+    success = true
+    @user = User.new(params[:relationship])
+    @user.password = "testtest"
+    success = false unless @user.save
+    @relationship.login_user_id = @user.id
+    
     respond_to do |format|
-      if @relationship.save
+      if success && @relationship.save
         format.html { redirect_to(session[:return_to], :notice => 'Relationship was successfully created.') }
         format.xml  { render :xml => @relationship, :status => :created, :location => @relationship }
       else
-        format.html { render :action => "new" }
+        @relationship = current_user.relationships.new(params[:relationship])
+        format.html { render :action => "new", :notice => 'Please fill all the fields' }
         format.xml  { render :xml => @relationship.errors, :status => :unprocessable_entity }
       end
     end

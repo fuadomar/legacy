@@ -3,7 +3,7 @@
     <% @relationships.each do |relationship| %>
       <div class="relationship">
         <div class="name">
-          <%= "#{relationship.first_name} #{relationship.middle_name} #{relationship.last_name}" %>
+          <%= relationship.full_name %>
         </div>
         <div class="notice">
           <%= relationship.first_name %> can access the following information at the specified trigger points
