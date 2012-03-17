@@ -2,7 +2,7 @@ class SharingRulesController < ApplicationController
   # GET /sharing_rules
   # GET /sharing_rules.xml
   def index
-    @relationships = current_user.relationships.includes(:sharing_rules)
+    @relationships = current_user.relationships.includes(:sharing_rules) if current_user.present?
     @plan = Plan.find(params[:plan_id])
     respond_to do |format|
       format.html # index.html.erb
