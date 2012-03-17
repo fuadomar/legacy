@@ -74,23 +74,22 @@ class SharingRulesController < ApplicationController
   # DELETE /sharing_rules/1
   # DELETE /sharing_rules/1.xml
   def destroy
-    new_plan_sharing_rule_path(@plan)
+    #new_plan_sharing_rule_path(@plan)
+    @plan = Plan.find(params[:plan_id])
     @sharing_rule = SharingRule.find(params[:id])
     @sharing_rule.destroy
 
     respond_to do |format|
-      format.html { plan_sharing_rules_path(@plan) }
+      format.html { redirect_to plan_sharing_rules_path(@plan) }
       format.xml  { head :ok }
     end
   end
 
-  def get_form_tiny
+  def get_create_form_tiny
     @plan = Plan.find(params[:plan_id])
-    @relationship = Relationship.find(params[:relationship_id])
     @sharing_rule = SharingRule.new
-
+    @relationship_id = params[:relationship_id]
     respond_to do |format|
-      format.html
       format.js
     end
   end

@@ -14,26 +14,41 @@
               <%= render :partial => 'sharing_rules_tiny', :locals => { :sharing_rule => sharing_rule, :relationship_id => relationship.id} %>
             <% end %>
           </table>
+          <% if relationship.sharing_rules.count < 6 %>
           <div class="share-more-button" id="share-more-<%= relationship.id %>">
             <%= link_to 'Share More', '' %>
           </div>
+          <% end %>
         </div>
       </div>
 
       <script type="text/javascript">
         $(document).ready(function(){
           $('#share-more-<%= relationship.id %>').bind('click', function(){
-            $.ajax({
-              type: 'GET',
-              url: "<%= get_form_tiny_plan_sharing_rules_path(@plan.id) %>",
-              data: {plan_id : <%= @plan.id %>, relationship_id : <%= relationship.id %> },
-              dataType: "script"
-            });
+            load_count = $('#sharing-rules-table-<%= relationship.id %> tr td table').length;
+            if ($('#sharing_rule_new').length ) {
+              alert('You can\'t add more before saving new rule');
+            }
+            else if(load_count < 6)
+            {
+   
+              $.ajax({
+                type: 'GET',
+                url: "<%= get_create_form_tiny_plan_sharing_rules_path(@plan) %>",
+                data: {relationship_id : <%= relationship.id %> },
+                dataType: "script"
+              });
+            }
+
+            if(load_count == 5)
+            {
+              $(this).hide();
+            }
+
             return false;
           });
         });
       </script>
-
     <% end %>
   <% end %>
 

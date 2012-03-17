@@ -6,7 +6,7 @@ NasceniaRailsTemplate::Application.routes.draw do
   resources :plans do
     resources :sharing_rules do
       collection do
-        get 'get_form_tiny'
+        get :get_create_form_tiny
       end
     end
   end

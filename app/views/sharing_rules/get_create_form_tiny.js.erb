@@ -1,0 +1,1 @@
+$("#sharing-rules-table-<%= @relationship_id %>").append("<%= escape_javascript(render(:partial => 'sharing_rules_tiny', :locals => {:sharing_rule => @sharing_rule, :relationship_id => @relationship_id})).html_safe %>");
