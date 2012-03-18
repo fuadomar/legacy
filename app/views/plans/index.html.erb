@@ -1,46 +1,55 @@
-<h1>Plans Created by you</h1>
+<div id="plans">
+  <% if @plan.present? %>
+    <div class="own-plans">
+      <h1>Plans Created by you</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
 
-  <% @plans.each do |plan| %>
-    <tr>
-      <td><%= plan.title %></td>
-      <td><%= plan.user_id %></td>
-      <td><%= link_to 'Show', plan %></td>
-      <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-      <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
-      <td><%= link_to 'Sharing Rules', plan_sharing_rules_path(plan) %> </td>
-    </tr>
+        <% @plans.each do |plan| %>
+          <tr>
+            <td><%= plan.title %></td>
+            <td><%= plan.user_id %></td>
+            <td><%= link_to 'Show', plan %></td>
+            <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
+            <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+            <td><%= link_to 'Sharing Rules', plan_sharing_rules_path(plan) %> </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
   <% end %>
-</table>
-
-<br />
 
 
-<% if @parent_plans.present? %>
-<h1>Plans Created by
-<%= @parent.full_name %>
-</h1>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th></th>
-    </tr>
-    <%= "Plans Created by: #{@parent.full_name}" %>
-    <% @parent_plans.each do |plan| %>
-      <td><%= plan.title %></td>
-      <td><%= link_to 'Show', plan %></td>
-    <% end %>
-  </table>
+  <% if @parent_plans.present? %>
+    <div class="parent-plans">
+      <div class="title">Plans Created by
+        <%= @parent.full_name %>
+      </div>
 
-  <br />
-<% end %>
+      <% @parent_plans.each do |plan| %>
+        <div class="plan-link">
+          <% plan.memorials.each do |memorial| %>
+            <div class="link">
+              <%= link_to 'Memorials', memorial %>
+            </div>
+          <% end %>
 
-<%= link_to 'New Plan', new_plan_path %>
+          <% plan.medical_instructions.each do |medical| %>
+            <div class="link">
+              <%= link_to 'Medical Instructions', medical %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Create New Plan', new_plan_path %>
+</div>

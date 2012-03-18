@@ -1,4 +1,5 @@
 class MedicalInstructionsController < ApplicationController
+  load_and_authorize_resource
   # GET /medical_instructions
   # GET /medical_instructions.xml
   def index

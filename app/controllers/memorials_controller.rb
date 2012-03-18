@@ -1,4 +1,5 @@
 class MemorialsController < ApplicationController
+  load_and_authorize_resource
   # GET /memorials
   # GET /memorials.xml
   def index
@@ -35,6 +36,7 @@ class MemorialsController < ApplicationController
   # GET /memorials/1/edit
   def edit
     @memorial = Memorial.find(params[:id])
+    @plan = @memorial.plan
   end
 
   # POST /memorials

@@ -1,4 +1,5 @@
 class SharingRulesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /sharing_rules
   # GET /sharing_rules.xml
   def index
