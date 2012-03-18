@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312221940) do
+ActiveRecord::Schema.define(:version => 20120318144948) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(:version => 20120312221940) do
     t.string   "state"
     t.integer  "zip"
     t.string   "relationship"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "medical_instruction_id"
   end
 
   create_table "medical_instructions", :force => true do |t|
@@ -34,14 +34,61 @@ ActiveRecord::Schema.define(:version => 20120312221940) do
     t.text     "irreversible_damage_comment"
     t.string   "unable_to_decide_choice"
     t.text     "unable_to_decide_comment"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "relationship"
     t.integer  "creator_id"
+    t.integer  "plan_id"
+  end
+
+  create_table "memorials", :force => true do |t|
+    t.integer  "plan_id"
+    t.string   "organizer_name"
+    t.text     "organizer_preferences"
+    t.text     "prepared_services"
+    t.text     "service_preferences"
+    t.text     "remains"
+    t.text     "additional_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.text     "address"
+    t.string   "phone_number"
+    t.string   "email"
+    t.string   "image"
+    t.string   "doc"
+    t.string   "relation"
+    t.text     "additional_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "login_user_id"
+  end
+
+  create_table "sharing_rules", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "relationship_id"
+    t.string   "information_type"
+    t.string   "condition"
+    t.integer  "conditional_parameter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -69,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120312221940) do
     t.string   "area_code_part2"
     t.string   "area_code_part3"
     t.string   "profile_image"
+    t.string   "physical_status"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

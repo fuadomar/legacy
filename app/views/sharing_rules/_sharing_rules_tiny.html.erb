@@ -6,13 +6,13 @@
       <table>
         <tr>
           <td>
-            <%= f.select(:information_type, [['Medical Directive', 'Medical Directive'],
-                ['Memorial', 'Memorial'], ['My Things', 'My Things'], ['Will & Trust', 'Will & Trust'],
-                ['Financial & Accounts', 'Financial & Accounts'], ['Guardianship', 'Guardianship']], :selected => sharing_rule.information_type) %>
+            <%= f.select(:information_type, [['Medical Directive', Plan::INFORMATION_TYPE_MEDICAL],
+                ['Memorial', Plan::INFORMATION_TYPE_MEMORIAL], ['My Things', Plan::INFORMATION_TYPE_MY_THINGS], ['Will & Trust', Plan::INFORMATION_TYPE_TRUST],
+                ['Financial & Accounts', Plan::INFORMATION_TYPE_FINANCIAL], ['Guardianship', Plan::INFORMATION_TYPE_GUARDIANSHIP]], :selected => sharing_rule.information_type) %>
           </td>
           <td>
-            <%= f.select(:condition, [['Share Now', 'Share Now'], ['Become Hospitalized', 'Become Hospitalized'],
-                ['I Turn', 'I Turn'], ['{He/She} Turns', '{He/She} Turns']], :selected => sharing_rule.condition) %>
+            <%= f.select(:condition, [['Share Now', SharingRule::CONDITION_NOW], ['Become Hospitalized', SharingRule::CONDITION_HOSPITALIZED],
+                ['I Turn', SharingRule::CONDITION_OWNER_TURN], ['{He/She} Turns', SharingRule::CONDITION_VIEWER_TURN]], :selected => sharing_rule.condition) %>
           </td>
           <td width="50">
             <div class="<%= f.object.new_record? || sharing_rule.conditional_parameter.blank? ? "hidden" : "" %>" id="<%= f.object.new_record? ? "conditional_parameter_new" : "conditional_parameter_#{sharing_rule.id}" %>">
@@ -42,12 +42,12 @@
     $(document).ready(function(){
       $('#sharing_rule_<%= sharing_rule.id %> #sharing_rule_condition').bind('change', function(){
         var condition = $(this).val();
-        if(condition == "I Turn" || condition == "{He/She} Turns")
+        if(condition == "<%= SharingRule::CONDITION_OWNER_TURN %>" || condition == "<%= SharingRule::CONDITION_VIEWER_TURN %>")
         {
           $("#conditional_parameter_<%= sharing_rule.id %>").show();
         }
 
-        if(condition == "Share Now" || condition == "Become Hospitalized")
+        if(condition == "<%= SharingRule::CONDITION_NOW %>" || condition == "<%= SharingRule::CONDITION_HOSPITALIZED %>")
         {
           $("#conditional_parameter_<%= sharing_rule.id %> #sharing_rule_conditional_parameter").val('');
           $("#conditional_parameter_<%= sharing_rule.id %>").hide();
@@ -62,12 +62,12 @@
     $(document).ready(function(){
       $('#sharing_rule_new #sharing_rule_condition').bind('change', function(){
         var condition = $(this).val();
-        if(condition == "I Turn" || condition == "{He/She} Turns")
+        if(condition == "<%= SharingRule::CONDITION_OWNER_TURN %>" || condition == "<%= SharingRule::CONDITION_VIEWER_TURN %>")
         {
           $("#conditional_parameter_new").show();
         }
 
-        if(condition == "Share Now" || condition == "Become Hospitalized")
+        if(condition == "<%= SharingRule::CONDITION_NOW %>" || condition == "<%= SharingRule::CONDITION_HOSPITALIZED %>")
         {
           $("#conditional_parameter_new").hide();
         }

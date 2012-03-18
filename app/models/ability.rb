@@ -18,7 +18,16 @@ class Ability
     can :create, Memorial
 
     can :read, Memorial do |memorial|
-      memorial.plan.sharing_rules.includes(:relationship).detect(){|sr| sr.relationship.login_user_id == user.id and sr.information_type == "Memorial"}
+      memorial.plan.sharing_rules.includes(:relationship).detect(){
+        |sr| sr.relationship.login_user_id == user.id and
+          sr.information_type == Plan::INFORMATION_TYPE_MEMORIAL and
+          (sr.condition == SharingRule::CONDITION_NOW or
+            (sr.condition == SharingRule::CONDITION_VIEWER_TURN and
+              user.age >= sr.conditional_parameter) or
+            (sr.condition == SharingRule::CONDITION_OWNER_TURN and
+              sr.plan.user.age >= sr.conditional_parameter) or
+            (sr.condition == SharingRule::CONDITION_HOSPITALIZED and
+              sr.plan.user.physical_status == SharingRule::CONDITION_HOSPITALIZED))}
     end
 
     can :manage, MedicalInstruction do |medical|
@@ -28,7 +37,16 @@ class Ability
     can :create, MedicalInstruction
 
     can :read, MedicalInstruction do |medical|
-      medical.plan.sharing_rules.includes(:relationship).detect(){|sr| sr.relationship.login_user_id == user.id and sr.information_type == "Medical Directive"}
+      medical.plan.sharing_rules.includes(:relationship).detect(){
+        |sr| sr.relationship.login_user_id == user.id and
+          sr.information_type == Plan::INFORMATION_TYPE_MEDICAL and
+          (sr.condition == SharingRule::CONDITION_NOW or
+            (sr.condition == SharingRule::CONDITION_VIEWER_TURN and
+              user.age >= sr.conditional_parameter) or
+            (sr.condition == SharingRule::CONDITION_OWNER_TURN and
+              sr.plan.user.age >= sr.conditional_parameter) or
+            (sr.condition == SharingRule::CONDITION_HOSPITALIZED and
+              sr.plan.user.physical_status == SharingRule::CONDITION_HOSPITALIZED))}
     end
 
 

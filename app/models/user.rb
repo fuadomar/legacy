@@ -25,4 +25,11 @@ class User < ActiveRecord::Base
     return "#{first_name} #{last_name}"
   end
 
+
+#Handles leap years, leap seconds and all.
+def age
+  (Time.now.to_s(:number).to_i - self.date_of_birth.to_time.to_s(:number).to_i)/10e9.to_i
+end
+
+
 end
