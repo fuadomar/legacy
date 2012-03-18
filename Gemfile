@@ -14,8 +14,16 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'devise', '1.4.9'
 gem 'oa-oauth', :require => 'omniauth/oauth'
+gem 'cancan'
 gem 'fb_graph'
 gem 'carrierwave'
+
+group :test, :development do
+  gem 'rspec-rails', '~> 2.6.1'
+  gem 'factory_girl_rails'
+  gem 'rcov', "0.9.11"
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
