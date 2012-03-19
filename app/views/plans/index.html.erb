@@ -1,7 +1,7 @@
 <div id="plans">
   <% if @plans.present? %>
     <div class="own-plans">
-      <h1>Plans Created by you</h1>
+      <div class="title">Plans Created by You</div>
 
       <table>
         <tr>
@@ -15,11 +15,10 @@
         <% @plans.each do |plan| %>
           <tr>
             <td><%= plan.title %></td>
-            <td><%= plan.user_id %></td>
             <td><%= link_to 'Show', plan %></td>
             <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
             <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
-            <td><%= link_to 'Sharing Rules', plan_sharing_rules_path(plan) %> </td>
+            <td><%= link_to 'Apply Sharing Rules', plan_sharing_rules_path(plan) %> </td>
           </tr>
         <% end %>
       </table>
@@ -35,16 +34,20 @@
 
       <% @parent_plans.each do |plan| %>
         <div class="plan-link">
-          <% plan.memorials.each do |memorial| %>
-            <div class="link">
-              <%= link_to 'Memorials', memorial %>
-            </div>
+          <% if plan.is_show_plan_link(Plan::INFORMATION_TYPE_MEMORIAL, current_user.id) %>
+            <% plan.memorials.each do |memorial| %>
+              <div class="link">
+                <%= link_to 'Memorials', memorial %>
+              </div>
+            <% end %>
           <% end %>
 
-          <% plan.medical_instructions.each do |medical| %>
-            <div class="link">
-              <%= link_to 'Medical Instructions', medical %>
-            </div>
+          <% if plan.is_show_plan_link(Plan::INFORMATION_TYPE_MEDICAL, current_user.id) %>
+            <% plan.medical_instructions.each do |medical| %>
+              <div class="link">
+                <%= link_to 'Medical Instructions', medical %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>

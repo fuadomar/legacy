@@ -14,7 +14,7 @@
               <%= render :partial => 'sharing_rules_tiny', :locals => { :sharing_rule => sharing_rule, :relationship_id => relationship.id} %>
             <% end %>
           </table>
-          <% if relationship.sharing_rules.count < 6 %>
+          <% if relationship.sharing_rules.count < current_user.get_max_information_type_count %>
           <div class="share-more-button" id="share-more-<%= relationship.id %>">
             <%= link_to 'Share More', '' %>
           </div>
@@ -29,7 +29,7 @@
             if ($('#sharing_rule_new').length ) {
               alert('You can\'t add more before saving new rule');
             }
-            else if(load_count < 6)
+            else if(load_count < <%= current_user.get_max_information_type_count %>)
             {
    
               $.ajax({
@@ -40,7 +40,7 @@
               });
             }
 
-            if(load_count == 5)
+            if(load_count == <%= current_user.get_max_information_type_count - 1 %>)
             {
               $(this).hide();
             }

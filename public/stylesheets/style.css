@@ -95,6 +95,10 @@ div#header-container {
     box-shadow: 0px 2px 1px 1px #d9dad8;
 }
 
+#header-container #header .right-menu .login-container .login a{
+    color: #767575;
+    text-decoration: none;
+}
 
 #banner-outer-container{
    background: url('/images/banner_outer_bk.png');

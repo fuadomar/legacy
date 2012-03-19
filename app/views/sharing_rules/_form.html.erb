@@ -23,9 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :information_type %><br />
-    <%= f.select(:information_type, [['Medical Directive', 'Medical Directive'],
-        ['Memorial', 'Memorial'], ['My Things', 'My Things'], ['Will & Trust', 'Will & Trust'],
-        ['Financial & Accounts', 'Financial & Accounts'], ['Guardianship', 'Guardianship']], options ={:prompt => "- Select one -"}) %>
+    <%= f.select(:information_type, current_user.get_information_type_list, :selected => @sharing_rule.information_type) %>
   </div>
   <div class="field">
     <%= f.label :condition %><br />
@@ -37,7 +35,7 @@
     <%= f.text_field :conditional_parameter, :value => '65' %>
   </div>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

@@ -48,7 +48,7 @@
         <div class="field">
           <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
                                              :order => [:month, :day, :year], :start_year => Date.today.year - 70,
-                                             :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
+                                             :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
                             {:style => "width: 77px;"}) -%>
         </div>
 

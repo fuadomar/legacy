@@ -28,7 +28,7 @@ class MedicalInstructionsController < ApplicationController
     @medical_instruction = MedicalInstruction.new((session[:medical_instruction_attributes] || {}))
     @agent = Agent.new((session[:agent_attributes] || {}))
     @user = User.new((session[:user_attributes] || {}))
-    @plan = Plan.new((session[:plan_attributes] || {}))
+    #@plan = Plan.new((session[:plan_attributes] || {}))
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,16 +41,16 @@ class MedicalInstructionsController < ApplicationController
       redirect_to(new_medical_instruction_path())
       return
     end
-    @plan = Plan.new(params[:plan])
+    #@plan = Plan.new(params[:plan])
     @agent = Agent.new(params[:agent])
     @medical_instruction = MedicalInstruction.new(params[:medical_instruction])
     @user = User.new(params[:user])
 
-    if(@plan.valid? && @agent.valid? && @medical_instruction.valid?)
+    if(@agent.valid? && @medical_instruction.valid?)
       session[:agent_attributes] = @agent.attributes
       session[:medical_instruction_attributes] = @medical_instruction.attributes
       session[:user_attributes] = @user.attributes
-      session[:plan_attributes] = @plan.attributes
+      #session[:plan_attributes] = @plan.attributes
       session[:redirect_to] = save_session_data_medical_instructions_path
       redirect_to(new_session_path(User), :notice => "Please Login or Create an account, So we can save your progress")
     else
@@ -65,18 +65,17 @@ class MedicalInstructionsController < ApplicationController
       return
     end
 
-    session[:plan_attributes].delete("user_id")
+    #session[:plan_attributes].delete("user_id")
     session[:medical_instruction_attributes].delete("plan_id")
     session[:agent_attributes].delete("medical_instruction_id")
 
-    @user = current_user
-    @plan = current_user.plans.new(session[:plan_attributes])
-    @medical_instruction = @plan.medical_instructions.build(session[:medical_instruction_attributes])
+    @plan = current_user.default_plan
+    @medical_instruction = @plan.medical_instructions.new(session[:medical_instruction_attributes])
     @medical_instruction.agents.build(session[:agent_attributes])
     
-    if (@plan.save)
+    if (@medical_instruction.save)
       session[:user_attributes] = nil
-      session[:plan_attributes] = nil
+      #session[:plan_attributes] = nil
       session[:medical_instruction_attributes] = nil
       session[:agent_attributes] = nil
       redirect_to(publics_plan_path, :notice => "Your instructions saved successfully.")
@@ -94,12 +93,12 @@ class MedicalInstructionsController < ApplicationController
   # POST /medical_instructions
   # POST /medical_instructions.xml
   def create
-    @plan = current_user.plans.new(params[:plan])
-    @medical_instruction = @plan.medical_instructions.build(params[:medical_instruction])
+    @plan = current_user.default_plan
+    @medical_instruction = @plan.medical_instructions.new(params[:medical_instruction])
     @medical_instruction.agents.build(params[:agent])
 
     respond_to do |format|
-      if @plan.save
+      if @medical_instruction.save
         #session[:agent_id] = @agent.id
         #session[:medical_instruction_id] = @medical_instruction.id
         format.html { redirect_to(publics_plan_path(), :notice => "Your instructions saved successfully.") }

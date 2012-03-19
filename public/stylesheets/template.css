@@ -61,7 +61,7 @@
     width: 50px;
 }
 
-#sharing-rules .action input, #sharing-rules .action a{
+#sharing-rules .action input{
     text-align: center;
     font-size: 12px;
     border: 1px solid #888;
@@ -78,15 +78,23 @@
     cursor: pointer;
 }
 
-#sharing-rules .action a{
-    padding-top: 2px;
-    padding-bottom: 3px;
+#sharing-rules .action .link{
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #888;
+    background-color: #ccc;
     padding-left: 10px;
     padding-right: 10px;
-    color: #444;
+    padding-top: 2px;
+    margin-top: 2px;
 }
 
-#sharing-rules .action input:hover, #sharing-rules .action a:hover{
+#sharing-rules .action .link a{
+    color: #000;
+
+}
+
+#sharing-rules .action input:hover, #sharing-rules .action .link:hover{
     background-color: #ddd;
 }
 
@@ -101,13 +109,13 @@
     margin-bottom: 20px;
 }
 
-#plans .parent-plans .title{
-    font-size: 20px;
+#plans .title{
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-#plans .parent-plans .plan-link{
+#plans .plan-link{
     font-size: 16px;
     margin-bottom: 5px;
 }

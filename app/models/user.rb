@@ -9,6 +9,12 @@ class User < ActiveRecord::Base
     :name, :address, :date_of_birth, :phone_number, :first_name, :last_name, :middle_name,
     :area_code_part1, :area_code_part2, :area_code_part3, :profile_image, :profile_image_cache
 
+  after_create :create_default_plan
+
+  def create_default_plan
+    self.plans.create(:title => 'User default Plan')
+  end
+
   #  has_many :agents
   #  has_many :medical_instructions
 
@@ -26,10 +32,26 @@ class User < ActiveRecord::Base
   end
 
 
-#Handles leap years, leap seconds and all.
-def age
-  (Time.now.to_s(:number).to_i - self.date_of_birth.to_time.to_s(:number).to_i)/10e9.to_i
-end
+  #Handles leap years, leap seconds and all.
+  def age
+    (Time.now.to_s(:number).to_i - self.date_of_birth.to_time.to_s(:number).to_i)/10e9.to_i
+  end
 
+  def default_plan
+    return self.plans.find_by_title('User default Plan')
+  end
 
+  def get_information_type_list
+    list = Array.new
+    list << Array['Memorial', Plan::INFORMATION_TYPE_MEMORIAL] if self.default_plan.memorials.present?
+    list << Array['Medical Directive', Plan::INFORMATION_TYPE_MEDICAL] if self.default_plan.medical_instructions.present?
+  end
+
+  def get_max_information_type_count
+    count = 0
+    count = count + 1 if self.default_plan.memorials.present?
+    count = count + 1 if self.default_plan.medical_instructions.present?
+    return count
+  end
+  
 end

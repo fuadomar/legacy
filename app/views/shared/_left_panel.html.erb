@@ -6,11 +6,19 @@
     </li>
     <li>
       <%= image_tag('/images/medical_directives_icon.png') %>
-      <%= link_to("Medical directives", new_medical_instruction_path()) -%>
+      <% if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
+        <%= link_to "Medical directives", medical_instruction_path(medical.id) %>
+      <% else %>
+        <%= link_to("Medical directives", new_medical_instruction_path()) -%>
+      <% end %>
     </li>
     <li>
       <%= image_tag('/images/memorial_icon.png') %>
-      <%= link_to "Memorial", new_memorial_path %>
+      <% if current_user.present? && current_user.default_plan.memorials.first.present? %>
+        <%= link_to "Memorial", memorial_path(memorial.id) %>
+      <% else %>
+        <%= link_to "Memorial", new_memorial_path %>
+      <% end %>
     </li>
     <li><img src="/images/will_and_trust.png"/> <a herf="">Will and Trust</a></li>
     <li><img src="/images/my_things.png"/> <a herf="">My things</a></li>

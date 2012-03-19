@@ -26,7 +26,7 @@ class MemorialsController < ApplicationController
   # GET /memorials/new.xml
   def new
     @memorial = Memorial.new
-    @plan = Plan.new
+    @plan = current_user.default_plan
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @memorial }
@@ -42,7 +42,7 @@ class MemorialsController < ApplicationController
   # POST /memorials
   # POST /memorials.xml
   def create
-    @plan = current_user.plans.new(params[:plan])
+    @plan = current_user.default_plan
     @memorial = @plan.memorials.build(params[:memorial])
 
     respond_to do |format|

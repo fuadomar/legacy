@@ -3,6 +3,6 @@ class PublicsController < ApplicationController
   end
 
   def plan
-
+   
   end
 end

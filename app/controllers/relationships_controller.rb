@@ -43,7 +43,7 @@ class RelationshipsController < ApplicationController
   # POST /relationships
   # POST /relationships.xml
   def create
-    #@relationship = current_user.relationships.new(params[:relationship])
+    @relationship = current_user.relationships.new(params[:relationship])
 
     if(params[:relationship][:type] == 'family')
       @relationship = current_user.families.new(params[:relationship])

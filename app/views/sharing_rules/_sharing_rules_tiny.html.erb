@@ -6,9 +6,7 @@
       <table>
         <tr>
           <td>
-            <%= f.select(:information_type, [['Medical Directive', Plan::INFORMATION_TYPE_MEDICAL],
-                ['Memorial', Plan::INFORMATION_TYPE_MEMORIAL], ['My Things', Plan::INFORMATION_TYPE_MY_THINGS], ['Will & Trust', Plan::INFORMATION_TYPE_TRUST],
-                ['Financial & Accounts', Plan::INFORMATION_TYPE_FINANCIAL], ['Guardianship', Plan::INFORMATION_TYPE_GUARDIANSHIP]], :selected => sharing_rule.information_type) %>
+            <%= f.select(:information_type, current_user.get_information_type_list, :selected => sharing_rule.information_type) %>
           </td>
           <td>
             <%= f.select(:condition, [['Share Now', SharingRule::CONDITION_NOW], ['Become Hospitalized', SharingRule::CONDITION_HOSPITALIZED],
@@ -27,8 +25,10 @@
           </td>
           <td>
             <div class="action">
-              <%= link_to 'Delete', "/plans/#{@plan.id}/sharing_rules/#{sharing_rule.id}", :confirm => 'Are you sure?', :method => :delete, :id => 'delete' unless(f.object.new_record?) %>
-              <%= link_to 'Cancel', '', :id => 'cancel_new' if(f.object.new_record?) %>
+              <div class="link">
+                <%= link_to 'Delete', "/plans/#{@plan.id}/sharing_rules/#{sharing_rule.id}", :confirm => 'Are you sure?', :method => :delete, :id => 'delete' unless(f.object.new_record?) %>
+                <%= link_to 'Cancel', '', :id => 'cancel_new' if(f.object.new_record?) %>
+              </div>
             </div>
           </td>
         </tr>
@@ -51,6 +51,19 @@
         {
           $("#conditional_parameter_<%= sharing_rule.id %> #sharing_rule_conditional_parameter").val('');
           $("#conditional_parameter_<%= sharing_rule.id %>").hide();
+        }
+      });
+
+      $('#sharing_rule_<%= sharing_rule.id %> #sharing_rule_submit').bind('click', function(){
+        var condition = $('#sharing_rule_<%= sharing_rule.id %> #sharing_rule_condition').val();
+        if(condition == "<%= SharingRule::CONDITION_OWNER_TURN %>" || condition == "<%= SharingRule::CONDITION_VIEWER_TURN %>")
+        {
+          var age = $('#sharing_rule_<%= sharing_rule.id %> #sharing_rule_conditional_parameter').val();
+          if(age < 3 || !age)
+          {
+            alert('Please give valid age');
+            return false;
+          }
         }
       });
     });
@@ -76,6 +89,19 @@
       $('#cancel_new').bind('click', function(){
         $('#sharing_rule_new').remove();
         return false;
+      });
+
+      $('#sharing_rule_new #sharing_rule_submit').bind('click', function(){
+        var condition = $('#sharing_rule_new #sharing_rule_condition').val();
+        if(condition == "<%= SharingRule::CONDITION_OWNER_TURN %>" || condition == "<%= SharingRule::CONDITION_VIEWER_TURN %>")
+        {
+          var age = $('#sharing_rule_new #sharing_rule_conditional_parameter').val();
+          if(age < 3 || !age)
+          {
+            alert('Please give valid age');
+            return false;
+          }
+        }
       });
     });
   </script>

@@ -12,4 +12,10 @@ class Plan < ActiveRecord::Base
   INFORMATION_TYPE_TRUST = 'will_trust'
   INFORMATION_TYPE_FINANCIAL = 'financial_accounts'
   INFORMATION_TYPE_GUARDIANSHIP = 'guardianship'
+
+
+  def is_show_plan_link(plan_type, user_id)
+    relationship_id = Relationship.where(:login_user_id => user_id)
+    return self.sharing_rules.where(:relationship_id => relationship_id, :information_type => plan_type).present?
+  end
 end

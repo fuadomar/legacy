@@ -30,7 +30,7 @@
         <%= user.label :date_of_birth %>
         <%= user.date_select(:date_of_birth, {:default => 40.years.ago,
             :order => [:year, :month, :day], :start_year => Date.today.year - 70,
-            :end_year => Date.today.year, :prompt => {:day => 'Select day', :month => 'Select month', :year => 'Select year'}},
+            :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
           {:style => "width: 71px;"}) -%>    <br/> <br/>
         <%= user.label :address %>
         <%= user.text_area :address, :rows => 5 -%>      <br/> <br/>
@@ -42,9 +42,9 @@
 
 
   <!-- plan creating -->
-  <%= fields_for @plan do |plan| %>
-    <%= plan.hidden_field :title, :value => 'This is a plan' %>
-  <% end %>
+  <%#= fields_for @plan do |plan| %>
+    <%#= plan.hidden_field :title, :value => 'This is a default test plan for medical directives' %>
+  <%# end %>
 
   <p>YOUR AGENT - Who do you want to make decisions for you when you can’t?</p>
   <p>The person you select as your agent is extremely important. This person may make health care decisions on your
