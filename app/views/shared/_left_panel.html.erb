@@ -7,6 +7,7 @@
     <li>
       <%= image_tag('/images/medical_directives_icon.png') %>
       <% if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
+        <% medical = current_user.default_plan.medical_instructions.first %>
         <%= link_to "Medical directives", medical_instruction_path(medical.id) %>
       <% else %>
         <%= link_to("Medical directives", new_medical_instruction_path()) -%>
@@ -15,6 +16,7 @@
     <li>
       <%= image_tag('/images/memorial_icon.png') %>
       <% if current_user.present? && current_user.default_plan.memorials.first.present? %>
+        <% memorial = current_user.default_plan.memorials.first %>
         <%= link_to "Memorial", memorial_path(memorial.id) %>
       <% else %>
         <%= link_to "Memorial", new_memorial_path %>

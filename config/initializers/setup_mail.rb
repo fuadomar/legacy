@@ -13,7 +13,7 @@ ActionMailer::Base.smtp_settings = {
   :port                 => 587,
   :domain               => "www.nascenia.com",
   :user_name            => "do-not-reply@nascenia.com",
-  :password             => "1nascenia32",
+  :password             => "12nascenia3",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
