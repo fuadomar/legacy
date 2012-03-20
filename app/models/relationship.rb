@@ -2,6 +2,8 @@ class Relationship < ActiveRecord::Base
   mount_uploader :image, ProfileImageUploader
   mount_uploader :doc, DocumentUploader
 
+  attr_accessor :type_temp
+
   belongs_to :user
   has_many :sharing_rules
 

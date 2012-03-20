@@ -43,11 +43,11 @@ class RelationshipsController < ApplicationController
   # POST /relationships
   # POST /relationships.xml
   def create
-    @relationship = current_user.relationships.new(params[:relationship])
+    #@relationship = current_user.relationships.new(params[:relationship])
 
-    if(params[:relationship][:type] == 'family')
+    if(params[:relationship][:type_temp] == 'family')
       @relationship = current_user.families.new(params[:relationship])
-    elsif(params[:relationship][:type] == 'friend')
+    elsif(params[:relationship][:type_temp] == 'friend')
       @relationship = current_user.friends.new(params[:relationship])
     end
     success = true
@@ -78,6 +78,7 @@ class RelationshipsController < ApplicationController
         format.html { redirect_to(@relationship, :notice => 'Relationship was successfully updated.') }
         format.xml  { head :ok }
       else
+        @relationship = Relationship.find(params[:id])
         format.html { render :action => "edit" }
         format.xml  { render :xml => @relationship.errors, :status => :unprocessable_entity }
       end

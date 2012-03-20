@@ -1,4 +1,4 @@
-<%= form_for(@relationship, :url => relationships_path) do |f| %>
+<%= form_for(@relationship) do |f| %>
   <% if @relationship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@relationship.errors.count, "error") %> prohibited this relationship from being saved:</h2>
@@ -10,9 +10,10 @@
       </ul>
     </div>
   <% end %>
+  <%= relation_type = @relationship.type if @relationship.type.present? %>
   <div class="field">
-    <%= f.label :type %><br />
-    <%= f.text_field :type, :value => relation_type, :readonly => true, :class => 'transparent' %>
+    <%= f.label :type_temp %><br />
+    <%= f.text_field :type_temp, :value => relation_type, :readonly => true, :class => 'transparent' %>
   </div>
   <div class="field">
     <%= f.label :first_name %><br />
@@ -84,62 +85,62 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#relationship_submit').bind('click', function(){
-      var errors = 'Please correct this errors...\n\n';
-      var first_name = $('#relationship_first_name').val();
-      if(first_name.length < 3)
-      {
-        errors += 'Invalid First Name.\n';
-      }
-      var last_name = $('#relationship_last_name').val();
-      if(last_name.length < 3)
-      {
-        errors += 'Invalid Last Name.\n';
-      }
+$(document).ready(function(){
+$('#relationship_submit').bind('click', function(){
+var errors = 'Please correct this errors...\n\n';
+var first_name = $('#relationship_first_name').val();
+if(first_name.length < 3)
+{
+errors += 'Invalid First Name.\n';
+}
+var last_name = $('#relationship_last_name').val();
+if(last_name.length < 3)
+{
+errors += 'Invalid Last Name.\n';
+}
 
-      var date_of_birth_1i = $('#relationship_date_of_birth_1i').val();
-      var date_of_birth_2i = $('#relationship_date_of_birth_2i').val();
-      var date_of_birth_3i = $('#relationship_date_of_birth_3i').val();
-      if(date_of_birth_1i == '' || date_of_birth_2i == '' || date_of_birth_3i == '')
-      {
-        errors += 'Invalid Date of Birth.\n';
-      }
+var date_of_birth_1i = $('#relationship_date_of_birth_1i').val();
+var date_of_birth_2i = $('#relationship_date_of_birth_2i').val();
+var date_of_birth_3i = $('#relationship_date_of_birth_3i').val();
+if(date_of_birth_1i == '' || date_of_birth_2i == '' || date_of_birth_3i == '')
+{
+errors += 'Invalid Date of Birth.\n';
+}
 
-      var address = $('#relationship_address').val();
-      if(address.length < 5)
-      {
-        errors += 'Invalid Address.\n';
-      }
-      var city = $('#relationship_city').val();
-      if(city.length < 3)
-      {
-        errors += 'Invalid City.\n';
-      }
-      var state = $('#relationship_state').val();
-      if(state.length < 2)
-      {
-        errors += 'Invalid State.\n';
-      }
-      var zip_code = $('#relationship_zip_code').val();
-      if(zip_code.length < 3)
-      {
-        errors += 'Invalid Zip Code.\n';
-      }
+var address = $('#relationship_address').val();
+if(address.length < 5)
+{
+errors += 'Invalid Address.\n';
+}
+var city = $('#relationship_city').val();
+if(city.length < 3)
+{
+errors += 'Invalid City.\n';
+}
+var state = $('#relationship_state').val();
+if(state.length < 2)
+{
+errors += 'Invalid State.\n';
+}
+var zip_code = $('#relationship_zip_code').val();
+if(zip_code.length < 3)
+{
+errors += 'Invalid Zip Code.\n';
+}
 
-      var regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-      var email = $('#relationship_email').val();
-      if((regEmail.test(email) == false) || email.length < 13)
-      {
-        errors += 'Invalid Email.\n';
-      }
+var regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+var email = $('#relationship_email').val();
+if((regEmail.test(email) == false) || email.length < 13)
+{
+errors += 'Invalid Email.\n';
+}
 
 
-      if(errors != 'Please correct this errors...\n\n')
-      {
-        alert(errors);
-        return false;
-      }
-    });
-  });
+if(errors != 'Please correct this errors...\n\n')
+{
+alert(errors);
+return false;
+}
+});
+});
 </script>
