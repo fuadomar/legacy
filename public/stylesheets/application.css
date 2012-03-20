@@ -1,6 +1,11 @@
 body
 {
     font-family: "Myriad Pro", "Helvetica";
+    margin: 0px;
+}
+
+body a:hover{
+    background-color: transparent;
 }
 
 .clear{
@@ -15,36 +20,242 @@ body
     background-color: transparent;
 }
 
-#main_content
+
+#container
 {
-    width: 900px;
-    margin: auto;
-    height: auto;
-    background-color: #e6e6e6;
+    width: 100%;
+    background-color: #D3DDDC;
+
+}
+
+#header-container{
+    width: 100%;
+    background: url('/images/header_bg.png');
+    height: 80px;
+    border-bottom: 1px solid #fff;
 }
 
 #header
 {
-    background-color: white;
-    width: 900px;
-    height: 85px;
-    margin-bottom: 19px
-
+    width: 960px;
+    height: 80px;
+    margin-bottom: 19px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-#header_img
-{
-
-    display: inline;
+#header .logo{
     float:left;
 }
 
-#header_right
-{
-    display: inline;
-    float:right;
-    margin: 20px 83px;
+#header .header-top-menu{
+    float:left;
+    margin-left: 30px;
+    padding-top: 40px;
 }
+
+#header .header-top-menu .menu{
+    float:left;
+    margin-right: 2px;
+}
+
+
+#header .header_right
+{
+    float:right;
+    height: 80px;
+    background: url('/images/header_bg.png');
+}
+
+#header .header_right .logged{
+    float: left;
+    border: 2px solid #666;
+    background-color: #888;
+    margin-right: 5px;
+    margin-top: 42px;
+    height: 22px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+#header .header_right .logout{
+    height: 40px;
+    background: url('/images/logout_back.png');
+    padding: 40px 7px 0px 7px;
+    border-left: 1px solid #f3f3f3;
+    border-right: 1px solid #f3f3f3;
+    float: right;
+}
+
+#container .top-banner{
+    background: url('/images/body_top_banner_bar.png');
+    width: 1280px;
+    height: 43px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#body-container{
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#body-container .flash{
+    position: absolute;
+    text-align: center;
+    width: 960px;
+    margin-top: -30px;
+    font-size: 17px;
+}
+
+
+#body-container .left-side-panel{
+  float: left;
+  width: 257px;
+  position: relative;
+  z-index: 0;
+}
+
+#body-container .left-side-panel .right-shadow{
+    background: url('/images/sidebar_shadow.png');
+    width: 22px;
+    height: 695px;
+    position: absolute;
+    right: -2px;
+    top: 10px;
+}
+
+
+#body-container .left-side-panel .user-name{
+    font-family: verdana;
+    font-weight: bold;
+    font-size: 14px;
+    color: #0e6297;
+    height: 38px;
+    padding-top: 10px;
+    padding-left: 2px;
+}
+
+#body-container .left-side-panel .left-menu-container{
+    border-top: 1px solid #AAB2B2;
+}
+
+#body-container .left-side-panel .menu{
+   border-left: 1px solid #BDC6C6;
+   border-top: 1px solid #E9EEEE;
+   border-bottom: 1px solid #AAB2B2;
+   height: 44px;
+   width: 258px;
+}
+
+#body-container .left-side-panel .menu:hover{
+    background: url('/images/left_panel_menu_hover.png');
+    cursor: pointer;
+}
+
+#body-container .left-side-panel .menu .icon{
+    padding-top: 5px;
+    width: 50px;
+    padding-left: 10px;
+    float: left;
+}
+
+#body-container .left-side-panel .menu .link{
+    float: left;
+    margin-top: 12px;
+}
+
+#body-container .left-side-panel .menu .link a{
+    font-family: verdana;
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+}
+
+#body-container .body-content{
+ float: right;
+ width: 703px;
+ z-index: 1;
+}
+
+#body-container .body-content .title-container{
+    height: 164px;
+    background: url('/images/content_title_container.png');
+}
+
+#body-container .body-content .title-container .row-1{
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 30px;
+    height: 33px;
+}
+
+#body-container .body-content .title-container .row-1 .title{
+    font-family: "Lustria";
+    font-size: 24px;
+    color: #fff;
+    float: left;
+}
+
+#body-container .body-content .title-container .row-1 .tips{
+    float: right;
+}
+
+#body-container .body-content .title-container .row-1 .tips .link{
+    float: left;
+    margin-right: 5px;
+}
+
+#body-container .body-content .title-container .row-1 .tips .link a{
+    font-family: Arial;
+    font-size: 10px;
+    color: #fff;
+}
+
+#body-container .body-content .title-container .row-1 .tips .icon{
+    float: right;
+}
+
+#body-container .body-content .title-container .row-2{
+  padding-top: 35px;
+}
+
+#body-container .body-content .title-container .row-2 .content{
+  float: left;
+  font-family: OpenSans;
+  font-size: 18px;
+  color: #065c92;
+  margin-left: 20px;
+  padding-top: 5px;
+}
+
+#body-container .body-content .title-container .row-2 .menu-container{
+    float: right;
+    margin-right: 25px;
+}
+
+#body-container .body-content .title-container .row-2 .menu-container .menu{
+    float: left;
+    margin-left: 5px;
+}
+
+#body-container .body-content .content-container{
+    padding: 20px;
+    margin-left: 2px;
+    width: 660px;
+    background-color: #fff;
+}
+
+
+#container .footer{
+  text-align: center;
+  border: 1px solid red;
+}
+
 
 .field_form
 {
@@ -204,7 +415,7 @@ input[type=submit]
 
 #content_info .form-container{
     display: inline-block;
-    height: 205px;  /* fixed height is used to make stable size, when relationship text field will be hide */
+    height: 205px;   /* fixed height is used to make stable size, when relationship text field will be hide */
 }
 
 #content_info .form-container .image{

@@ -1,58 +1,63 @@
-<div id="sharing-rules">
-  <% if @relationships.present? %>
-    <% @relationships.each do |relationship| %>
-      <div class="relationship">
-        <div class="name">
-          <%= relationship.full_name %>
-        </div>
-        <div class="notice">
-          <%= relationship.first_name %> can access the following information at the specified trigger points
-        </div>
-        <div class="sharing-rules">
-          <table id="sharing-rules-table-<%= relationship.id %>">
-            <% relationship.sharing_rules.each do |sharing_rule| %>
-              <%= render :partial => 'sharing_rules_tiny', :locals => { :sharing_rule => sharing_rule, :relationship_id => relationship.id} %>
-            <% end %>
-          </table>
-          <% if relationship.sharing_rules.count < current_user.get_max_information_type_count %>
-          <div class="share-more-button" id="share-more-<%= relationship.id %>">
-            <%= link_to 'Share More', '' %>
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Sharing Rules',
+  :heading => 'Set Sharing rules for your relationships'} %>
+<div class="content-container">
+  <div id="sharing-rules">
+    <% if @relationships.present? %>
+      <% @relationships.each do |relationship| %>
+        <div class="relationship">
+          <div class="name">
+            <%= relationship.full_name %>
           </div>
-          <% end %>
+          <div class="notice">
+            <%= relationship.first_name %> can access the following information at the specified trigger points
+          </div>
+          <div class="sharing-rules">
+            <table id="sharing-rules-table-<%= relationship.id %>">
+              <% relationship.sharing_rules.each do |sharing_rule| %>
+                <%= render :partial => 'sharing_rules_tiny', :locals => { :sharing_rule => sharing_rule, :relationship_id => relationship.id} %>
+              <% end %>
+            </table>
+            <% if relationship.sharing_rules.count < current_user.get_max_information_type_count %>
+              <div class="share-more-button" id="share-more-<%= relationship.id %>">
+                <%= link_to 'Share More', '' %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('#share-more-<%= relationship.id %>').bind('click', function(){
-            load_count = $('#sharing-rules-table-<%= relationship.id %> tr td table').length;
-            if ($('#sharing_rule_new').length ) {
-              alert('You can\'t add more before saving new rule');
-            }
-            else if(load_count < <%= current_user.get_max_information_type_count %>)
-            {
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $('#share-more-<%= relationship.id %>').bind('click', function(){
+              load_count = $('#sharing-rules-table-<%= relationship.id %> tr td table').length;
+              if ($('#sharing_rule_new').length ) {
+                alert('You can\'t add more before saving new rule');
+              }
+              else if(load_count < <%= current_user.get_max_information_type_count %>)
+              {
    
-              $.ajax({
-                type: 'GET',
-                url: "<%= get_create_form_tiny_plan_sharing_rules_path(@plan) %>",
-                data: {relationship_id : <%= relationship.id %> },
-                dataType: "script"
-              });
-            }
+                $.ajax({
+                  type: 'GET',
+                  url: "<%= get_create_form_tiny_plan_sharing_rules_path(@plan) %>",
+                  data: {relationship_id : <%= relationship.id %> },
+                  dataType: "script"
+                });
+              }
 
-            if(load_count == <%= current_user.get_max_information_type_count - 1 %>)
-            {
-              $(this).hide();
-            }
+              if(load_count == <%= current_user.get_max_information_type_count - 1 %>)
+              {
+                $(this).hide();
+              }
 
-            return false;
+              return false;
+            });
           });
-        });
-      </script>
+        </script>
+      <% end %>
     <% end %>
-  <% end %>
 
-  <div class="add-family-button">
-    <%= link_to 'Add Family Member', new_relationship_path %>
+    <div class="add-family-button">
+      <%= link_to 'Add Family Member', new_relationship_path %>
+    </div>
   </div>
 </div>

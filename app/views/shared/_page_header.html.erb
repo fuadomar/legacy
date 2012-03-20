@@ -1,15 +1,41 @@
 <div id="header">
-  <div id="header_img">
+  <div class="logo">
     <img src="/images/logo.png"/>
   </div>
-  <div id="header_right">
-    <% if (current_user.present?) -%>
-      <%= link_to("Plans", plans_path, :style => "margin-right: 10px;" ) -%>
-      <%= link_to("My Account", edit_user_registration_path(), :style => "margin-right: 10px;") -%>
-      <%= link_to("Sign out", destroy_user_session_path(), :method => :delete) -%>
-    <% else %>
-      <%= link_to("Sign in", user_session_path()) -%>
-    <% end %>
+
+  <div class="header-top-menu">
+    <div class="menu">
+      <% if (current_user.present?) -%>
+        <%= link_to image_tag('/images/account_button.png'), edit_user_registration_path() %>
+      <% end %>
+    </div>
+    <div class="menu">
+      <%= link_to image_tag('/images/help_button.png'), '' %>
+    </div>
+    <div class="clear"></div>
   </div>
+
+  <div class="header_right">
+<%# if (current_user.present?) -%>
+<%#= link_to("Plans", plans_path, :style => "margin-right: 10px;" ) -%>
+<%#= link_to("My Account", edit_user_registration_path(), :style => "margin-right: 10px;") -%>
+<%#= link_to("Sign out", destroy_user_session_path(), :method => :delete) -%>
+<%# else %>
+<%#= link_to("Sign in", user_session_path()) -%>
+<%# end %>
+    <div class="logged">
+      Logged in as Owner
+    </div>
+
+    <div class="logout">
+      <% if (current_user.present?) -%>
+        <%= link_to image_tag('/images/logout_button.png'), destroy_user_session_path(), :method => :delete %>
+      <% else %>
+        <%= link_to("Sign in", user_session_path()) -%>
+      <% end %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
 </div>
 

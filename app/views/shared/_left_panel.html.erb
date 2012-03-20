@@ -1,50 +1,97 @@
-<div class=" content_left">
-  <ul class="menu">
-    <li>
-      <%= image_tag('/images/welcome.png') %>
-      <%= link_to("Welcome", root_path()) -%>
-    </li>
-    <li>
-      <%= image_tag('/images/medical_directives_icon.png') %>
-      <% if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
-        <% medical = current_user.default_plan.medical_instructions.first %>
-        <%= link_to "Medical directives", medical_instruction_path(medical.id) %>
-      <% else %>
-        <%= link_to("Medical directives", new_medical_instruction_path()) -%>
-      <% end %>
-    </li>
-    <li>
-      <%= image_tag('/images/memorial_icon.png') %>
-      <% if current_user.present? && current_user.default_plan.memorials.first.present? %>
-        <% memorial = current_user.default_plan.memorials.first %>
-        <%= link_to "Memorial", memorial_path(memorial.id) %>
-      <% else %>
-        <%= link_to "Memorial", new_memorial_path %>
-      <% end %>
-    </li>
-    <li><img src="/images/will_and_trust.png"/> <a herf="">Will and Trust</a></li>
-    <li><img src="/images/my_things.png"/> <a herf="">My things</a></li>
-    <li><img src="/images/fanincial.png"/> <a herf="">Financial</a></li>
-    <li><img src="/images/gaurdianship.png"/> <a herf="">Guardianship</a></li>
-  </ul>
+<div class="right-shadow"></div>
+<div class="user-name">
+  <% if current_user.present? %>
+    <%= current_user.full_name %>
+  <% end %>
+</div>
 
-  <div style="  border-bottom: 1px solid #CCC; border-top: 1px solid #CCC; padding: 5px">
-    To do list
+<div class="left-menu-container">
+  <div class="menu" onclick="location.href='<%= root_path %>'">
+    <div class="icon">
+      <%= image_tag('/images/icon_dashboard.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Dashboard", root_path  %>
+    </div>
+    <div class="clear"></div>
   </div>
 
-  <div style=" padding-left: 10px">
-    <ul style="list-style-type: none; padding: 0px; font-size: 11.07px;">
-      <li style="padding:0.5em;">My profile</li>
-      <li style="padding:0.5em;">
-        <img src="/images/sidebar_face.png"/><span style="  vertical-align:top;">Your Name</span></li>
-      <li style="padding:0.5em;"> Family</li>
-      <li style="padding:0.5em;">
-        <img src="/images/sidebar_face.png"/><span style="  vertical-align:top;">Add Family</span>
-      </li>
-      <li style="padding:0.5em;"> Friends</li>
-      <li style="padding:0.5em;">
-        <img src="/images/sidebar_face.png"/><span style="  vertical-align:top;">Add Friends</span>
-      </li>
-    </ul>
+  <% medical = current_user.default_plan.medical_instructions.first if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
+  <div class="menu" onclick="location.href='<%= medical.present? ? medical_instruction_path(medical.id) : new_medical_instruction_path %>'">
+    <div class="icon">
+      <%= image_tag('/images/icon_medical.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Medical directives", medical.present? ? medical_instruction_path(medical.id) : new_medical_instruction_path %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <% memorial = current_user.default_plan.memorials.first if current_user.present? && current_user.default_plan.memorials.first.present? %>
+  <div class="menu" onclick="location.href='<%= memorial.present? ? memorial_path(memorial.id) : new_memorial_path %>'">
+    <div class="icon">
+      <%= image_tag('/images/icon_memorial.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Memorial", memorial.present? ? memorial_path(memorial.id) : new_memorial_path %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+  <div class="menu">
+    <div class="icon">
+      <%= image_tag('/images/icon_my_things.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "My Things" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="menu">
+    <div class="icon">
+      <%= image_tag('/images/icon_trust.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Will & Trust" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="menu">
+    <div class="icon">
+      <%= image_tag('/images/icon_financial.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Financial Accounts" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="menu">
+    <div class="icon">
+      <%= image_tag('/images/icon_guardianship.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Guardianships" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="menu">
+    <div class="icon">
+      <%= image_tag('/images/icon_to_do.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "Suggested To Do list" %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="menu" onclick="location.href='<%= edit_user_registration_path %>'">
+    <div class="icon">
+      <%= image_tag('/images/icon_account.png') %>
+    </div>
+    <div class="link">
+      <%= link_to "My Account", edit_user_registration_path %>
+    </div>
+    <div class="clear"></div>
   </div>
 </div>
+

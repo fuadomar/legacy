@@ -1,0 +1,32 @@
+<div class="title-container">
+  <div class="row-1">
+    <div class="title">
+      <%= title if title.present? %>
+    </div>
+    <div class="tips">
+      <div class="link">
+        <%= link_to "TOP TIPS" %>
+      </div>
+      <div class="icon">
+        <%= image_tag('/images/top_tips.png') %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="row-2">
+    <div class="content">
+      <%= heading if heading.present? %>
+    </div>
+    <div class="menu-container">
+      <div class="menu">
+        <%= link_to image_tag('/images/print_button.png') %>
+      </div>
+      <div class="menu">
+        <%= link_to image_tag('/images/pdf_button.png') %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
