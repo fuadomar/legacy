@@ -1,3 +1,204 @@
+#new_medical_instruction{
+
+}
+
+#new_medical_instruction .save-progress{
+    background-color: #6E6E6C;
+    height: 46px;
+    border-radius: 2px;
+}
+
+#new_medical_instruction .save-progress .title{
+    float: left;
+    padding: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#new_medical_instruction .save-progress .button-container{
+    float: right;
+    background-color: #7B7B79;
+    margin-right: 8px;
+    border-radius: 2px;
+    margin-top: 11px;
+}
+
+#new_medical_instruction .save-progress .button-container .last-saved{
+    float: left;
+    padding-right: 12px;
+    padding-left: 8px;
+    padding-top: 3px;
+    font-size: 10px;
+    color: #ccc;
+}
+
+#new_medical_instruction .save-progress .button-container .button{
+    float: right;
+    height: 24px;
+    width: 146px;
+    border-radius: 2px;
+    font-size: 11px;
+}
+
+#new_medical_instruction .save-progress .button-container .button input{
+    background-color: #F8F8F8;
+    border: 0px;
+    padding-bottom: 3px;
+    width: 146px;
+    height: 24px;
+    font-size: 10px;
+    text-align: left;
+    border-radius: 2px;
+    padding-left: 15px;
+}
+
+#new_medical_instruction .save-progress .button-container .button input:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+#new_medical_instruction .tab-menu{
+    height: 40px;
+    margin-top: 4px;
+}
+
+#new_medical_instruction .tab-menu .tab{
+    float: left;
+}
+
+#new_medical_instruction .tab-menu .tab.active{
+    height: 41px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 0px;
+    border-left: 0px;
+}
+
+#new_medical_instruction .tab-menu .tab .number{
+    float: left;
+    width: 47px;
+    height: 28px;
+    margin-top: 5px;
+    background-color: #407FA8;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 8px;
+    margin-right: 1px;
+    cursor: pointer;
+    position: relative;
+}
+
+#new_medical_instruction .tab-menu .tab .number .complete{
+    position: absolute;
+    left: 50%;
+    background-color: #FFAF02;
+    width: 14px;
+    height: 12px;
+    top: -5px;
+    margin-left: -7px;
+}
+
+#new_medical_instruction .tab-menu .tab.active .number .complete{
+    width: 18px;
+    height: 15px;
+    top: -4px;
+    margin-left: -9px;
+}
+
+#new_medical_instruction .tab-menu .tab.active .number{
+    float: left;
+    width: 45px;
+    height: 28px;
+    margin-top: 0px;
+    background-color: #6E6E6C;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 12px;
+    cursor: default;
+    margin-left: -1px;
+}
+
+#new_medical_instruction .tab-menu .tab.active .number.first{
+    margin-left: 0px;
+    width: 44px;
+}
+
+#new_medical_instruction .tab-menu .tab .title{
+    float: left;
+    font-weight: bold;
+    color: #6E6E6C;
+    padding-left: 8px;
+    padding-top: 12px;
+    width: 245px;
+    height: 28px;
+    display: none;
+}
+
+
+#new_medical_instruction .tab-menu .tab.active .title{
+    display: block;
+}
+
+
+#new_medical_instruction .tab-menu .tab .number.end{
+    float: left;
+    width: 162px;
+    height: 27px;
+    margin-top: 5px;
+    background-color: #407FA8;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 9px;
+    margin-right: 1px;
+    cursor: pointer;
+}
+
+#new_medical_instruction .tab-menu .tab.active .number.end{
+    display: none;
+}
+
+#new_medical_instruction .tab-menu .tab .title-end{
+    float: left;
+    font-weight: bold;
+    color: #6E6E6C;
+    padding-left: 8px;
+    padding-top: 12px;
+    display: none;
+}
+
+#new_medical_instruction .tab-menu .tab.active .title-end{
+    display: block;
+    background-color: #6E6E6C;
+    color: #fff;
+    height: 28px;
+    width: 406px;
+    margin-left: -1px;
+}
+
+
+#new_medical_instruction .content{
+    border: 1px solid #CCCCCC;
+    border-top: 0px;
+    margin-bottom: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+
+
 #sharing-rules{
 }
 

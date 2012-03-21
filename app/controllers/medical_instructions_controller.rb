@@ -1,4 +1,5 @@
 class MedicalInstructionsController < ApplicationController
+  before_filter :authenticate_user!
   load_and_authorize_resource
   # GET /medical_instructions
   # GET /medical_instructions.xml
@@ -26,8 +27,8 @@ class MedicalInstructionsController < ApplicationController
   # GET /medical_instructions/new.xml
   def new
     @medical_instruction = MedicalInstruction.new((session[:medical_instruction_attributes] || {}))
-    @agent = Agent.new((session[:agent_attributes] || {}))
-    @user = User.new((session[:user_attributes] || {}))
+    #@agent = Agent.new((session[:agent_attributes] || {}))
+    #@user = User.new((session[:user_attributes] || {}))
     #@plan = Plan.new((session[:plan_attributes] || {}))
 
     respond_to do |format|
@@ -95,17 +96,21 @@ class MedicalInstructionsController < ApplicationController
   def create
     @plan = current_user.default_plan
     @medical_instruction = @plan.medical_instructions.new(params[:medical_instruction])
-    @medical_instruction.agents.build(params[:agent])
+    #@medical_instruction.agents.build(params[:agent])
 
     respond_to do |format|
       if @medical_instruction.save
-        #session[:agent_id] = @agent.id
-        #session[:medical_instruction_id] = @medical_instruction.id
-        format.html { redirect_to(publics_plan_path(), :notice => "Your instructions saved successfully.") }
+        if(session[:agent_id].present?)
+          agent = Agent.find(session[:agent_id])
+          agent.medical_instruction_id = @medical_instruction.id
+          agent.save
+          session[:agent_id] = nil
+        end
+        format.html { redirect_to(edit_medical_instruction_path(@medical_instruction), :notice => "Your instructions saved successfully.") }
         #format.xml  { render :xml => @medical_instruction, :status => :created, :location => @medical_instruction }
       else
         flash[:notice] = "Failed to save your instructions. Please correct your errors."
-        format.html { render :action => "new" }
+        format.html { redirect_to new_medical_instruction_path }
         format.xml  { render :xml => @medical_instruction.errors, :status => :unprocessable_entity }
       end
     end
@@ -118,10 +123,10 @@ class MedicalInstructionsController < ApplicationController
 
     respond_to do |format|
       if @medical_instruction.update_attributes(params[:medical_instruction])
-        format.html { redirect_to(@medical_instruction, :notice => 'Medical instruction was successfully updated.') }
+        format.html { redirect_to(edit_medical_instruction_path(@medical_instruction), :notice => 'Medical instruction was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to edit_medical_instruction_path(@medical_instruction), "Failed to update your instructions. Please correct your errors." }
         format.xml  { render :xml => @medical_instruction.errors, :status => :unprocessable_entity }
       end
     end
@@ -138,4 +143,45 @@ class MedicalInstructionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  def agreement
+    respond_to do |format|
+      format.html
+      format.xml
+    end
+  end
+
+  def requirements
+    respond_to do |format|
+      format.html
+      format.xml
+    end
+  end
+
+  def review
+    respond_to do |format|
+      format.html
+      format.xml
+    end
+  end
+
+  def agreement_tmp_save
+    session[:agreement] = true if params['terms_of_service'].present?
+    session[:agreement] = nil if params['terms_of_service'].blank?
+    respond_to do |format|
+      format.html { redirect_to agreement_medical_instructions_path }
+      format.xml
+    end
+  end
+
+  def requirements_tmp_save
+    session[:requirements] = true if params['requirements'].present?
+    session[:requirements] = nil if params['requirements'].blank?
+    respond_to do |format|
+      format.html { redirect_to requirements_medical_instructions_path }
+      format.xml
+    end
+  end
+
 end

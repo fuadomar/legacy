@@ -1,6 +1,21 @@
-<h1>Editing agent</h1>
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Medical Directives',
+  :heading => 'Instructions, Agents, Statement, & Wishes'} %>
 
-<%= render 'form' %>
+<div class="content-container">
+  <div id="new_medical_instruction">
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :title => 'STEPS FOR YOUR END OF LIFE INSTRUCTIONS',
+      :button_id => 'save_progess_submit_top'} %>
+    <%= render :partial => 'shared/tab_menu' %>
 
-<%= link_to 'Show', @agent %> |
-<%= link_to 'Back', agents_path %>
+    <div class="content">
+      <%= render 'form' %>
+    </div>
+
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :button_id => 'save_progess_submit_bottom'} %>
+  </div>
+
+</div>
+

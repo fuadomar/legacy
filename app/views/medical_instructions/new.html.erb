@@ -3,30 +3,21 @@
   :heading => 'Instructions, Agents, Statement, & Wishes'} %>
 
 <div class="content-container">
-  <div class="new_medical_instructions">
+  <div id="new_medical_instruction">
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :title => 'STEPS FOR YOUR END OF LIFE INSTRUCTIONS',
+      :button_id => 'save_progess_submit_top'} %>
+    <%= render :partial => 'shared/tab_menu' %>
 
-    <div id="text">
-      <div class="guid_text">Guide</div>
-      <!--textarea class="guid_field"> </textarea-->
+    <div class="content">
+
+      <%= render 'form' %>
+
     </div>
 
-    <h2 style="text-decoration: underline;">End of Life Instructions</h2>
-    <h2>WHY YOU NEED END OF LIFE INSTRUCTIONS</h2>
-    <p>Do you want doctors to prolong your life at all costs? Do you want to be kept artificially alive even if you have no hope of recovery? Would you prefer to die comfortably at home or in a comfort care facility?</p>
-
-    <p>The default protocol of many hospitals and doctors is to keep you alive, sometimes at very little benefit to your quality of life. You have the right to choose the type of care you want at the end of your life. But unless, you make your instructions known in a legal document doctors and hospitals may perform aggressive treatments or keep you artificially alive.</p>
-
-    <h2>HOW IT WORKS</h2>
-    <p>In emergency situations outside of hospitals, EMTs and doctors will automatically perform lifesaving treatments unless you are wearing a MedicAlert bracelet. The law assumes that you give emergency responders permission to save your life. So End of Life Instructions rarely come into play for situations that occur outside of hospitals or other medical facilities.</p>
-
-    <p>Once you are admitted to a hospital with a life threatening condition, the hospital will ask your physician or your family if you have created legal End of Life Instructions. Complete End of Life Instructions have two parts. The first describes the types of treatment you want and don’t want. The second part appoints your agent who will make decisions for you if you are unable to make them for yourself.</p>
-
-    <h2>REQUIREMENTS</h2>
-    <ul>
-      <li>Only adults who are of sound mind can create legal End of Life Instructions. So it’s important to create them early. If you suddenly lose the ability to communicate your wishes rationally, it is too late. Your family and doctors may be left guessing.</li>
-      <li>Your End of Life Instructions must be signed by two witness or a notary. We will provide you with a document to print out and sign. If you do not collect all necessary signatures, the document may not be considered legal at the hospital.</li>
-    </ul>
-    <%= render 'form' %>
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :button_id => 'save_progess_submit_bottom'} %>
   </div>
 
 </div>
+

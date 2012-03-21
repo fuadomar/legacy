@@ -1,0 +1,37 @@
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Medical Directives',
+  :heading => 'Instructions, Agents, Statement, & Wishes'} %>
+
+<div class="content-container">
+  <div id="new_medical_instruction">
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :title => 'STEPS FOR YOUR END OF LIFE INSTRUCTIONS',
+      :button_id => 'save_progess_submit_top'} %>
+    <%= render :partial => 'shared/tab_menu' %>
+
+    <div class="content">
+      <h2>BASIC INFORMATION ABOUT YOU:</h2>
+
+      <%= form_for(@user, :url => profile_path(current_user.id)) do |f| %>
+        Owner's Name:
+        <%= f.text_field(:name) %>
+        <br/><br/>
+        Owner's Date of Birth:
+        <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
+            :order => [:year, :month, :day], :start_year => Date.today.year - 70,
+            :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
+          {:style => "width: 71px;"}) %>
+        <br/><br/>
+        Owner's Phone:
+        <%= f.text_field(:phone_number) %>
+        <br/><br/>
+        Owner's Notes:
+        <%= f.text_area(:notes) %>
+      <% end %>
+    </div>
+
+    <%= render :partial => 'shared/save_progress_button', :locals => {
+      :button_id => 'save_progess_submit_bottom'} %>
+  </div>
+
+</div>

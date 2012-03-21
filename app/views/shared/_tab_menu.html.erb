@@ -1,0 +1,92 @@
+<div class="tab-menu">
+  <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and controller.action_name == 'agreement' %>" id="tab-1">
+    <div class="number first" id="number-1" onclick="location.href='<%= agreement_medical_instructions_path %>'">
+      <div class="complete <%= "hidden" if(session[:agreement].blank?) %>">
+
+      </div>
+      1
+    </div>
+    <div class="title">
+      What Are End Of Life Instructions?
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and controller.action_name == 'requirements' %>" id="tab-2">
+    <div class="number"  id="number-2" onclick="location.href='<%= requirements_medical_instructions_path %>'">
+      2
+      <div class="complete <%= "hidden" if(session[:requirements].blank?) %>">
+
+      </div>
+    </div>
+    <div class="title">
+      Initial Requirements
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="tab <%= "active" if controller.controller_name == 'profiles' %>" id="tab-3">
+    <div class="number" id="number-3" onclick="location.href='<%= edit_profile_path(current_user.id) %>'">
+      3
+      <div class="complete <%= "hidden" unless(session[:user_update].present?) %>">
+
+      </div>
+    </div>
+    <div class="title">
+      Your Basic Information
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="tab <%= "active" if controller.controller_name == 'agents' %>" id="tab-4">
+    <% agent = current_user.default_plan.medical_instructions.first.agents.first if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
+    <div class="number" id="number-4" onclick="location.href='<%= agent.present? ? edit_agent_path(agent.id) : new_agent_path %>'">
+      4
+      <div class="complete <%= "hidden" unless(session[:agent_id].present? || agent.present?) %> ">
+
+      </div>
+    </div>
+    <div class="title">
+      Your Agent
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and (controller.action_name == 'new' or controller.action_name == 'edit') %>" id="tab-5">
+    <% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
+    <div class="number" id="number-5" onclick="location.href='<%= medical.present? ? edit_medical_instruction_path(medical.id) : new_medical_instruction_path %>'">
+      5
+      <div class="complete <%= "hidden" if medical.blank? %> ">
+
+      </div>
+    </div>
+    <div class="title">
+      Your End Of Life Instructions
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and controller.action_name == 'review' %>" id="tab-6">
+    <div class="number end" id="number-6" onclick="location.href='<%= review_medical_instructions_path %>'">
+      REVIEW & FINALIZE
+    </div>
+    <div class="title-end">
+      REVIEW & FINALIZE
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="clear"></div>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.number').bind('click', function(){
+      var id = $(this).attr('id');
+      id = id.replace('number-', '');
+      $('.tab').removeClass('active');
+      $('#tab-'+id).addClass('active');
+    });
+  });
+</script>

@@ -1,7 +1,7 @@
 <div class="title-container">
   <div class="row-1">
     <div class="title">
-      <%= title if title.present? %>
+      <%= title unless (defined?(title)).nil? %>
     </div>
     <div class="tips">
       <div class="link">
@@ -16,7 +16,7 @@
   </div>
   <div class="row-2">
     <div class="content">
-      <%= heading if heading.present? %>
+      <%= heading unless (defined?(heading)).nil? %>
     </div>
     <div class="menu-container">
       <div class="menu">

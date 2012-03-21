@@ -1,0 +1,57 @@
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Medical Directives',
+  :heading => 'Instructions, Agents, Statement, & Wishes'} %>
+
+<div class="content-container">
+  <div id="new_medical_instruction">
+    <%= render :partial => 'shared/save_progress_button', :locals => {:title => 'STEPS FOR YOUR END OF LIFE INSTRUCTIONS'} %>
+    <%= render :partial => 'shared/tab_menu' %>
+
+    <div class="content">
+      Your Answer At A Glance<br/>
+      This is important stuff and you want to make sure you have all the information accurate.
+      Please review Lorem ipsum dolor sit amet, consecteur adipisicing elit, sed do eiusmod tempor
+      incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+
+      <br/><br/>
+
+      1) Understanding End Of Life Instructions.......
+      <%= link_to 'Edit', agreement_medical_instructions_path %>
+      completed :
+      <%= session[:agreement] == true ? "yes" : "no" %>
+      <br/><br/>
+
+      2) Initial Requirements...................................
+      <%= link_to 'Edit', requirements_medical_instructions_path %>
+      completed:
+      <%= session[:requirements] == true ? "yes" : "no" %>
+      <br/><br/>
+
+      3) Your Basic Information...............................
+      <%= link_to 'Edit', edit_profile_path(current_user.id) %>
+      completed:
+      <%= current_user.present? ? "yes" : "no" %>
+      <br/><br/>
+
+      4) Your Agent Name.......................................
+      <% agent = current_user.default_plan.medical_instructions.first.agents.first if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
+      <% agent = Agent.find(session[:agent_id]) if agent.blank? && session[:agen_id].present? %>
+      <%= link_to 'Edit', agent.present? ? edit_agent_path(agent) : new_agent_path %>
+      completed:
+      <%= agent.present? ? "yes" : "no" %>
+      <br/><br/>
+
+       5) Your End Of Life Instructions.......................
+       <% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
+       <%= link_to 'Edit', medical.present? ? edit_medical_instruction_path(medical.id) : new_medical_instruction_path %>
+       completed:
+       <%= medical.present? ? "yes" : "no" %>
+       <br/><br/>
+
+
+
+    </div>
+
+  </div>
+
+</div>

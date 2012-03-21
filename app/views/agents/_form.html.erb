@@ -1,12 +1,19 @@
+<p>YOUR AGENT - Who do you want to make decisions for you when you can’t?</p>
+<p>The person you select as your agent is extremely important. This person may make health care decisions on your
+  behalf if you cannot and may have to decide when to stop treatment. It is important that you select someone who
+  understands how you want to be treated and will fight for that if necessary. </p>
+<p>Who would you like to make medical choices on your behalf if you cannot make them yourself?</p>
+<p><strong>Agent's Information</strong></p>
+
 <%= form_for(@agent) do |f| %>
   <% if @agent.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
 
       <ul>
-      <% @agent.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @agent.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -43,7 +50,22 @@
     <%= f.label :relationship %><br />
     <%= f.text_field :relationship %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%#*<div class="actions">%>
+    <%#= f.submit %>
+  <%#*</div>%>
 <% end %>
+
+
+
+
+TODO:
+<p>In case your first choice is not able, not willing, or not available to make medical decisions for you, who would
+  you like to name as your alternate agent? You can name as many as you like (Optional)</p>
+
+<p>Your agent will have authority to make all health care choices for you if the primary doctor treating you and one
+  other doctor find that you are not able to make your own choices.</p>
+
+<p>Your agent will have the authority to make decisions to provide, prohibit, or remove feeding tubes, ventilators,
+  and other artificial means of keeping you alive.</p>
+
+<p>Your agent will do their very best to act in your best interest and to follow your instructions.</p>

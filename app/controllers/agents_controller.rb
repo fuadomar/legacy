@@ -1,4 +1,5 @@
 class AgentsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /agents
   # GET /agents.xml
   def index
@@ -40,14 +41,23 @@ class AgentsController < ApplicationController
   # POST /agents
   # POST /agents.xml
   def create
-    @agent = Agent.new(params[:agent])
+    success = false
+    @medical_instruction = current_user.default_plan.medical_instructions.first if current_user.present?
+    @agent = @medical_instruction.agents.new(params[:agent]) if @medical_instruction.present?
+    success = true if @agent.present? and @agent.save
 
+    if(@agent.blank?)
+      @agent = Agent.new(params[:agent])
+      success = true if @agent.save
+      session[:agent_id] = @agent.id
+    end
+    
     respond_to do |format|
-      if @agent.save
-        format.html { redirect_to(@agent, :notice => 'Agent was successfully created.') }
+      if success
+        format.html { redirect_to(edit_agent_path(@agent), :notice => 'Agent was successfully created.') }
         format.xml  { render :xml => @agent, :status => :created, :location => @agent }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(new_agent_path, :notice => "Failed to save agents. Please correct your errors.")}
         format.xml  { render :xml => @agent.errors, :status => :unprocessable_entity }
       end
     end
@@ -60,10 +70,10 @@ class AgentsController < ApplicationController
 
     respond_to do |format|
       if @agent.update_attributes(params[:agent])
-        format.html { redirect_to(@agent, :notice => 'Agent was successfully updated.') }
+        format.html { redirect_to(edit_agent_path(@agent), :notice => 'Agent was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(edit_agent_path(@agent), :notice => "Failed to update agents. Please correct your errors.") }
         format.xml  { render :xml => @agent.errors, :status => :unprocessable_entity }
       end
     end
