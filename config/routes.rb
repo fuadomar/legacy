@@ -14,10 +14,23 @@ NasceniaRailsTemplate::Application.routes.draw do
     end
   end
 
+  resources :profiles do
+    member do
+      get :edit
+      post :update
+    end
+  end
+
   resources :medical_instructions do
     collection do
       post 'save_tmp_data'
       get 'save_session_data'
+      get 'agreement'
+      get 'requirements'
+      get 'review'
+      post 'agreement_tmp_save'
+      post 'requirements_tmp_save'
+      post 'review_submit'
     end
   end
 

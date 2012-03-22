@@ -10,24 +10,53 @@
     <%= render :partial => 'shared/tab_menu' %>
 
     <div class="content">
-      <h2>BASIC INFORMATION ABOUT YOU:</h2>
+      <h2>Let Us Know About You Etc?</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+        in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+        sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+        in reprehenderit in voluptate velit esse.
+      </p>
 
-      <%= form_for(@user, :url => profile_path(current_user.id)) do |f| %>
-        Owner's Name:
-        <%= f.text_field(:name) %>
-        <br/><br/>
-        Owner's Date of Birth:
-        <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
-            :order => [:year, :month, :day], :start_year => Date.today.year - 70,
-            :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
-          {:style => "width: 71px;"}) %>
-        <br/><br/>
-        Owner's Phone:
-        <%= f.text_field(:phone_number) %>
-        <br/><br/>
-        Owner's Notes:
-        <%= f.text_area(:notes) %>
-      <% end %>
+      <div class="dynamic_bordered_box form">
+        <div class="title">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim?
+        </div>
+        <%= form_for(@user, :url => profile_path(current_user.id)) do |f| %>
+          <div class="single_input">
+            <%= f.label(:name, 'Owner\'s Name:') %>
+            <%= f.text_field(:name) %>
+          </div>
+          <div class="single_input">
+            <%= f.label(:date_of_birth, 'Owner\'s Date of Birth:') %>
+                <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
+          :order => [:year, :month, :day], :start_year => Date.today.year - 70,
+          :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
+        {:style => "width: 71px;"}) %>
+          </div>
+          <div class="single_input">
+            <%= f.label(:phone_number, 'Owner\'s Phone:') %>
+            <%= f.text_field(:phone_number) %>
+          </div>
+          <div class="single_input">
+            <%= f.label(:notes, 'Owner\'s Notes:') %>
+            <%= f.text_field(:notes) %>
+          </div>
+
+        <% end %>
+      </div>
     </div>
 
     <%= render :partial => 'shared/save_progress_button', :locals => {

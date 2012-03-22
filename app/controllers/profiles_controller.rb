@@ -8,9 +8,10 @@ class ProfilesController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
+    
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        puts "User #{@user.inspect}"
         session[:user_update] = true
         format.html { redirect_to(edit_profile_path(@user), :notice => 'Your Basic information was successfully updated.') }
         format.xml  { head :ok }

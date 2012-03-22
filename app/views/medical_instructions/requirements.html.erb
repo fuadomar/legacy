@@ -10,16 +10,49 @@
     <%= render :partial => 'shared/tab_menu' %>
 
     <div class="content">
-      <h2>REQUIREMENTS</h2>
-      <ul>
-        <li>Only adults who are of sound mind can create legal End of Life Instructions. So it’s important to create them early. If you suddenly lose the ability to communicate your wishes rationally, it is too late. Your family and doctors may be left guessing.</li>
-        <li>Your End of Life Instructions must be signed by two witness or a notary. We will provide you with a document to print out and sign. If you do not collect all necessary signatures, the document may not be considered legal at the hospital.</li>
-      </ul>
-
+      <h2>Sit amet, consectetur, adipisci Etc?</h2>
+      <p>
+        Only adults who are of sound mind can create legal End of Life
+        Instructions. So it’s important to create them early. If you
+        suddenly lose the ability to communicate your wishes rationally,
+        it is too late. Your family and doctors may be left guessing.
+      </p>
+      <p>
+        Your End of Life Instructions must be signed by two witness or
+        a notary. We will provide you with a document to print out and
+        sign. If you do not collect all necessary signatures, the document
+        may not be considered legal at the hospital.
+      </p>
+      <p>
+        Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+        accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+        quae ab illo inventore veritatis et quasi architecto beatae vitae
+        dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+        sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+        dolores eos qui ratione voluptatem sequi nesciunt.
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+        consectetur.
+      </p>
       <%= form_tag(requirements_tmp_save_medical_instructions_path) %>
-      I understand these requirements 
-      <%= check_box_tag(:requirements) if(session[:requirements].blank?) %>
-      <%= check_box_tag(:requirements, 1, true) if(session[:requirements].present?) %>
+      <div class="bordered_box user_agreed">
+        <div class="text">
+          I HAVE READ AND UNDERSTAND THE ABOVE COPY:
+        </div>
+        <div class="aggreed_input">
+          Yes
+          <div class="checkbox">
+            <% medical = current_user.default_plan.medical_instructions.first %>
+            <% if session[:requirements].present? || (medical.present? && medical.requirements_agreement.present?) %>
+              <%= check_box_tag(:requirements, 1, true) %>
+            <% else %>
+              <%= check_box_tag(:requirements) %>
+            <% end %>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+
     </div>
 
     <%= render :partial => 'shared/save_progress_button', :locals => {

@@ -126,7 +126,7 @@ class MedicalInstructionsController < ApplicationController
         format.html { redirect_to(edit_medical_instruction_path(@medical_instruction), :notice => 'Medical instruction was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { redirect_to edit_medical_instruction_path(@medical_instruction), "Failed to update your instructions. Please correct your errors." }
+        format.html { redirect_to edit_medical_instruction_path(@medical_instruction), :notice => "Failed to update your instructions. Please correct your errors." }
         format.xml  { render :xml => @medical_instruction.errors, :status => :unprocessable_entity }
       end
     end
@@ -167,6 +167,7 @@ class MedicalInstructionsController < ApplicationController
   end
 
   def agreement_tmp_save
+    session[:progress_upadated_at] = Time.now
     session[:agreement] = true if params['terms_of_service'].present?
     session[:agreement] = nil if params['terms_of_service'].blank?
     respond_to do |format|
@@ -176,11 +177,34 @@ class MedicalInstructionsController < ApplicationController
   end
 
   def requirements_tmp_save
+    session[:progress_upadated_at] = Time.now
     session[:requirements] = true if params['requirements'].present?
     session[:requirements] = nil if params['requirements'].blank?
     respond_to do |format|
       format.html { redirect_to requirements_medical_instructions_path }
       format.xml
+    end
+  end
+
+  def review_submit
+    medical = current_user.default_plan.medical_instructions.first
+    agent = current_user.default_plan.medical_instructions.first.agents.first
+    if (session[:agreement].present? || (medical.present? && medical.instructions_agreement?)) &&
+        (session[:requirements].present? || (medical.present? && medical.requirements_agreement?)) &&
+        current_user.name.present? && agent.present? && medical.present?
+      medical.instructions_agreement = true
+      medical.requirements_agreement = true
+      medical.authorized_at = Time.now
+      success = true if medical.save
+    end
+    respond_to do |format|
+      if success
+      format.html { redirect_to review_medical_instructions_path, :notice => 'Successfully Authorized' }
+      format.xml
+      else
+      format.html { redirect_to review_medical_instructions_path, :notice => 'Failed To Authorized' }
+      format.xml
+      end
     end
   end
 

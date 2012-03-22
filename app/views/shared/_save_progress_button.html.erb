@@ -1,14 +1,19 @@
+<% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
 <div class="save-progress">
   <div class="title">
     <%= title unless (defined?(title)).nil? %>
   </div>
   <div class="button-container">
     <div class="last-saved">
-      LAST SAVED 3/16/2012 AT 1:45 AM
+      LAST SAVED
+      <%= session[:progress_upadated_at].present? ? session[:progress_upadated_at].strftime("%d/%m/%Y AT %I:%M %p") :
+        (medical.present? && medical.updated_at.present?) ? medical.updated_at.strftime("%d/%m/%Y AT %I:%M %p") :
+        (medical.present? && medical.created_at.present?) ? medical.created_at.strftime("%d/%m/%Y AT %I:%M %p") :
+        'NEVER' %>
     </div>
     <div class="button">
       <% button_id = 'save_progress_button_bottom' if (defined?(button_id)).nil? %>
-      <%= submit_tag('SAVE PROGRESS', :id => button_id) %>
+      <%= image_submit_tag('/images/save_progress_button.png', :id => button_id) %>
     </div>
     <div class="clear"></div>
   </div>

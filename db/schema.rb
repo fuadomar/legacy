@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120321150419) do
+ActiveRecord::Schema.define(:version => 20120322065701) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(:version => 20120321150419) do
     t.string   "relationship"
     t.integer  "creator_id"
     t.integer  "plan_id"
+    t.boolean  "instructions_agreement"
+    t.boolean  "requirements_agreement"
+    t.datetime "authorized_at"
   end
 
   create_table "memorials", :force => true do |t|

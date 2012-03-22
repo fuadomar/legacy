@@ -54,6 +54,7 @@ class AgentsController < ApplicationController
     
     respond_to do |format|
       if success
+        session[:progress_upadated_at] = Time.now
         format.html { redirect_to(edit_agent_path(@agent), :notice => 'Agent was successfully created.') }
         format.xml  { render :xml => @agent, :status => :created, :location => @agent }
       else
@@ -70,6 +71,7 @@ class AgentsController < ApplicationController
 
     respond_to do |format|
       if @agent.update_attributes(params[:agent])
+        session[:progress_upadated_at] = Time.now
         format.html { redirect_to(edit_agent_path(@agent), :notice => 'Agent was successfully updated.') }
         format.xml  { head :ok }
       else

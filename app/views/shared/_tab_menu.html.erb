@@ -1,8 +1,9 @@
+<% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
 <div class="tab-menu">
   <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and controller.action_name == 'agreement' %>" id="tab-1">
     <div class="number first" id="number-1" onclick="location.href='<%= agreement_medical_instructions_path %>'">
-      <div class="complete <%= "hidden" if(session[:agreement].blank?) %>">
-
+      <div class="complete <%= "hidden" unless(session[:agreement].present? || (medical.present? && medical.instructions_agreement?)) %>">
+        <%= image_tag('/images/completed-sign.png') %>
       </div>
       1
     </div>
@@ -15,8 +16,8 @@
   <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and controller.action_name == 'requirements' %>" id="tab-2">
     <div class="number"  id="number-2" onclick="location.href='<%= requirements_medical_instructions_path %>'">
       2
-      <div class="complete <%= "hidden" if(session[:requirements].blank?) %>">
-
+      <div class="complete <%= "hidden" unless(session[:requirements].present? || (medical.present? && medical.requirements_agreement?)) %>">
+        <%= image_tag('/images/completed-sign.png') %>
       </div>
     </div>
     <div class="title">
@@ -28,8 +29,8 @@
   <div class="tab <%= "active" if controller.controller_name == 'profiles' %>" id="tab-3">
     <div class="number" id="number-3" onclick="location.href='<%= edit_profile_path(current_user.id) %>'">
       3
-      <div class="complete <%= "hidden" unless(session[:user_update].present?) %>">
-
+      <div class="complete <%= "hidden" unless(current_user.name.present?) %>">
+        <%= image_tag('/images/completed-sign.png') %>
       </div>
     </div>
     <div class="title">
@@ -43,7 +44,7 @@
     <div class="number" id="number-4" onclick="location.href='<%= agent.present? ? edit_agent_path(agent.id) : new_agent_path %>'">
       4
       <div class="complete <%= "hidden" unless(session[:agent_id].present? || agent.present?) %> ">
-
+        <%= image_tag('/images/completed-sign.png') %>
       </div>
     </div>
     <div class="title">
@@ -53,11 +54,10 @@
   </div>
 
   <div class="tab <%= "active" if controller.controller_name == 'medical_instructions' and (controller.action_name == 'new' or controller.action_name == 'edit') %>" id="tab-5">
-    <% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
     <div class="number" id="number-5" onclick="location.href='<%= medical.present? ? edit_medical_instruction_path(medical.id) : new_medical_instruction_path %>'">
       5
       <div class="complete <%= "hidden" if medical.blank? %> ">
-
+        <%= image_tag('/images/completed-sign.png') %>
       </div>
     </div>
     <div class="title">

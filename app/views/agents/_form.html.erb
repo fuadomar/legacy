@@ -1,71 +1,149 @@
-<p>YOUR AGENT - Who do you want to make decisions for you when you can’t?</p>
-<p>The person you select as your agent is extremely important. This person may make health care decisions on your
-  behalf if you cannot and may have to decide when to stop treatment. It is important that you select someone who
-  understands how you want to be treated and will fight for that if necessary. </p>
-<p>Who would you like to make medical choices on your behalf if you cannot make them yourself?</p>
-<p><strong>Agent's Information</strong></p>
+<h2>Who Do You Want To Make Decision For You when you can't?</h2>
+<p>
+  The person you select as your agent is extremely important. This
+  person may make health care decisions on your behalf if you cannot
+  and may have to decide when to stop treatments.It is important that
+  you select someone who understands how you want to be treated and will
+  fight for that if necessary.
+</p>
+<p>
+  Your agent will have authority to make all health care choices for you
+  if the primary doctor treating you and one other doctor find that you
+  are not able to make your own choices, make decisions to provide, prohibit,
+  or remove feeding tubes, ventilators, and other artificial means of keeping
+  you alive, and do their very best to act in your best interest and to
+  follow your instructions.
+</p>
 
-<%= form_for(@agent) do |f| %>
-  <% if @agent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
+<div class="dynamic_bordered_box form">
+  <div class="title">
+    Who would you like to make medical choices on your behalf if
+    you cannot make them yourself?
+  </div>
+  <%= form_for(@agent) do |f| %>
+    <% if @agent.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
 
-      <ul>
-        <% @agent.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @agent.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="single_input">
+      <%= f.label :name, 'Agent\'s Name:' %>
+      <%= f.text_field :name, :class => 'long' %>
     </div>
+    <div class="single_row">
+      <div class="single_input first">
+        <%= f.label :home_phone, 'Home Phone:' %>
+        <%= f.text_field :home_phone, :class => 'medium' %>
+      </div>
+      <div class="single_input">
+        <%= f.label :cell_phone, "Cell Phone:" %>
+        <%= f.text_field :cell_phone, :class => 'medium' %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="single_input">
+      <%= f.label :address, 'Address:' %>
+      <%= f.text_field :address, :class => 'long' %>
+    </div>
+    <div class="single_row">
+      <div class="single_input first">
+        <%= f.label :city, "City:" %>
+        <%= f.text_field :city, :class => 'medium' %>
+      </div>
+      <div class="single_input">
+        <label>
+          &nbsp;
+        </label>
+        <%= f.select :state, [['CA','CA'],['AZ','AZ']] %>
+      </div>
+      <div class="single_input">
+        <%= f.label :zip, 'Zip Code' %>
+        <%= f.text_field :zip, :class => 'small' %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="single_input">
+      <%= f.label :relationship, 'Relationship:' %>
+      <%= f.text_field :relationship, :class => 'long' %>
+    </div>
+
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :home_phone %><br />
-    <%= f.text_field :home_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_phone %><br />
-    <%= f.text_field :cell_phone %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :relationship %><br />
-    <%= f.text_field :relationship %>
-  </div>
-  <%#*<div class="actions">%>
-    <%#= f.submit %>
-  <%#*</div>%>
-<% end %>
+</div>
 
 
+<div class="dynamic_bordered_box form">
+  <div class="title">
+    In case your first choice is not able, not willing, or not available to
+    make medical decisions for you, who would you like to name as your
+    alternate agent?
+  </div>
+
+  <div class="single_input">
+    <label>
+      Agent's Name:
+    </label>
+    <input type="text" class="long" />
+  </div>
+  <div class="single_row">
+    <div class="single_input first">
+      <label>
+        Home Phone:
+      </label>
+      <input type="text" class="medium" />
+    </div>
+    <div class="single_input">
+      <label>
+        Cell Phone:
+      </label>
+      <input type="text" class="medium" />
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="single_input">
+    <label>
+      Address:
+    </label>
+    <input type="text" class="long" />
+  </div>
+  <div class="single_row">
+    <div class="single_input first">
+      <label>
+        City:
+      </label>
+      <input type="text" class="medium" />
+    </div>
+    <div class="single_input">
+      <label>
+        &nbsp;
+      </label>
+      <select>
+        <option>CA</option>
+        <option>USA</option>
+      </select>
+    </div>
+    <div class="single_input">
+      <label>
+        Zip Code
+      </label>
+      <input type="text" class="small" />
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="single_input">
+    <label>
+      Relationship:
+    </label>
+    <input type="text" class="long" />
+  </div>
+</div>
+
+<img src="/images/add_aditional_agent_button.png" class="aditional_agent" />
 
 
-TODO:
-<p>In case your first choice is not able, not willing, or not available to make medical decisions for you, who would
-  you like to name as your alternate agent? You can name as many as you like (Optional)</p>
-
-<p>Your agent will have authority to make all health care choices for you if the primary doctor treating you and one
-  other doctor find that you are not able to make your own choices.</p>
-
-<p>Your agent will have the authority to make decisions to provide, prohibit, or remove feeding tubes, ventilators,
-  and other artificial means of keeping you alive.</p>
-
-<p>Your agent will do their very best to act in your best interest and to follow your instructions.</p>
