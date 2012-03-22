@@ -199,11 +199,11 @@ class MedicalInstructionsController < ApplicationController
     end
     respond_to do |format|
       if success
-      format.html { redirect_to review_medical_instructions_path, :notice => 'Successfully Authorized' }
-      format.xml
+        format.html { redirect_to publics_plan_path, :notice => 'Successfully Authorized' }
+        format.xml
       else
-      format.html { redirect_to review_medical_instructions_path, :notice => 'Failed To Authorized' }
-      format.xml
+        format.html { redirect_to review_medical_instructions_path, :notice => 'Failed To Authorized' }
+        format.xml
       end
     end
   end
