@@ -39,7 +39,9 @@ NasceniaRailsTemplate::Application.routes.draw do
   devise_for :users
 
   get "publics/index"
-  get "publics/plan"
+  get "publics/dashboard"
+  get "publics/why_my_legacy_plan"
+  get "publics/how_it_works"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
