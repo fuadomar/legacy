@@ -895,3 +895,112 @@ img.aditional_agent {
     float: left;
     margin-left: 0px;
 }
+
+
+
+
+
+
+/*  general - by khaled
+--------------------------------------------  */
+#body-container .body-content .content-container{
+    min-height: 500px;
+}
+
+.content-container a{
+    color:  #444444;
+}
+
+.content-container .extra_links {
+    margin-left: 10px;
+}
+
+/*  signin and account create form - comon terms
+-------------------------------------------------------------------  */
+
+form.new_user_common {
+    margin-bottom: 8px;
+    margin-top: 26px;
+    margin-left: 9px;
+}
+
+form.new_user_common label {
+    color: #444444;
+    font-size: 15px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+form.new_user_common label.inline {
+    display: inline;
+}
+
+form.new_user_common input[type=email], form.new_user_common input[type=password],
+form.new_user_common input[type=text] {
+    height:  30px;
+    width: 290px;
+    border: 1px solid #D7D7D7;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+form.new_user_common input#checkbox {
+    margin-left: 0px;
+    margin-right: 7px;
+}
+
+form.new_user_common .single-field {
+    margin-bottom: 8px;
+}
+
+
+/*   sign in form
+------------------------------------------ */
+
+
+/*form.sign_in .single-field {
+    margin-bottom: 8px;
+}*/
+
+
+
+/*  Create new account form
+---------------------------------------------*/
+
+form.create_account select {
+    height:  33px;
+    border: 1px solid #D7D7D7;
+    padding-top: 5px;
+    font-size: 15px;
+}
+
+
+form.create_account .top-margin {
+    margin-top: 14px;
+}
+
+form.create_account .create_button_container {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+form.create_account select#user_gender {
+    width: 290px;
+    line-height: 33px;
+
+}
+
+form.create_account .single-row {
+    width: 100%;
+    margin-bottom: 1px;
+}
+
+form.create_account .single-row .single-field{
+    float: left;
+}
+
+form.create_account .single-row .last{
+    float: right;
+}

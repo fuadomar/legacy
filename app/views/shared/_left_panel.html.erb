@@ -11,18 +11,18 @@
       <%= image_tag('/images/icon_dashboard.png') %>
     </div>
     <div class="link">
-      <%= link_to "Dashboard", root_path  %>
+      <%= link_to "Dashboard", publics_dashboard_path  %>
     </div>
     <div class="clear"></div>
   </div>
 
   <% medical = current_user.default_plan.medical_instructions.first if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
-  <div class="menu" onclick="location.href='<%= medical.present? ? medical_instruction_path(medical.id) : new_medical_instruction_path %>'">
+  <div class="menu" onclick="location.href='<%= medical.present? ? medical_instruction_path(medical.id) : agreement_medical_instructions_path %>'">
     <div class="icon">
       <%= image_tag('/images/icon_medical.png') %>
     </div>
     <div class="link">
-      <%= link_to "Medical directives", medical.present? ? medical_instruction_path(medical.id) : new_medical_instruction_path %>
+      <%= link_to "Medical directives", medical.present? ? medical_instruction_path(medical.id) : agreement_medical_instructions_path %>
     </div>
     <div class="clear"></div>
   </div>
@@ -33,7 +33,7 @@
       <%= image_tag('/images/icon_memorial.png') %>
     </div>
     <div class="link">
-      <%= link_to "Memorial", memorial.present? ? memorial_path(memorial.id) : new_memorial_path %>
+      <%= link_to "Memorial & Remains", memorial.present? ? memorial_path(memorial.id) : new_memorial_path %>
     </div>
     <div class="clear"></div>
   </div>
@@ -43,7 +43,7 @@
       <%= image_tag('/images/icon_my_things.png') %>
     </div>
     <div class="link">
-      <%= link_to "My Things" %>
+      <%= link_to "My Possessions" %>
     </div>
     <div class="clear"></div>
   </div>

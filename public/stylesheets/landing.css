@@ -1,0 +1,494 @@
+/* 
+    Document   : newCascadeStyleSheet
+    Created on : Mar 14, 2012, 3:52:33 PM
+    Author     : Khaled
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+body {
+    padding: 0;
+    margin: 0;
+}
+
+div.clear {
+    clear: both;
+}
+
+#full_container{
+    width: 100%;
+}
+
+div#header-container {
+    background-color: #ecede9;
+    background: url('/images/header_back.png');
+    height: 102px;
+    margin-bottom: 1px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#header-container #header{
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 105px;
+}
+
+#header-container #header .logo{
+    float: left;
+}
+
+#header-container #header .top-menu-container{
+    height: 102px;
+    float: left;
+    background-color: white;
+    padding-left: 1px;
+}
+
+#header-container #header .top-menu-container .menu{
+    float: left;
+    background: url('/images/top_menu_back.png');
+    margin-right: 1px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 66px;
+    height: 36px;
+}
+
+#header-container #header .right-menu{
+    height: 102px;
+    float: left;
+    padding-left: 10px;
+}
+
+#header-container #header .right-menu .login-container{
+    margin-bottom: 30px;
+}
+
+#header-container #header .right-menu .login-container .call{
+    font-family: "HelveticaNeue", Helvetica;
+    font-size: 11px;
+    color: #767575;
+    padding-top: 6px;
+    float: left;
+}
+
+#header-container #header .right-menu .login-container .login{
+    float: right;
+    border: 1px solid #dbdbdc;
+    padding-top: 3px;
+    padding-bottom: 4px;
+    padding-left: 18px;
+    padding-right: 18px;
+    background-color: #fff;
+    font-family: "HelveticaNeue", Helvetica;
+    font-size: 10px;
+    color: #767575;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 2px 1px 1px #d9dad8;
+}
+
+#header-container #header .right-menu .login-container .login a{
+    color: #767575;
+    text-decoration: none;
+}
+
+
+#landing-page #banner-outer-container{
+    background: url('/images/banner_outer_bk.png');
+}
+
+#landing-page #banner-container{
+    width: 1280px;
+    height: 407px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url('/images/banner_bk.png');
+}
+
+#landing-page #banner-container .banner{
+    height: 407px;
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#landing-page #banner-container .banner .content{
+    width: 350px;
+    height: 240px;
+    padding-left: 55px;
+    padding-top: 40px;
+    font-family: Lustria;
+    font-size: 26px;
+    color: #407fa7;
+    line-height: 110%;
+}
+
+#landing-page #banner-container .banner .content span{
+    color: #d4d5d1;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#landing-page #banner-container .banner .content span.left{
+    margin-left: -16px;
+}
+
+#landing-page #banner-container .banner .content .description{
+    font-family: OpenSans;
+    font-size: 13px;
+    color: #767575;
+    margin-top: 12px;
+    line-height: 150%;
+    margin-bottom: 15px;
+}
+
+#landing-page #banner-container .banner .loading-bar{
+    padding-left: 58px;
+}
+
+
+#body-container{
+    background-color: #d3dddc;
+}
+
+#body-container .body{
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 20px;
+}
+
+#landing-page #body-container .body .main-content{
+    width: 530px;
+    float: left;
+}
+
+#landing-page #body-container .body .right-side-bar{
+    width: 400px;
+    float: right;
+}
+
+#landing-page #body-container .body .main-content .row{
+    margin-bottom: 30px;
+}
+
+#landing-page #body-container .body .main-content .row .icon{
+    float: left;
+    margin-right: 30px;
+}
+
+#landing-page #body-container .body .main-content .row .text{
+    float: left;
+    font-family: OpenSans;
+    font-size: 13px;
+    color: #767575;
+    width: 420px;
+    margin-top: 7px;
+    line-height: 150%;
+}
+
+#landing-page #body-container .body .main-content .row .text .title{
+    font-family: Lustria;
+    font-size: 21px;
+    color: #407fa7; 
+    margin-bottom: 10px;
+}
+
+
+#landing-page #body-container .body .right-side-bar .video-container{
+    margin-bottom: 30px;
+}
+
+#landing-page #body-container .body .right-side-bar .title{
+    font-family: "YanoneKaffeesatz";
+    font-size: 21px;
+    color: #407fa7;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+#landing-page #body-container .body .right-side-bar .underline{
+    background-color: #c4d3d7;
+    height: 1px;
+    margin-bottom: 10px;
+}
+
+#landing-page #body-container .body .right-side-bar .video-container .video{
+    border: 4px solid #fff;
+    border-radius: 5px;
+    min-height: 215px;
+}
+
+#footer-outer-container{
+    background-color: #d3dddc;
+    padding-bottom: 100px;
+    width: 100%;
+}
+
+#footer-container{
+    background: url('/images/footer_bg.png');
+    height: 130px;
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer-container .footer{
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #767575;
+    font-family: "YanoneKaffeesatz";
+    font-size: 16px;
+}
+
+#footer-container .footer a{
+    color: white;
+    text-decoration: underline;
+}
+
+#footer-container .footer .signup-button{
+    width: 574px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 38px;
+}
+
+#footer-container .footer .copy-right{
+    font-family: OpenSans;
+    font-size: 10px;
+    padding-top: 17px;
+}
+
+
+
+
+
+/********************************************************************************/
+/*                           Why My Legacy Plan                                 */
+/********************************************************************************/
+
+
+#why-legacy #banner-outer-container{
+    background: url('/images/banner-top-why-legacy-bk.jpg');
+}
+
+#why-legacy #banner-container{
+    width: 1142px;
+    height: 385px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url('/images/banner-top-why-legacy.jpg');
+}
+
+#why-legacy #banner-container .banner{
+    height: 407px;
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#why-legacy #banner-container .banner .content{
+    width: 535px;
+    height: 240px;
+    padding-left: 70px;
+    padding-top: 40px;
+    font-family: Lustria;
+    font-size: 26px;
+    color: #407fa7;
+    line-height: 110%;
+}
+
+#why-legacy #banner-container .banner .content .title{
+    margin-bottom: 33px;
+    font-family: "Times New Roman";
+    font-size: 36px;
+}
+
+#why-legacy #banner-container .banner .content .description{
+    font-family: OpenSans;
+    font-size: 16px;
+    color: #767575;
+    margin-top: 20px;
+    line-height: 145%;
+    margin-bottom: 15px;
+    width: 400px;
+}
+
+#why-legacy .main-content{
+    margin-left: auto;
+    margin-right: auto;
+    width: 824px;
+}
+
+#why-legacy .main-content .left{
+    float: left;
+    width: 400px;
+}
+
+#why-legacy .main-content .left .video{
+    border: 3px solid #fff;
+    border-radius: 5px;
+    min-height: 215px;
+    margin-bottom: 30px;
+}
+
+#why-legacy .main-content .left .trusted{
+    width: 260px;
+    float: right;
+    margin-right: 5px;
+}
+
+#why-legacy .main-content .left .trusted .title{
+    margin-bottom: 5px;
+    margin-top: 25px;
+    font-family: "Times New Roman";
+    font-size: 25px;
+    color: #437EA6;
+}
+
+#why-legacy .main-content .left .trusted .description{
+    color: #767475;
+    font-family: OpenSans;
+    font-size: 13px;
+    line-height: 150%;
+}
+
+#why-legacy .main-content .left .trusted .description .learn-more{
+    font-size: 14px;
+    text-align: right;
+    padding-right: 12px;
+    margin-top: 4px;
+}
+
+#why-legacy .main-content .left .trusted .description a{
+    color: #437EA6;
+    text-decoration: none;
+}
+
+#why-legacy .main-content .right{
+    float: right;
+    width: 385px;
+    margin-right: 10px;
+    color: #767475;
+    font-family: OpenSans;
+}
+
+#why-legacy .main-content .right .watch-video{
+   width: 330px;
+   margin-top: 33px;
+   padding-left: 45px;
+}
+
+#why-legacy .main-content .right .title{
+    margin-bottom: 26px;
+    font-family: "Times New Roman";
+    font-size: 28px;
+    color: #437EA6;
+}
+
+
+
+#why-legacy .main-content .right .its-free{
+    margin-top: 90px;
+    width: 260px;
+}
+
+
+#why-legacy .main-content .right .its-free .title{
+    margin-bottom: 5px;
+    margin-top: 25px;
+    font-family: "Times New Roman";
+    font-size: 25px;
+    color: #437EA6;
+}
+
+#why-legacy .main-content .right .its-free .description{
+    color: #767475;
+    font-family: OpenSans;
+    font-size: 13px;
+    line-height: 150%;
+}
+
+#why-legacy .main-content .right .its-free .description .learn-more{
+    font-size: 14px;
+    text-align: right;
+    padding-right: 12px;
+    margin-top: 4px;
+}
+
+#why-legacy .main-content .right .its-free .description a{
+    color: #437EA6;
+    text-decoration: none;
+}
+
+/********************************************************************************/
+/*                           How it Works                                 */
+/********************************************************************************/
+
+
+#how-it-works #banner-outer-container{
+    background: url('/images/banner_outer_bk.png');
+}
+
+#how-it-works #banner-container{
+    width: 1280px;
+    height: 407px;
+    margin-left: auto;
+    margin-right: auto;
+    background: url('/images/banner_bk.png');
+}
+
+#how-it-works #banner-container .banner{
+    height: 407px;
+    width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#how-it-works #banner-container .banner .content{
+    width: 350px;
+    height: 240px;
+    padding-left: 55px;
+    padding-top: 40px;
+    font-family: Lustria;
+    font-size: 26px;
+    color: #407fa7;
+    line-height: 110%;
+}
+
+#how-it-works #banner-container .banner .content span{
+    color: #d4d5d1;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#how-it-works #banner-container .banner .content span.left{
+    margin-left: -16px;
+}
+
+#how-it-works #banner-container .banner .content .description{
+    font-family: OpenSans;
+    font-size: 13px;
+    color: #767575;
+    margin-top: 12px;
+    line-height: 150%;
+    margin-bottom: 15px;
+}
+
+#how-it-works #banner-container .banner .loading-bar{
+    padding-left: 58px;
+}
+
+#how-it-works .main-content{
+    height: 20px;
+    border: 1px solid red;
+}

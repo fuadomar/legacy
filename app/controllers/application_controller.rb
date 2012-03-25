@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
       return redirect_url
     end
 
-    return publics_plan_path()
+    return publics_dashboard_path()
   end
 end

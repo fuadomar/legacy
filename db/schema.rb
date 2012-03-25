@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120322065701) do
+ActiveRecord::Schema.define(:version => 20120325111817) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20120322065701) do
     t.string   "profile_image"
     t.string   "physical_status"
     t.text     "notes"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

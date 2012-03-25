@@ -1,112 +1,105 @@
-<%#= link_to(image_tag('/images/get-started.jpg'), publics_plan_path()) -%>
-<div id="text">
-  <div class="guid_text">Guide</div>
-  <!--textarea class="guid_field"> </textarea-->
-</div>
-
-<div id="content_info">
-  <div class="title">
-    Are you creating a plan for yourself or for a loved one?
-  </div>
-
-  <div class="form-container">
-    <div class="image">
-      <%= image_tag('/images/myself.png', :class => 'normal', :id => 'myself') %>
-      <br/><span> Myself </span>
-    </div>
-    <div class="image">
-      <%= image_tag('/images/myself.png', :class => 'selected', :id => 'loved-one') %>
-      <br/><span> Loved one </span>
-    </div>
-    <div class="field_form">
-      <input type="text" name=" " id="first_name" value="" placeholder="First Name" size="10"/>
-      <input type="text" name=" " id="last_name" value="" placeholder="Last Name" size="10"/>
-
-      <div style="margin: 5px 0;">
-        <input type="text" name=" " id="email_address" value="" placeholder="Email Address" size="24"/>
-      </div>
-      <div style="margin: 5px 0;">
-        <input type="text" name=" " id="relationship" value="" placeholder="Relationship" size="24"/>
+<div id="landing-page">
+  <div id="banner-outer-container">
+    <div id="banner-container">
+      <div class="banner">
+        <div class="content">
+          <span class="left">“</span>Creating a legacy plan was easy & now all our end of life
+          wishes are in one place.<span>”</span>
+          <div class="description">
+            A Legacy plan clarifies your wishes and provides instructions
+            so your loved ones know what you want if the event of an untimely passing.
+          </div>
+          <div class="link">
+            <%= image_tag('/images/learn_more_button.png') %>
+          </div>
+        </div>
+        <div class="loading-bar">
+          <%= image_tag('/images/loading_bar.png') %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="get-started-tips">
-    <div class="title">Where do you want to get started?</div>
-    <ul>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/medical_directives_icon.png') %>
-          <%= link_to("Medical directives", new_medical_instruction_path(), :id => "medical_directives_link") -%>
+  <div id="body-container">
+    <div class="body">
+      <div class="main-content">
+        <div class="row">
+          <div class="icon">
+            <%= image_tag('/images/cloud.png') %>
+          </div>
+          <div class="text">
+            <div class="title">
+              You Control Who Sees Your Plan And When
+            </div>
+            Share your plan or just part of your plan with family or important service providers.
+            Or set trigger events to automatically share if you get sick or die.
+          </div>
+          <div class="clear"></div>
         </div>
-        make important medical decisions before its too late
-      </li>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/memorial_icon.png') %>
-          <%= link_to "Memorial", '' %>
+        <div class="row">
+          <div class="icon">
+            <%= image_tag('/images/shield.png') %>
+          </div>
+          <div class="text">
+            <div class="title">
+              Easy To Understand Checklists
+            </div>
+            We provide simple checklists in plain English so you can understand your options and choices.
+          </div>
+          <div class="clear"></div>
         </div>
-        plan aspects of your memorial service ahead of time
-      </li>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/my_things.png') %>
-          <%= link_to "My things", '' %>
+        <div class="row">
+          <div class="icon">
+            <%= image_tag('/images/comments.png') %>
+          </div>
+          <div class="text">
+            <div class="title">
+              Easy To Understand Checklists
+            </div>
+            Thousands of people have created Legacy plans with confidence.
+            We use 128-bit SSl encryption- the same security that banks use- to keep your information safe and secure.
+          </div>
+          <div class="clear"></div>
         </div>
-        organize you assets and gifting
-      </li>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/fanincial.png') %>
-          <%= link_to "Financial", '' %>
+        <div class="row">
+          <div class="icon">
+            <%= image_tag('/images/calender.png') %>
+          </div>
+          <div class="text">
+            <div class="title">
+              Create Wills And Other Legal Documents
+            </div>
+            Once your enter your wishes, you can create basic wills and legal documents by upgrading to our premium service.
+          </div>
+          <div class="clear"></div>
         </div>
-        store important account information
-      </li>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/gaurdianship.png') %>
-          <%= link_to "Guardianship", '' %>
+      </div>
+      <div class="right-side-bar">
+        <div class="video-container">
+          <div class="title">
+            Find out more about My Legacy Plan
+          </div>
+          <div class="underline"></div>
+          <div class="video">
+            <object style="height: 215px; width: 396px">
+              <param name="movie" value="https://www.youtube.com/v/4tBr30j4Wn0?version=3&feature=player_embedded">
+              <param name="allowFullScreen" value="true">
+              <param name="allowScriptAccess" value="always">
+              <embed src="https://www.youtube.com/v/4tBr30j4Wn0?version=3&feature=player_embedded" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="392" height="215">
+            </object>
+          </div>
         </div>
-        set up guardianship for your children and pets
-      </li>
-      <li>
-        <div class="tips-link">
-          <%= image_tag('/images/will_and_trust.png') %>
-          <%= link_to "Will and Trust", '' %>
+        <div class="screenshots-container">
+          <div class="title">
+            Find out more about My Legacy Plan
+          </div>
+          <div class="underline"></div>
+          <div class="screenshots">
+            <%= image_tag('/images/screen_shots.png') %>
+          </div>
         </div>
-        create legally binding documents
-      </li>
-    </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $("#medical_directives_link").click(function(){
-    //alert($(this).attr('href'));
-    document.location.href = $(this).attr('href') + "?first_name=" + $("#first_name").val() + "&last_name=" + $("#last_name").val() +
-      "&email_address=" + $("#email_address").val() + "&relationship=" + $("#relationship").val();
-    return false;
-  });
-</script>
-
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".form-container .image img").click(function(){
-      $(".form-container .image img").removeClass('selected');
-      $(".form-container .image img").addClass('normal');
-      $(this).removeClass('normal');
-      $(this).addClass("selected");
-    });
-
-    $('#myself').click(function(){
-      $('#relationship').val('myself');
-      $('#relationship').hide();
-    });
-
-    $('#loved-one').click(function(){
-      $('#relationship').val('');
-      $('#relationship').show();
-    });
-  });
-</script>

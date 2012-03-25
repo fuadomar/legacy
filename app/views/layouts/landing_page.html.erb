@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>My Legacy</title>
+    <%= stylesheet_link_tag "landing" %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "jquery-ui", "jquery.watermark" %>
+    <%= csrf_meta_tag %>
+    <link rel="shortcut icon" href="/images/favicon.jpg" />
+  </head>
+  <body>
+    <div id="full_container">
+      <div id="header-container">
+        <div id="header">
+          <div class="logo">
+            <%= link_to image_tag('/images/logo-1.png'), root_path %>
+          </div>
+          <div class="top-menu-container">
+            <div class="menu">
+              <%= link_to image_tag('/images/menu_text_why.png'), publics_why_my_legacy_plan_path %>
+            </div>
+            <div class="menu">
+              <%= link_to image_tag('/images/menu_text_how.png'), publics_how_it_works_path %>
+            </div>
+            <div class="menu">
+              <%= image_tag('/images/menu_text_resources.png') %>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="right-menu">
+            <div class="login-container">
+              <div class="call">CALL: 1-800-555-5555</div>
+              <div class="login">
+                <%= image_tag('/images/lock.png') %>
+                <%= link_to 'Log In', '/users/sign_in' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="free-plan">
+              <%= link_to image_tag('/images/start_free_plan_button.png'), '/users/sign_up' %>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+
+      <%= yield -%>
+
+      <div id="footer-outer-container">
+        <div id="footer-container">
+          <div class="footer">
+            <div class="signup-button">
+              <%= link_to image_tag('/images/sign_up_button.png'), '/users/sign_up' %>
+            </div>
+            Need more information, check out the <a href="">learn more</a> page.
+            <div class="copy-right">
+              &copy;2012 My Legacy Plan
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

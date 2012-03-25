@@ -79,7 +79,7 @@ class MedicalInstructionsController < ApplicationController
       #session[:plan_attributes] = nil
       session[:medical_instruction_attributes] = nil
       session[:agent_attributes] = nil
-      redirect_to(publics_plan_path, :notice => "Your instructions saved successfully.")
+      redirect_to(publics_dashboard_path, :notice => "Your instructions saved successfully.")
     else
       message = "Failed to save your instruction."
       render(:new)
@@ -199,7 +199,7 @@ class MedicalInstructionsController < ApplicationController
     end
     respond_to do |format|
       if success
-        format.html { redirect_to publics_plan_path, :notice => 'Successfully Authorized' }
+        format.html { redirect_to publics_dashboard_path, :notice => 'Successfully Authorized' }
         format.xml
       else
         format.html { redirect_to review_medical_instructions_path, :notice => 'Failed To Authorized' }

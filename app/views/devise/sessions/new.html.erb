@@ -1,17 +1,25 @@
-<h2>Sign in</h2>
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Welcome',
+  :heading => 'Please sign in'} %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+<div class="content-container">
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'sign_in new_user_common'} ) do |f| %>
+    <div class="single-field"><%= f.label :email %>
+      <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <div class="single-field"><%= f.label :password %>
+      <%= f.password_field :password %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+    <% if devise_mapping.rememberable? -%>
+      <div class="single-field">
+        <%= f.check_box :remember_me, :class=>'checkbox' %> <%= f.label :remember_me, :class => 'inline' %>
+      </div>
+    <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+    <%= image_submit_tag "/images/sign_in_button.png", { :name => "sign_in", :id => "sign_in_button" } %>
 
-<%= render :partial => "devise/shared/links" %>
+  <% end %>
+  <div class="extra_links">
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+</div>
