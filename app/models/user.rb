@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :families
   has_many :friends
 
-  validates_presence_of :first_name, :last_name, :address, :date_of_birth
+  validates_presence_of :first_name, :last_name, :date_of_birth
 
   mount_uploader :profile_image, ProfileImageUploader
 
