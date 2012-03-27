@@ -4,6 +4,6 @@ class AddGenderToUsers < ActiveRecord::Migration
   end
 
   def self.down
-    remove_column(:musers, :gender)
+    remove_column(:users, :gender)
   end
 end

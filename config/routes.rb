@@ -36,7 +36,8 @@ NasceniaRailsTemplate::Application.routes.draw do
 
   resources :agents
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+
 
   get "publics/index"
   get "publics/dashboard"

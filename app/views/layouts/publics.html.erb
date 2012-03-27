@@ -37,7 +37,7 @@
               <div class="clear"></div>
             </div>
             <div class="free-plan">
-              <%= link_to image_tag('/images/start_free_plan_button.png'), '/users/sign_up' %>
+              <%= link_to image_tag('/images/start_free_plan_button.png'), current_user.present? ? publics_dashboard_path : new_user_registration_path %>
             </div>
           </div>
           <div class="clear"></div>
@@ -50,7 +50,7 @@
         <div id="footer-container">
           <div class="footer">
             <div class="signup-button">
-              <%= link_to image_tag('/images/sign_up_button.png'), '/users/sign_up' %>
+              <%= link_to image_tag('/images/sign_up_button.png'), new_user_registration_path %>
             </div>
             Need more information, check out the <a href="">learn more</a> page.
             <div class="copy-right">
