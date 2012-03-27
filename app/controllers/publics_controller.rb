@@ -1,4 +1,6 @@
 class PublicsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:dashboard]
+  
   def index
     respond_to do |format|
       format.html { render :layout => 'landing_page'}

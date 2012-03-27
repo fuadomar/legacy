@@ -146,6 +146,7 @@ class MedicalInstructionsController < ApplicationController
 
 
   def agreement
+    @medical = current_user.default_plan.medical_instructions.first
     respond_to do |format|
       format.html
       format.xml
@@ -153,6 +154,7 @@ class MedicalInstructionsController < ApplicationController
   end
 
   def requirements
+    @medical = current_user.default_plan.medical_instructions.first
     respond_to do |format|
       format.html
       format.xml
@@ -160,6 +162,9 @@ class MedicalInstructionsController < ApplicationController
   end
 
   def review
+    @medical = current_user.default_plan.medical_instructions.first if current_user.present?
+    @agent = current_user.default_plan.medical_instructions.first.agents.first if current_user.present? && current_user.default_plan.medical_instructions.first.present?
+    @agent = Agent.find(session[:agent_id]) if @agent.blank? && session[:agent_id].present?
     respond_to do |format|
       format.html
       format.xml

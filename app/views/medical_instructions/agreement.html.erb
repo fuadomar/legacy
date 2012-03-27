@@ -49,8 +49,7 @@
         <div class="aggreed_input">
           Yes
           <div class="checkbox">
-            <% medical = current_user.default_plan.medical_instructions.first %>
-            <% if session[:agreement].present? || (medical.present? && medical.instructions_agreement.present?) %>
+            <% if session[:agreement].present? || (@medical.present? && @medical.instructions_agreement.present?) %>
               <%= check_box_tag(:terms_of_service, 1, true) %>
             <% else %>
               <%= check_box_tag(:terms_of_service) %>

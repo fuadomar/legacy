@@ -8,10 +8,6 @@
     <%= render :partial => 'shared/tab_menu' %>
 
     <div class="content review">
-      <% medical = current_user.default_plan.medical_instructions.first if current_user.present? %>
-      <% agent = current_user.default_plan.medical_instructions.first.agents.first if current_user.present? && current_user.default_plan.medical_instructions.first.present? %>
-      <% agent = Agent.find(session[:agent_id]) if agent.blank? && session[:agent_id].present? %>
-
       <h2>Your Answers At A Glance?</h2>
       <p>
         This is important stuff and you want to make sure you have all the
@@ -40,7 +36,7 @@
               Completed:
             </div>
             <div class="completion_image">
-              <% instructions_agreement = session[:agreement].present? || (medical.present? && medical.instructions_agreement?) ? "yes" : "no" %>
+              <% instructions_agreement = session[:agreement].present? || (@medical.present? && @medical.instructions_agreement?) ? "yes" : "no" %>
               <div class="<%= instructions_agreement %>"></div>
             </div>
             <div class="clear"></div>
@@ -76,7 +72,7 @@
               Completed:
             </div>
             <div class="completion_image">
-              <% requirements_agreement = session[:requirements].present? || (medical.present? && medical.requirements_agreement?) ? "yes" : "no" %>
+              <% requirements_agreement = session[:requirements].present? || (@medical.present? && @medical.requirements_agreement?) ? "yes" : "no" %>
               <div class="<%= requirements_agreement %>"></div>
             </div>
             <div class="clear"></div>
@@ -166,7 +162,7 @@
         </div>
         <div class="control_buttons">
           <div class="edit_button">
-            <%= link_to 'Edit', agent.present? ? edit_agent_path(agent) : new_agent_path %>
+            <%= link_to 'Edit', @agent.present? ? edit_agent_path(@agent) : new_agent_path %>
           </div>
           <div class="divider">
             <%= image_tag('/images/divider_3.png') %>
@@ -176,7 +172,7 @@
               Completed:
             </div>
             <div class="completion_image">
-              <% is_agent = agent.present? ? "yes" : "no" %>
+              <% is_agent = @agent.present? ? "yes" : "no" %>
               <div class="<%= is_agent %>"></div>
             </div>
             <div class="clear"></div>
@@ -191,8 +187,8 @@
           <div class="info_name">
             Agent Name:
           </div>
-          <div class="info_value <%= "red" if agent.blank? || agent.name.blank? %>">
-            <%= agent.present? && agent.name.present? ? agent.name : '-------------' %>
+          <div class="info_value <%= "red" if @agent.blank? || @agent.name.blank? %>">
+            <%= @agent.present? && @agent.name.present? ? @agent.name : '-------------' %>
           </div>
         </div>
 
@@ -201,8 +197,8 @@
             <div class="info_name">
               Agent Phone Number:
             </div>
-            <div class="info_value <%= "red" if agent.blank? || agent.home_phone.blank? %>">
-              <%= agent.present? && agent.home_phone.present? ? agent.home_phone : '-------------' %>
+            <div class="info_value <%= "red" if @agent.blank? || @agent.home_phone.blank? %>">
+              <%= @agent.present? && @agent.home_phone.present? ? @agent.home_phone : '-------------' %>
             </div>
           </div>
           <div class="divider">
@@ -212,8 +208,8 @@
             <div class="info_name">
               Agent Cell Phone Number:
             </div>
-            <div class="info_value <%= "red" if agent.blank? || agent.cell_phone.blank? %>">
-              <%= agent.present? && agent.cell_phone.present? ? agent.cell_phone : '-------------' %>
+            <div class="info_value <%= "red" if @agent.blank? || @agent.cell_phone.blank? %>">
+              <%= @agent.present? && @agent.cell_phone.present? ? @agent.cell_phone : '-------------' %>
             </div>
           </div>
           <div class="clear"></div>
@@ -222,16 +218,16 @@
           <div class="info_name">
             Agent Address:
           </div>
-          <div class="info_value <%= "red" if agent.blank? || agent.address.blank? %>">
-            <%= agent.present? && agent.address.present? ? agent.address : '-------------' %>
+          <div class="info_value <%= "red" if @agent.blank? || @agent.address.blank? %>">
+            <%= @agent.present? && @agent.address.present? ? @agent.address : '-------------' %>
           </div>
         </div>
         <div class="single_information">
           <div class="info_name">
             Agent Relationship:
           </div>
-          <div class="info_value <%= "red" if agent.blank? || agent.relationship.blank? %>">
-            <%= agent.present? && agent.relationship.present? ? agent.relationship : '-------------' %>
+          <div class="info_value <%= "red" if @agent.blank? || @agent.relationship.blank? %>">
+            <%= @agent.present? && @agent.relationship.present? ? @agent.relationship : '-------------' %>
           </div>
         </div>
       </div>
@@ -297,7 +293,7 @@
         </div>
         <div class="control_buttons">
           <div class="edit_button">
-            <%= link_to 'Edit', medical.present? ? edit_medical_instruction_path(medical.id) : new_medical_instruction_path %>
+            <%= link_to 'Edit', @medical.present? ? edit_medical_instruction_path(@medical) : new_medical_instruction_path %>
           </div>
           <div class="divider">
             <%= image_tag('/images/divider_3.png') %>
@@ -307,7 +303,7 @@
               Completed:
             </div>
             <div class="completion_image">
-              <div class="<%= medical.present? ? "yes" : "no" %>"></div>
+              <div class="<%= @medical.present? ? "yes" : "no" %>"></div>
             </div>
             <div class="clear"></div>
           </div>
@@ -321,8 +317,8 @@
           <div class="info_name">
             Your Statement On Your End Of LIfe Instructions:
           </div>
-          <div class="info_value <%= "red" if medical.blank? || medical.wish.blank? %>">
-            <%= medical.present? && medical.wish.present? ? medical.wish : '-------------' %>
+          <div class="info_value <%= "red" if @medical.blank? || @medical.wish.blank? %>">
+            <%= @medical.present? && @medical.wish.present? ? @medical.wish : '-------------' %>
           </div>
         </div>
 
@@ -345,9 +341,9 @@
               </li>
             </ul>
           </div>
-          <div class="info_value <%= "red" if medical.blank? || medical.incurable_condition_choice.blank? %>">
-            <%= medical.blank? || medical.incurable_condition_choice.blank? ? '-------------' :
-              medical.incurable_condition_choice == MedicalInstruction::LIFE_SUPPORT_ON ? 'No, Do Not Prolong My Life. Remove artificial life support, make me comfortable,and let nature take it\'s course' :
+          <div class="info_value <%= "red" if @medical.blank? || @medical.incurable_condition_choice.blank? %>">
+            <%= @medical.blank? || @medical.incurable_condition_choice.blank? ? '-------------' :
+              @medical.incurable_condition_choice == MedicalInstruction::LIFE_SUPPORT_ON ? 'No, Do Not Prolong My Life. Remove artificial life support, make me comfortable,and let nature take it\'s course' :
               'Yes, Keep me on life support. Use any medically reasonable treatments to keep me alive' %>
           </div>
         </div>
@@ -355,8 +351,8 @@
           <div class="info_name">
             Owners Comments:
           </div>
-          <div class="info_value <%= "red" if medical.blank? || medical.incurable_condition_comment.blank? %>">
-            <%= medical.present? && medical.incurable_condition_comment.present? ? medical.incurable_condition_comment : '-------------' %>
+          <div class="info_value <%= "red" if @medical.blank? || @medical.incurable_condition_comment.blank? %>">
+            <%= @medical.present? && @medical.incurable_condition_comment.present? ? @medical.incurable_condition_comment : '-------------' %>
           </div>
         </div>
 
@@ -383,9 +379,9 @@
               </li>
             </ul>
           </div>
-          <div class="info_value <%= "red" if medical.blank? || medical.irreversible_damage_choice.blank? %>">
-            <%= medical.blank? || medical.irreversible_damage_choice.blank? ? '-------------' :
-              medical.irreversible_damage_choice == MedicalInstruction::LIFE_SUPPORT_ON ? 'No, Do Not Prolong My Life. Remove artificial life support, make me comfortable,and let nature take it\'s course' :
+          <div class="info_value <%= "red" if @medical.blank? || @medical.irreversible_damage_choice.blank? %>">
+            <%= @medical.blank? || @medical.irreversible_damage_choice.blank? ? '-------------' :
+              @medical.irreversible_damage_choice == MedicalInstruction::LIFE_SUPPORT_ON ? 'No, Do Not Prolong My Life. Remove artificial life support, make me comfortable,and let nature take it\'s course' :
               'Yes, Keep me on life support. Use any medically reasonable treatments to keep me alive' %>
           </div>
         </div>
@@ -393,8 +389,8 @@
           <div class="info_name">
             Owners Comments:
           </div>
-          <div class="info_value <%= "red" if medical.blank? || medical.irreversible_damage_comment.blank? %>">
-            <%= medical.present? && medical.irreversible_damage_comment.present? ? medical.irreversible_damage_comment : '-------------' %>
+          <div class="info_value <%= "red" if @medical.blank? || @medical.irreversible_damage_comment.blank? %>">
+            <%= @medical.present? && @medical.irreversible_damage_comment.present? ? @medical.irreversible_damage_comment : '-------------' %>
           </div>
         </div>
       </div>
@@ -412,9 +408,9 @@
               Are All Above Sections Completed
             </div>
             <div class="completion_image">
-      <% is_all_completed = (session[:agreement].present? || (medical.present? && medical.instructions_agreement?)) &&
-        (session[:requirements].present? || (medical.present? && medical.requirements_agreement?)) &&
-        current_user.name.present? && agent.present? && medical.present? ? 'yes' : 'no' %>
+      <% is_all_completed = (session[:agreement].present? || (@medical.present? && @medical.instructions_agreement?)) &&
+        (session[:requirements].present? || (@medical.present? && @medical.requirements_agreement?)) &&
+        current_user.name.present? && @agent.present? && @medical.present? ? 'yes' : 'no' %>
                <div class="<%= is_all_completed %>"></div>
             </div>
             <div class="clear"></div>
@@ -439,7 +435,7 @@
       <div class="review-submit">
         <div class="authorize-time">
           LAST AUTHORIZED:
-          <%= (medical.present? && medical.authorized_at.present?) ? medical.authorized_at.strftime("%d/%m/%Y AT %I:%M %p") : 'NEVER' %>
+          <%= (@medical.present? && @medical.authorized_at.present?) ? @medical.authorized_at.strftime("%d/%m/%Y AT %I:%M %p") : 'NEVER' %>
         </div>
         <div class="authorize-submit">
           <%= image_submit_tag('/images/click_to_authorize_button.png', :id => 'review_submit')  %>

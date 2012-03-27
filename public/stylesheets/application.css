@@ -230,7 +230,7 @@ img{
 }
 
 #body-container .body-content .title-container .row-2 .content{
-    float: left;
+/*    float: left;*/
     font-family: OpenSans;
     font-size: 18px;
     color: #065c92;
