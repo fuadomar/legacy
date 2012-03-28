@@ -1,0 +1,41 @@
+<div id="real-estate-show">
+
+<p>
+  <b>Real estate type:</b>
+  <%= @real_estate.real_estate_type %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @real_estate.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @real_estate.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @real_estate.state %>
+</p>
+
+<p>
+  <b>Deed:</b>
+  <%= @real_estate.deed %>
+</p>
+
+<p>
+  <b>Photo:</b>
+  <%= image_tag(@real_estate.photo.to_s, :height => 200) if @real_estate.photo.present? %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @real_estate.note %>
+</p>
+
+</div>
+
+<%#= link_to 'Edit', edit_real_estate_path(@real_estate) %>
+<%#= link_to 'Back', real_estates_path %>

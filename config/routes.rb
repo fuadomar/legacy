@@ -1,4 +1,8 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :possessions
+
+  resources :real_estates
+
   resources :relationships
 
   resources :families, :controller => :relationships
@@ -37,7 +41,6 @@ NasceniaRailsTemplate::Application.routes.draw do
   resources :agents
 
   devise_for :users, :controllers => {:registrations => "registrations"}
-
 
   get "publics/index"
   get "publics/dashboard"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120327114316) do
+ActiveRecord::Schema.define(:version => 20120328060304) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -61,6 +61,26 @@ ActiveRecord::Schema.define(:version => 20120327114316) do
   create_table "plans", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "possessions", :force => true do |t|
+    t.integer  "plan_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "real_estates", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "real_estate_type"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "deed"
+    t.string   "photo"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

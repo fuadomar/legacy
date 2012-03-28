@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @possession.plan_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @possession.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_possession_path(@possession) %> |
+<%= link_to 'Back', possessions_path %>

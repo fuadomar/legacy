@@ -104,11 +104,11 @@
 }
 
 #new_medical_instruction .tab-menu .tab .number .complete img{
-     width: 16px;
+    width: 16px;
 }
 
 #new_medical_instruction .tab-menu .tab.active .number .complete img{
-   width: 16px;
+    width: 16px;
 }
 
 #new_medical_instruction .tab-menu .tab.active .number{
@@ -595,9 +595,9 @@ cccccc
 }
 
 #new_medical_instruction div.bordered_box div.aggreed_input .checkbox{
-   position: absolute;
-   top: 13px;
-   right: 92px;
+    position: absolute;
+    top: 13px;
+    right: 92px;
 }
 
 #new_medical_instruction div.user_agreed .text{
@@ -702,7 +702,7 @@ img.aditional_agent {
     border-bottom: 1px solid #cccccc;
     padding-bottom: 2px;
     padding-left: 15px;
-/*    border: 1px solid green;*/
+    /*    border: 1px solid green;*/
 }
 
 .content div.user_infromation div.single_information .divider {
@@ -718,7 +718,7 @@ img.aditional_agent {
     float: left;
     display: inline-block;
     width: 250px;
-/*    border: 1px solid red;*/
+    /*    border: 1px solid red;*/
 }
 
 
@@ -904,7 +904,7 @@ img.aditional_agent {
 /*  general - by khaled
 --------------------------------------------  */
 #body-container .body-content .content-container{
-    min-height: 500px;
+    min-height: 450px;
 }
 
 .content-container a{
@@ -1003,4 +1003,331 @@ form.create_account .single-row .single-field{
 
 form.create_account .single-row .last{
     float: right;
+}
+
+/*  Edit user form
+---------------------------------------------*/
+form.edit_user {
+    font-family: Verdana, Arial;
+    font-size: 14px;
+    color: #3a3a3a;
+    width: 560px;
+    margin-top: 0px;
+}
+
+
+
+form.edit_user .single-row {
+    margin-bottom: 10px;
+}
+
+
+form.edit_user .single-row .attribute-name {
+    display: inline-block;
+    float: left;
+    width: 75px;
+    height: 25px;
+    padding-top: 5px;
+}
+
+form.edit_user .single-row .form-input-fields {
+    float: left;
+    display: none;
+    width: 418px;
+    padding-left: 58px;
+}
+
+form.edit_user .single-row .text {
+    display: inline-block;
+    float: left;
+    padding-left: 55px;
+    width: 330px;
+    height: 25px;
+    padding-top: 5px;
+}
+
+form.edit_user .single-row .change-link {
+    float: right;
+    height: 25px;
+    padding-top: 5px;
+    margin-right: 10px;
+    color: #377fac;
+    display: inline-block;
+}
+
+form.edit_user .single-row .change-link a{
+    color: #377fac;
+    text-decoration: none;
+}
+
+
+form.edit_user .single-row .form-input-fields input[type=text],
+form.edit_user .single-row .form-input-fields input[type=password] {
+    width: 185px;
+    height: 26px;
+}
+
+form.edit_user .single-row .form-input-fields select {
+    height: 26px;
+}
+
+
+
+form.edit_user .single-row .form-input-fields .top-field {
+    margin-bottom: 20px;
+}
+
+form.edit_user .single-row .last {
+    float: left;
+    margin-left: 17px;
+}
+
+form.edit_user div.save_change_button_container {
+    width: 100%;
+    text-align: right;
+    margin-top: 43px;
+    display: none;
+}
+
+form.edit_user .single-row .single-field {
+    float: left;
+    width: 198px;
+    margin-bottom: 0px;
+}
+
+form.edit_user .single-row .long-field {
+    width: 300px;
+}
+
+/************************************************************************************/
+/*********                       Possesions                               ***********/
+/************************************************************************************/
+#possessions{
+    min-height: 200px;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+#possessions .title{
+    text-align: center;
+    color: white;
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: #6E6E6C;
+    width: 300px;
+    height: 29px;
+    padding-top: 14px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+#possessions .title.small{
+  width: 200px;
+  font-size: 14px;
+}
+
+#possessions .heading{
+    font-family: Arial;
+    font-size: 11px;
+    font-weight: bold;
+    color: #787878;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+    height: 32px;
+    padding-top: 13px;
+    background: url('/images/table_head_strip.png');
+}
+
+#possessions .heading span{
+    padding-left: 100px;
+}
+
+#possessions .row{
+    border: 1px solid #ccc;
+    border-top: 0px;
+    height: 41px;
+    font-family: Arial;
+    font-size: 13px;
+}
+
+#possessions .row .category, #possessions .row .item{
+    border-right: 1px solid #ccc;
+    float: left;
+    padding-top: 10px;
+    height: 31px;
+}
+
+#possessions .row .category{
+    width: 100px;
+    text-align: center;
+}
+
+#possessions .row .item{
+    width: 419px;
+    padding-left: 15px;
+}
+
+#possessions .row .link-container{
+    float: left;
+    padding-top: 7px;
+    padding-left: 5px;
+
+}
+
+#possessions .row .link-container .link{
+    float: left;
+    margin-right: 3px;
+    margin-left: 3px;
+    width: 45px;
+    text-align: center;
+    padding-top: 4px;
+    height: 21px;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    background: url('/images/table_head_strip.png');
+    background-position: bottom;
+}
+
+#possessions .row .link-container .link a{
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 12px;
+    color: #6D6D6D;
+}
+
+
+#possessions .category-select{
+    border: 1px solid #ccc;
+    border-top: 0px;
+    height: 40px;
+    position: relative;
+    display: none;
+}
+
+#possessions .category-select .label{
+    padding-left: 20px;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    color: #787878;
+    padding-top: 12px;
+    width: 200px;
+    float: left;
+}
+
+#possessions .category-select .value{
+    float: left;
+    padding-top: 10px;
+}
+
+#possessions .category-select .select{
+    float: right;
+    padding-right: 6px;
+    padding-top: 7px;
+    cursor: pointer;
+}
+
+#possessions .category-select .drop-down{
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    border: 1px solid #ccc;
+    width: 262px;
+    background-color: #fff;
+    display: none;
+}
+
+#possessions .category-select .drop-down .drop-item{
+    padding-left: 8px;
+    color: #7b7b7b;
+    font-family: Arial;
+    font-size: 13px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    cursor: pointer;
+}
+
+#possessions .category-select .drop-down .drop-item:hover{
+    color: #fff;
+    background-color: #3C57A7;
+}
+
+
+#possessions .new-item-form{
+    border: 1px solid #ccc;
+}
+
+#possessions .new-item-form .field{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 0px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+}
+
+#possessions .new-item-form .field .label{
+    width: 200px;
+    padding-left: 10px;
+    float: left;
+}
+
+#possessions .new-item-form .field .input-field{
+    float: left;
+}
+
+#possessions .new-item-form .field input{
+    width: 430px;
+    font-family: Arial;
+    font-size: 13px;
+}
+
+#possessions .new-item-form .field select{
+    width: 435px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 13px;
+}
+
+#possessions .new-item-form .field textarea{
+    font-family: Arial;
+    font-size: 13px;
+    width: 430px;
+    height: 50px;
+}
+
+#possessions .new-item-form .actions{
+    width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+
+#possessions .new-item-form .actions input{
+    width: 150px;
+    background-color: #eee;
+    border: 1px solid #787878;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#possessions .new-item-form .actions input:hover{
+    background-color: #fff;
+}
+
+#possessions .add-new-button{
+    position: absolute;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+
+/********************************************************************************/
+/********                         real-estate-show                        *******/
+/********************************************************************************/
+
+#real-estate-show{
+    border: 3px solid #aaa;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 15px;
 }

@@ -38,12 +38,12 @@
     <div class="clear"></div>
   </div>
 
-  <div class="menu">
+  <div class="menu" onclick="location.href='<%= possessions_path %>'">
     <div class="icon">
       <%= image_tag('/images/icon_my_things.png') %>
     </div>
     <div class="link">
-      <%= link_to "My Possessions" %>
+      <%= link_to "My Possessions", possessions_path %>
     </div>
     <div class="clear"></div>
   </div>
@@ -61,7 +61,7 @@
       <%= image_tag('/images/icon_financial.png') %>
     </div>
     <div class="link">
-      <%= link_to "Financial Accounts" %>
+      <%= link_to "Financial & Accounts" %>
     </div>
     <div class="clear"></div>
   </div>

@@ -1,0 +1,87 @@
+<%= form_for(@real_estate) do |f| %>
+  <!--
+  <%# if @real_estate.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@real_estate.errors.count, "error") %> prohibited this real_estate from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @real_estate.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <%#*<div class="field">%>
+  <%#= f.label :possession_id %>
+  <%#= f.text_field :possession_id %>
+  <%#*</div>%>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :real_estate_type, 'Type of Real Estate' %>
+    </div>
+    <div class="input-field">
+      <%= f.select :real_estate_type, RealEstate::get_types %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :address %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :address %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :city %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :city %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :state %>
+    </div>
+    <div class="input-field">
+      <%= f.select :state, [['CA', 'CA'], ['AD', 'AD']] %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :deed, 'Upload a deed' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :deed %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :photo, 'Upload a photo' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :photo %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

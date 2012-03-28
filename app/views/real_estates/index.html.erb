@@ -1,0 +1,37 @@
+<h1>Listing real_estates</h1>
+
+<table>
+  <tr>
+    <th>Possession</th>
+    <th>Real estate type</th>
+    <th>Address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Deed</th>
+    <th>Photo</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @real_estates.each do |real_estate| %>
+  <tr>
+    <td><%= real_estate.possession_id %></td>
+    <td><%= real_estate.real_estate_type %></td>
+    <td><%= real_estate.address %></td>
+    <td><%= real_estate.city %></td>
+    <td><%= real_estate.state %></td>
+    <td><%= real_estate.deed %></td>
+    <td><%= real_estate.photo %></td>
+    <td><%= real_estate.note %></td>
+    <td><%= link_to 'Show', real_estate %></td>
+    <td><%= link_to 'Edit', edit_real_estate_path(real_estate) %></td>
+    <td><%= link_to 'Destroy', real_estate, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Real estate', new_real_estate_path %>

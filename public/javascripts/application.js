@@ -22,3 +22,8 @@ $(document).ready(function(){
     });
 
 });
+
+
+$(document).ready(function(){
+    $('a[rel*=facebox]').facebox();
+});

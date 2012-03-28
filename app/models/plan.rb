@@ -3,6 +3,7 @@ class Plan < ActiveRecord::Base
   has_many :medical_instructions
   has_many :memorials
   has_many :sharing_rules
+  has_many :possessions
 
   validates :title, :presence => true
 

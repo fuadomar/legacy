@@ -1,0 +1,88 @@
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'My Possessions',
+  :heading => 'Gifting, Personal Items, Major Assets and More'} %>
+
+<div class="content-container">
+  <div id="possessions">
+    <div class="title">FILL OUT YOUR INFORMATION BELOW</div>
+    <div class="heading">
+      Category <span>Item Name</span>
+    </div>
+
+    <% if @possessions.present? %>
+      <% possession = @possessions.first %>
+      <% if possession.real_estates.present? %>
+        <% possession.real_estates.each do |real_estate| %>
+          <div class="row">
+            <div class="category">
+              Real estate
+            </div>
+            <div class="item">
+              <%= real_estate.real_estate_type %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', real_estate, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_real_estate_path(real_estate), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div class="category-select">
+      <div class="label">Category</div>
+      <div class="value"></div>
+      <div class="select">
+        <%= image_tag('/images/pulldown.png', :id => 'select_category') %>
+      </div>
+      <div class="clear"></div>
+      <div class="drop-down">
+        <div class="drop-item" id="Real-estate">Real Estate</div>
+        <div class="drop-item" id="Vehicle">Vehicle</div>
+        <div class="drop-item" id="Furniture">Furniture</div>
+        <div class="drop-item" id="Jewelry">Jewelry</div>
+        <div class="drop-item" id="Artwork">Artwork</div>
+        <div class="drop-item" id="Safe-Deposit-Box">Safe Deposit Box</div>
+        <div class="drop-item" id="In-home-safe">In-home safe</div>
+        <div class="drop-item" id="Other">Other</div>
+      </div>
+    </div>
+
+    <div class="new-item-form hidden" id="Real-estate-form">
+      <%= render :partial => 'real_estates/form' %>
+    </div>
+
+    <div class="add-new-button">
+      <%= image_tag('/images/new_entry_button.png', :id => 'add_new_item') %>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#add_new_item').bind('click', function(){
+      $('.category-select').show();
+      return false;
+    });
+
+    $('#select_category').bind('click', function(){
+      $('.drop-down').show();
+    });
+
+    $('.drop-item').bind('click', function(){
+      $('.drop-down').hide();
+      var id = $(this).attr('id');
+      $('.category-select .value').html(id);
+      $('.new-item-form').hide();
+      $('#'+id+'-form').show();
+    });
+  });
+</script>

@@ -1,44 +1,163 @@
-<div class="page-banner">
-  <img src="/images/my-profile-banner.png"/>
-  <label>My Profile</label>
-  <br/>Share your plans and information with friends and family.
-  With my legacy Plan, you control who has access to what information and
-  how they can access the information.
-</div>
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'My Account',
+  :heading => 'Account settings and Password'} %>
 
-<div class="edit-profile">
-  <div class="sections">
-    <div class="section" id="sub-menu-profile">My Profile</div>
-    <div class="section inactive" id="sub-menu-family">My Family</div>
-    <div class="section last inactive" id="sub-menu-friends">My Friends</div>
-  </div>
+<div class="content-container">
 
+<!--h2>Edit <%= resource_name.to_s.humanize %></h2-->
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true, :class => "edit_user new_user_common"}) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="sub-menu-content" id="profile">
-    <%= render :partial => 'profile' %>
-  </div>
+    <div class="single-row">
+      <div class="attribute-name">
+        Name:
+      </div>
+      <div class="text">
+        <%= current_user.first_name + " " + current_user.last_name %>
+      </div>
+      <div class="form-input-fields">
+        <div class="single-field">
+          <%= f.text_field :first_name, :size => 11, :placeholder => 'First' %>
+        </div>
+        <div class="single-field last">
+          <%= f.text_field :last_name, :size => 13, :placeholder => 'Last' %>
+        </div>
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
 
-  <div class="sub-menu-content hidden" id="family">
-    <%= render :partial => 'fnf', :locals => { :type => 'family'} %>
-  </div>
+    <div class="single-row">
+      <div class="attribute-name">
+        Email:
+      </div>
+      <div class="form-input-fields">
+        <div class="single-field">
+          <%= f.text_field :email, :size => 28 %>
+        </div>
+        <div class="single-field last">
+          <%= f.text_field :email, :size => 28 %>
+        </div>
+      </div>
+      <div class="text">
+        <%= current_user.email %>
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
 
-  <div class="sub-menu-content hidden" id="friends">
-    <%= render :partial => 'fnf', :locals => { :type => 'friend'} %>
-  </div>
+    <div class="single-row">
+      <div class="attribute-name">
+        Password:
+      </div>
+      <div class="form-input-fields">
+        <div class="top-field">
+          <%= f.password_field :password, :size => 28 %>
+        </div>
+        <div class="single-field">
+          <%= f.password_field :password, :size => 28 %>
+        </div>
+        <div class="single-field last">
+          <%= f.password_field :password_confirmation, :size => 28 %>
+        </div>
+      </div>
+      <div class="text">
 
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+
+    <div class="single-row">
+      <div class="attribute-name">
+        Birthday:
+      </div>
+      <div class="form-input-fields">
+        <div class="single-field long-field">
+          <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
+              :order => [:month, :day, :year], :start_year => Date.today.year - 70,
+              :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
+            {:style => "width: 94px;"}) -%>
+        </div>
+      </div>
+      <div class="text">
+        <%= current_user.date_of_birth %>
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+
+    <div class="single-row">
+      <div class="attribute-name">
+        Gender:
+      </div>
+      <div class="form-input-fields">
+        <div class="single-field">
+          <%= f.select(:gender, [["Male", User::GENDER_MALE], ["Female", User::GENDER_FEMALE]], options ={:prompt => "I am..."}) %>
+        </div>
+      </div>
+      <div class="text">
+        <%= current_user.gender %>
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+
+    <div style="clear: both;"></div>
+    <div class="save_change_button_container">
+      <%= f.submit "Update account", :type => :image, :src => "/images/save_change_button.png" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Back", :back %>
 </div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('.section').bind('click', function(){
-      var id = $(this).attr('id');
-      id = id.replace('sub-menu-','')
-      $('.sub-menu-content').hide();
-      $('#'+id).show();
+  $(function(){
+    $("#user_email").watermark("Email", {useNative: false});
+    $("#user_first_name").watermark("First Name", {useNative: false});
+    $("#user_middle_name").watermark("Middle Name", {useNative: false});
+    $("#user_last_name").watermark("Last Name", {useNative: false});
+    $("#user_address").watermark("Address", {useNative: false});
+    $("#user_area_code_part1").watermark("Area Code", {useNative: false});
+    $("#user_area_code_part2").watermark("xxx", {useNative: false});
+    $("#user_area_code_part3").watermark("xxx", {useNative: false});
+    $("#user_password").watermark("Password", {useNative: false});
+    $("#user_password_confirmation").watermark("Password Confirmation", {useNative: false});
+    $("#user_current_password").watermark("Current Password(to confirm your changes)", {useNative: false});
+  });
+</script>
 
-      $('.section').removeClass('inactive');
-      $('.section').addClass('inactive');
-      $(this).removeClass('inactive');
+<script type="text/javascript">
+  $(function(){
+    $('.hide-text').bind('click', function() {
+      $(this).css('display', 'none');
+      $(this).parent().css('margin', '0px');
+      $(this).parent().siblings("div.text").css('display', 'none');
+      $(this).parent().siblings("div.form-input-fields").css('display', 'inline-block');
+      $('div.save_change_button_container').css('display', 'block');
+      return false;
     });
   });
+
 </script>
