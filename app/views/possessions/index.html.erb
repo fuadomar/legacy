@@ -15,10 +15,10 @@
         <% possession.real_estates.each do |real_estate| %>
           <div class="row">
             <div class="category">
-              Real estate
+              <%= real_estate.real_estate_type %>
             </div>
             <div class="item">
-              <%= real_estate.real_estate_type %>
+              <%= real_estate.address %>
             </div>
             <div class="link-container">
               <div class="link">

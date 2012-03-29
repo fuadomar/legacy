@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Legacy</title>
+<%#= stylesheet_link_tag "jquery-ui" %>
+<%#= stylesheet_link_tag "bootstrap.min" %>
+    <%= stylesheet_link_tag "application", "scaffold", 'template', 'facebox' %>
+
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "jquery-ui", "jquery.watermark", 'facebox' %>
+    <%= csrf_meta_tag %>
+    <link rel="shortcut icon" href="/images/favicon.jpg" />
+  </head>
+
+  <body>
+
+    <div id="container">
+      <div id="header-container">
+        <div id="header">
+          <%= render('shared/page_header') %>
+        </div>
+      </div>
+
+      <div class="top-banner"></div>
+
+      <div id="body-container">
+        <%= render(:partial => "shared/flash_message") -%>
+        <div class="body-content-large">
+          <%= yield -%>
+        </div>
+        <div class="clear"></div>
+      </div>
+      
+      <div class="footer">
+        <%= render('shared/footer') -%>
+      </div>
+    </div>
+  </body>
+</html>

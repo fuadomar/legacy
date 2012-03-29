@@ -1,0 +1,89 @@
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Accounts & Insurance',
+  :heading => 'Bank Accounts, Credit Cards, Insurance Policies, etc'} %>
+
+<div class="content-container">
+  <div id="possessions">
+    <div class="title">FILL OUT YOUR INFORMATION BELOW</div>
+    <div class="heading">
+      Category <span>Item Name</span>
+    </div>
+
+    <% if @financial_accounts.present? %>
+      <% financial_account = @financial_accounts.first %>
+      <% if financial_account.bank_accounts.present? %>
+        <% financial_account.bank_accounts.each do |bank_account| %>
+          <div class="row">
+            <div class="category">
+              <%= bank_account.type_of_account %>
+            </div>
+            <div class="item">
+              <%= "#{bank_account.name_of_bank} Bank #{bank_account.type_of_account} Account" %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', bank_account, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_bank_account_path(bank_account), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div class="category-select">
+      <div class="label">Category</div>
+      <div class="value"></div>
+      <div class="select">
+        <%= image_tag('/images/pulldown.png', :id => 'select_category') %>
+      </div>
+      <div class="clear"></div>
+      <div class="drop-down">
+        <div class="drop-item" id="Bank-account">Bank Account</div>
+        <div class="drop-item" id="Investment-account">Investment Account</div>
+        <div class="drop-item" id="Credit-card">Credit Card</div>
+        <div class="drop-item" id="Debit-card">Debit Card</div>
+        <div class="drop-item" id="Loan">Loan</div>
+        <div class="drop-item" id="Insurance-policy">Insurance Policy</div>
+        <div class="drop-item" id="Pension-plan">Pension Plan</div>
+        <div class="drop-item" id="Veterans-benefits">Veterans Benefits</div>
+        <div class="drop-item" id="Tax-returns">Tax Returns</div>
+      </div>
+    </div>
+
+    <div class="new-item-form hidden" id="Bank-account-form">
+      <%= render :partial => 'bank_accounts/form' %>
+    </div>
+
+    <div class="add-new-button">
+      <%= image_tag('/images/new_entry_button.png', :id => 'add_new_item') %>
+    </div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#add_new_item').bind('click', function(){
+      $('.category-select').show();
+      return false;
+    });
+
+    $('#select_category').bind('click', function(){
+      $('.drop-down').show();
+    });
+
+    $('.drop-item').bind('click', function(){
+      $('.drop-down').hide();
+      var id = $(this).attr('id');
+      $('.category-select .value').html(id);
+      $('.new-item-form').hide();
+      $('#'+id+'-form').show();
+    });
+  });
+</script>

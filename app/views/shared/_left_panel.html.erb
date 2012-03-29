@@ -47,21 +47,21 @@
     </div>
     <div class="clear"></div>
   </div>
-  <div class="menu">
+  <div class="menu" onclick="location.href='<%= will_and_trusts_path %>'">
     <div class="icon">
       <%= image_tag('/images/icon_trust.png') %>
     </div>
     <div class="link">
-      <%= link_to "Will & Trust" %>
+      <%= link_to "Will & Trust", will_and_trusts_path %>
     </div>
     <div class="clear"></div>
   </div>
-  <div class="menu">
+  <div class="menu" onclick="location.href='<%= financial_accounts_path %>'">
     <div class="icon">
       <%= image_tag('/images/icon_financial.png') %>
     </div>
     <div class="link">
-      <%= link_to "Financial & Accounts" %>
+      <%= link_to "Financial & Accounts", financial_accounts_path %>
     </div>
     <div class="clear"></div>
   </div>

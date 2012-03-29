@@ -1,0 +1,24 @@
+class NotificationMailer < ActionMailer::Base
+  default :from => "do-not-reply@mobber.net"
+
+  def send_reward(mob, user, mob_participation)
+    @mob = mob
+    @user = user
+    @mob_participation = mob_participation
+    to = @user.email
+    subject = "Your Mobber Reward!"
+    mail(:to => to, :subject => subject)
+  end
+
+  def mail_to_users(recipient, subject, message)
+    @message = message
+    mail(:to => 'contact@mobber.net', :bcc => recipient, :subject => subject)
+  end
+
+  def send_contact_to_admin(recipient, contact)
+    @contact = contact
+    to = recipient
+    subject = "Mobber Contact Message!"
+    mail(:to => to, :subject => subject)
+  end
+end

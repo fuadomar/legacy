@@ -1,0 +1,76 @@
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Contact Us',
+  :heading => 'Send us comments, suggestions, or notifications'} %>
+
+<div class="content-container">
+  <%=  form_tag({:controller => "publics", :action => "contact_us_submit"},
+    :method => "post", :class => "contact_us") do %>
+    <div class="single-row long-margin">
+      <div class="label">
+        I need:
+      </div>
+      <%=  select_tag "need",
+        "<option>Lorem</option><option>Ipsum</option>".html_safe %>
+      <div class="message">
+  <%#*message goes here - Ipsum is change Ipsum is change simply change%>
+      </div>
+    </div>
+    <div class="long-label">
+      My Information:
+    </div>
+    <div class="single-row">
+      <%=  text_field_tag 'first_name', nil, :placeholder => 'First Name' %>
+      <%=  text_field_tag 'last_name', nil, :placeholder => 'Last Name', :class => 'last' %>
+      <div class="clear"></div>
+    </div>
+    <div class="long-label">
+      Date of Birth:
+    </div>
+    <div class="single-row date-input">
+      <%=  text_field_tag 'month', nil, :placeholder => 'Month', :class => 'short-length' %>
+      <%=  text_field_tag 'day', nil, :placeholder => 'Day', :class =>  'short-length last' %>
+      <%=  text_field_tag 'year', nil, :placeholder => 'Year', :class=> 'short-length last' %>
+      <div class="clear"></div>
+    </div>
+    <div class="multi-row">
+      <%=  text_field_tag 'email', nil, :placeholder => 'Email' %>
+      <div class="clear"></div>
+      <%=  text_field_tag 'telephone', nil, :placeholder => 'Telephone Number' %>
+      <div class="clear"></div>
+      <%=  text_area_tag 'address', nil, :placeholder => 'Address', :class => 'low-height' %>
+      <div class="clear"></div>
+    </div>
+
+
+    <div class="long-label last-info">
+      Legacy Plan Member Information:
+    </div>
+    <div class="single-row">
+      <%=  text_field_tag 'member_first_name', nil, :placeholder => 'First Name' %>
+      <%=  text_field_tag 'member_last_name', nil, :placeholder =>  'Last Name', :class => 'last'  %>
+      <div class="clear"></div>
+    </div>
+    <div class="long-label">
+      Date of Birth:
+    </div>
+    <div class="single-row date-input">
+      <%=  text_field_tag 'member_month', nil, :placeholder => 'Month', :class => 'short-length'  %>
+      <%=  text_field_tag 'member_day', nil, :placeholder => 'Day',  :class => 'short-length last'  %>
+      <%=  text_field_tag 'member_year', nil, :placeholder => 'Year', :class => 'short-length last'  %>
+      <div class="clear"></div>
+    </div>
+    <div class="multi-row">
+      <%=  text_field_tag 'member_email', nil, :placeholder => 'Email' %>
+      <div class="clear"></div>
+      <%=  text_field_tag 'member_telephone', nil, :placeholder => 'Telephone Number' %>
+      <div class="clear"></div>
+      <%=  text_area_tag 'member_address', nil, :placeholder => 'Address', :class => 'low-height' %>
+      <div class="clear"></div>
+      <%=  text_area_tag 'comments', nil, :placeholder => 'Comments', :class => 'medium-height' %>
+    </div>
+    <div class="send_button_container">
+      <%= image_submit_tag("/images/send_button.png") %>
+    </div>
+
+  <% end %>
+</div>

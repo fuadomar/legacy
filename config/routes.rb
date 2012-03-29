@@ -1,4 +1,12 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :contacts
+
+  resources :will_and_trusts
+
+  resources :bank_accounts
+
+  resources :financial_accounts
+
   resources :possessions
 
   resources :real_estates
@@ -46,6 +54,7 @@ NasceniaRailsTemplate::Application.routes.draw do
   get "publics/dashboard"
   get "publics/why_my_legacy_plan"
   get "publics/how_it_works"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

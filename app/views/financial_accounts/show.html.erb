@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @financial_account.plan_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @financial_account.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_financial_account_path(@financial_account) %> |
+<%= link_to 'Back', financial_accounts_path %>

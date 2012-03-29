@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Plan:</b>
+  <%= @will_and_trust.plan_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @will_and_trust.comment %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @will_and_trust.file %>
+</p>
+
+
+<%= link_to 'Edit', edit_will_and_trust_path(@will_and_trust) %> |
+<%= link_to 'Back', will_and_trusts_path %>

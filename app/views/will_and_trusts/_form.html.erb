@@ -1,0 +1,31 @@
+<%= form_for(@will_and_trust, :html => {:multipart => true}) do |f| %>
+  <% if @will_and_trust.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@will_and_trust.errors.count, "error") %> prohibited this will_and_trust from being saved:</h2>
+
+      <ul>
+      <% @will_and_trust.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#*<div class="field">%>
+    <%#= f.label :plan_id %><br />
+    <%#= f.text_field :plan_id %>
+  <%#*</div>%>
+    
+  <div class="field">
+    <%= f.label :comment, 'Will locations or other comments about this file:' %><br /><br />
+    <%= f.text_area :comment %>
+  </div>
+  <div class="field">
+    <%= f.label :file %>
+    <%= f.file_field :file %>
+    (doc/docx/pdf)
+  </div>
+  <div class="actions">
+    <%= f.submit 'Upload File' %>
+  </div>
+<% end %>

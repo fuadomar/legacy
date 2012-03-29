@@ -1,0 +1,52 @@
+<%= form_for(@contact, :html => {:class => 'contact_us'}) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="long-label last-info">
+    Legacy Plan Member Information:
+  </div>
+
+
+  <div class="single-row">
+    <%= f.text_field :first_name, :placeholder => 'First Name' %>
+    <%= f.text_field :last_name, :placeholder =>  'Last Name', :class => 'last' %>
+    <div class="clear"></div>
+  </div>
+
+
+  <div class="long-label">
+    Date of Birth:
+  </div>
+  <div class="single-row date-input">
+    <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
+        :order => [:year, :month, :day], :start_year => Date.today.year - 70,
+        :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
+      {:style => "width: 71px;"}) %>
+    <div class="clear"></div>
+  </div>
+
+
+  <div class="multi-row">
+    <%= f.text_field :email, :placeholder => 'Email' %>
+    <div class="clear"></div>
+    <%= f.text_field :phone_number, :placeholder => 'Telephone Number' %>
+    <div class="clear"></div>
+    <%= f.text_area :address, :placeholder => 'Address', :class => 'low-height' %>
+    <div class="clear"></div>
+    <%= f.text_area :comments, :placeholder => 'Comments', :class => 'medium-height' %>
+  </div>
+
+  <div class="send_button_container">
+    <%= image_submit_tag("/images/send_button.png") %>
+  </div>
+
+<% end %>

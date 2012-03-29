@@ -1,4 +1,4 @@
-<%= form_for(@real_estate) do |f| %>
+<%= form_for(@real_estate, :html => {:multipart => true}) do |f| %>
   <!--
   <%# if @real_estate.errors.any? %>
   <%#*<div id="error_explanation">%>
@@ -59,7 +59,17 @@
       <%= f.label :deed, 'Upload a deed' %>
     </div>
     <div class="input-field">
-      <%= f.file_field :deed %>
+      <%= f.file_field :deed, :class => 'file' %>
+      (doc/docx/pdf)
+    </div>
+    <div class="clear"></div>
+  </div>
+   <div class="field">
+    <div class="label">
+      <%= f.label :location_of_deed %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :location_of_deed %>
     </div>
     <div class="clear"></div>
   </div>
@@ -68,7 +78,8 @@
       <%= f.label :photo, 'Upload a photo' %>
     </div>
     <div class="input-field">
-      <%= f.file_field :photo %>
+      <%= f.file_field :photo, :class => 'file' %>
+      (jpg/jpeg/gif/png)
     </div>
     <div class="clear"></div>
   </div>

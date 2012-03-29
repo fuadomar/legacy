@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328060304) do
+ActiveRecord::Schema.define(:version => 20120329140427) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,37 @@ ActiveRecord::Schema.define(:version => 20120328060304) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "medical_instruction_id"
+  end
+
+  create_table "bank_accounts", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "name_of_bank"
+    t.string   "type_of_account"
+    t.string   "location_of_bank"
+    t.integer  "last_4_digit_of_account"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "date_of_birth"
+    t.string   "email"
+    t.string   "phone_number"
+    t.text     "address"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "financial_accounts", :force => true do |t|
+    t.integer  "plan_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "medical_instructions", :force => true do |t|
@@ -83,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20120328060304) do
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "location_of_deed"
   end
 
   create_table "relationships", :force => true do |t|
@@ -152,5 +184,13 @@ ActiveRecord::Schema.define(:version => 20120328060304) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "will_and_trusts", :force => true do |t|
+    t.integer  "plan_id"
+    t.text     "comment"
+    t.string   "file"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

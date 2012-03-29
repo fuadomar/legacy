@@ -1,4 +1,5 @@
 class RealEstatesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /real_estates
   # GET /real_estates.xml
   def index
@@ -51,7 +52,7 @@ class RealEstatesController < ApplicationController
         format.html { redirect_to(session[:return_to], :notice => 'Real estate was successfully created.') }
         format.xml  { render :xml => @real_estate, :status => :created, :location => @real_estate }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to(session[:return_to], :notice => 'Not successful') }
         format.xml  { render :xml => @real_estate.errors, :status => :unprocessable_entity }
       end
     end
@@ -67,7 +68,7 @@ class RealEstatesController < ApplicationController
         format.html { redirect_to(possessions_path, :notice => 'Real estate was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(possessions_path, :notice => 'Not successful') }
         format.xml  { render :xml => @real_estate.errors, :status => :unprocessable_entity }
       end
     end

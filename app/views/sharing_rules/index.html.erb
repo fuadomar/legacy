@@ -1,63 +1,146 @@
-<%= render :partial => 'shared/body_content_top',
-  :locals => { :title => 'Sharing Rules',
-  :heading => 'Set Sharing rules for your relationships'} %>
-<div class="content-container">
-  <div id="sharing-rules">
-    <% if @relationships.present? %>
-      <% @relationships.each do |relationship| %>
-        <div class="relationship">
-          <div class="name">
-            <%= relationship.full_name %>
-          </div>
-          <div class="notice">
-            <%= relationship.first_name %> can access the following information at the specified trigger points
-          </div>
-          <div class="sharing-rules">
-            <table id="sharing-rules-table-<%= relationship.id %>">
-              <% relationship.sharing_rules.each do |sharing_rule| %>
-                <%= render :partial => 'sharing_rules_tiny', :locals => { :sharing_rule => sharing_rule, :relationship_id => relationship.id} %>
-              <% end %>
-            </table>
-            <% if relationship.sharing_rules.count < current_user.get_max_information_type_count %>
-              <div class="share-more-button" id="share-more-<%= relationship.id %>">
-                <%= link_to 'Share More', '' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-        <script type="text/javascript">
-          $(document).ready(function(){
-            $('#share-more-<%= relationship.id %>').bind('click', function(){
-              load_count = $('#sharing-rules-table-<%= relationship.id %> tr td table').length;
-              if ($('#sharing_rule_new').length ) {
-                alert('You can\'t add more before saving new rule');
-              }
-              else if(load_count < <%= current_user.get_max_information_type_count %>)
-              {
-   
-                $.ajax({
-                  type: 'GET',
-                  url: "<%= get_create_form_tiny_plan_sharing_rules_path(@plan) %>",
-                  data: {relationship_id : <%= relationship.id %> },
-                  dataType: "script"
-                });
-              }
-
-              if(load_count == <%= current_user.get_max_information_type_count - 1 %>)
-              {
-                $(this).hide();
-              }
-
-              return false;
-            });
-          });
-        </script>
-      <% end %>
-    <% end %>
-
-    <div class="add-family-button">
-      <%= link_to 'Add Family Member', new_relationship_path %>
+<div class="title-container">
+  <div class="row-1">
+    <div class="title">
+      Plan Sharing Rules
+    </div>
+    <div class="tips">
+      <div class="link">
+        <%= link_to "TOP TIPS" %>
+      </div>
+      <div class="icon">
+        <%= image_tag('/images/top_tips.png') %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="row-2">
+    <div class="content">
+      Plan Status & Shairing
     </div>
   </div>
+</div>
+<div class="shairing-container">
+  <div class="box-container">
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_financial.png") %>
+        <div class="title-content">
+          Financial & Accounts
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @financial_account_size.present? ? @financial_account_size : "No" %>
+        accounts listed
+      </div>
+      <div class="box-button">
+        <%= link_to @financial_account_size.present? ? 'EDIT ACCOUNTS' : 'ADD ACCOUNTS', financial_accounts_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_medical.png") %>
+        <div class="title-content">
+          Medical Directives
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @medical_instruction.present? ? "You have directive on file" : "No directive on file" %>
+      </div>
+      <div class="box-button">
+        <% if @medical_instruction.present? %>
+          <%= link_to 'EDIT YOUR DIRECTIVE', edit_medical_instruction_path(@medical_instruction) %>
+        <% else %>
+          <%= link_to 'ADD DIRECTIVE', agreement_medical_instructions_path %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_trust.png") %>
+        <div class="title-content">
+          Will & Trust
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @will_and_trusts_size.present? ? "#{@will_and_trusts_size} file uploaded" : "No Will on file" %>
+      </div>
+      <div class="box-button">
+        <%= link_to @will_and_trusts_size.present? ? 'EDIT/DELETE' : 'UPLOAD WILL', will_and_trusts_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_memorial.png") %>
+        <div class="title-content">
+          Memorial
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @memorial.present? ? "Your memorial wishes are captured" : "No memorial wishes captured" %>
+        accounts listed
+      </div>
+      <div class="box-button">
+        <% if @memorial.present? %>
+          <%= link_to 'EDIT MEMORIAL WISHES', edit_memorial_path(@memorial) %>
+        <% else %>
+          <%= link_to 'ADD MEMORIAL WISHES', new_memorial_path %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_my_things.png") %>
+        <div class="title-content">
+          My Possessions
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @possession_size.present? ? @possession_size : "No" %>
+        accounts listed
+      </div>
+      <div class="box-button">
+        <%= link_to @possession_size.present? ? 'EDIT ASSETS' : 'ADD ASSETS', possessions_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <div class="big-button-container">
+    <div class="button-text">
+      Your plan has not been shared with anyone
+    </div>
+    <div class="big-button">
+      <%=  link_to("Subscribe now to share or download your plan") %>
+    </div>
+  </div>
+
+  <div class="user-image-container">
+    <%= image_tag("/images/user.png") %>
+    <%= image_tag("/images/user.png") %>
+    <%= image_tag("/images/user.png") %>
+    <%= image_tag("/images/user.png") %>
+  </div>
+
+
+  <div class="back-link">
+    <%= link_to 'Back to Dashboard', publics_dashboard_path %>
+  </div>
+
 </div>

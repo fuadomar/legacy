@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :relationships
   has_many :families
   has_many :friends
+  has_many :contacts
 
   validates_presence_of :first_name, :last_name, :date_of_birth
 

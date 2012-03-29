@@ -4,6 +4,8 @@ class Plan < ActiveRecord::Base
   has_many :memorials
   has_many :sharing_rules
   has_many :possessions
+  has_many :financial_accounts
+  has_many :will_and_trusts
 
   validates :title, :presence => true
 

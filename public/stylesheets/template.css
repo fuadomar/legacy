@@ -1005,6 +1005,7 @@ form.create_account .single-row .last{
     float: right;
 }
 
+
 /*  Edit user form
 ---------------------------------------------*/
 form.edit_user {
@@ -1099,6 +1100,339 @@ form.edit_user .single-row .long-field {
     width: 300px;
 }
 
+
+
+/* contact_us form
+-------------------------------------------------------------- */
+form.contact_us {
+    font-family: Verdana;
+    margin-left: 10px;
+}
+
+form.contact_us div.single-row{
+    /* border: 1px solid red;*/
+    width: 660px;
+    margin-bottom: 15px;
+}
+
+form.contact_us div.message {
+    /* border: 1px solid green;*/
+    width: 320px;
+    float: right;
+    font-family: Verdana;
+    font-size: 12px;
+    color: #f80000;
+}
+
+form.contact_us div.date-input {
+    margin-bottom: 23px;
+}
+
+form.contact_us div.multi-row {
+    /* border: 1px solid green;*/
+    width: 660px;
+}
+
+
+
+form.contact_us div.long-margin {
+    margin-bottom: 20px;
+}
+
+form.contact_us div.send_button_container {
+    /* border: 1px solid yellowgreen;*/
+    width: 635px;
+    text-align: right;
+    margin-top: 17px;
+    margin-bottom: 5px;
+}
+
+form.contact_us div.single-row input[type=text],
+form.contact_us div.multi-row input[type=text],
+form.contact_us div.multi-row textarea{
+    border: 1px solid #d7d7d7;
+    padding-left: 12px;
+    width: 276px;
+    height: 24px;
+    float: left;
+}
+
+form.contact_us div.multi-row input[type=text],
+form.contact_us div.multi-row textarea {
+    display: inline-block;
+    float: none;
+    margin-bottom: 10px;
+}
+
+form.contact_us div.multi-row textarea {
+    width: 617px;
+    padding-top: 2px;
+}
+
+form.contact_us div.multi-row textarea.low-height {
+    height: 52px;
+}
+
+form.contact_us div.multi-row textarea.medium-height {
+    height: 120px;
+}
+
+form.contact_us div.single-row input[type=text].short-length {
+    width: 86px;
+}
+
+form.contact_us div.single-row input[type=text].last {
+    margin-left: 52px;
+}
+
+form.contact_us div.single-row input[type=text].short-length.last {
+    margin-left: 8px;
+}
+
+form.contact_us div.single-row label {
+    border: 1px solid blue;
+    font-size: 14px;
+    color: #3a3a3a;
+    margin-right: 27px;
+}
+
+form.contact_us div.single-row div.label {
+    /* border: 1px solid blue;*/
+    font-size: 14px;
+    color: #3a3a3a;
+    margin-right: 27px;
+    width: 70px;
+    display: inline-block;
+}
+
+
+form.contact_us div.long-label {
+    /* border: 1px solid blue;*/
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+form.contact_us div.single-row select {
+    width: 200px;
+    height: 25px;
+    padding-top: 3px;
+    text-align: center;
+    border: 1px solid #d7d7d7;
+    line-height: 28px;
+    font-family: Verdana;
+    font-size: 14px;
+    color: #3a3a3a;
+}
+
+form.contact_us div.last-info {
+    margin-top: 30px;
+}
+
+
+* Plan Shearing Rules
+-------------------------------------------------------------- */
+#body-container .body-content-large {
+    border: 1px solid red;
+    float: right;
+    width: 960px;
+    z-index: 1;
+}
+
+#body-container .body-content-large .title-container {
+    background: url("/images/content_title_container_large.png") repeat scroll 0 0 transparent;
+    height: 164px;
+}
+
+#body-container .body-content-large .title-container .row-1 {
+    height: 33px;
+    padding-left: 20px;
+    padding-right: 27px;
+    padding-top: 15px;
+}
+
+#body-container .body-content-large .title-container .row-1 .title {
+    color: #FFFFFF;
+    float: left;
+    font-family: "Lustria";
+    font-size: 24px;
+}
+
+#body-container .body-content-large .title-container .row-2 {
+    height: 58px;
+    padding-top: 35px;
+}
+
+#body-container .body-content-large .title-container .row-2 .content {
+    color: #065C92;
+    font-family: OpenSans;
+    font-size: 18px;
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+#body-container .body-content-large .title-container .row-1 .tips {
+    float: right;
+}
+
+#body-container .body-content-large .title-container .row-1 .tips .link {
+    float: left;
+    margin-right: 5px;
+}
+
+#body-container .body-content-large .title-container .row-1 .tips .link a {
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: 10px;
+}
+
+#body-container .body-content-large .title-container .row-1 .tips .icon {
+    float: right;
+}
+
+#body-container .body-content-large .shairing-container {
+    min-height: 450px;
+    background-color: #FFFFFF;
+    margin-left: 2px;
+    min-height: 500px;
+    padding: 23px;
+    width: 955px;
+}
+
+
+
+/* ------------------------------------------------------------ */
+
+
+#body-container .body-content-large div.shairing-container {
+    /* width: 700px;*/
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+div.shairing-container div.box-container {
+    width: 100%;
+
+}
+
+div.shairing-container div.box-container div.box {
+    float: left;
+    margin-left: 12px;
+    width: 177px;
+}
+
+div.shairing-container div.box-container div.box div.box-title{
+    background-color: #d9e6ef;
+    height: 30px;
+    font-family: Verdana;
+    font-size: 13px;
+    color: #000000;
+}
+
+div.shairing-container div.box-container div.box div.box-title img{
+    float: left;
+    margin-top: 4px;
+}
+
+div.shairing-container div.box-container div.box div.box-title div.title-content {
+    float: left;
+    margin-left: 4px;
+    margin-top: 4px;
+}
+
+div.shairing-container div.box-container div.box div.box-content {
+    color: #111111;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+
+div.shairing-container div.box-container div.box div.box-button {
+    border: 1px solid #aaaaaa;
+    font-family: Arial;
+    font-size: 10px;
+    color: #565656;
+    display: inline-block;
+    padding: 9px 14px 8px 17px;
+    line-height: 7px;
+    background: url('/images/button-stripe.png') repeat-x;
+    border-radius: 3px;
+}
+
+div.shairing-container div.box-container div.box div.box-button a {
+    text-decoration: none;
+    color: #555;
+}
+
+
+
+
+div.shairing-container .big-button-container {
+/*    border: 1px solid blue;*/
+   width: 955px;
+   margin-top: 83px;
+   text-align: center;
+}
+
+div.shairing-container .big-button-container .button-text {
+   font-family: Arial;
+   font-size: 16px;
+   color: #111111;
+   margin-bottom: 10px;
+}
+
+div.shairing-container .big-button-container .big-button {
+   width: 573px;
+   height: 31px;
+   padding-top: 8px;
+   background: url('/images/long-button.png') no-repeat;
+   margin: 0 auto;
+   font-family: Arial;
+   font-size: 17px;
+   color: #ffffff;
+}
+
+div.shairing-container .big-button-container .big-button a {
+   text-decoration: none;
+   font-family: Arial;
+   font-size: 17px;
+   color: #ffffff;
+}
+
+div.shairing-container .user-image-container {
+   /*    border: 1px solid gold; */
+   margin-top: 70px;
+   margin-left: 102px;
+}
+
+div.shairing-container .user-image-container img {
+   margin-right: 85px;
+}
+
+
+
+
+
+div.back-link{
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #eee;
+    width: 150px;
+    text-align: center;
+}
+
+div.back-link a{
+    text-decoration: none;
+    color: #333;
+}
+
+
+
 /************************************************************************************/
 /*********                       Possesions                               ***********/
 /************************************************************************************/
@@ -1123,8 +1457,8 @@ form.edit_user .single-row .long-field {
 }
 
 #possessions .title.small{
-  width: 200px;
-  font-size: 14px;
+    width: 200px;
+    font-size: 14px;
 }
 
 #possessions .heading{
@@ -1281,6 +1615,10 @@ form.edit_user .single-row .long-field {
     font-size: 13px;
 }
 
+#possessions .new-item-form .field input.file{
+    width: 330px;
+}
+
 #possessions .new-item-form .field select{
     width: 435px;
     text-align: center;
@@ -1303,7 +1641,7 @@ form.edit_user .single-row .long-field {
 }
 
 #possessions .new-item-form .actions input{
-    width: 150px;
+    width: 170px;
     background-color: #eee;
     border: 1px solid #787878;
     border-radius: 2px;
@@ -1325,9 +1663,84 @@ form.edit_user .single-row .long-field {
 /********                         real-estate-show                        *******/
 /********************************************************************************/
 
-#real-estate-show{
-    border: 3px solid #aaa;
+#real-estate-show-container{
+    border: 3px solid #ddd;
     border-radius: 5px;
     margin-top: 20px;
+    padding: 2px;
+    background-color: #D3DDDC;
+}
+
+#real-estate-show{
+    border-radius: 5px;
     padding: 15px;
+    background-color: #fff;
+}
+
+#real-estate-show a{
+    color: #000;
+}
+
+/*******************************************************************************/
+/*****                       will-and-trust                                    */
+/*******************************************************************************/
+
+#will-and-trust{
+
+}
+
+#will-and-trust .instructions{
+    width: 510px;
+    font-family: Arial;
+    font-size: 15px;
+}
+
+#will-and-trust .form{
+    margin-top: 30px;
+}
+
+#will-and-trust .form .field{
+    margin-bottom: 20px;
+}
+
+#will-and-trust .form .field label{
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+#will-and-trust .form .field textarea{
+    width: 500px;
+    height: 50px;
+}
+
+#will-and-trust .form .actions{
+    padding-left: 50px;
+}
+
+
+#will-and-trust .form .actions input{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: #eee;
+    border: 1px solid #999;
+    border-radius: 1px;
+    cursor: pointer;
+}
+
+#will-and-trust .form .actions input:hover{
+    background-color: #fff;
+}
+
+#will-and-trust .title{
+    margin-top: 50px;
+    font-family: Arial;
+    font-size: 13px;
+    font-weight: bold;
 }

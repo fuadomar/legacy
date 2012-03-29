@@ -1,0 +1,18 @@
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Will & Trust',
+  :heading => 'Upload your will or estate plan'} %>
+
+<div class="content-container" id="will-and-trust">
+  <div class="instructions">
+    You can store a copy of your most recent will or estate plan here.<br/>
+    It will be stored on our server, and will be included as part of your plan<br/>
+    when you share or download it. You can also describe where it is<br/>
+    physically located so your friend or family member knows where to find it.<br/>
+    You can always download your will or documents from here.
+  </div>
+
+  <div class="form">
+    <%= render 'form' %>
+  </div>
+
+</div>

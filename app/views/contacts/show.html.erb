@@ -1,0 +1,45 @@
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Contact Us',
+  :heading => 'Send us comments, suggestions, or notifications'} %>
+
+<div class="content-container">
+  <p id="notice"><%= notice %></p>
+  <p> Legacy Plan Member Information:</p>
+  <p>
+    <b>First name:</b>
+    <%= @contact.first_name %>
+  </p>
+
+  <p>
+    <b>Last name:</b>
+    <%= @contact.last_name %>
+  </p>
+
+  <p>
+    <b>Date of birth:</b>
+    <%= @contact.date_of_birth %>
+  </p>
+
+  <p>
+    <b>Email:</b>
+    <%= @contact.email %>
+  </p>
+
+  <p>
+    <b>Phone number:</b>
+    <%= @contact.phone_number %>
+  </p>
+
+  <p>
+    <b>Address:</b>
+    <%= @contact.address %>
+  </p>
+
+  <p>
+    <b>Comments:</b>
+    <%= @contact.comments %>
+  </p>
+
+
+  <%= link_to 'Send New Contact', new_contact_path %>
+</div>

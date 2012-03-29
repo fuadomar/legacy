@@ -5,6 +5,7 @@ class PossessionsController < ApplicationController
   def index
     @possessions = current_user.default_plan.possessions.includes(:real_estates)
     @real_estate = RealEstate.new
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @possessions }

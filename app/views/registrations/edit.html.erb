@@ -3,8 +3,6 @@
   :heading => 'Account settings and Password'} %>
 
 <div class="content-container">
-
-<!--h2>Edit <%= resource_name.to_s.humanize %></h2-->
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :multipart => true, :class => "edit_user new_user_common"}) do |f| %>
     <%= devise_error_messages! %>
 
@@ -45,32 +43,6 @@
       </div>
       <div class="text">
         <%= current_user.email %>
-      </div>
-      <div class="change-link">
-        <a href="#" class="hide-text">
-          Change
-        </a>
-      </div>
-      <div style="clear:both;"></div>
-    </div>
-
-    <div class="single-row">
-      <div class="attribute-name">
-        Password:
-      </div>
-      <div class="form-input-fields">
-        <div class="top-field">
-          <%= f.password_field :password, :size => 28 %>
-        </div>
-        <div class="single-field">
-          <%= f.password_field :password, :size => 28 %>
-        </div>
-        <div class="single-field last">
-          <%= f.password_field :password_confirmation, :size => 28 %>
-        </div>
-      </div>
-      <div class="text">
-
       </div>
       <div class="change-link">
         <a href="#" class="hide-text">
@@ -123,13 +95,38 @@
       <div style="clear:both;"></div>
     </div>
 
+    <div class="single-row">
+      <div class="attribute-name">
+        Password:
+      </div>
+      <div class="form-input-fields">
+        <div class="top-field">
+          <%= f.password_field :current_password, :size => 28 %>
+        </div>
+        <div class="single-field">
+          <%= f.password_field :password, :size => 28 %>
+        </div>
+        <div class="single-field last">
+          <%= f.password_field :password_confirmation, :size => 28 %>
+        </div>
+      </div>
+      <div class="text">
+        ********
+      </div>
+      <div class="change-link">
+        <a href="#" class="hide-text">
+          Change
+        </a>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+
     <div style="clear: both;"></div>
     <div class="save_change_button_container">
       <%= f.submit "Update account", :type => :image, :src => "/images/save_change_button.png" %>
     </div>
   <% end %>
 
-  <%= link_to "Back", :back %>
 </div>
 
 <script type="text/javascript">
@@ -155,7 +152,7 @@
       $(this).parent().css('margin', '0px');
       $(this).parent().siblings("div.text").css('display', 'none');
       $(this).parent().siblings("div.form-input-fields").css('display', 'inline-block');
-      $('div.save_change_button_container').css('display', 'block');
+      $('div.save_change_button_container').css('display', 'inline-block');
       return false;
     });
   });

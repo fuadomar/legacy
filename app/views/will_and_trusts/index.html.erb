@@ -1,0 +1,32 @@
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Will & Trust',
+  :heading => 'Upload your will or estate plan'} %>
+
+<div class="content-container" id="will-and-trust">
+  <div class="instructions">
+    You can store a copy of your most recent will or estate plan here.<br/>
+    It will be stored on our server, and will be included as part of your plan<br/>
+    when you share or download it. You can also describe where it is<br/>
+    physically located so your friend or family member knows where to find it.<br/>
+    You can always download your will or documents from here.
+  </div>
+
+  <div class="form">
+    <%= render 'form' %>
+  </div>
+
+  <div class="title">
+    List of Your Uploaded Files
+  </div>
+  <table class="list">
+    <% @will_and_trusts.each_with_index do |will_and_trust, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= File.basename(will_and_trust.file.url) if will_and_trust.file.present? %></td>
+        <td><%= link_to 'Download', will_and_trust.file.url %></td>
+        <td><%= link_to 'Delete', will_and_trust, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

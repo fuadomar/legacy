@@ -5,8 +5,21 @@ class SharingRulesController < ApplicationController
   def index
     @relationships = current_user.relationships.includes(:sharing_rules) if current_user.present?
     @plan = Plan.find(params[:plan_id])
+
+    financial_account = current_user.default_plan.financial_accounts.includes(:bank_accounts).first
+    @financial_account_size = financial_account.bank_accounts.size if financial_account.present? && financial_account.bank_accounts.present?
+
+    possession = current_user.default_plan.possessions.includes(:real_estates).first
+    @possession_size = possession.real_estates.size if possession.present? && possession.real_estates.present?
+
+    @medical_instruction = current_user.default_plan.medical_instructions.first
+    @memorial = current_user.default_plan.memorials.first
+
+    will_and_trusts = current_user.default_plan.will_and_trusts
+    @will_and_trusts_size = will_and_trusts.size if will_and_trusts.present?
+
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render :layout => 'application_without_side_panel'}
       format.xml  { render :xml => @sharing_rules }
     end
   end
