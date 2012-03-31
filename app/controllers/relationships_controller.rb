@@ -30,7 +30,7 @@ class RelationshipsController < ApplicationController
     @relationship = Relationship.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { render :layout => false}
       format.xml  { render :xml => @relationship }
     end
   end

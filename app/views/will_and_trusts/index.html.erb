@@ -11,22 +11,38 @@
     You can always download your will or documents from here.
   </div>
 
-  <div class="form">
-    <%= render 'form' %>
-  </div>
-
   <div class="title">
     List of Your Uploaded Files
   </div>
-  <table class="list">
+
+  <div class="list">
     <% @will_and_trusts.each_with_index do |will_and_trust, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= File.basename(will_and_trust.file.url) if will_and_trust.file.present? %></td>
-        <td><%= link_to 'Download', will_and_trust.file.url %></td>
-        <td><%= link_to 'Delete', will_and_trust, :confirm => 'Are you sure?', :method => :delete %></td>
-      </tr>
+      <div class="row">
+        <table cellspacing="0">
+          <tr>
+            <td class="comment">
+              <%= will_and_trust.comment %>
+            </td>
+            <td class="download">
+              <%= link_to image_tag('/images/download_link_bk.png'), will_and_trust.file.url, :target => '_blank' %>
+            </td>
+            <td class="link">
+              <div class="link-box">
+                <%= link_to 'DELETE', will_and_trust, :confirm => 'Are you sure?', :method => :delete %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
     <% end %>
-  </table>
+  </div>
+
+  <div class="title">
+
+  </div>
+
+  <div class="form">
+    <%= render 'form' %>
+  </div>
 
 </div>

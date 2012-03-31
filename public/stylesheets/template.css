@@ -1695,9 +1695,6 @@ div.back-link a{
     font-size: 15px;
 }
 
-#will-and-trust .form{
-    margin-top: 30px;
-}
 
 #will-and-trust .form .field{
     margin-bottom: 20px;
@@ -1711,12 +1708,13 @@ div.back-link a{
 }
 
 #will-and-trust .form .field textarea{
-    width: 500px;
+    width: 650px;
     height: 50px;
+    border: 1px solid #D7D7D7;
 }
 
 #will-and-trust .form .actions{
-    padding-left: 50px;
+
 }
 
 
@@ -1727,10 +1725,9 @@ div.back-link a{
     padding-bottom: 8px;
     font-family: Arial;
     font-size: 15px;
-    font-weight: bold;
-    background-color: #eee;
-    border: 1px solid #999;
-    border-radius: 1px;
+    background-color: #F2F2F2;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
     cursor: pointer;
 }
 
@@ -1743,4 +1740,49 @@ div.back-link a{
     font-family: Arial;
     font-size: 13px;
     font-weight: bold;
+}
+
+#will-and-trust .list{
+   border-top: 1px solid #D7D7D7;
+   border-left: 1px solid #D7D7D7;
+   border-right: 1px solid #D7D7D7;
+}
+
+#will-and-trust .list .row{
+   border-bottom: 1px solid #D7D7D7;
+   height: 38px;
+   font-family: Arial;
+   font-size: 14px;
+   padding-top: 3px;
+}
+
+#will-and-trust .list .row .comment{
+    width: 445px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+#will-and-trust .list .row .link{
+    padding-left: 70px;
+}
+
+#will-and-trust .list .row .link .link-box{
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-family: Arial;
+    font-size: 12px;
+    background-color: #F2F2F2;
+    border: 1px solid #D7D7D7;
+    border-radius: 2px;
+}
+
+#will-and-trust .list .row .link .link-box:hover{
+    background-color: #fff;
+}
+
+#will-and-trust .list .row .link .link-box a{
+    text-decoration: none;
+    color: #6B6B6B;
 }
