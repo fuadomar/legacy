@@ -1229,10 +1229,8 @@ form.contact_us div.last-info {
 }
 
 
-* Plan Shearing Rules
--------------------------------------------------------------- */
+/* Plan Shearing Rules-------------------------------------------------------------- */
 #body-container .body-content-large {
-    border: 1px solid red;
     float: right;
     width: 960px;
     z-index: 1;
@@ -1368,45 +1366,45 @@ div.shairing-container div.box-container div.box div.box-button a {
 
 
 div.shairing-container .big-button-container {
-/*    border: 1px solid blue;*/
-   width: 955px;
-   margin-top: 83px;
-   text-align: center;
+    /*    border: 1px solid blue;*/
+    width: 955px;
+    margin-top: 83px;
+    text-align: center;
 }
 
 div.shairing-container .big-button-container .button-text {
-   font-family: Arial;
-   font-size: 16px;
-   color: #111111;
-   margin-bottom: 10px;
+    font-family: Arial;
+    font-size: 16px;
+    color: #111111;
+    margin-bottom: 10px;
 }
 
 div.shairing-container .big-button-container .big-button {
-   width: 573px;
-   height: 31px;
-   padding-top: 8px;
-   background: url('/images/long-button.png') no-repeat;
-   margin: 0 auto;
-   font-family: Arial;
-   font-size: 17px;
-   color: #ffffff;
+    width: 573px;
+    height: 31px;
+    padding-top: 8px;
+    background: url('/images/long-button.png') no-repeat;
+    margin: 0 auto;
+    font-family: Arial;
+    font-size: 17px;
+    color: #ffffff;
 }
 
 div.shairing-container .big-button-container .big-button a {
-   text-decoration: none;
-   font-family: Arial;
-   font-size: 17px;
-   color: #ffffff;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 17px;
+    color: #ffffff;
 }
 
 div.shairing-container .user-image-container {
-   /*    border: 1px solid gold; */
-   margin-top: 70px;
-   margin-left: 102px;
+    /*    border: 1px solid gold; */
+    margin-top: 70px;
+    margin-left: 102px;
 }
 
 div.shairing-container .user-image-container img {
-   margin-right: 85px;
+    margin-right: 85px;
 }
 
 
@@ -1743,17 +1741,17 @@ div.back-link a{
 }
 
 #will-and-trust .list{
-   border-top: 1px solid #D7D7D7;
-   border-left: 1px solid #D7D7D7;
-   border-right: 1px solid #D7D7D7;
+    border-top: 1px solid #D7D7D7;
+    border-left: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
 }
 
 #will-and-trust .list .row{
-   border-bottom: 1px solid #D7D7D7;
-   height: 38px;
-   font-family: Arial;
-   font-size: 14px;
-   padding-top: 3px;
+    border-bottom: 1px solid #D7D7D7;
+    height: 38px;
+    font-family: Arial;
+    font-size: 14px;
+    padding-top: 3px;
 }
 
 #will-and-trust .list .row .comment{
@@ -1785,4 +1783,113 @@ div.back-link a{
 #will-and-trust .list .row .link .link-box a{
     text-decoration: none;
     color: #6B6B6B;
+}
+
+
+/***************************************************************************/
+/************                    Payment                         ***********/
+/***************************************************************************/
+
+
+#payment-container .instructions{
+    font-family: Arial;
+    font-size: 15px;
+    color: #555;
+}
+
+#payment-container .instructions span.outer{
+    text-decoration: line-through;
+    color: red;
+}
+
+#payment-container .instructions span.inner{
+  color: #555;
+}
+
+#payment-container .form{
+    margin-top: 0px;
+}
+
+#payment-container .form .row{
+    margin-bottom: 10px;
+}
+
+
+#payment-container .form .row .field{
+    float: left;
+    width: 295px;
+}
+
+#payment-container .form .row .field.last{
+    float: right;
+}
+
+#payment-container .form .row .field label{
+    font-size: 14px;
+    font-family: Arial;
+}
+
+#payment-container .form .row .field input{
+    padding-left: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 15px;
+    font-family: Arial;
+    border: 1px solid #D7D7D7;
+    border-radius: 0px;
+    margin-top: 5px;
+}
+
+#payment-container .form .row .field input.long{
+    width: 285px;
+}
+
+#payment-container .form .row .field input.small{
+    width: 120px;
+    margin-left: 40px;
+}
+
+#payment-container .form .row .field select.small{
+    width: 120px;
+    padding-left: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 15px;
+    font-family: Arial;
+    border: 1px solid #D7D7D7;
+    border-radius: 0px;
+}
+
+#payment-container .form .row.action{
+    margin-top: 40px;
+}
+
+/*#payment-container .form .row.action input{
+    font-size: 13px;
+    font-family: Arial;
+    width: 130px;
+    border: 1px solid #D7D7D7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: url('/images/table_head_strip.png');
+    background-position: left bottom;
+    color: #6B6B6B;
+    cursor: pointer;
+}
+
+#payment-container .form .row.action input:hover{
+    background-color: #fff;
+}*/
+
+#payment-container .form .row.action input.right{
+  margin-left: 120px;
+}
+
+#payment-container .form .row.action input.rightred{
+    color: #F44949;
+    margin-left: 120px;
+}
+
+#payment-container #stripe-error-message.error{
+    color: red;
 }

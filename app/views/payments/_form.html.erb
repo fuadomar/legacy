@@ -1,0 +1,81 @@
+<%= form_for @payment ||= Payment.new, :html => {:id => :payForm} do |f| %>
+
+  <% if @payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+      <ul>
+        <% @payment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="row">
+    <div class="field">
+      <label>Name</label><br/>
+      <input type="text" id="first_name" class="long" placeholder="First Name"/>
+    </div>
+    <div class="field last">
+      <label> </label><br/>
+      <input type="text" id="last_name" class="long" placeholder="Last Name"/>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+
+
+  <%= f.hidden_field :stripe_token %>
+  <%= f.hidden_field :last_4_digits %>
+
+
+  <noscript>
+    This form requires Javascript to use
+  </noscript>
+
+
+  <div id="credit-card">
+    <div id="credit-card-errors" style="display: none">
+      <div id="stripe-error-message" class="alert-message block-message error"></div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <%= label_tag :credit_card_number %><br/>
+        <%= text_field_tag :credit_card_number, params[:credit_card_number], :class => "long", :disabled => true %>
+      </div>
+      <div class="field last">
+        <%= label_tag :cvv, "Security code (CVV)" %><br/>
+        <%= text_field_tag :cvv, params[:cvv], :class => "long", :disabled => true %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <% if @payment.last_4_digits.present? %>
+      <div class="change-card"
+      <%= "Using card ending with #{@payment.last_4_digits}" %>
+      <%= link_to "(change)", "#", :id => 'change' %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="field">
+      <%= label_tag :expiry_date, 'Expiration Date' %><br/>
+      <%= date_select "", :expiry_date, {:discard_day => true, :order => [:month, :year], :use_month_numbers => true, :start_year => Date.today.year, :end_year => Date.today.year + 25, :disabled => true}, {:class => "small"} %>
+    </div>
+    <div class="field last">
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="row action">
+    <%= link_to image_tag('/images/payment_cancel_button.png'), plan_sharing_rules_path(current_user.default_plan), :id => 'cancel' %>
+    <%= image_submit_tag '/images/buy_plan_button.png', :class => 'right', :id => 'payment_submit' %>
+    <%= image_submit_tag '/images/buy_plan_red.png', :class => 'rightred' %>
+  </div>
+  </div>
+
+<% end %>
+
+

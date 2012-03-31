@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120329140427) do
+ActiveRecord::Schema.define(:version => 20120331133846) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(:version => 20120329140427) do
     t.text     "service_preferences"
     t.text     "remains"
     t.text     "additional_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "subscription_type"
+    t.boolean  "subscribed",         :default => false
+    t.string   "transaction_number"
+    t.string   "last_4_digits"
+    t.string   "stripe_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

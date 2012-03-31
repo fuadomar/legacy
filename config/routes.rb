@@ -48,12 +48,17 @@ NasceniaRailsTemplate::Application.routes.draw do
 
   resources :agents
 
+  resources :payments
+
+
   devise_for :users, :controllers => {:registrations => "registrations"}
 
   get "publics/index"
   get "publics/dashboard"
   get "publics/why_my_legacy_plan"
   get "publics/how_it_works"
+
+
 
 
   # The priority is based upon order of creation:

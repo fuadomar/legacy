@@ -24,6 +24,8 @@ group :test, :development do
   gem 'rcov', "0.9.11"
 end
 
+gem 'stripe'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

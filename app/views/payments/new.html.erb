@@ -1,0 +1,22 @@
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => 'Payment',
+  :heading => 'Choose payment method'} %>
+
+
+<div class="content-container" id="payment-container">
+  <div class="instructions">
+    As a paid subscriber, you ensure that your plan gets to those who need it most,
+    when they need it most. An annual subscription is $45, and includes unlimited
+    plan changes and downloads, and scheduled sharing. You can cancel at anytime.
+    You can also purchase a lifetime subscription for
+    <span class="outer">
+      <span class="inner">$399</span>
+    </span>
+    . $149 (special offer)
+  </div>
+
+  <div class="form">
+    <%= render 'form' %>
+  </div>
+
+</div>
