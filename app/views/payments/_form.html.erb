@@ -46,7 +46,7 @@
         <%= text_field_tag :credit_card_number, params[:credit_card_number], :class => "long", :disabled => true %>
       </div>
       <div class="field last">
-        <%= label_tag :cvv, "Security code (CVV)" %><br/>
+        <%= label_tag :cvv, "Security code (CVC)" %><br/>
         <%= text_field_tag :cvv, params[:cvv], :class => "long", :disabled => true %>
       </div>
       <div class="clear"></div>
@@ -70,7 +70,7 @@
   </div>
 
   <div class="row action">
-    <%= link_to image_tag('/images/payment_cancel_button.png'), plan_sharing_rules_path(current_user.default_plan), :id => 'cancel' %>
+    <%= link_to image_tag('/images/payment_cancel_button.png'), publics_dashboard_path, :id => 'cancel' %>
     <%= image_submit_tag '/images/buy_plan_button.png', :class => 'right', :id => 'simple' %>
     <%= image_submit_tag '/images/buy_plan_red.png', :class => 'rightred', :id => 'premium' %>
   </div>

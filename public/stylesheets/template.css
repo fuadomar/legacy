@@ -1369,8 +1369,25 @@ div.shairing-container .big-button-container {
     /*    border: 1px solid blue;*/
     width: 955px;
     margin-top: 83px;
+    text-align: center;    
+}
+
+div.shairing-container .big-button-container-tiny{
+    margin-top: 30px;
     text-align: center;
 }
+
+div.shairing-container .big-button-container .share-button{
+    float: left;
+    width: 660px;
+}
+
+div.shairing-container .big-button-container .download-button{
+    float: left;
+    width: 250px;
+    margin-top: 28px;
+}
+
 
 div.shairing-container .big-button-container .button-text {
     font-family: Arial;
@@ -1399,7 +1416,7 @@ div.shairing-container .big-button-container .big-button a {
 
 div.shairing-container .user-image-container {
     /*    border: 1px solid gold; */
-    margin-top: 70px;
+    margin-top: 40px;
     margin-left: 80px;
 
 }
@@ -1416,7 +1433,8 @@ div.shairing-container .user-image-container .blank-image{
 div.shairing-container .user-image-container .relation-entry .info{
     height: 100px;
     line-height: 120%;
-    margin-top: 50px;
+    margin-top: 20px;
+    border: 1px solid red;
 }
 
 div.shairing-container .user-image-container .relation-entry .info a{

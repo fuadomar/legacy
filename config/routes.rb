@@ -13,16 +13,14 @@ NasceniaRailsTemplate::Application.routes.draw do
 
   resources :relationships
 
-#  resources :families, :controller => :relationships
-#  resources :friends, :controller => :relationships
+  #  resources :families, :controller => :relationships
+  #  resources :friends, :controller => :relationships
 
   resources :memorials
 
   resources :plans do
-    resources :sharing_rules do
-      collection do
-        get :get_create_form_tiny
-      end
+    member do
+      get :download
     end
   end
 

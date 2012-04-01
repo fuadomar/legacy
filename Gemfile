@@ -26,6 +26,7 @@ end
 
 gem 'stripe'
 
+gem 'prawn', '0.12.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'

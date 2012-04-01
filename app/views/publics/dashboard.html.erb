@@ -122,6 +122,11 @@
   </div>
 
   <% if current_user.payments.first.present? && @relationships.present? %>
+    <div class="big-button-container-tiny">
+      <div class="download-plan-button">
+        <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan) %>
+      </div>
+    </div>
     <div class="user-image-container">
       <% @relationships.each_with_index do |relationship, index| %>
         <% if(index != 0 && index%4 == 0) %>
@@ -132,9 +137,8 @@
             <b>
               <%= relationship.full_name %>
             </b><br/>
-            Sent plan Via email<br/>
-            on March, 20, 2012<br/>
-            Re-send on my death<br/>
+            Never Sent Plan<br/>
+            Send when .....<br/>
             Send plan now<br/>
             <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
           </div>
@@ -150,16 +154,27 @@
     </div>
   <% else %>
     <div class="big-button-container">
-      <div class="button-text">
-        Your plan has not been shared with anyone
-      </div>
-      <div class="big-button">
-        <% if current_user.payments.first.present? %>
-          <%= link_to 'Choose who to share with now', new_relationship_path, :rel => 'facebox' %>
-        <% else %>
+      <% if current_user.payments.first.present? %>
+        <div class="share-button">
+          <div class="button-text">
+            Your plan has not been shared with anyone
+          </div>
+          <div class="big-button">
+            <%= link_to 'Choose who to share with now', new_relationship_path, :rel => 'facebox' %>
+          </div>
+        </div>
+        <div class="download-button">
+          <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan) %>
+        </div>
+        <div class="clear"></div>
+      <% else %>
+        <div class="button-text">
+          Your plan has not been shared with anyone
+        </div>
+        <div class="big-button">
           <%= link_to("Subscribe now to share or download your plan", new_payment_path) %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="user-image-container">
