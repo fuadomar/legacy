@@ -1400,15 +1400,37 @@ div.shairing-container .big-button-container .big-button a {
 div.shairing-container .user-image-container {
     /*    border: 1px solid gold; */
     margin-top: 70px;
-    margin-left: 102px;
+    margin-left: 80px;
+
 }
 
-div.shairing-container .user-image-container img {
-    margin-right: 85px;
+div.shairing-container .user-image-container .relation-entry{
+    margin-right: 80px;
+    float: left;
 }
 
+div.shairing-container .user-image-container .blank-image{
+    margin-right: 90px;
+}
 
+div.shairing-container .user-image-container .relation-entry .info{
+    height: 100px;
+    line-height: 120%;
+    margin-top: 50px;
+}
 
+div.shairing-container .user-image-container .relation-entry .info a{
+    color: #000;
+    text-decoration: none;
+    background-color: #D9E6EF;
+    padding: 2px;
+}
+
+div.shairing-container .user-image-container .add-more{
+    float: left;
+    margin-left: -60px;
+    margin-top: 180px;
+}
 
 
 div.back-link{
@@ -1427,6 +1449,244 @@ div.back-link{
 div.back-link a{
     text-decoration: none;
     color: #333;
+}
+
+
+
+
+/* relationhips/new popup
+--------------------------------------------------  */
+
+.popup-container{
+    /*    border: 1px solid red;*/
+    width: 615px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.popup-container .blue-bg-title {
+    width: 619px;
+    height: 45px;
+    background: url('/images/blue_bar.png') no-repeat;
+    background-size: 100%;
+    margin-left: -2px;
+}
+
+.popup-container .outer-box{
+    border-left: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+    padding-bottom: 15px;
+}
+
+.popup-container .header-txt {
+    font-family: Verdana;
+    font-size: 13px;
+    color: #14669a;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.popup-container form.new_relationships .top-form {
+    /*    border: 1px solid red;*/
+}
+
+
+.popup-container form.new_relationships .top-form .user-image {
+    float: left;
+    margin-left: 25px;
+}
+
+.popup-container form.new_relationships .top-form .form-content {
+    /*    border: 1px solid green;*/
+    float: left;
+    display: inline-block;
+    min-width: 50px;
+    min-height: 50px;
+    margin-left: 70px;
+}
+
+.popup-container form.new_relationships .bottom-form {
+    /*    border: 1px solid blue;*/
+    font-family: Verdana;
+    font-size: 13px;
+    color: #333333;
+    padding-left: 20px;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections {
+    /*    border: 1px solid red;*/
+    float: left;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections .bottom-buttons-container{
+    /*    border: 1px solid blueviolet;*/
+    /*    position: relative;*/
+    left: 10px;
+    width: 179px;
+    margin-top: 15px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section {
+    /*    border: 1px solid green;*/
+    float: left;
+    margin-left: 15px;
+    width: 370px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section .single-line {
+    /*    border: 1px solid gold;*/
+    width: 373px;
+    /*    margin-bottom: 4px;*/
+    margin-bottom: 18px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section .sharing-button {
+    margin-top: 3px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section .single-line input[type=text] {
+    width: 60px;
+    height: 28px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section .single-line input[type=checkbox] {
+    float: right;
+    margin-right: 0px;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections h3,
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section h3{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana;
+    font-size: 14px;
+    color: #202020;
+    font-weight: normal;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections h3 {
+    margin-bottom: 30px;
+}
+
+.popup-container form.new_relationships .bottom-form .scheduled-sharing-section h3{
+    margin-bottom: 25px;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections .single-topic {
+    /*    float: left;*/
+    width: 175px;
+    margin-bottom: 5px;
+}
+
+.popup-container form.new_relationships .bottom-form .share-plan-sections .single-topic input[type=checkbox] {
+    /*    margin-left: 30px;*/
+    float: right;
+}
+
+form.new_relationships input[type=text],
+form.new_relationships select{
+    border: 1px solid #d7d7d7;
+    width: 175px;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 4px;
+}
+
+form.new_relationships select {
+    font-family: Verdana;
+    font-weight: normal;
+    font-size: 14px;
+    color: #565656;
+    line-height: 14px;
+}
+
+form.new_relationships .single-row {
+    margin-bottom: 12px;
+}
+
+form.new_relationships .single-row .single-field {
+    float: left;
+    margin-left: 20px;
+}
+
+form.new_relationships .single-row .single-field.first {
+    margin-left: 0px;
+}
+
+form.new_relationships .single-row .single-field .label {
+    font-family: Verdana;
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 11px;
+    margin-bottom: 4px;
+}
+
+
+
+
+/* memorial/new
+--------------------------------------------------------- */
+#body-container .body-content .title-container-thin {
+    background: url("/images/content_title_container_thin.png") repeat scroll 0 0 transparent;
+    height: 81px;
+}
+
+#body-container .body-content .title-container-thin .row-1 {
+    height: 33px;
+    padding-left: 20px;
+    padding-right: 27px;
+    padding-top: 15px;
+}
+
+#body-container .body-content .title-container-thin .row-1 .title {
+    color: #FFFFFF;
+    float: left;
+    font-family: "Lustria";
+    font-size: 24px;
+}
+
+#body-container .body-content .content-container-thin {
+    min-height: 450px;
+    background-color: #FFFFFF;
+    margin-left: 2px;
+    padding: 0px 23px 23px 23px;
+    width: 654px;
+}
+
+#body-container .body-content form.memorial {
+
+}
+
+#body-container .body-content form.memorial div.field {
+
+}
+
+#body-container .body-content form.memorial div.field label{
+    font-family: verdana;
+    font-size: 14px;
+    color: #3a3a3a;
+    display: block;
+}
+
+#body-container .body-content form.memorial div.field input[type=text],
+#body-container .body-content form.memorial div.field textarea{
+    display: block;
+    margin-top: 9px;
+    border: 1px solid #d7d7d7;
+    height: 28px;
+    width: 444px;
+}
+
+#body-container .body-content form.memorial div.field textarea {
+    height: 52px;
+}
+
+#body-container .body-content form.memorial .submit_button {
+    margin-top: 10px;
 }
 
 
@@ -1803,7 +2063,7 @@ div.back-link a{
 }
 
 #payment-container .instructions span.inner{
-  color: #555;
+    color: #555;
 }
 
 #payment-container .form{
@@ -1882,7 +2142,7 @@ div.back-link a{
 }*/
 
 #payment-container .form .row.action input.right{
-  margin-left: 120px;
+    margin-left: 120px;
 }
 
 #payment-container .form .row.action input.rightred{

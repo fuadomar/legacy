@@ -1,5 +1,7 @@
-<h1>Memorial</h1>
+<%= render :partial => 'shared/body_content_top_thin',
+  :locals => { :title => 'Memorial'}
+%>
 
-<%= render 'form' %>
-
-<%#= link_to 'Back', memorials_path %>
+<div class="content-container-thin">
+  <%= render 'form' %>
+</div>

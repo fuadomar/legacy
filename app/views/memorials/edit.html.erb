@@ -1,6 +1,7 @@
-<h1>Editing memorial</h1>
+<%= render :partial => 'shared/body_content_top_thin',
+  :locals => { :title => 'Memorial'}
+%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @memorial %> |
-<%= link_to 'Back', memorials_path %>
+<div class="content-container-thin">
+  <%= render 'form' %>
+</div>

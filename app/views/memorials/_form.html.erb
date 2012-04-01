@@ -1,4 +1,4 @@
-<%= form_for(@memorial) do |f| %>
+<%= form_for(@memorial, :html => {:class => "memorial"}) do |f| %>
   <% if @memorial.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@memorial.errors.count, "error") %> prohibited this memorial from being saved:</h2>
@@ -12,29 +12,29 @@
   <% end %>
 
   <%#*<div class="field">%>
-  <%#= f.label :plan_id %><br />
+  <%#= f.label :plan_id %>
   <%# if(current_user.present? && current_user.plans.present?) %>
   <%#= f.select(:plan_id, current_user.plans.all.collect { |p| [p.title, p.id] }) %>
   <%# else %>
   <%#= f.text_field :plan_id %>
   <%# end %>
   <%#*</div>%>
-  
+
   <!-- plan creating -->
   <%#= fields_for @plan do |plan| %>
     <%#= plan.hidden_field :title, :value => 'This is a default test plan for memorial' %>
   <%# end %>
 
   <div class="field">
-    <%= f.label :organizer_name, "Who do you want to arrange my memorial services?" %><br />
+    <%= f.label :organizer_name, "Who do you want to arrange my memorial services?" %>
     <%= f.text_field :organizer_name %>
   </div>
   <div class="field">
-    <%= f.label :organizer_preferences, "Do you have any memorial preferences?" %><br />
+    <%= f.label :organizer_preferences, "Do you have any memorial preferences?" %>
     <%= f.text_area :organizer_preferences, :size => '40x1' %>
   </div>
   <div class="field">
-    <%= f.label :prepared_services, "Do you have any services prepared?" %><br />
+    <%= f.label :prepared_services, "Do you have any services prepared?" %>
     <%= f.text_area :prepared_services, :size => '40x1' %>
   </div>
   <div class="field">
@@ -42,14 +42,17 @@
     <%= f.text_area :service_preferences, :size => '40x2' %>
   </div>
   <div class="field">
-    <%= f.label :remains, "I would like my remains to be:" %><br />
+    <%= f.label :remains, "I would like my remains to be:" %>
     <%= f.text_area :remains, :size => '40x1' %>
   </div>
   <div class="field">
-    <%= f.label :additional_notes, "Additional Notes" %><br />
+    <%= f.label :additional_notes, "Additional Notes" %>
     <%= f.text_area :additional_notes, :size => '40x4' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%#= f.submit %>
+    <%= f.submit "create_memorial", :type => :image, :src => "/images/create_memorial_button.png", :class => "submit_button" %>
   </div>
 <% end %>
+
+  

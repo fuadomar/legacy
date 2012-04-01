@@ -20,8 +20,6 @@ class User < ActiveRecord::Base
 
   has_many :plans
   has_many :relationships
-  has_many :families
-  has_many :friends
   has_many :contacts
   has_many :payments
 

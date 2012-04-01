@@ -1,27 +1,11 @@
-<div class="edit-profile">
-  <div class="sections">
-    <div class="section" id="sub-menu-family">My Family</div>
-    <div class="section last inactive" id="sub-menu-friend">My Friends</div>
+<div class="popup-container">
+  <div class="blue-bg-title"></div>
+  <div class="outer-box">
+    <div class="header-txt">
+      Enter details of the person you want to share your plan with. Your plam will
+      not be sent imediately, so you can make changes before finalizing. And, we'll
+      always send you an email before we share your plan, or if your plan is requested.
+    </div>
+   <%= render 'form' %>
   </div>
-
-  <div class="sub-menu-content" id="family">
-    <%= render :partial => 'form', :locals => { :relation_type => 'family'} %>
-  </div>
-
 </div>
-<%= link_to 'Back', relationships_path %>
-
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('.section').bind('click', function(){
-      var id = $(this).attr('id');
-      id = id.replace('sub-menu-','')
-      <%#*$('.sub-menu-content').hide();%>
-      <%#*$('#'+id).show();%>
-      $('#relationship_type_temp').val(id);
-      $('.section').removeClass('inactive');
-      $('.section').addClass('inactive');
-      $(this).removeClass('inactive');
-    });
-  });
-</script>

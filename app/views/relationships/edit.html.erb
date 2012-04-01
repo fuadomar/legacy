@@ -1,6 +1,11 @@
-<h1>Editing relationship</h1>
-
-<%= render :partial => 'form', :locals => { :relation_type => @relationship.type} %>
-
-<%= link_to 'Show', @relationship %> |
-<%= link_to 'Back', relationships_path %>
+<div class="popup-container">
+  <div class="blue-bg-title"></div>
+  <div class="outer-box">
+    <div class="header-txt">
+      Enter details of the person you want to share your plan with. Your plam will
+      not be sent imediately, so you can make changes before finalizing. And, we'll
+      always send you an email before we share your plan, or if your plan is requested.
+    </div>
+   <%= render 'form' %>
+  </div>
+</div>

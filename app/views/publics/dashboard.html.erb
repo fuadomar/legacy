@@ -1,12 +1,177 @@
-<%= render :partial => 'shared/body_content_top_without_menu',
-  :locals => { :title => 'Dashboard',
-  :heading => 'Comprehensive plan overview'} %>
+<div class="title-container">
+  <div class="row-1">
+    <div class="title">
+      Plan Sharing Rules
+    </div>
+    <div class="tips">
+      <div class="link">
+        <%= link_to "TOP TIPS" %>
+      </div>
+      <div class="icon">
+        <%= image_tag('/images/top_tips.png') %>
+      </div>
+      <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="row-2">
+    <div class="content">
+      Plan Status & Shairing
+    </div>
+  </div>
+</div>
+<div class="shairing-container">
+  <div class="box-container">
 
-<div class="content-container">
-  <h3>Medical &nbsp;&nbsp;- <%= link_to("Start", agreement_medical_instructions_path)%></h3>
-  <h3>Memorial - <%= link_to("Start", new_memorial_path())%></h3>
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_financial.png") %>
+        <div class="title-content">
+          Financial & Accounts
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @financial_account_size.present? ? @financial_account_size : "No" %>
+        accounts listed
+      </div>
+      <div class="box-button">
+        <%= link_to @financial_account_size.present? ? 'EDIT ACCOUNTS' : 'ADD ACCOUNTS', financial_accounts_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
 
-  <h3>
-    <%= link_to "Share My Plan", plan_sharing_rules_path(current_user.default_plan) if current_user.present? %>
-  </h3>
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_medical.png") %>
+        <div class="title-content">
+          Medical Directives
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @medical_instruction.present? ? "You have directive on file" : "No directive on file" %>
+      </div>
+      <div class="box-button">
+        <% if @medical_instruction.present? && @medical_instruction.authorized_at.present? %>
+          <%= link_to 'EDIT YOUR DIRECTIVE', edit_medical_instruction_path(@medical_instruction) %>
+        <% else %>
+          <%= link_to 'ADD DIRECTIVE', agreement_medical_instructions_path %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_trust.png") %>
+        <div class="title-content">
+          Will & Trust
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @will_and_trusts_size.present? ? "#{@will_and_trusts_size} file uploaded" : "No Will on file" %>
+      </div>
+      <div class="box-button">
+        <%= link_to @will_and_trusts_size.present? ? 'EDIT/DELETE' : 'UPLOAD WILL', will_and_trusts_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_memorial.png") %>
+        <div class="title-content">
+          Memorial
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @memorial.present? ? "Your memorial wishes" : "No memorial wishes" %>
+      </div>
+      <div class="box-button">
+        <% if @memorial.present? %>
+          <%= link_to 'EDIT MEMORIAL WISHES', edit_memorial_path(@memorial) %>
+        <% else %>
+          <%= link_to 'ADD MEMORIAL WISHES', new_memorial_path %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">
+        <%=  image_tag("icon_my_things.png") %>
+        <div class="title-content">
+          My Possessions
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="box-content">
+        <%= @possession_size.present? ? @possession_size : "No" %>
+        accounts listed
+      </div>
+      <div class="box-button">
+        <%= link_to @possession_size.present? ? 'EDIT ASSETS' : 'ADD ASSETS', possessions_path %>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div class="clear"></div>
+  </div>
+
+  <% if current_user.payments.first.present? && @relationships.present? %>
+    <div class="user-image-container">
+      <% @relationships.each_with_index do |relationship, index| %>
+        <% if(index != 0 && index%4 == 0) %>
+          <div class="clear"></div>
+        <% end %>
+        <div class="relation-entry">
+          <div class="info">
+            <b>
+              <%= relationship.full_name %>
+            </b><br/>
+            Sent plan Via email<br/>
+            on March, 20, 2012<br/>
+            Re-send on my death<br/>
+            Send plan now<br/>
+            <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
+          </div>
+          <div class="image">
+            <%= image_tag("/images/user.png") %>
+          </div>
+        </div>
+      <% end %>
+      <div class="add-more">
+        <%= link_to image_tag("/images/plus_sign.png"), new_relationship_path, :rel => 'facebox' %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  <% else %>
+    <div class="big-button-container">
+      <div class="button-text">
+        Your plan has not been shared with anyone
+      </div>
+      <div class="big-button">
+        <% if current_user.payments.first.present? %>
+          <%= link_to 'Choose who to share with now', new_relationship_path, :rel => 'facebox' %>
+        <% else %>
+          <%= link_to("Subscribe now to share or download your plan", new_payment_path) %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="user-image-container">
+      <%= image_tag("/images/user.png", :class => 'blank-image') %>
+      <%= image_tag("/images/user.png", :class => 'blank-image') %>
+      <%= image_tag("/images/user.png", :class => 'blank-image') %>
+      <%= image_tag("/images/user.png", :class => 'blank-image') %>
+    </div>
+  <% end %>
+
+
+
+
+
 </div>

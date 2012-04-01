@@ -1,41 +1,38 @@
-<p id="notice"><%= notice %></p>
-Memorial
-<p>
-  <b>Plan:</b>
-  <%= @memorial.plan.title %>
-</p>
+<%= render :partial => 'shared/body_content_top_thin',
+  :locals => { :title => 'Memorial'}
+%>
 
-<p>
+<div class="content-container-thin">
+
   <b>Organizer name:</b>
   <%= @memorial.organizer_name %>
-</p>
+<br/><br/>
 
-<p>
+
   <b>Organizer preferences:</b>
   <%= @memorial.organizer_preferences %>
-</p>
+<br/><br/>
 
-<p>
+
   <b>Prepared services:</b>
   <%= @memorial.prepared_services %>
-</p>
 
-<p>
+<br/><br/>
+
   <b>Service preferences:</b>
   <%= @memorial.service_preferences %>
-</p>
 
-<p>
+<br/><br/>
+
   <b>Remains:</b>
   <%= @memorial.remains %>
-</p>
+<br/><br/>
 
-<p>
+
   <b>Additional notes:</b>
   <%= @memorial.additional_notes %>
-</p>
-<%= link_to 'Back', new_memorial_path %>
+<br/><br/>
 
 <%= link_to 'Edit', edit_memorial_path(@memorial) %>
-<%#*|%>
-<%#= link_to 'Back', memorials_path %>
+
+</div>

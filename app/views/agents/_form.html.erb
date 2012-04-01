@@ -62,7 +62,7 @@
         <label>
           &nbsp;
         </label>
-        <%= f.select :state, [['CA','CA'],['AZ','AZ']] %>
+        <%= f.select :state, UsState::NAMES %>
       </div>
       <div class="single_input">
         <%= f.label :zip, 'Zip Code' %>

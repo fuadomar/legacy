@@ -1,11 +1,11 @@
 class Payment < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :stripe_token, :last_4_digits
+  attr_accessible :stripe_token, :last_4_digits, :subscription_type
   attr_accessor :stripe_token
 
   before_save :update_stripe
 
-  #validates_presence_of :last_4_digits
+  validates :last_4_digits, :presence => true
 
   def update_stripe
     if stripe_token.present?
@@ -15,7 +15,7 @@ class Payment < ActiveRecord::Base
           :card => stripe_token
         )
         self.last_4_digits = customer.active_card.last4
-        response = customer.update_subscription({:plan => "premium"})
+        response = customer.update_subscription({:plan => self.subscription_type})
       else
         customer = Stripe::Customer.retrieve(stripe_id)
         customer.card = stripe_token

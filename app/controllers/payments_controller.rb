@@ -6,10 +6,11 @@ class PaymentsController < ApplicationController
 
 
   def create
+    puts "stripe_token #{params[:payment].inspect}"
     @payment = current_user.payments.new(params[:payment])
     
     if @payment.save
-      redirect_to root_path, :notice => "Successfully Subscribed!"
+      redirect_to publics_dashboard_path, :notice => "Successfully Subscribed!"
     else
       render :action => :new
     end

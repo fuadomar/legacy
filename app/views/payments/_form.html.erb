@@ -28,7 +28,7 @@
 
   <%= f.hidden_field :stripe_token %>
   <%= f.hidden_field :last_4_digits %>
-
+  <%= f.hidden_field :subscription_type, :value => 'simple_plan' %>
 
   <noscript>
     This form requires Javascript to use
@@ -71,11 +71,18 @@
 
   <div class="row action">
     <%= link_to image_tag('/images/payment_cancel_button.png'), plan_sharing_rules_path(current_user.default_plan), :id => 'cancel' %>
-    <%= image_submit_tag '/images/buy_plan_button.png', :class => 'right', :id => 'payment_submit' %>
-    <%= image_submit_tag '/images/buy_plan_red.png', :class => 'rightred' %>
+    <%= image_submit_tag '/images/buy_plan_button.png', :class => 'right', :id => 'simple' %>
+    <%= image_submit_tag '/images/buy_plan_red.png', :class => 'rightred', :id => 'premium' %>
   </div>
   </div>
 
 <% end %>
 
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#premium').click(function(){
+      $('#payment_subscription_type').val('premium_plan');
+    });
+  });
+</script>

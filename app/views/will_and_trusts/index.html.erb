@@ -11,31 +11,33 @@
     You can always download your will or documents from here.
   </div>
 
-  <div class="title">
-    List of Your Uploaded Files
-  </div>
+  <% if @will_and_trusts.present? %>
+    <div class="title">
+      List of Your Uploaded Files
+    </div>
+    <div class="list">
+      <% @will_and_trusts.each_with_index do |will_and_trust, index| %>
+        <div class="row">
+          <table cellspacing="0">
+            <tr>
+              <td class="comment">
+                <%= will_and_trust.comment %>
+              </td>
+              <td class="download">
+                <%= link_to image_tag('/images/download_link_bk.png'), will_and_trust.file.url, :target => '_blank' %>
+              </td>
+              <td class="link">
+                <div class="link-box">
+                  <%= link_to 'DELETE', will_and_trust, :confirm => 'Are you sure?', :method => :delete %>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div class="list">
-    <% @will_and_trusts.each_with_index do |will_and_trust, index| %>
-      <div class="row">
-        <table cellspacing="0">
-          <tr>
-            <td class="comment">
-              <%= will_and_trust.comment %>
-            </td>
-            <td class="download">
-              <%= link_to image_tag('/images/download_link_bk.png'), will_and_trust.file.url, :target => '_blank' %>
-            </td>
-            <td class="link">
-              <div class="link-box">
-                <%= link_to 'DELETE', will_and_trust, :confirm => 'Are you sure?', :method => :delete %>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-    <% end %>
-  </div>
 
   <div class="title">
 

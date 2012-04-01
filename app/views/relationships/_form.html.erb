@@ -1,4 +1,5 @@
-<%= form_for(@relationship) do |f| %>
+<%= form_for(@relationship, :html => {:class => "new_relationships"}) do |f| %>
+
   <% if @relationship.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@relationship.errors.count, "error") %> prohibited this relationship from being saved:</h2>
@@ -10,137 +11,171 @@
       </ul>
     </div>
   <% end %>
-  <%= relation_type = @relationship.type if @relationship.type.present? %>
-  <div class="field">
-    <%= f.label :type_temp %><br />
-    <%= f.text_field :type_temp, :value => relation_type, :readonly => true, :class => 'transparent' %>
+
+  <div class="top-form">
+    <%= image_tag('user.png', :class => "user-image") %>
+    <div class="form-content">
+
+      <div class="single-row">
+        <div class="single-field first">
+          <div class="label">
+            Name
+          </div>
+          <%= f.text_field :first_name, :placeholder => "First" %>
+        </div>
+        <div class="single-field">
+          <div class="label">
+            &nbsp;
+          </div>
+          <%= f.text_field :last_name, :placeholder => "Last" %>
+        </div>
+        <div class="clear"></div>
+      </div>
+
+      <div class="single-row">
+        <%= f.select :relation, Relationship::RELATIONS, :prompt => 'Relationship' %><br />
+        <div class="clear"></div>
+      </div>
+
+      <div class="single-row">
+        <div class="single-field first">
+          <div class="label">
+            Email
+          </div>
+          <%= f.text_field :email %>
+        </div>
+        <div class="single-field">
+          <div class="label">
+            Verify email
+          </div>
+          <%= f.text_field :email_verify %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="clear"></div>
   </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :middle_name %><br />
-    <%= f.text_field :middle_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select(:date_of_birth, {:default => 40.years.ago,
-        :order => [:year, :month, :day], :start_year => Date.today.year - 70,
-        :end_year => Date.today.year, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}},
-      {:style => "width: 71px;"}) %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :zip_code %><br />
-    <%= f.text_field :zip_code %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-    *
-  </div>
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.file_field :image %>
-  </div>
-  <div class="field">
-    <%= f.label :doc %><br />
-    <%= f.file_field :doc %>
-  </div>
-  <div class="field">
-    <%= f.label :relation, 'Relationship' %><br />
-    <%= f.text_field :relation %>
-  </div>
-  <div class="field">
-    <%= f.label :additional_notes %><br />
-    <%= f.text_area :additional_notes, :size => '39x3' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="bottom-form">
+    <%= fields_for(@sharing_rule) do |sr| %>
+      <div class="share-plan-sections">
+        <h3>Share plan sections:</h3>
+        <div class="single-topic">
+          Financial Accounts
+          <%= sr.check_box :allow_financials %>
+          <div class="clear"></div>
+        </div>
+        <div class="single-topic">
+          Possessions/Gifts
+          <%= sr.check_box :allow_possessions %>
+          <div class="clear"></div>
+        </div>
+        <div class="single-topic">
+          Will & Trust
+          <%= sr.check_box :allow_will_and_trusts %>
+          <div class="clear"></div>
+        </div>
+        <div class="single-topic">
+          Medical Directive
+          <%= sr.check_box :allow_medical_instructions %>
+          <div class="clear"></div>
+        </div>
+        <div class="single-topic">
+          Memorial and remains
+          <%= sr.check_box :allow_memorials %>
+          <div class="clear"></div>
+        </div>
+        <div class="bottom-buttons-container">
+          <% if @relationship.new_record? %>
+          <%= image_tag("remove_this_person_button.png") %>
+          <% else %>
+          <%= link_to image_tag("remove_this_person_button.png"), @relationship, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+          <br />
+          <%= link_to image_tag("cancel_button.png"), '#', :id => 'close-form' %>
+        </div>
+      </div>
+      <div class="scheduled-sharing-section">
+        <h3>Scheduled or triggered sharing:</h3>
+        <div class="single-line">
+          Share when I turn <%= sr.text_field :when_i_turn_age, :placeholder => 'age' %> years old text
+          <%= sr.check_box :when_i_turn %>
+        </div>
+        <div class="single-line">
+          Share if I become incapacitated
+          <%= sr.check_box :when_incapacitated %>
+        </div>
+        <div class="single-line">
+          Share when I die
+          <%= sr.check_box :when_die %>
+        </div>
+        <div class="single-line">
+          Allow this person to notify us that
+          I've died<br /> or become incapacitated
+          <%= sr.check_box :allow_notify %>
+        </div>
+        <%= image_submit_tag 'save_sharing_button.png', :class=> 'sharing-button' %>
+      </div>
+      <div class="clear"></div>
+    <% end %>
   </div>
 <% end %>
 
 
 <script type="text/javascript">
-$(document).ready(function(){
-$('#relationship_submit').bind('click', function(){
-var errors = 'Please correct this errors...\n\n';
-var first_name = $('#relationship_first_name').val();
-if(first_name.length < 3)
-{
-errors += 'Invalid First Name.\n';
-}
-var last_name = $('#relationship_last_name').val();
-if(last_name.length < 3)
-{
-errors += 'Invalid Last Name.\n';
-}
+  $(document).ready(function(){
 
-var date_of_birth_1i = $('#relationship_date_of_birth_1i').val();
-var date_of_birth_2i = $('#relationship_date_of_birth_2i').val();
-var date_of_birth_3i = $('#relationship_date_of_birth_3i').val();
-if(date_of_birth_1i == '' || date_of_birth_2i == '' || date_of_birth_3i == '')
-{
-errors += 'Invalid Date of Birth.\n';
-}
+    $('#close-form').click($.facebox.close);
+    
 
-var address = $('#relationship_address').val();
-if(address.length < 5)
-{
-errors += 'Invalid Address.\n';
-}
-var city = $('#relationship_city').val();
-if(city.length < 3)
-{
-errors += 'Invalid City.\n';
-}
-var state = $('#relationship_state').val();
-if(state.length < 2)
-{
-errors += 'Invalid State.\n';
-}
-var zip_code = $('#relationship_zip_code').val();
-if(zip_code.length < 3)
-{
-errors += 'Invalid Zip Code.\n';
-}
+    $('.sharing-button').bind('click', function(){
+      var errors = '';
+      var first_name = $('#relationship_first_name').val();
+      if(first_name.length < 3)
+      {
+        errors += 'Invalid First Name.\n';
+      }
+      var last_name = $('#relationship_last_name').val();
+      if(last_name.length < 3)
+      {
+        errors += 'Invalid Last Name.\n';
+      }
 
-var regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-var email = $('#relationship_email').val();
-if((regEmail.test(email) == false) || email.length < 13)
-{
-errors += 'Invalid Email.\n';
-}
+      var last_name = $('#relationship_relation').val();
+      if(last_name.length < 2)
+      {
+        errors += 'Must Select Relation.\n';
+      }
+
+      var regEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      var email = $('#relationship_email').val();
+      if((regEmail.test(email) == false) || email.length < 6)
+      {
+        errors += 'Invalid Email.\n';
+      }
+
+      var email_verify = $('#relationship_email_verify').val();
+      if(email != email_verify)
+      {
+        errors += 'Verify Email doesn\'t Match.\n';
+      }
 
 
-if(errors != 'Please correct this errors...\n\n')
-{
-alert(errors);
-return false;
-}
-});
-});
+      var when_i_turn = $('#sharing_rule_when_i_turn').val();
+      var when_i_turn_age = $('#sharing_rule_when_i_turn_age').val();
+      if(when_i_turn.checked == true && when_i_turn_age < 1)
+      {
+        alert(when_i_turn);
+        errors += 'Please give valid age....\n';
+      }
+
+      if(errors != '')
+      {
+        errors += '\n\nPlease correct this errors...';
+        alert(errors);
+        return false;
+      }
+
+    });
+  });
 </script>
