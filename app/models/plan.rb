@@ -23,121 +23,145 @@ class Plan < ActiveRecord::Base
   end
 
 
-  def generate_pdf path, sharing_rule
-    pdf = Prawn::Document.new()
-    pdf.image "#{Rails.root}/public/images/logo.png"
-    pdf.move_down 10
-    pdf.text "March 24, 2012"
-    pdf.move_down 35
-    pdf.text "Following are the wishes captured for Stephen Frost on MyLegacyPlan.org. Stephen captured
-wishes in the following areas, and 7 pages follow this one:"
-    pdf.move_down 20
-    pdf.text "Accounts and Finances (one page)"
-    pdf.text "Memorial Preferences (one page)"
-    pdf.text "Gifting of personal belongings (two pages)"
-    pdf.text "Existence and location of a last will (two pages)"
-    pdf.text "Advance Medical Directive (one page)"
-    pdf.move_down 20
-    pdf.text "This plan is dated March 24, 2012."
+  def generate_pdf path, user, sharing_rule
+    img = "#{Rails.root}/public/images/pdf_bg.png"
+    pdf = Prawn::Document.new(:background => img)
 
+    plan_single_pdf_page_template(pdf) do
+      pdf.text "Following are the wishes captured for #{user.full_name} on MyLegacyPlan.org. #{user.first_name} captured wishes in the following areas, and 7 pages follow this one:"
+      pdf.move_down 20
+      pdf.text "Accounts and Finances (one page)"
+      pdf.text "Memorial Preferences (one page)"
+      pdf.text "Gifting of personal belongings (two pages)"
+      pdf.text "Existence and location of a last will (two pages)"
+      pdf.text "Advance Medical Directive (one page)"
+      pdf.move_down 20
+      pdf.text "This plan is dated #{user.default_plan.created_at.strftime("%B %d, %Y.")}"
+    end
+
+    pdf.start_new_page
+
+    plan_single_pdf_page_template(pdf) do
+      pdf.text "Accounts and Finances", :size => 40
+      pdf.text "for Stephen Frost, dated March 24, 2012"
+      pdf.move_down 10
+      pdf.text "Bank Accounts", :size => 20
+      pdf.move_down 5
+      pdf.stroke_horizontal_rule
+      pdf.fill_color "000000"
+
+      user.default_plan.financial_accounts.first.bank_accounts.each do |bank_account|
+        pdf.move_down 10
+        pdf.text  "#{bank_account.name_of_bank} #{bank_account.type_of_account} XXXXXX#{bank_account.last_4_digit_of_account}"
+        pdf.text "#{bank_account.location_of_bank}"
+        pdf.text "Note: #{bank_account.note}"
+      end
+
+      pdf.move_down 20
+      pdf.fill_color "7e6127"
+      pdf.text "Investment Accounts", :size => 20
+      pdf.move_down 5
+      pdf.stroke_horizontal_rule
+      pdf.move_down 10
+      pdf.fill_color "000000"
+      pdf.text "E*Trade Brokerage XXXXX3321"
+      pdf.text "Note: NOT retirement savings/account"
+      pdf.move_down 10
+      pdf.text "E*Trade Roth IRA XXXXX3323"
+      pdf.text "Note: Opened in 1993 - mostly S&P index fund"
+      pdf.move_down 20
+      pdf.fill_color "7e6127"
+      pdf.text "Loans", :size => 20
+      pdf.move_down 5
+      pdf.stroke_horizontal_rule
+      pdf.move_down 10
+      pdf.fill_color "000000"
+      pdf.text "PNC Mortgage for $300,000 at origination in September 2003"
+      pdf.text "Outstanding principal balance of <color rgb='ee1f25'>$123,227.90 as of February 2012</color> ", :inline_format => true
+      pdf.text "Note: Our house at 123 Pine Street - no one else is owed anything on this house"
+      pdf.move_down 10
+      pdf.text "American Honda Finance Corporation for $18,000 at origination in May 2009"
+      pdf.text "Outstanding principal balance of <color rgb='ee1f25'>~$8,000 as of February 2012</color>", :inline_format => true
+    end
+
+    pdf.start_new_page
+
+    plan_single_pdf_page_template(pdf) do
+      pdf.text "Memorial Preferences", :size => 40
+      pdf.text "for #{user.full_name}, dated #{user.default_plan.memorials.first.updated_at.strftime("%B %d, %Y.")}"
+      pdf.move_down 20
+      pdf.text "Organizer Name: #{user.default_plan.memorials.first.organizer_name}"
+      pdf.move_down 10
+      pdf.text "Organizer Prefereneces: #{user.default_plan.memorials.first.organizer_preferences}"
+      pdf.move_down 10
+      pdf.text "#{user.default_plan.memorials.first.prepared_services}"
+      pdf.move_down 10
+      pdf.text "#{user.default_plan.memorials.first.service_preferences}"
+      pdf.move_down 10
+      pdf.text "#{user.default_plan.memorials.first.remains}"
+      pdf.move_down 10
+      pdf.text "#{user.default_plan.memorials.first.additional_notes}"
+    end
+
+    #    pdf.start_new_page
+
+    #    plan_single_pdf_page_template(pdf) do
+    #      pdf.text "Gifting of Personal Items", :size => 40
+    #      pdf.text "for Stephen Frost, dated March 24, 2012"
+    #      pdf.move_down 20
+    #      pdf.stroke_horizontal_rule
+    #      pdf.image "#{Rails.root}/public/images/pdf_gift_1.png", :align => :left
+    #      pdf.text "This <i>includes <b>inline</b></i> <font size='24'><color rgb='000000'>" +
+    #           "formatting</color></font>", :inline_format => true, :align => :right, :valign => :top
+    #    end
+
+    pdf.start_new_page
+
+    plan_single_pdf_page_template(pdf) do
+      pdf.text "Last Will & Testament", :size => 40
+      pdf.text "for #{user.full_name}, dated #{user.default_plan.will_and_trusts.first.updated_at.strftime("%B %d, %Y.")}"
+      pdf.move_down 20
+      pdf.text "#{user.default_plan.will_and_trusts.first.comment}"
+    end
+
+    pdf.start_new_page
+
+    pdf.image "#{Rails.root}/public/images/logo.png", :position => :center
 
     pdf.start_new_page
 
 
-    pdf.image "#{Rails.root}/public/images/logo.png"
-    pdf.move_down 10
-    pdf.text "March 24, 2012"
-    pdf.move_down 35
-    pdf.text "Accounts and Finances", :size => 40
-    pdf.text "for Stephen Frost, dated March 24, 2012"
-    pdf.move_down 10
+    plan_single_pdf_page_template(pdf) do
+      medical = user.default_plan.medical_instructions.first
+      pdf.text "Advance Medical Directive", :size => 40
+      pdf.text "for #{user.full_name}, dated #{medical.updated_at.strftime("%B %d, %Y.")}"
+      pdf.move_down 20
+      
+      pdf.move_down 10
+      pdf.text "#{medical.wish}"
 
 
-    pdf.text "Bank Accounts", :size => 20
-    pdf.move_down 5
-    pdf.stroke_horizontal_rule
-    pdf.move_down 10
-    pdf.text "Citibank Checking XXXXXX91"
-    pdf.text "New York, NY Branch"
-    pdf.text "Note: Joint account with Debbie"
-    pdf.move_down 10
-    pdf.text "Wells Fargo Savings XXXXX3312"
-    pdf.text "San Francisco, CA Branch"
-    pdf.text "Note: Joint account with Debbie. Opened in 1980 for vacation savings"
+    end
 
-    pdf.move_down 20
-
-    pdf.text "Investment Accounts", :size => 20
-    pdf.move_down 5
-    pdf.stroke_horizontal_rule
-    pdf.move_down 10
-    pdf.text "E*Trade Brokerage XXXXX3321"
-    pdf.text "Note: NOT retirement savings/account"
-    pdf.move_down 10
-    pdf.text "E*Trade Roth IRA XXXXX3323"
-    pdf.text "Note: Opened in 1993 - mostly S&P index fund"
-
-    pdf.move_down 20
-
-    pdf.text "Loans", :size => 20
-    pdf.move_down 5
-    pdf.stroke_horizontal_rule
-    pdf.move_down 10
-    pdf.text "PNC Mortgage for $300,000 at origination in September 2003"
-    pdf.text "Outstanding principal balance of $123,227.90 as of February 2012"
-    pdf.text "Note: Our house at 123 Pine Street - no one else is owed anything on this house"
-    pdf.move_down 10
-    pdf.text "American Honda Finance Corporation for $18,000 at origination in May 2009"
-    pdf.text "Outstanding principal balance of ~$8,000 as of February 2012"
-
-    pdf.start_new_page
-
-
-    pdf.image "#{Rails.root}/public/images/logo.png"
-    pdf.move_down 10
-    pdf.text "March 24, 2012"
-    pdf.move_down 35
-    pdf.text "Memorial Preferences", :size => 40
-    pdf.text "for Stephen Frost, dated March 24, 2012"
-    pdf.move_down 20
-    pdf.text "I would like my wife Debbie Frost to be responsible for arranging my memorial services when I
-die. My preferences for the disposition of my remains is to be cremated."
-    pdf.move_down 10
-    pdf.text "I have no special religious concerns regarding my memorial, but would like a service that brings
-together my immediate family and close work friends."
-    pdf.move_down 10
-    pdf.text "I have not done any planning for my memorial service, nor have a preferred provider."
-
-
-    pdf.start_new_page
-
-
-    pdf.image "#{Rails.root}/public/images/logo.png"
-    pdf.move_down 10
-    pdf.text "March 24, 2012"
-    pdf.move_down 35
-    pdf.text "Last Will & Testament", :size => 40
-    pdf.text "for Stephen Frost, dated March 24, 2012"
-    pdf.move_down 20
-    pdf.text "My last will and testament was created with Williams and Williams on 200 Market Street in San
-Francisco. The original copy is in the fireproof file safe in my office. Debbie has a key to it.
-Follows is a copy that was uploaded on March 1, 2012 to MyLegacyPlan.org. The will itself was
-signed and witnessed on February 15th of 1999. Witnesses were my neighbor John Hutchins
-and my colleague from IBM, Lisa Ketchov. There are no other copies of my will as of March 24,
-2012."
-
-
-    pdf.start_new_page
-
-
-    pdf.image "#{Rails.root}/public/images/logo.png"
-    pdf.move_down 10
-    pdf.text "March 24, 2012"
-    pdf.move_down 35
-    pdf.text "Advance Medical Directive", :size => 40
-    pdf.text "for Stephen Frost, dated March 24, 2012"
-    pdf.move_down 20
-    pdf.text ""
     pdf.render_file path
+  end
+
+  def plan_single_pdf_page_template(pdf)
+    pdf.bounding_box([45, pdf.cursor-45], :width => 450, :height => 600) do
+
+      pdf.bounding_box([0, pdf.cursor], :width => 240, :height => 80) do
+        pdf.image "#{Rails.root}/public/images/logo.png"
+      end
+      pdf.bounding_box([330, pdf.cursor+80], :width => 120, :height => 50) do
+        pdf.fill_color "7e6127"
+        pdf.text "March 24, 2012", :align => :right
+      end
+
+      pdf.bounding_box([0, pdf.cursor-70], :width => 450, :height => 470) do
+        #        page content goes here
+        yield
+        #        page content ends here
+      end
+    end
   end
 end

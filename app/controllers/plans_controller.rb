@@ -91,7 +91,7 @@ class PlansController < ApplicationController
     sharing_rule = @plan.sharing_rules.where(:relationship_id => relationship.id).first if relationship.present?   
     if @plan.user_id == current_user.id || sharing_rule.present?
       path = "#{Rails.root}/pdf_files/plan_#{@plan.id}.pdf"
-      @plan.generate_pdf path, sharing_rule
+      @plan.generate_pdf path, @plan.user, sharing_rule
       send_file(path, :disposition => 'attachment')
     else
       redirect_to publics_dashboard_path, :notice => 'You are not Authorized to download this plan'
