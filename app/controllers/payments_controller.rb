@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_filter :authenticate_user!
+  
   def new
     @payment = Payment.new
   end

@@ -15,6 +15,10 @@ body {
     margin: 0;
 }
 
+body a img{
+    border: 0px;
+}
+
 div.clear {
     clear: both;
 }
@@ -33,7 +37,7 @@ div#header-container {
 }
 
 #header-container #header{
-    width: 970px;
+    width: 980px;
     margin-left: auto;
     margin-right: auto;
     height: 105px;
@@ -77,6 +81,14 @@ div#header-container {
     padding-top: 6px;
     float: left;
 }
+
+#header-container #header .right-menu .login-container .call a{
+    text-decoration: none;
+    font-family: Lustria;
+    font-size: 16px;
+    color: #407fa7;
+}
+
 
 #header-container #header .right-menu .login-container .login{
     float: right;
@@ -383,9 +395,9 @@ div#header-container {
 }
 
 #why-legacy .main-content .right .watch-video{
-   width: 330px;
-   margin-top: 33px;
-   padding-left: 45px;
+    width: 330px;
+    margin-top: 33px;
+    padding-left: 45px;
 }
 
 #why-legacy .main-content .right .title{

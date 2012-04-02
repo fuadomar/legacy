@@ -16,4 +16,5 @@ class ApplicationController < ActionController::Base
 
     return publics_dashboard_path()
   end
+
 end

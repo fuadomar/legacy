@@ -12,6 +12,7 @@
     <%= javascript_tag "Stripe.publishableKey = '#{STRIPE_PUBLIC_KEY}';"; %>
     <%= javascript_include_tag "stripe" %>
     <%= csrf_meta_tag %>
+    <%= render(:partial => 'shared/google_analytics') %>
     <link rel="shortcut icon" href="/images/favicon.jpg" />
   </head>
 

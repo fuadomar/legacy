@@ -88,7 +88,7 @@
         <div class="clear"></div>
       </div>
       <div class="box-content">
-        <%= @memorial.present? ? "Your memorial wishes" : "No memorial wishes" %>
+        <%= @memorial.present? ? "Captured memorial wishes" : "No memorial wishes" %>
       </div>
       <div class="box-button">
         <% if @memorial.present? %>
@@ -124,7 +124,7 @@
   <% if current_user.payments.first.present? && @relationships.present? %>
     <div class="big-button-container-tiny">
       <div class="download-plan-button">
-        <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan) %>
+        <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan), :target => '_blank' %>
       </div>
     </div>
     <div class="user-image-container">
@@ -135,10 +135,13 @@
         <div class="relation-entry">
           <div class="info">
             <b>
-              <%= relationship.full_name %>
+              <%= relationship.full_name.upcase if relationship.full_name.present? %>
+              <% sharing_rule = relationship.sharing_rules.first %>
             </b><br/>
             Never Sent Plan<br/>
-            Send when .....<br/>
+            Send
+            <%= "on my Death" if sharing_rule.when_die? %>
+            <br/>
             Send plan now<br/>
             <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
           </div>
@@ -164,7 +167,7 @@
           </div>
         </div>
         <div class="download-button">
-          <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan) %>
+          <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan), :target => '_blank' %>
         </div>
         <div class="clear"></div>
       <% else %>

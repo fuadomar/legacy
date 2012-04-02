@@ -1,0 +1,9 @@
+#Stripe::Plan.create( :amount => 4500, :interval => 'year', :name => 'Yearly Plan', :currency => 'usd', :id => 'simple_plan' )
+
+simple_plan:
+  amount: 4500
+  interval: year
+  name: Yearly Plan
+  currency: usd
+  id: simple_plan
+  

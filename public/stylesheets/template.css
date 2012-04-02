@@ -1434,7 +1434,6 @@ div.shairing-container .user-image-container .relation-entry .info{
     height: 100px;
     line-height: 120%;
     margin-top: 20px;
-    border: 1px solid red;
 }
 
 div.shairing-container .user-image-container .relation-entry .info a{
@@ -1447,7 +1446,7 @@ div.shairing-container .user-image-container .relation-entry .info a{
 div.shairing-container .user-image-container .add-more{
     float: left;
     margin-left: -60px;
-    margin-top: 180px;
+    margin-top: 160px;
 }
 
 

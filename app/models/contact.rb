@@ -4,8 +4,8 @@ class Contact < ActiveRecord::Base
   after_create :send_mail
 
   def send_mail
-    user = User.find(self.user_id)
+    #user = User.find(self.user_id)
     recipient = 'contact@mylegacyplan.org'
-    NotificationMailer.send_contact(recipient, user, self).deliver
+    NotificationMailer.send_contact(recipient, self).deliver
   end
 end

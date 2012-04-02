@@ -15,7 +15,17 @@ class Payment < ActiveRecord::Base
           :card => stripe_token
         )
         self.last_4_digits = customer.active_card.last4
+
+        if self.subscription_type == 'simple_plan'
         response = customer.update_subscription({:plan => self.subscription_type})
+        elsif self.subscription_type == 'life_time_plan'
+          invoice = Stripe::InvoiceItem.create( :customer => customer,
+            :amount => 14900,
+            :currency => "usd",
+            :description => "life_time_plan" )
+          self.transaction_number = invoice.id
+        end
+
       else
         customer = Stripe::Customer.retrieve(stripe_id)
         customer.card = stripe_token

@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:new, :create]
   # GET /contacts
   # GET /contacts.xml
   def index
@@ -41,11 +41,12 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.xml
   def create
-    @contact = current_user.contacts.new(params[:contact])
+    @contact = current_user.contacts.new(params[:contact]) if current_user.present?
+    @contact = Contact.new(params[:contact]) if current_user.blank?
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to(@contact, :notice => 'Contact was successfully created.') }
+        format.html { redirect_to(new_contact_path, :notice => 'Contact was successfully created.') }
         format.xml  { render :xml => @contact, :status => :created, :location => @contact }
       else
         format.html { render :action => "new" }
