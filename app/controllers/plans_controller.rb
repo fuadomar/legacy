@@ -90,7 +90,7 @@ class PlansController < ApplicationController
     relationship = Relationship.find_by_login_user_id(current_user.id)
     sharing_rule = @plan.sharing_rules.where(:relationship_id => relationship.id).first if relationship.present?   
     if @plan.user_id == current_user.id || sharing_rule.present?
-      path = "#{Rails.root}/public/pdf_files/plan_#{@plan.id}.pdf"
+      path = "#{Rails.root}/tmp/plan_#{@plan.id}.pdf"
       @plan.generate_pdf path, @plan.user, sharing_rule
       send_file(path, :disposition => 'attachment')
     else
