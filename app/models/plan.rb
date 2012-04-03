@@ -87,20 +87,23 @@ class Plan < ActiveRecord::Base
     pdf.start_new_page
 
     plan_single_pdf_page_template(pdf) do
+      memorial = user.default_plan.memorials.first
       pdf.text "Memorial Preferences", :size => 40
-      pdf.text "for #{user.full_name}, dated #{user.default_plan.memorials.first.updated_at.strftime("%B %d, %Y.")}"
-      pdf.move_down 20
-      pdf.text "Organizer Name: #{user.default_plan.memorials.first.organizer_name}"
-      pdf.move_down 10
-      pdf.text "Organizer Prefereneces: #{user.default_plan.memorials.first.organizer_preferences}"
-      pdf.move_down 10
-      pdf.text "#{user.default_plan.memorials.first.prepared_services}"
-      pdf.move_down 10
-      pdf.text "#{user.default_plan.memorials.first.service_preferences}"
-      pdf.move_down 10
-      pdf.text "#{user.default_plan.memorials.first.remains}"
-      pdf.move_down 10
-      pdf.text "#{user.default_plan.memorials.first.additional_notes}"
+      if memorial.present?
+        pdf.text "for #{user.full_name}, dated #{memorial.updated_at.strftime("%B %d, %Y.")}"
+        pdf.move_down 20
+        pdf.text "Organizer Name: #{memorial.organizer_name}"
+        pdf.move_down 10
+        pdf.text "Organizer Prefereneces: #{memorial.organizer_preferences}"
+        pdf.move_down 10
+        pdf.text "#{memorial.prepared_services}"
+        pdf.move_down 10
+        pdf.text "#{memorial.service_preferences}"
+        pdf.move_down 10
+        pdf.text "#{memorial.remains}"
+        pdf.move_down 10
+        pdf.text "#{memorial.additional_notes}"
+      end
     end
 
     #    pdf.start_new_page
@@ -118,10 +121,11 @@ class Plan < ActiveRecord::Base
     pdf.start_new_page
 
     plan_single_pdf_page_template(pdf) do
+      last_will_and_trust = user.default_plan.will_and_trusts.first
       pdf.text "Last Will & Testament", :size => 40
-      pdf.text "for #{user.full_name}, dated #{user.default_plan.will_and_trusts.first.updated_at.strftime("%B %d, %Y.")}"
+      pdf.text "for #{user.full_name}, dated #{last_will_and_trust.updated_at.strftime("%B %d, %Y.")}" if last_will_and_trust.present?
       pdf.move_down 20
-      pdf.text "#{user.default_plan.will_and_trusts.first.comment}"
+      pdf.text "#{last_will_and_trust.comment}" if last_will_and_trust.present?
     end
 
     pdf.start_new_page
@@ -134,12 +138,14 @@ class Plan < ActiveRecord::Base
     plan_single_pdf_page_template(pdf) do
       medical = user.default_plan.medical_instructions.first
       pdf.text "Advance Medical Directive", :size => 40
-      pdf.text "for #{user.full_name}, dated #{medical.updated_at.strftime("%B %d, %Y.")}"
-      pdf.move_down 20
-      
-      pdf.move_down 10
-      pdf.text "#{medical.wish}"
 
+      if medical.present?
+        pdf.text "for #{user.full_name}, dated #{medical.updated_at.strftime("%B %d, %Y.")}"
+        pdf.move_down 20
+      
+        pdf.move_down 10
+        pdf.text "#{medical.wish}"
+      end
 
     end
 
