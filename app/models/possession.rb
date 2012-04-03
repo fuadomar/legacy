@@ -5,4 +5,7 @@ class Possession < ActiveRecord::Base
   has_many :furnitures
   has_many :jewelries
   has_many :artworks
+  has_many :safe_deposit_boxes
+  has_many :in_home_safe_or_vaults
+  has_many :others
  end

@@ -1,0 +1,39 @@
+<h1>Listing safe_deposit_boxes</h1>
+
+<table>
+  <tr>
+    <th>Possession</th>
+    <th>Name of bank</th>
+    <th>Street address</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zip</th>
+    <th>Box number</th>
+    <th>Location of key</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @safe_deposit_boxes.each do |safe_deposit_box| %>
+  <tr>
+    <td><%= safe_deposit_box.possession_id %></td>
+    <td><%= safe_deposit_box.name_of_bank %></td>
+    <td><%= safe_deposit_box.street_address %></td>
+    <td><%= safe_deposit_box.city %></td>
+    <td><%= safe_deposit_box.state %></td>
+    <td><%= safe_deposit_box.zip %></td>
+    <td><%= safe_deposit_box.box_number %></td>
+    <td><%= safe_deposit_box.location_of_key %></td>
+    <td><%= safe_deposit_box.note %></td>
+    <td><%= link_to 'Show', safe_deposit_box %></td>
+    <td><%= link_to 'Edit', edit_safe_deposit_box_path(safe_deposit_box) %></td>
+    <td><%= link_to 'Destroy', safe_deposit_box, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Safe deposit box', new_safe_deposit_box_path %>

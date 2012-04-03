@@ -1,0 +1,27 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+
+    <p>
+      <b>Name:</b>
+      <%= @other.name %>
+    </p>
+
+    <p>
+      <b>Photo:</b>
+      <%= image_tag(@other.photo.to_s, :height => 100) if @other.photo.present? %>
+      <%= link_to 'View Large Image', @other.photo.url, :target => '_blank' if @other.photo.present? %>
+    </p>
+
+    <p>
+      <b>Document:</b>
+      <%= File.basename(@other.document.url) if @other.document.present? %>
+      <%= link_to 'Download File', @other.document.url if @other.document.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @other.note %>
+    </p>
+  </div>
+</div>

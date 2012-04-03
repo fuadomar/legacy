@@ -56,5 +56,26 @@ class User < ActiveRecord::Base
     count = count + 1 if self.default_plan.medical_instructions.present?
     return count
   end
+
+  def update_with_password(params, *options)
+    current_password = params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if valid_password?(current_password)
+      update_attributes(params, *options)
+    else
+      self.attributes = params
+      self.valid?
+      update_attributes(params, *options)
+      #self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      #false
+    end
+    clean_up_passwords
+    result
+  end
   
 end

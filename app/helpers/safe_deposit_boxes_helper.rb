@@ -1,0 +1,2 @@
+module SafeDepositBoxesHelper
+end

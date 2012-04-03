@@ -1,4 +1,10 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :others
+
+  resources :in_home_safe_or_vaults
+
+  resources :safe_deposit_boxes
+
   resources :artworks
 
   resources :jewelries

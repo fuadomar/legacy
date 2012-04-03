@@ -1,0 +1,31 @@
+<h1>Listing others</h1>
+
+<table>
+  <tr>
+    <th>Possession</th>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Document</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @others.each do |other| %>
+  <tr>
+    <td><%= other.possession_id %></td>
+    <td><%= other.name %></td>
+    <td><%= other.photo %></td>
+    <td><%= other.document %></td>
+    <td><%= other.note %></td>
+    <td><%= link_to 'Show', other %></td>
+    <td><%= link_to 'Edit', edit_other_path(other) %></td>
+    <td><%= link_to 'Destroy', other, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Other', new_other_path %>

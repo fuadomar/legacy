@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403103002) do
+ActiveRecord::Schema.define(:version => 20120403120818) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(:version => 20120403103002) do
     t.datetime "updated_at"
   end
 
+  create_table "in_home_safe_or_vaults", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "name"
+    t.string   "location"
+    t.string   "code"
+    t.string   "photo"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jewelries", :force => true do |t|
     t.integer  "possession_id"
     t.string   "name"
@@ -115,6 +126,16 @@ ActiveRecord::Schema.define(:version => 20120403103002) do
     t.text     "service_preferences"
     t.text     "remains"
     t.text     "additional_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "others", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "name"
+    t.string   "photo"
+    t.string   "document"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -177,6 +198,20 @@ ActiveRecord::Schema.define(:version => 20120403103002) do
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
+  end
+
+  create_table "safe_deposit_boxes", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "name_of_bank"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "box_number"
+    t.string   "location_of_key"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sharing_rules", :force => true do |t|

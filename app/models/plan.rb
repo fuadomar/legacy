@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Plan < ActiveRecord::Base
   belongs_to :user
   has_many :medical_instructions
@@ -30,11 +31,11 @@ class Plan < ActiveRecord::Base
     plan_single_pdf_page_template(pdf) do
       pdf.text "Following are the wishes captured for #{user.full_name} on MyLegacyPlan.org. #{user.first_name} captured wishes in the following areas, and 7 pages follow this one:"
       pdf.move_down 20
-      pdf.text "Accounts and Finances (one page)"
-      pdf.text "Memorial Preferences (one page)"
-      pdf.text "Gifting of personal belongings (two pages)"
-      pdf.text "Existence and location of a last will (two pages)"
-      pdf.text "Advance Medical Directive (one page)"
+      pdf.text "•  Accounts and Finances (one page)", :inline_format => true
+      pdf.text "•  Memorial Preferences (one page)", :inline_format => true
+      pdf.text "•  Gifting of personal belongings (two pages)", :inline_format => true
+      pdf.text "•  Existence and location of a last will (two pages)", :inline_format => true
+      pdf.text "•  Advance Medical Directive (one page)", :inline_format => true
       pdf.move_down 20
       pdf.text "This plan is dated #{user.default_plan.created_at.strftime("%B %d, %Y.")}"
     end
@@ -141,7 +142,7 @@ class Plan < ActiveRecord::Base
 
     plan_single_pdf_page_template(pdf) do
       medical = user.default_plan.medical_instructions.first
-      pdf.text "Advance Medical Directive", :size => 40
+      pdf.text "Advance Medical Directive", :size => 35
 
       if medical.present?
         pdf.text "for #{user.full_name}, dated #{medical.updated_at.strftime("%B %d, %Y.")}"
@@ -149,6 +150,35 @@ class Plan < ActiveRecord::Base
       
         pdf.move_down 10
         pdf.text "#{medical.wish}"
+        pdf.move_down 20
+        pdf.text "Under the following circumstances what type of treatment do you want:"
+        pdf.text "•  You have an incurable condition that cause your death shortly"
+        pdf.text "•  You are unconscious and your doctors believe that you will not wake up"
+        pdf.text "•  The risk and potential pain to treatment outweigh the potential benefits"
+        pdf.move_down 10
+        pdf.text "#{medical.incurable_condition_choice}"
+        pdf.move_down 10
+        pdf.text "#{medical.incurable_condition_comment}"
+        pdf.move_down 20
+        pdf.text "Under the following circumstances what type of treatment do you want:"
+        pdf.text "•  You havepermanent irreversible mental damage"
+        pdf.text "•  You may be awake at times but cannot recognize people or communicate meaningfully"
+        pdf.text "•  You will require life support to keep you alive (for example feeding tubes, ventilator, dialysis, CPR, pacemaker, transfusions, etc) for the rest of your life."
+        pdf.text "•  Your doctors do not believe you will ever have significant quality of life improvement"
+        pdf.move_down 10
+        pdf.text "#{medical.irreversible_damage_choice}"
+        pdf.move_down 10
+        pdf.text "#{medical.irreversible_damage_comment}"
+        pdf.move_down 20
+        pdf.text "Under the following circumstances what type of treatment do you want:"
+        pdf.text "•  You are no longer able to make you own health decisions"
+        pdf.text "•  You may be awake at times but cannot recognize people or communicate meaningfully"
+        pdf.text "•  You will require life support to keep you alive (for example feeding tubes, ventilator, dialysis, CPR, pacemaker, transfusions, etc) for the rest of your life."
+        pdf.text "•  Your doctors do not believe you will ever have significant quality of life improvement"
+        pdf.move_down 10
+        pdf.text "#{medical.unable_to_decide_choice}"
+        pdf.move_down 10
+        pdf.text "#{medical.unable_to_decide_comment}"
       end
 
     end
@@ -157,10 +187,12 @@ class Plan < ActiveRecord::Base
   end
 
   def plan_single_pdf_page_template(pdf)
+    pdf.cell :content => '', :background_color => 'fafade', :width => 630,
+      :height => 800, :at => [-40, 760], :text_color => "001B76"
+    #this line created page background
     pdf.bounding_box([45, pdf.cursor-45], :width => 450, :height => 600) do
-
       pdf.bounding_box([0, pdf.cursor], :width => 240, :height => 80) do
-        pdf.image "#{Rails.root}/public/images/logo.png"
+        pdf.image "#{Rails.root}/public/images/logo.png", :width => 177
       end
       pdf.bounding_box([330, pdf.cursor+80], :width => 120, :height => 50) do
         pdf.fill_color "7e6127"

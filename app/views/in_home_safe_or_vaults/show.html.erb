@@ -1,0 +1,32 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Name:</b>
+      <%= @in_home_safe_or_vault.name %>
+    </p>
+
+    <p>
+      <b>Location:</b>
+      <%= @in_home_safe_or_vault.location %>
+    </p>
+
+    <p>
+      <b>Code:</b>
+      <%= @in_home_safe_or_vault.code %>
+    </p>
+
+    <p>
+      <b>Photo:</b>
+      <%= image_tag(@in_home_safe_or_vault.photo.to_s, :height => 100) if @in_home_safe_or_vault.photo.present? %>
+      <%= link_to 'View Large Image', @in_home_safe_or_vault.photo.url, :target => '_blank' if @in_home_safe_or_vault.photo.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @in_home_safe_or_vault.note %>
+    </p>
+
+
+  </div>
+</div>

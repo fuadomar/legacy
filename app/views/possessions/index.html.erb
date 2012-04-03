@@ -128,6 +128,78 @@
         <% end %>
       <% end %>
 
+
+      <% if possession.safe_deposit_boxes.present? %>
+        <% possession.safe_deposit_boxes.each do |safe_deposit_box| %>
+          <div class="row">
+            <div class="category">
+              Safe Deposit Box
+            </div>
+            <div class="item">
+              <%= safe_deposit_box.name_of_bank %>
+              Bank
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', safe_deposit_box, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_safe_deposit_box_path(safe_deposit_box), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if possession.in_home_safe_or_vaults.present? %>
+        <% possession.in_home_safe_or_vaults.each do |in_home_safe_or_vault| %>
+          <div class="row">
+            <div class="category">
+              In Home Safe or Vault
+            </div>
+            <div class="item">
+              <%= in_home_safe_or_vault.name %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', in_home_safe_or_vault, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_in_home_safe_or_vault_path(in_home_safe_or_vault), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if possession.others.present? %>
+        <% possession.others.each do |other| %>
+          <div class="row">
+            <div class="category">
+              Other
+            </div>
+            <div class="item">
+              <%= other.name %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', other, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_other_path(other), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
     <% end %>
 
 
@@ -169,6 +241,18 @@
 
     <div class="new-item-form hidden" id="Artwork-form">
       <%= render :partial => 'artworks/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Safe-Deposit-Box-form">
+      <%= render :partial => 'safe_deposit_boxes/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="In-home-safe-form">
+      <%= render :partial => 'in_home_safe_or_vaults/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Other-form">
+      <%= render :partial => 'others/form' %>
     </div>
 
     <div class="add-new-button">

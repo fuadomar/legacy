@@ -1,0 +1,99 @@
+<%= form_for(@safe_deposit_box ||= SafeDepositBox.new) do |f| %>
+  <!--
+  <%# if @safe_deposit_box.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@safe_deposit_box.errors.count, "error") %> prohibited this safe_deposit_box from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @safe_deposit_box.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :name_of_bank %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :name_of_bank %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :street_address %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :street_address %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :city %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :city %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :state %>
+    </div>
+    <div class="input-field">
+      <%= f.select :state, UsState::NAMES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :zip %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :zip %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :box_number %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :box_number %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :location_of_key %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :location_of_key %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :note %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
