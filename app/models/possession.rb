@@ -4,4 +4,5 @@ class Possession < ActiveRecord::Base
   has_many :vehicles
   has_many :furnitures
   has_many :jewelries
+  has_many :artworks
  end

@@ -1,0 +1,31 @@
+<h1>Listing artworks</h1>
+
+<table>
+  <tr>
+    <th>Possession</th>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Document</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @artworks.each do |artwork| %>
+  <tr>
+    <td><%= artwork.possession_id %></td>
+    <td><%= artwork.name %></td>
+    <td><%= artwork.photo %></td>
+    <td><%= artwork.document %></td>
+    <td><%= artwork.note %></td>
+    <td><%= link_to 'Show', artwork %></td>
+    <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
+    <td><%= link_to 'Destroy', artwork, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Artwork', new_artwork_path %>

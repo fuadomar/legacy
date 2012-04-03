@@ -1,0 +1,26 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Name:</b>
+      <%= @artwork.name %>
+    </p>
+
+    <p>
+      <b>Photo:</b>
+      <%= image_tag(@artwork.photo.to_s, :height => 100) if @artwork.photo.present? %>
+      <%= link_to 'View Large Image', @artwork.photo.url, :target => '_blank' if @artwork.photo.present? %>
+    </p>
+
+    <p>
+      <b>Document:</b>
+      <%= File.basename(@artwork.document.url) if @artwork.document.present? %>
+      <%= link_to 'Download File', @artwork.document.url if @artwork.document.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @artwork.note %>
+    </p>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :artworks
+
   resources :jewelries
 
   resources :furnitures

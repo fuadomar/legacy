@@ -105,6 +105,29 @@
         <% end %>
       <% end %>
 
+      <% if possession.artworks.present? %>
+        <% possession.artworks.each do |artwork| %>
+          <div class="row">
+            <div class="category">
+              Artwork
+            </div>
+            <div class="item">
+              <%= artwork.name %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', artwork, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_artwork_path(artwork), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
     <% end %>
 
 
@@ -142,6 +165,10 @@
 
     <div class="new-item-form hidden" id="Jewelry-form">
       <%= render :partial => 'jewelries/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Artwork-form">
+      <%= render :partial => 'artworks/form' %>
     </div>
 
     <div class="add-new-button">
