@@ -1,0 +1,48 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Possession:</b>
+      <%= @vehicle.possession_id %>
+    </p>
+
+    <p>
+      <b>Manufacturrer:</b>
+      <%= @vehicle.manufacturrer %>
+    </p>
+
+    <p>
+      <b>Model:</b>
+      <%= @vehicle.model %>
+    </p>
+
+    <p>
+      <b>Year:</b>
+      <%= @vehicle.year %>
+    </p>
+
+    <p>
+      <b>Copy of title:</b>
+      <%= File.basename(@vehicle.copy_of_title.url) if @vehicle.copy_of_title.present? %>
+      <%= link_to 'Download File', @vehicle.copy_of_title.url if @vehicle.copy_of_title.present? %>
+    </p>
+
+    <p>
+      <b>Location of original title:</b>
+      <%= @vehicle.location_of_original_title %>
+    </p>
+
+    <p>
+      <b>Picture:</b>
+      <%= image_tag(@vehicle.picture.to_s, :height => 100) if @vehicle.picture.present? %>
+      <%= link_to 'View Large Image', @vehicle.picture.url, :target => '_blank' if @vehicle.picture.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @vehicle.note %>
+    </p>
+
+
+  </div>
+</div>

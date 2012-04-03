@@ -1,79 +1,81 @@
-<%= form_for(@real_estate ||= RealEstate.new, :html => {:multipart => true}) do |f| %>
-  <!--
-  <%# if @real_estate.errors.any? %>
-  <%#*<div id="error_explanation">%>
-  <%#*<h2><%= pluralize(@real_estate.errors.count, "error") %> prohibited this real_estate from being saved:</h2>%>
+<%= form_for(@vehicle ||= Vehicle.new, :html => {:multipart => true}) do |f| %>
+<!--
+  <%# if @vehicle.errors.any? %>
+    <%#*<div id="error_explanation">%>
+      <%#*<h2><%= pluralize(@vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>%>
 
-  <%#*<ul>%>
-  <%# @real_estate.errors.full_messages.each do |msg| %>
-  <%#*<li><%= msg %></li>%>
+      <%#*<ul>%>
+        <%# @vehicle.errors.full_messages.each do |msg| %>
+          <%#*<li><%= msg %></li>%>
+        <%# end %>
+      <%#*</ul>%>
+    <%#*</div>%>
   <%# end %>
-  <%#*</ul>%>
-  <%#*</div>%>
-  <%# end %>
-  -->
+-->
 
   <div class="field">
     <div class="label">
-      <%= f.label :real_estate_type, 'Type of Real Estate' %>
+      <%= f.label :type_of_vehicle %>
     </div>
     <div class="input-field">
-      <%= f.select :real_estate_type, RealEstate::TYPES %>
+      <%= f.select :type_of_vehicle, Vehicle::TYPES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :manufacturrer %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :manufacturrer %>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :model %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :model %>
     </div>
     <div class="clear"></div>
   </div>
   <div class="field">
     <div class="label">
-      <%= f.label :address %>
+      <%= f.label :year %>
     </div>
     <div class="input-field">
-      <%= f.text_field :address %>
+      <%= f.text_field :year %>
     </div>
     <div class="clear"></div>
   </div>
   <div class="field">
     <div class="label">
-      <%= f.label :city %>
+      <%= f.label :copy_of_title, 'Upload copy of title' %>
     </div>
     <div class="input-field">
-      <%= f.text_field :city %>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="field">
-    <div class="label">
-      <%= f.label :state %>
-    </div>
-    <div class="input-field">
-      <%= f.select :state, UsState::NAMES %>
-    </div>
-    <div class="clear"></div>
-  </div>
-  <div class="field">
-    <div class="label">
-      <%= f.label :deed, 'Upload a deed' %>
-    </div>
-    <div class="input-field">
-      <%= f.file_field :deed, :class => 'file' %>
+      <%= f.file_field :copy_of_title, :class => 'file' %>
       (doc/docx/pdf)
     </div>
     <div class="clear"></div>
   </div>
   <div class="field">
     <div class="label">
-      <%= f.label :location_of_deed %>
+      <%= f.label :location_of_original_title %>
     </div>
     <div class="input-field">
-      <%= f.text_field :location_of_deed %>
+      <%= f.text_field :location_of_original_title %>
     </div>
     <div class="clear"></div>
   </div>
   <div class="field">
     <div class="label">
-      <%= f.label :photo, 'Upload a photo' %>
+      <%= f.label :picture %>
     </div>
     <div class="input-field">
-      <%= f.file_field :photo, :class => 'file' %>
+      <%= f.file_field :picture, :class => 'file' %>
       (jpg/jpeg/gif/png)
     </div>
     <div class="clear"></div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401081842) do
+ActiveRecord::Schema.define(:version => 20120403073546) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,26 @@ ActiveRecord::Schema.define(:version => 20120401081842) do
   create_table "financial_accounts", :force => true do |t|
     t.integer  "plan_id"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "furnitures", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "name"
+    t.string   "photo"
+    t.string   "document"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jewelries", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "name"
+    t.string   "photo"
+    t.string   "document"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -201,6 +221,20 @@ ActiveRecord::Schema.define(:version => 20120401081842) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vehicles", :force => true do |t|
+    t.integer  "possession_id"
+    t.string   "manufacturrer"
+    t.string   "model"
+    t.integer  "year"
+    t.string   "copy_of_title"
+    t.string   "location_of_original_title"
+    t.string   "picture"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type_of_vehicle"
+  end
 
   create_table "will_and_trusts", :force => true do |t|
     t.integer  "plan_id"

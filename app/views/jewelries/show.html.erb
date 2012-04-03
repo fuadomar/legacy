@@ -1,0 +1,27 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Name:</b>
+      <%= @jewelry.name %>
+    </p>
+
+    <p>
+      <b>Photo:</b>
+      <%= image_tag(@jewelry.photo.to_s, :height => 100) if @jewelry.photo.present? %>
+      <%= link_to 'View Large Image', @jewelry.photo.url, :target => '_blank' if @jewelry.photo.present? %>
+    </p>
+
+    <p>
+      <b>Document:</b>
+      <%= File.basename(@jewelry.document.url) if @jewelry.document.present? %>
+      <%= link_to 'Download File', @jewelry.document.url if @jewelry.document.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @jewelry.note %>
+    </p>
+
+  </div>
+</div>

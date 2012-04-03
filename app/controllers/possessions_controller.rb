@@ -3,8 +3,7 @@ class PossessionsController < ApplicationController
   # GET /possessions
   # GET /possessions.xml
   def index
-    @possessions = current_user.default_plan.possessions.includes(:real_estates)
-    @real_estate = RealEstate.new
+    @possessions = current_user.default_plan.possessions.includes(:real_estates, :vehicles, :furnitures)
 
     respond_to do |format|
       format.html # index.html.erb

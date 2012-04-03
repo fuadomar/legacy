@@ -1,0 +1,58 @@
+<%= form_for(@furniture ||= Furniture.new, :html => {:multipart => true}) do |f| %>
+
+  <!--
+  <%# if @furniture.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@furniture.errors.count, "error") %> prohibited this furniture from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @furniture.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :name, 'Label or Name' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :name %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :photo, 'Upload a photo' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :photo, :class => 'file' %>
+      (jpg/jpeg/gif/png)
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :document, 'Upload a document' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :document, :class => 'file' %>
+      (doc/docx/pdf)
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -4,12 +4,11 @@ class RealEstate < ActiveRecord::Base
   
   belongs_to :possession
 
-  def self.get_types
-    types = Array.new
-    types << Array['Primary Home', 'Primary Home']
-    types << Array['Vacation Home', 'Vacation Home']
-    types << Array['Rental Property', 'Rental Property']
-    types << Array['Land', 'Land']
-    types << Array['Other', 'Other']
-  end
+  TYPES = [
+    ['Primary Home', 'Primary Home'],
+    ['Vacation Home', 'Vacation Home'],
+    ['Rental Property', 'Rental Property'],
+    ['Land', 'Land'],
+    ['Other', 'Other']
+  ]
 end

@@ -11,6 +11,7 @@
 
     <% if @possessions.present? %>
       <% possession = @possessions.first %>
+
       <% if possession.real_estates.present? %>
         <% possession.real_estates.each do |real_estate| %>
           <div class="row">
@@ -33,7 +34,80 @@
           </div>
         <% end %>
       <% end %>
+
+      <% if possession.vehicles.present? %>
+        <% possession.vehicles.each do |vehicle| %>
+          <div class="row">
+            <div class="category">
+              <%= vehicle.type_of_vehicle %>
+            </div>
+            <div class="item">
+              <%= vehicle.manufacturrer %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', vehicle, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_vehicle_path(vehicle), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% if possession.furnitures.present? %>
+        <% possession.furnitures.each do |furniture| %>
+          <div class="row">
+            <div class="category">
+              Furniture
+            </div>
+            <div class="item">
+              <%= furniture.name %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', furniture, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_furniture_path(furniture), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if possession.jewelries.present? %>
+        <% possession.jewelries.each do |jewelry| %>
+          <div class="row">
+            <div class="category">
+              Jewelry
+            </div>
+            <div class="item">
+              <%= jewelry.name %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', jewelry, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_jewelry_path(jewelry), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
     <% end %>
+
+
 
     <div class="category-select">
       <div class="label">Category</div>
@@ -56,6 +130,18 @@
 
     <div class="new-item-form hidden" id="Real-estate-form">
       <%= render :partial => 'real_estates/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Vehicle-form">
+      <%= render :partial => 'vehicles/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Furniture-form">
+      <%= render :partial => 'furnitures/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Jewelry-form">
+      <%= render :partial => 'jewelries/form' %>
     </div>
 
     <div class="add-new-button">

@@ -1,0 +1,31 @@
+<h1>Listing furnitures</h1>
+
+<table>
+  <tr>
+    <th>Possession</th>
+    <th>Name</th>
+    <th>Photo</th>
+    <th>Document</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @furnitures.each do |furniture| %>
+  <tr>
+    <td><%= furniture.possession_id %></td>
+    <td><%= furniture.name %></td>
+    <td><%= furniture.photo %></td>
+    <td><%= furniture.document %></td>
+    <td><%= furniture.note %></td>
+    <td><%= link_to 'Show', furniture %></td>
+    <td><%= link_to 'Edit', edit_furniture_path(furniture) %></td>
+    <td><%= link_to 'Destroy', furniture, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Furniture', new_furniture_path %>

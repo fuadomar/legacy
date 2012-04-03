@@ -1,8 +1,7 @@
 class Possession < ActiveRecord::Base
   belongs_to :plan
   has_many :real_estates
-
-
-  REAL_ESTATE = 'real_estate'
-
+  has_many :vehicles
+  has_many :furnitures
+  has_many :jewelries
  end

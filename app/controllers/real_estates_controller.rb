@@ -81,7 +81,7 @@ class RealEstatesController < ApplicationController
     @real_estate.destroy
 
     respond_to do |format|
-      format.html { redirect_to(real_estates_url) }
+      format.html { redirect_to(possessions_path) }
       format.xml  { head :ok }
     end
   end
