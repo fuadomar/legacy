@@ -50,11 +50,15 @@ class Plan < ActiveRecord::Base
       pdf.stroke_horizontal_rule
       pdf.fill_color "000000"
 
-      user.default_plan.financial_accounts.first.bank_accounts.each do |bank_account|
-        pdf.move_down 10
-        pdf.text  "#{bank_account.name_of_bank} #{bank_account.type_of_account} XXXXXX#{bank_account.last_4_digit_of_account}"
-        pdf.text "#{bank_account.location_of_bank}"
-        pdf.text "Note: #{bank_account.note}"
+      financial_account = user.default_plan.financial_accounts.first
+
+      if financial_account.present?
+        financial_account.bank_accounts.each do |bank_account|
+          pdf.move_down 10
+          pdf.text  "#{bank_account.name_of_bank} #{bank_account.type_of_account} XXXXXX#{bank_account.last_4_digit_of_account}"
+          pdf.text "#{bank_account.location_of_bank}"
+          pdf.text "Note: #{bank_account.note}"
+        end
       end
 
       pdf.move_down 20
