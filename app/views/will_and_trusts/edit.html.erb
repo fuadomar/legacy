@@ -1,6 +1,31 @@
-<h1>Editing will_and_trust</h1>
+<div class="edit-will">
+  <div class="top-pad">
+    <%= image_tag('/images/pop_up_blue_bar.png') %>
+  </div>
 
-<%= render 'form' %>
+  <div class="form">
+    <%= form_for(@will_and_trust) do |f| %>
+      <div class="field">
+        <%= f.text_area :comment %>
+      </div>
+      <div class="actions">
+        <div class="cancel">
+          <%= image_tag('/images/cancel_change_button.png', :id => 'close-facebox') %>
+        </div>
+        <div class="submit">
+          <%= image_submit_tag('/images/accept_change_button.png') %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+  </div>
 
-<%= link_to 'Show', @will_and_trust %> |
-<%= link_to 'Back', will_and_trusts_path %>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#close-facebox').click($.facebox.close);
+    return false;
+  });
+</script>

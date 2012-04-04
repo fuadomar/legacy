@@ -1,12 +1,17 @@
-<h2>Forgot your password?</h2>
+<%= render :partial => 'shared/body_content_top_without_menu',
+  :locals => { :title => '',
+  :heading => 'Forgot your password?'} %>
+<div class="content-container">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => 'forgot_password new_user_common' }) do |f| %>
+    <%= devise_error_messages! %>
+    <div><%= f.label :email %><br />
+      <%= f.email_field :email %></div>
+    <div><%= f.submit "Send me reset password instructions", :type => 'image', :src => '/images/password_send_button.png', :class => "submit_button" %></div>
+  <% end %>
+  <div class="extra_links">
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+</div>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>

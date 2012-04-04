@@ -37,6 +37,7 @@ class WillAndTrustsController < ApplicationController
   # GET /will_and_trusts/1/edit
   def edit
     @will_and_trust = WillAndTrust.find(params[:id])
+    render :layout => false
   end
 
   # POST /will_and_trusts
@@ -64,7 +65,7 @@ class WillAndTrustsController < ApplicationController
 
     respond_to do |format|
       if @will_and_trust.update_attributes(params[:will_and_trust])
-        format.html { redirect_to(@will_and_trust, :notice => 'Will and trust was successfully updated.') }
+        format.html { redirect_to(will_and_trusts_path, :notice => 'Will and trust was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

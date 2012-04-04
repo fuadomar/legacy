@@ -2170,3 +2170,58 @@ form.new_relationships .single-row .single-field .label {
 #payment-container #stripe-error-message.error{
     color: red;
 }
+
+
+
+.edit-will{
+  width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.edit-will .top-pad img{
+  width: 444px;
+  height: 46px;
+  margin-bottom: -2px;
+  margin-left: -2px;
+}
+
+.edit-will .form{
+   padding: 15px;
+   border-left: 1px solid #D7D7D7;
+   border-right: 1px solid #D7D7D7;
+   border-bottom: 1px solid #D7D7D7;
+   border-radius: 3px;
+}
+
+.edit-will .form textarea{
+    width: 405px;
+    height: 250px;
+}
+
+.edit-will .form .actions{
+    width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-will .form .actions .cancel{
+    float: left;
+}
+
+.edit-will .form .actions .cancel img{
+    cursor: pointer;
+}
+
+.edit-will .form .actions .submit{
+    float: right;
+}
+
+
+/*   forgot_password form
+---------------------------------------------------------  */
+
+form.forgot_password  .submit_button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

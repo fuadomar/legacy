@@ -24,7 +24,8 @@
                 <%= will_and_trust.comment %>
               </td>
               <td class="download">
-                <%= link_to image_tag('/images/download_link_bk.png'), will_and_trust.file.url, :target => '_blank' %>
+                <%#= link_to image_tag('/images/download_link_bk.png'), will_and_trust.file.url, :target => '_blank' %>
+                <%= link_to image_tag('/images/download_link_bk.png'), edit_will_and_trust_path(will_and_trust), :rel => 'facebox' %>
               </td>
               <td class="link">
                 <div class="link-box">

@@ -11,6 +11,18 @@ class User < ActiveRecord::Base
 
   after_create :create_default_plan
 
+  #after_save :send_activation_email
+
+  #  def send_activation_email
+  #    puts "Yes" if confirmed_at_was.blank? && confirmed_at.present?
+  #  end
+
+  def confirm!
+    super
+    NotificationMailer.after_confirmation(self).deliver
+  end
+
+
   def create_default_plan
     self.plans.create(:title => 'User default Plan')
   end
