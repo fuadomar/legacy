@@ -8,7 +8,7 @@
 
     <p>
       <b>Photo:</b>
-      <%= image_tag(@artwork.photo.to_s, :height => 100) if @artwork.photo.present? %>
+      <%= image_tag(@artwork.photo.to_s) if @artwork.photo.present? %>
       <%= link_to 'View Large Image', @artwork.photo.url, :target => '_blank' if @artwork.photo.present? %>
     </p>
 

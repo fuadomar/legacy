@@ -34,7 +34,7 @@
 
     <p>
       <b>Picture:</b>
-      <%= image_tag(@vehicle.picture.to_s, :height => 100) if @vehicle.picture.present? %>
+      <%= image_tag(@vehicle.picture.to_s) if @vehicle.picture.present? %>
       <%= link_to 'View Large Image', @vehicle.picture.url, :target => '_blank' if @vehicle.picture.present? %>
     </p>
 

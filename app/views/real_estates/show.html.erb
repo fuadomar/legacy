@@ -34,7 +34,7 @@
 
     <p>
       <b>Photo:</b>
-      <%= image_tag(@real_estate.photo.to_s, :height => 100) if @real_estate.photo.present? %>
+      <%= image_tag(@real_estate.photo.to_s) if @real_estate.photo.present? %>
       <%= link_to 'View Large Image', @real_estate.photo.url, :target => '_blank' if @real_estate.photo.present? %>
     </p>
 

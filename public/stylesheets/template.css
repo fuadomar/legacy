@@ -1956,6 +1956,11 @@ form.new_relationships .single-row .single-field .label {
     color: #000;
 }
 
+#real-estate-show-container img{
+    max-height: 100px;
+    max-width: 150px;
+}
+
 /*******************************************************************************/
 /*****                       will-and-trust                                    */
 /*******************************************************************************/
