@@ -3,8 +3,8 @@ class FinancialAccountsController < ApplicationController
   # GET /financial_accounts
   # GET /financial_accounts.xml
   def index
-    @financial_accounts = current_user.default_plan.financial_accounts.includes(:bank_accounts)
-    @bank_account = BankAccount.new
+    @financial_accounts = current_user.default_plan.financial_accounts.includes(:bank_accounts,
+      :investment_accounts, :credit_cards, :debit_cards, :loans, :insurances, :pension_plans)
     
     respond_to do |format|
       format.html # index.html.erb

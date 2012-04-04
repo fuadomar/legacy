@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120403120818) do
+ActiveRecord::Schema.define(:version => 20120404080607) do
 
   create_table "agents", :force => true do |t|
     t.string   "name"
@@ -60,6 +60,28 @@ ActiveRecord::Schema.define(:version => 20120403120818) do
     t.datetime "updated_at"
   end
 
+  create_table "credit_cards", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "card_type"
+    t.string   "issuer"
+    t.string   "phone"
+    t.string   "last_four_digits_of_card"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "debit_cards", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "card_type"
+    t.string   "issuer"
+    t.string   "phone"
+    t.string   "last_four_digits_of_card"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "financial_accounts", :force => true do |t|
     t.integer  "plan_id"
     t.string   "title"
@@ -88,11 +110,52 @@ ActiveRecord::Schema.define(:version => 20120403120818) do
     t.datetime "updated_at"
   end
 
+  create_table "insurances", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "type_of_insurance"
+    t.string   "insurance_company"
+    t.string   "name_of_agency"
+    t.string   "phone"
+    t.string   "primary_agent"
+    t.string   "value_of_the_policy"
+    t.string   "last_4_digits_of_policy"
+    t.string   "beneficiary"
+    t.string   "copy_of_policy"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "investment_accounts", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "investment_type"
+    t.string   "account_provider"
+    t.string   "contact_information"
+    t.string   "last_four_digits_of_account"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jewelries", :force => true do |t|
     t.integer  "possession_id"
     t.string   "name"
     t.string   "photo"
     t.string   "document"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "loans", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "type_of_loan"
+    t.string   "loan_originator"
+    t.string   "current_owner_of_loan"
+    t.string   "contact_information"
+    t.string   "face_value"
+    t.string   "current_debt"
+    t.string   "copy_of_loan"
     t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -147,6 +210,21 @@ ActiveRecord::Schema.define(:version => 20120403120818) do
     t.string   "transaction_number"
     t.string   "last_4_digits"
     t.string   "stripe_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pension_plans", :force => true do |t|
+    t.integer  "financial_account_id"
+    t.string   "name"
+    t.string   "administrator"
+    t.string   "administrator_phone"
+    t.string   "primary_contact"
+    t.string   "benefits_for_survivors"
+    t.string   "last_4_digits_of_pension_id"
+    t.string   "beneficiary"
+    t.string   "pension_document"
+    t.text     "note"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

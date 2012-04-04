@@ -14,7 +14,7 @@
     <p>
       <b>Document:</b>
       <%= File.basename(@furniture.document.url) if @furniture.document.present? %>
-      <%= link_to 'Download File', @furniture.document.url if @furniture.document.present? %>
+      <%= link_to 'Download File', @furniture.document.url, :target => '_blank' if @furniture.document.present? %>
     </p>
 
     <p>

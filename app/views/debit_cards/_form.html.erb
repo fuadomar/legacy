@@ -1,0 +1,65 @@
+<%= form_for(@debit_card ||= DebitCard.new) do |f| %>
+  <!--
+  <%# if @debit_card.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@debit_card.errors.count, "error") %> prohibited this debit_card from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @debit_card.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :card_type %>
+    </div>
+    <div class="input-field">
+      <%= f.select :card_type, DebitCard::TYPES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :issuer %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :issuer %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :phone %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :phone %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :last_four_digits_of_card %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :last_four_digits_of_card, :maxlength => 4, :onkeypress => 'validateDigit(event)' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note, 'Add Note' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

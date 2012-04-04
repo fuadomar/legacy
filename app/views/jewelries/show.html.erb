@@ -15,7 +15,7 @@
     <p>
       <b>Document:</b>
       <%= File.basename(@jewelry.document.url) if @jewelry.document.present? %>
-      <%= link_to 'Download File', @jewelry.document.url if @jewelry.document.present? %>
+      <%= link_to 'Download File', @jewelry.document.url, :target => '_blank' if @jewelry.document.present? %>
     </p>
 
     <p>

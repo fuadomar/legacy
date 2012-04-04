@@ -1,0 +1,92 @@
+<%= form_for(@loan ||= Loan.new, :html => {:multipart => true}) do |f| %>
+  <!--
+  <%# if @loan.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @loan.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :type_of_loan %>
+    </div>
+    <div class="input-field">
+      <%= f.select :type_of_loan, Loan::TYPES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :loan_originator %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :loan_originator %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :current_owner_of_loan %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :current_owner_of_loan %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :contact_information %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :contact_information %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :face_value, 'Face value of the loan at issue' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :face_value %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :current_debt, 'Current outstanding debt on loan' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :current_debt %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :copy_of_loan, 'Upload copy of loan' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :copy_of_loan, :class => 'file' %>
+      (doc/docx/pdf)
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note, 'Add note' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

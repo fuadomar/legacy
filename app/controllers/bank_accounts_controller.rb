@@ -44,7 +44,7 @@ class BankAccountsController < ApplicationController
   def create
     session[:return_to] = request.referer
     @financial_account = current_user.default_plan.financial_accounts.first
-    @financial_account = current_user.default_plan.financial_accounts.create(:title => 'Default possession') if @financial_account.blank?
+    @financial_account = current_user.default_plan.financial_accounts.create(:title => 'Default financial account') if @financial_account.blank?
     @bank_account = @financial_account.bank_accounts.build(params[:bank_account])
     
     
@@ -84,7 +84,7 @@ class BankAccountsController < ApplicationController
     @bank_account.destroy
 
     respond_to do |format|
-      format.html { redirect_to(bank_accounts_url) }
+      format.html { redirect_to(financial_accounts_path) }
       format.xml  { head :ok }
     end
   end

@@ -11,6 +11,8 @@
 
     <% if @financial_accounts.present? %>
       <% financial_account = @financial_accounts.first %>
+
+
       <% if financial_account.bank_accounts.present? %>
         <% financial_account.bank_accounts.each do |bank_account| %>
           <div class="row">
@@ -33,6 +35,151 @@
           </div>
         <% end %>
       <% end %>
+
+
+      <% if financial_account.investment_accounts.present? %>
+        <% financial_account.investment_accounts.each do |investment_account| %>
+          <div class="row">
+            <div class="category">
+              <%= investment_account.investment_type %>
+            </div>
+            <div class="item">
+              <%= investment_account.account_provider %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', investment_account, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_investment_account_path(investment_account), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if financial_account.credit_cards.present? %>
+        <% financial_account.credit_cards.each do |credit_card| %>
+          <div class="row">
+            <div class="category">
+              <%= credit_card.issuer %>
+            </div>
+            <div class="item">
+              <%= credit_card.card_type %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', credit_card, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_credit_card_path(credit_card), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if financial_account.debit_cards.present? %>
+        <% financial_account.debit_cards.each do |debit_card| %>
+          <div class="row">
+            <div class="category">
+              Debit Card
+            </div>
+            <div class="item">
+              <%= debit_card.issuer %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', debit_card, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_debit_card_path(debit_card), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if financial_account.loans.present? %>
+        <% financial_account.loans.each do |loan| %>
+          <div class="row">
+            <div class="category">
+              <%= loan.type_of_loan %>
+            </div>
+            <div class="item">
+              <%= loan.loan_originator %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', loan, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_loan_path(loan), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if financial_account.insurances.present? %>
+        <% financial_account.insurances.each do |insurance| %>
+          <div class="row">
+            <div class="category">
+              <%= insurance.type_of_insurance %>
+            </div>
+            <div class="item">
+              <%= insurance.insurance_company %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', insurance, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_insurance_path(insurance), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
+
+      <% if financial_account.pension_plans.present? %>
+        <% financial_account.pension_plans.each do |pension_plan| %>
+          <div class="row">
+            <div class="category">
+              <%= pension_plan.name %>
+            </div>
+            <div class="item">
+              <%= pension_plan.administrator %>
+            </div>
+            <div class="link-container">
+              <div class="link">
+                <%= link_to 'View', pension_plan, :rel => 'facebox' %>
+              </div>
+              <div class="link">
+                <%= link_to 'Edit', edit_pension_plan_path(pension_plan), :rel => 'facebox' %>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      <% end %>
+
     <% end %>
 
     <div class="category-select">
@@ -57,6 +204,30 @@
 
     <div class="new-item-form hidden" id="Bank-account-form">
       <%= render :partial => 'bank_accounts/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Investment-account-form">
+      <%= render :partial => 'investment_accounts/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Credit-card-form">
+      <%= render :partial => 'credit_cards/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Debit-card-form">
+      <%= render :partial => 'debit_cards/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Loan-form">
+      <%= render :partial => 'loans/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Insurance-policy-form">
+      <%= render :partial => 'insurances/form' %>
+    </div>
+
+    <div class="new-item-form hidden" id="Pension-plan-form">
+      <%= render :partial => 'pension_plans/form' %>
     </div>
 
     <div class="add-new-button">

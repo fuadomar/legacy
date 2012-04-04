@@ -1,0 +1,51 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Name:</b>
+      <%= @pension_plan.name %>
+    </p>
+
+    <p>
+      <b>Administrator:</b>
+      <%= @pension_plan.administrator %>
+    </p>
+
+    <p>
+      <b>Administrator phone:</b>
+      <%= @pension_plan.administrator_phone %>
+    </p>
+
+    <p>
+      <b>Primary contact:</b>
+      <%= @pension_plan.primary_contact %>
+    </p>
+
+    <p>
+      <b>Benefits for survivors:</b>
+      <%= @pension_plan.benefits_for_survivors %>
+    </p>
+
+    <p>
+      <b>Last 4 digits of pension:</b>
+      <%= @pension_plan.last_4_digits_of_pension_id %>
+    </p>
+
+    <p>
+      <b>Beneficiary:</b>
+      <%= @pension_plan.beneficiary %>
+    </p>
+
+    <p>
+      <b>Pension document:</b>
+      <%= File.basename(@pension_plan.pension_document.url) if @pension_plan.pension_document.present? %>
+      <%= link_to 'Download File', @pension_plan.pension_document.url, :target => '_blank' if @pension_plan.pension_document.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @pension_plan.note %>
+    </p>
+
+  </div>
+</div>

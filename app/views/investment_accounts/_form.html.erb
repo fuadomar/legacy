@@ -1,0 +1,64 @@
+<%= form_for(@investment_account ||= InvestmentAccount.new) do |f| %>
+  <!--
+  <%# if @investment_account.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@investment_account.errors.count, "error") %> prohibited this investment_account from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @investment_account.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :investment_type %>
+    </div>
+    <div class="input-field">
+      <%= f.select :investment_type, InvestmentAccount::TYPES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :account_provider %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :account_provider %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :contact_information %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :contact_information %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :last_four_digits_of_account %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :last_four_digits_of_account, :maxlength => 4, :onkeypress => 'validateDigit(event)' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note, 'Add Note' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

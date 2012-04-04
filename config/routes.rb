@@ -1,4 +1,16 @@
 NasceniaRailsTemplate::Application.routes.draw do
+  resources :pension_plans
+
+  resources :insurances
+
+  resources :loans
+
+  resources :debit_cards
+
+  resources :credit_cards
+
+  resources :investment_accounts
+
   resources :others
 
   resources :in_home_safe_or_vaults

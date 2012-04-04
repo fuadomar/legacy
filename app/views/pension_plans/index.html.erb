@@ -1,0 +1,41 @@
+<h1>Listing pension_plans</h1>
+
+<table>
+  <tr>
+    <th>Financial account</th>
+    <th>Name</th>
+    <th>Administrator</th>
+    <th>Administrator phone</th>
+    <th>Primary contact</th>
+    <th>Benefits for survivors</th>
+    <th>Last 4 digits of pension</th>
+    <th>Beneficiary</th>
+    <th>Pension document</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pension_plans.each do |pension_plan| %>
+  <tr>
+    <td><%= pension_plan.financial_account_id %></td>
+    <td><%= pension_plan.name %></td>
+    <td><%= pension_plan.administrator %></td>
+    <td><%= pension_plan.administrator_phone %></td>
+    <td><%= pension_plan.primary_contact %></td>
+    <td><%= pension_plan.benefits_for_survivors %></td>
+    <td><%= pension_plan.last_4_digits_of_pension_id %></td>
+    <td><%= pension_plan.beneficiary %></td>
+    <td><%= pension_plan.pension_document %></td>
+    <td><%= pension_plan.note %></td>
+    <td><%= link_to 'Show', pension_plan %></td>
+    <td><%= link_to 'Edit', edit_pension_plan_path(pension_plan) %></td>
+    <td><%= link_to 'Destroy', pension_plan, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Pension plan', new_pension_plan_path %>

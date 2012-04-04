@@ -1,0 +1,43 @@
+<h1>Listing insurances</h1>
+
+<table>
+  <tr>
+    <th>Financial account</th>
+    <th>Type of insurance</th>
+    <th>Insurance company</th>
+    <th>Name of agency</th>
+    <th>Phone</th>
+    <th>Primary agent</th>
+    <th>Value of the policy</th>
+    <th>Last 4 digits of policy</th>
+    <th>Beneficiary</th>
+    <th>Copy of policy</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @insurances.each do |insurance| %>
+  <tr>
+    <td><%= insurance.financial_account_id %></td>
+    <td><%= insurance.type_of_insurance %></td>
+    <td><%= insurance.insurance_company %></td>
+    <td><%= insurance.name_of_agency %></td>
+    <td><%= insurance.phone %></td>
+    <td><%= insurance.primary_agent %></td>
+    <td><%= insurance.value_of_the_policy %></td>
+    <td><%= insurance.last_4_digits_of_policy %></td>
+    <td><%= insurance.beneficiary %></td>
+    <td><%= insurance.copy_of_policy %></td>
+    <td><%= insurance.note %></td>
+    <td><%= link_to 'Show', insurance %></td>
+    <td><%= link_to 'Edit', edit_insurance_path(insurance) %></td>
+    <td><%= link_to 'Destroy', insurance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Insurance', new_insurance_path %>

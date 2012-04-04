@@ -24,7 +24,7 @@
     <p>
       <b>Deed:</b>
       <%= File.basename(@real_estate.deed.url) if @real_estate.deed.present? %>
-      <%= link_to 'Download File', @real_estate.deed.url if @real_estate.deed.present? %>
+      <%= link_to 'Download File', @real_estate.deed.url, :target => '_blank' if @real_estate.deed.present? %>
     </p>
 
     <p>

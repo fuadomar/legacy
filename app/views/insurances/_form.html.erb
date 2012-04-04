@@ -1,0 +1,112 @@
+<%= form_for(@insurance ||= Insurance.new, :html => {:multipart => true}) do |f| %>
+  <!--
+  <%# if @insurance.errors.any? %>
+  <%#*<div id="error_explanation">%>
+  <%#*<h2><%= pluralize(@insurance.errors.count, "error") %> prohibited this insurance from being saved:</h2>%>
+
+  <%#*<ul>%>
+  <%# @insurance.errors.full_messages.each do |msg| %>
+  <%#*<li><%= msg %></li>%>
+  <%# end %>
+  <%#*</ul>%>
+  <%#*</div>%>
+  <%# end %>
+  -->
+
+
+  <div class="field">
+    <div class="label">
+      <%= f.label :type_of_insurance %>
+    </div>
+    <div class="input-field">
+      <%= f.select :type_of_insurance, Insurance::TYPES %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :insurance_company %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :insurance_company %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :name_of_agency %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :name_of_agency %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :phone %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :phone %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :primary_agent %>
+      (if applicable)
+    </div>
+    <div class="input-field">
+      <%= f.text_field :primary_agent %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :value_of_the_policy %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :value_of_the_policy %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :last_4_digits_of_policy %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :last_4_digits_of_policy, :maxlength => 4, :onkeypress => 'validateDigit(event)' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :beneficiary %>
+    </div>
+    <div class="input-field">
+      <%= f.text_field :beneficiary %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :copy_of_policy, 'Upload copy of policy' %>
+    </div>
+    <div class="input-field">
+      <%= f.file_field :copy_of_policy, :class => 'file' %>
+      (doc/docx/pdf)
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+      <%= f.label :note, 'Add Note' %>
+    </div>
+    <div class="input-field">
+      <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

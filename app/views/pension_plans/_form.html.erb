@@ -1,0 +1,103 @@
+<%= form_for(@pension_plan ||= PensionPlan.new, :html => {:multipart => true}) do |f| %>
+<!--
+  <%# if @pension_plan.errors.any? %>
+    <%#*<div id="error_explanation">%>
+      <%#*<h2><%= pluralize(@pension_plan.errors.count, "error") %> prohibited this pension_plan from being saved:</h2>%>
+
+      <%#*<ul>%>
+      <%# @pension_plan.errors.full_messages.each do |msg| %>
+        <%#*<li><%= msg %></li>%>
+      <%# end %>
+      <%#*</ul>%>
+    <%#*</div>%>
+  <%# end %>
+-->
+
+
+  <div class="field">
+    <div class="label">
+    <%= f.label :name, 'Name of Pension Plan' %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :name %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :administrator, 'Plan administrator' %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :administrator %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :administrator_phone, 'Administrator phone' %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :administrator_phone %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :primary_contact %>
+      (if applicable)
+    </div>
+    <div class="input-field">
+    <%= f.text_field :primary_contact %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :benefits_for_survivors, 'Pension benefits for survivors' %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :benefits_for_survivors %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :last_4_digits_of_pension_id %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :last_4_digits_of_pension_id, :maxlength => 4, :onkeypress => 'validateDigit(event)' %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :beneficiary %>
+    </div>
+    <div class="input-field">
+    <%= f.text_field :beneficiary %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :pension_document, 'Upload pension document' %>
+    </div>
+    <div class="input-field">
+    <%= f.file_field :pension_document, :class => 'file' %>
+      (doc/docx/pdf)
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="field">
+    <div class="label">
+    <%= f.label :note, 'Add Note' %>
+    </div>
+    <div class="input-field">
+    <%= f.text_area :note %>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

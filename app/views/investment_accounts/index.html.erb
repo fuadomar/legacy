@@ -1,0 +1,33 @@
+<h1>Listing investment_accounts</h1>
+
+<table>
+  <tr>
+    <th>Financial account</th>
+    <th>Investment type</th>
+    <th>Account provider</th>
+    <th>Contact information</th>
+    <th>Last four digits of account</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @investment_accounts.each do |investment_account| %>
+  <tr>
+    <td><%= investment_account.financial_account_id %></td>
+    <td><%= investment_account.investment_type %></td>
+    <td><%= investment_account.account_provider %></td>
+    <td><%= investment_account.contact_information %></td>
+    <td><%= investment_account.last_four_digits_of_account %></td>
+    <td><%= investment_account.note %></td>
+    <td><%= link_to 'Show', investment_account %></td>
+    <td><%= link_to 'Edit', edit_investment_account_path(investment_account) %></td>
+    <td><%= link_to 'Destroy', investment_account, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Investment account', new_investment_account_path %>

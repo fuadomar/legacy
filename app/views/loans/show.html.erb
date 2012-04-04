@@ -1,0 +1,46 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Type of loan:</b>
+      <%= @loan.type_of_loan %>
+    </p>
+
+    <p>
+      <b>Loan originator:</b>
+      <%= @loan.loan_originator %>
+    </p>
+
+    <p>
+      <b>Current owner of loan:</b>
+      <%= @loan.current_owner_of_loan %>
+    </p>
+
+    <p>
+      <b>Contact information:</b>
+      <%= @loan.contact_information %>
+    </p>
+
+    <p>
+      <b>Face value of the loan at issue:</b>
+      <%= @loan.face_value %>
+    </p>
+
+    <p>
+      <b>Current outstanding debt on loan:</b>
+      <%= @loan.current_debt %>
+    </p>
+
+    <p>
+      <b>Copy of loan:</b>
+      <%= File.basename(@loan.copy_of_loan.url) if @loan.copy_of_loan.present? %>
+      <%= link_to 'Download File', @loan.copy_of_loan.url, :target => '_blank' if @loan.copy_of_loan.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @loan.note %>
+    </p>
+
+  </div>
+</div>

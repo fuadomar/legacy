@@ -27,3 +27,13 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('a[rel*=facebox]').facebox();
 });
+
+
+function validateDigit(evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    if ((key < 48 || key > 57) && !(key == 8 || key == 9 || key == 13 || key == 37 || key == 39 || key == 46) ){
+        theEvent.returnValue = false;
+        if (theEvent.preventDefault) theEvent.preventDefault();
+    }
+}

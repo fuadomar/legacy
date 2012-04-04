@@ -1,0 +1,56 @@
+<div id="real-estate-show-container">
+  <div id="real-estate-show">
+
+    <p>
+      <b>Type of insurance:</b>
+      <%= @insurance.type_of_insurance %>
+    </p>
+
+    <p>
+      <b>Insurance company:</b>
+      <%= @insurance.insurance_company %>
+    </p>
+
+    <p>
+      <b>Name of agency:</b>
+      <%= @insurance.name_of_agency %>
+    </p>
+
+    <p>
+      <b>Phone:</b>
+      <%= @insurance.phone %>
+    </p>
+
+    <p>
+      <b>Primary agent:</b>
+      <%= @insurance.primary_agent %>
+    </p>
+
+    <p>
+      <b>Value of the policy:</b>
+      <%= @insurance.value_of_the_policy %>
+    </p>
+
+    <p>
+      <b>Last 4 digits of policy:</b>
+      <%= @insurance.last_4_digits_of_policy %>
+    </p>
+
+    <p>
+      <b>Beneficiary:</b>
+      <%= @insurance.beneficiary %>
+    </p>
+
+    <p>
+      <b>Copy of policy:</b>
+      <%= File.basename(@insurance.copy_of_policy.url) if @insurance.copy_of_policy.present? %>
+      <%= link_to 'Download File', @insurance.copy_of_policy.url, :target => '_blank' if @insurance.copy_of_policy.present? %>
+    </p>
+
+    <p>
+      <b>Note:</b>
+      <%= @insurance.note %>
+    </p>
+
+  </div>
+</div>
