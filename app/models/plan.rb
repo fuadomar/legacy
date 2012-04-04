@@ -54,7 +54,7 @@ class Plan < ActiveRecord::Base
 
       financial_account = user.default_plan.financial_accounts.first
 
-      if financial_account.present?
+      if financial_account.present? && financial_account.bank_accounts.present?
         financial_account.bank_accounts.each do |bank_account|
           pdf.move_down 10
           pdf.text  "#{bank_account.name_of_bank} #{bank_account.type_of_account} XXXXXX#{bank_account.last_4_digit_of_account}"
@@ -68,26 +68,31 @@ class Plan < ActiveRecord::Base
       pdf.text "Investment Accounts", :size => 20
       pdf.move_down 5
       pdf.stroke_horizontal_rule
-      pdf.move_down 10
       pdf.fill_color "000000"
-      pdf.text "E*Trade Brokerage XXXXX3321"
-      pdf.text "Note: NOT retirement savings/account"
-      pdf.move_down 10
-      pdf.text "E*Trade Roth IRA XXXXX3323"
-      pdf.text "Note: Opened in 1993 - mostly S&P index fund"
+
+      if financial_account.present? && financial_account.investment_accounts.present?
+        financial_account.investment_accounts.each do |investment_account|
+          pdf.move_down 10
+          pdf.text  "#{investment_account.investment_type} #{investment_account.account_provider} XXXXXX#{investment_account.last_four_digits_of_account}"
+          pdf.text "Note: #{investment_account.note}"
+        end
+      end
+
       pdf.move_down 20
       pdf.fill_color "7e6127"
       pdf.text "Loans", :size => 20
       pdf.move_down 5
       pdf.stroke_horizontal_rule
-      pdf.move_down 10
       pdf.fill_color "000000"
-      pdf.text "PNC Mortgage for $300,000 at origination in September 2003"
-      pdf.text "Outstanding principal balance of <color rgb='ee1f25'>$123,227.90 as of February 2012</color> ", :inline_format => true
-      pdf.text "Note: Our house at 123 Pine Street - no one else is owed anything on this house"
-      pdf.move_down 10
-      pdf.text "American Honda Finance Corporation for $18,000 at origination in May 2009"
-      pdf.text "Outstanding principal balance of <color rgb='ee1f25'>~$8,000 as of February 2012</color>", :inline_format => true
+
+        if financial_account.present? && financial_account.loans.present?
+        financial_account.loans.each do |loan|
+          pdf.move_down 10
+          pdf.text  "#{loan.loan_originator} #{loan.type_of_loan} for #{loan.face_value}"
+          pdf.text "Outstanding principal balance of #{loan.current_debt}"
+        end
+      end
+
     end
 
     pdf.start_new_page
