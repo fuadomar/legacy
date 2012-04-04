@@ -92,6 +92,6 @@ class PlansController < ApplicationController
     pdf.text "Accounts and Finances", :size => 40
     pdf.render_file path
     puts "gygjhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
-    redirect_to "/pdf_files/plan_#{@plan.id}.pdf"
+    send_file(path, :disposition => 'attachment')
   end
 end
