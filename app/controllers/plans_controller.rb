@@ -87,14 +87,11 @@ class PlansController < ApplicationController
 
   def download
     @plan = Plan.find(params[:id])
-    relationship = Relationship.find_by_login_user_id(current_user.id)
-    sharing_rule = @plan.sharing_rules.where(:relationship_id => relationship.id).first if relationship.present?   
-    if @plan.user_id == current_user.id || sharing_rule.present?
-      path = "#{Rails.root}/public/pdf_files/plan_#{@plan.id}.pdf"
-      @plan.generate_pdf path, @plan.user, sharing_rule
-      send_file(path, :disposition => 'attachment')
-    else
-      redirect_to publics_dashboard_path, :notice => 'You are not Authorized to download this plan'
-    end
+    path = "#{Rails.root}/public/pdf_files/plan_#{@plan.id}.pdf"
+    pdf = Prawn::Document.new( :margin => [75, 75, 75, 75])
+    pdf.text "Accounts and Finances", :size => 40
+    pdf.render_file path
+    puts "gygjhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+    redirect_to "/pdf_files/plan_#{@plan.id}.pdf"
   end
 end
