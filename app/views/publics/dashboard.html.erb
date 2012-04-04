@@ -32,7 +32,7 @@
         <div class="clear"></div>
       </div>
       <div class="box-content">
-        <%= @financial_account_size.present? ? @financial_account_size : "No" %>
+        <%= @financial_account_size.present? && @financial_account_size > 0 ? @financial_account_size : "No" %>
         accounts listed
       </div>
       <div class="box-button">
@@ -113,7 +113,7 @@
         accounts listed
       </div>
       <div class="box-button">
-        <%= link_to @possession_size.present? ? 'EDIT ASSETS' : 'ADD ASSETS', possessions_path %>
+        <%= link_to @possession_size.present? && @possession_size > 0 ? 'EDIT ASSETS' : 'ADD ASSETS', possessions_path %>
       </div>
       <div class="clear"></div>
     </div>

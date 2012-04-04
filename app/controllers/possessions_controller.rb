@@ -3,7 +3,9 @@ class PossessionsController < ApplicationController
   # GET /possessions
   # GET /possessions.xml
   def index
-    @possessions = current_user.default_plan.possessions.includes(:real_estates, :vehicles, :furnitures)
+    @possessions = current_user.default_plan.possessions.includes(:real_estates, 
+      :vehicles, :furnitures, :jewelries, :artworks, :safe_deposit_boxes,
+      :in_home_safe_or_vaults, :others)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -17,12 +17,37 @@ class PublicsController < ApplicationController
     @relationships = current_user.relationships.includes(:sharing_rules) if current_user.present?
     @plan = current_user.default_plan
 
-    financial_account = @plan.financial_accounts.includes(:bank_accounts).first
-    @financial_account_size = financial_account.bank_accounts.size if financial_account.present? && financial_account.bank_accounts.present?
+    financial_account = @plan.financial_accounts.includes(:bank_accounts,
+      :investment_accounts, :credit_cards, :debit_cards, :loans, :insurances,
+      :pension_plans).first
 
-    possession = @plan.possessions.includes(:real_estates).first
-    @possession_size = possession.real_estates.size if possession.present? && possession.real_estates.present?
+    if financial_account.present?
+      @financial_account_size = 0
+      @financial_account_size += financial_account.bank_accounts.size if financial_account.bank_accounts.present?
+      @financial_account_size += financial_account.investment_accounts.size if financial_account.investment_accounts.present?
+      @financial_account_size += financial_account.credit_cards.size if financial_account.credit_cards.present?
+      @financial_account_size += financial_account.debit_cards.size if financial_account.debit_cards.present?
+      @financial_account_size += financial_account.loans.size if financial_account.loans.present?
+      @financial_account_size += financial_account.insurances.size if financial_account.insurances.present?
+      @financial_account_size += financial_account.pension_plans.size if financial_account.pension_plans.present?
+    end
 
+    possession = @plan.possessions.includes(:real_estates,
+      :vehicles, :furnitures, :jewelries, :artworks, :safe_deposit_boxes,
+      :in_home_safe_or_vaults, :others).first
+
+    if possession.present?
+      @possession_size = 0
+      @possession_size += possession.real_estates.size if possession.real_estates.present?
+      @possession_size += possession.vehicles.size if possession.vehicles.present?
+      @possession_size += possession.furnitures.size if possession.furnitures.present?
+      @possession_size += possession.jewelries.size if possession.jewelries.present?
+      @possession_size += possession.artworks.size if possession.artworks.present?
+      @possession_size += possession.safe_deposit_boxes.size if possession.safe_deposit_boxes.present?
+      @possession_size += possession.in_home_safe_or_vaults.size if possession.in_home_safe_or_vaults.present?
+      @possession_size += possession.others.size if possession.others.present?
+    end
+    
     @medical_instruction = @plan.medical_instructions.first
     @memorial = @plan.memorials.first
 
