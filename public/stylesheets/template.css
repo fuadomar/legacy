@@ -2042,6 +2042,10 @@ form.new_relationships .single-row .single-field .label {
     padding-right: 10px;
 }
 
+#will-and-trust .list .row .comment a{
+    text-decoration: none;
+}
+
 #will-and-trust .list .row .link{
     padding-left: 70px;
 }
