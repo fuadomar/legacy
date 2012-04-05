@@ -1,4 +1,5 @@
 class FurnituresController < ApplicationController
+  before_filter :authenticate_user!
   # GET /furnitures
   # GET /furnitures.xml
   def index

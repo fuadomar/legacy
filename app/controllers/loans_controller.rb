@@ -1,4 +1,5 @@
 class LoansController < ApplicationController
+  before_filter :authenticate_user!
   # GET /loans
   # GET /loans.xml
   def index

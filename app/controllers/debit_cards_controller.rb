@@ -1,4 +1,5 @@
 class DebitCardsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /debit_cards
   # GET /debit_cards.xml
   def index

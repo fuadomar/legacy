@@ -1,4 +1,5 @@
 class OthersController < ApplicationController
+  before_filter :authenticate_user!
   # GET /others
   # GET /others.xml
   def index

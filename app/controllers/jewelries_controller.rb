@@ -1,4 +1,5 @@
 class JewelriesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /jewelries
   # GET /jewelries.xml
   def index

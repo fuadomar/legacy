@@ -1,4 +1,5 @@
 class InsurancesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /insurances
   # GET /insurances.xml
   def index

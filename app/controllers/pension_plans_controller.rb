@@ -1,4 +1,5 @@
 class PensionPlansController < ApplicationController
+  before_filter :authenticate_user!
   # GET /pension_plans
   # GET /pension_plans.xml
   def index

@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  before_filter :authenticate_user!
   # GET /artworks
   # GET /artworks.xml
   def index

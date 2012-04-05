@@ -1,4 +1,5 @@
 class SafeDepositBoxesController < ApplicationController
+  before_filter :authenticate_user!
   # GET /safe_deposit_boxes
   # GET /safe_deposit_boxes.xml
   def index

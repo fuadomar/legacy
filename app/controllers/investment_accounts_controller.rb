@@ -1,4 +1,5 @@
 class InvestmentAccountsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /investment_accounts
   # GET /investment_accounts.xml
   def index

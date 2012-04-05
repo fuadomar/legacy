@@ -1,4 +1,5 @@
 class InHomeSafeOrVaultsController < ApplicationController
+  before_filter :authenticate_user!
   # GET /in_home_safe_or_vaults
   # GET /in_home_safe_or_vaults.xml
   def index
