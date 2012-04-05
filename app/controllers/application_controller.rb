@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_filter :redirect_to_https
   protect_from_forgery
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -17,4 +18,20 @@ class ApplicationController < ActionController::Base
     return publics_dashboard_path()
   end
 
+  def ssl_enabled?
+    !(Rails.env.development? || Rails.env.test?)
+  end
+
+  def https
+    ssl_enabled? ? "https://" : "http://"
+  end
+  helper_method :https
+
+  protected
+  def redirect_to_https
+    if request.protocol == "http://" && ssl_enabled?
+      redirect_to :protocol => https
+    end
+    return true
+  end
 end

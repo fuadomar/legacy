@@ -61,6 +61,8 @@ class PublicsController < ApplicationController
     render :layout => 'application_without_side_panel'
   end
 
+
+  
   protected
   def check_logged_in_user
     redirect_to publics_dashboard_path if current_user

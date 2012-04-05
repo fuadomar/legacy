@@ -97,4 +97,19 @@ class PlansController < ApplicationController
       redirect_to publics_dashboard_path, :notice => 'You are not Authorized to download this plan'
     end
   end
+
+  def send_pdf
+    @plan = Plan.find(params[:id])
+    relationship = Relationship.find(params[:relationship]) if params[:relationship].present?
+    sharing_rule = @plan.sharing_rules.where(:relationship_id => relationship.id).first if relationship.present?
+    if @plan.user_id == current_user.id && sharing_rule.present?
+      path = "#{Rails.root}/pdf_files/plan_#{@plan.id}.pdf"
+      @plan.generate_pdf path, @plan.user, sharing_rule
+      NotificationMailer.send_pdf_plan(relationship, path, current_user).deliver
+      return if request.xhr?
+      redirect_to publics_dashboard_path, :notice => 'Successfully Sent Your Plan'
+    else
+      redirect_to publics_dashboard_path, :notice => 'There was a problem with sending this plan'
+    end
+  end
 end

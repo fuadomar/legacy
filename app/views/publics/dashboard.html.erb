@@ -142,7 +142,8 @@
             Send
             <%= "on my Death" if sharing_rule.when_die? %>
             <br/>
-            Send plan now<br/>
+            <%= link_to 'Send plan now', send_pdf_plan_path(@plan, :relationship => relationship.id) %>
+            <br/>
             <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
           </div>
           <div class="image">
@@ -150,46 +151,59 @@
           </div>
         </div>
       <% end %>
-      <div class="add-more">
-        <%= link_to image_tag("/images/plus_sign.png"), new_relationship_path, :rel => 'facebox' %>
+
+      <% if @relationships.size < 4 %>
+        <% count = 4 - @relationships.size %>
+        <% for i in 1..count %>
+            <div class="relation-entry">
+              <div class="info"></div>
+              <div class="image">
+                <%= image_tag("/images/user.png") %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="add-more">
+          <%= link_to image_tag("/images/plus_sign.png"), new_relationship_path, :rel => 'facebox' %>
+        </div>
+        <div class="clear"></div>
       </div>
-      <div class="clear"></div>
-    </div>
-  <% else %>
-    <div class="big-button-container">
-      <% if current_user.payments.first.present? %>
-        <div class="share-button">
+    <% else %>
+      <div class="big-button-container">
+        <% if current_user.payments.first.present? %>
+          <div class="share-button">
+            <div class="button-text">
+              Your plan has not been shared with anyone
+            </div>
+            <div class="big-button">
+              <%= link_to 'Choose who to share with now', new_relationship_path, :rel => 'facebox' %>
+            </div>
+          </div>
+          <div class="download-button">
+            <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan), :target => '_blank' %>
+          </div>
+          <div class="clear"></div>
+        <% else %>
           <div class="button-text">
             Your plan has not been shared with anyone
           </div>
           <div class="big-button">
-            <%= link_to 'Choose who to share with now', new_relationship_path, :rel => 'facebox' %>
+            <%= link_to("Subscribe now to share or download your plan", new_payment_path) %>
           </div>
-        </div>
-        <div class="download-button">
-          <%= link_to image_tag('download_plan_button.png'), download_plan_path(current_user.default_plan), :target => '_blank' %>
-        </div>
-        <div class="clear"></div>
-      <% else %>
-        <div class="button-text">
-          Your plan has not been shared with anyone
-        </div>
-        <div class="big-button">
-          <%= link_to("Subscribe now to share or download your plan", new_payment_path) %>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <div class="user-image-container">
-      <%= image_tag("/images/user.png", :class => 'blank-image') %>
-      <%= image_tag("/images/user.png", :class => 'blank-image') %>
-      <%= image_tag("/images/user.png", :class => 'blank-image') %>
-      <%= image_tag("/images/user.png", :class => 'blank-image') %>
-    </div>
-  <% end %>
+      <div class="user-image-container">
+        <%= image_tag("/images/user.png", :class => 'blank-image') %>
+        <%= image_tag("/images/user.png", :class => 'blank-image') %>
+        <%= image_tag("/images/user.png", :class => 'blank-image') %>
+        <%= image_tag("/images/user.png", :class => 'blank-image') %>
+      </div>
+    <% end %>
 
 
 
 
 
-</div>
+  </div>

@@ -47,6 +47,7 @@ NasceniaRailsTemplate::Application.routes.draw do
   resources :plans do
     member do
       get :download
+      get :send_pdf
     end
   end
 

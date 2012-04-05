@@ -17,7 +17,7 @@
   <div class="edit-profile">
 
 
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true, :class => 'create_account new_user_common'}) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name, :protocol => https), :html => {:multipart => true, :class => 'create_account new_user_common'}) do |f| %>
       <%= devise_error_messages! %>
 
 

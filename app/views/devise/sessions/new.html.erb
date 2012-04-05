@@ -3,7 +3,7 @@
   :heading => 'Please sign in'} %>
 
 <div class="content-container">
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'sign_in new_user_common'} ) do |f| %>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name, :protocol => https), :html => {:class => 'sign_in new_user_common'} ) do |f| %>
     <div class="single-field"><%= f.label :email %>
       <%= f.email_field :email %></div>
 
