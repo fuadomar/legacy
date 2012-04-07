@@ -45,18 +45,18 @@ class RelationshipsController < ApplicationController
   # POST /relationships.xml
   def create
     @relationship = current_user.relationships.new(params[:relationship])
-    success = true
-    @user = User.new(params[:relationship])
-    @user.date_of_birth = Date.today
-    @user.password = "testtest"
-    success = false unless @user.save
-    @relationship.login_user_id = @user.id
+#    success = true
+#    @user = User.new(params[:relationship])
+#    @user.date_of_birth = Date.today
+#    @user.password = "testtest"
+#    success = false unless @user.save
+#    @relationship.login_user_id = @user.id
 
     @sharing_rule = @relationship.sharing_rules.build(params[:sharing_rule])
     @sharing_rule.plan_id = current_user.default_plan.id
 
     respond_to do |format|
-      if success && @relationship.save
+      if @relationship.save
         format.html { redirect_to(publics_dashboard_path, :notice => 'Relationship was successfully created.') }
         format.xml  { render :xml => @relationship, :status => :created, :location => @relationship }
       else
