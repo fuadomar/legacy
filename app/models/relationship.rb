@@ -15,11 +15,18 @@ class Relationship < ActiveRecord::Base
 
 
   RELATIONS = [
+    ['Father', 'father'],
+    ['Mother', 'mother'],
     ['Brother', 'brother'],
     ['Sister', 'sister'],
+    ['Spouse', 'spouse'],
     ['Son', 'son'],
     ['Daughter', 'daughter'],
+    ['Relative', 'relative'],
+    ['Friend', 'friend'],
+    ['Other', 'other']
   ]
+
 
   def full_name
     return "#{first_name} #{last_name}"

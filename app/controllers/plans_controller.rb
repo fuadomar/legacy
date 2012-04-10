@@ -107,6 +107,8 @@ class PlansController < ApplicationController
       @plan.generate_pdf path, @plan.user, sharing_rule
       NotificationMailer.send_pdf_plan(relationship, path, current_user).deliver
       return if request.xhr?
+      relationship.plan_sent_on = Date.today
+      relationship.save
       redirect_to publics_dashboard_path, :notice => 'Successfully Sent Your Plan'
     else
       redirect_to publics_dashboard_path, :notice => 'There was a problem with sending this plan'

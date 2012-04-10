@@ -1458,17 +1458,28 @@ div.shairing-container .user-image-container .relation-entry .info{
     margin-top: 20px;
 }
 
-div.shairing-container .user-image-container .relation-entry .info a{
-    color: #000;
-    text-decoration: none;
+div.shairing-container .user-image-container .relation-entry .info .sharing-link{
     background-color: #D9E6EF;
-    padding: 2px;
+    padding: 1px;
+    border-radius: 3px;
+    border: 1px solid #D9E6EF;
+    margin-top: 2px;
+    text-align: center;
+}
+
+div.shairing-container .user-image-container .relation-entry .info a{
+    color: #222;
+    text-decoration: none;
 }
 
 div.shairing-container .user-image-container .add-more{
     float: left;
     margin-left: -60px;
     margin-top: 160px;
+}
+
+div.shairing-container .user-image-container .image{
+    margin-top: 10px;
 }
 
 
@@ -2000,7 +2011,7 @@ form.new_relationships .single-row .single-field .label {
 
 
 #will-and-trust .form .field{
-    margin-bottom: 0px;
+    margin-bottom: 15px;
 }
 
 #will-and-trust .form .field label{

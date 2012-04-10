@@ -138,16 +138,20 @@
               <%= relationship.full_name.upcase if relationship.full_name.present? %>
               <% sharing_rule = relationship.sharing_rules.first %>
             </b><br/>
-            Never Sent Plan<br/>
+            <%= relationship.plan_sent_on.present? ? "Plan was sent <br/> on #{relationship.plan_sent_on.strftime('%b.%d, %Y')}".html_safe : 'Never Sent Plan' %>
+            <br/>
             Send
             <%= "on my Death" if sharing_rule.when_die? %>
             <br/>
-            <%= link_to 'Send plan now', send_pdf_plan_path(@plan, :relationship => relationship.id) %>
-            <br/>
-            <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
+            <div class="sharing-link">
+              <%= link_to 'Send plan now', send_pdf_plan_path(@plan, :relationship => relationship.id), :confirm => 'Are you confirm to mail your plan' %>
+            </div>
+            <div class="sharing-link">
+              <%= link_to 'edit sharing options', edit_relationship_path(relationship), :rel => 'facebox' %>
+            </div>
           </div>
           <div class="image">
-            <%= image_tag("/images/user.png") %>
+            <%= link_to image_tag("/images/user.png"), edit_relationship_path(relationship), :rel => 'facebox' %>
           </div>
         </div>
       <% end %>
@@ -158,7 +162,7 @@
           <div class="relation-entry">
             <div class="info"></div>
             <div class="image">
-              <%= image_tag("/images/user.png") %>
+              <%= link_to image_tag("/images/user.png"), new_relationship_path, :rel => 'facebox' %>
             </div>
           </div>
         <% end %>
@@ -201,9 +205,5 @@
       <%= image_tag("/images/user.png", :class => 'blank-image') %>
     </div>
   <% end %>
-
-
-
-
 
 </div>

@@ -85,7 +85,7 @@ class Plan < ActiveRecord::Base
       pdf.stroke_horizontal_rule
       pdf.fill_color "000000"
 
-        if financial_account.present? && financial_account.loans.present?
+      if financial_account.present? && financial_account.loans.present?
         financial_account.loans.each do |loan|
           pdf.move_down 10
           pdf.text  "#{loan.loan_originator} #{loan.type_of_loan} for #{loan.face_value}"
@@ -117,75 +117,75 @@ class Plan < ActiveRecord::Base
       end
     end
 
-    pdf.start_new_page
-
-    plan_single_pdf_page_template(pdf) do
-      pdf.text "Gifting of Personal Items", :size => 40
-      pdf.text "for Stephen Frost, dated March 24, 2012"
-      pdf.move_down 20
-
-      pdf.stroke_horizontal_rule
-      pdf.move_down 12
-      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.image "#{Rails.root}/public/images/pdf_gift_1.png", :align => :left, :fit	=> [155, 125]
-      end
-      pdf.move_down 15
-      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.fill_color "000000"
-        pdf.text "<b>Grandma’s Brooch</b> - gift to Julie.", :inline_format => true
-        pdf.text "<b>You can find it</b>: in the Jewelry box in the attic", :inline_format => true
-        pdf.text "<b>Note</b>: This was given to my sister before she died, by our" +
-          "grandmother. It was purchased at the Chicago World’s Fair in" +
-          "1933 and she wore it at our wedding. She wanted it to be carried" +
-          "down to the older women in our family. It’s never been appraised.", :inline_format => true
-        pdf.fill_color "7e6127"
-        pdf.move_down 30
-      end
-
-      pdf.stroke_horizontal_rule
-      pdf.move_down 12
-      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.image "#{Rails.root}/public/images/pdf_gift_2.png", :align => :left, :fit	=> [155, 125]
-      end
-      pdf.move_down 15
-      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.fill_color "000000"
-        pdf.text "<b>Grandfather Clock</b> - gift to Jason.", :inline_format => true
-        pdf.text "<b>You can find it</b>: In the living room", :inline_format => true
-        pdf.text "<b>Note</b>: Jason, I know you always loved this clock - I remember" +
-          "when you were 7 and were amazed that it ran without electricity! We" +
-          "bought this from an antique store in Brattleboro in 1979 - two years" +
-          "before you were born.", :inline_format => true
-        pdf.fill_color "7e6127"
-        pdf.move_down 30
-      end
-
-      pdf.stroke_horizontal_rule
-      pdf.move_down 12
-      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.image "#{Rails.root}/public/images/pdf_gift_3.png", :align => :left, :fit	=> [155, 125]
-      end
-      pdf.move_down 15
-      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
-        #        pdf.transparent(0.5) { pdf.stroke_bounds }
-        pdf.fill_color "000000"
-        pdf.text "<b>1963 MGB Convertible</b> - gift to Walter.", :inline_format => true
-        pdf.text "<b>You can find it</b>: Storage locker 33C at Oakland U-Store", :inline_format => true
-        pdf.text "<b>Note</b>: Walter, hopefully you can get this thing to run again" +
-          "someday - the body is in great condition, which is the only" +
-          "reason I hung on to it. But, I don’t mind if you decide to sell" +
-          "it.", :inline_format => true
-        pdf.fill_color "7e6127"
-        pdf.move_down 30
-      end
-
-
-    end
+    #    pdf.start_new_page
+    #
+    #    plan_single_pdf_page_template(pdf) do
+    #      pdf.text "Gifting of Personal Items", :size => 40
+    #      pdf.text "for Stephen Frost, dated March 24, 2012"
+    #      pdf.move_down 20
+    #
+    #      pdf.stroke_horizontal_rule
+    #      pdf.move_down 12
+    #      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.image "#{Rails.root}/public/images/pdf_gift_1.png", :align => :left, :fit	=> [155, 125]
+    #      end
+    #      pdf.move_down 15
+    #      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.fill_color "000000"
+    #        pdf.text "<b>Grandma’s Brooch</b> - gift to Julie.", :inline_format => true
+    #        pdf.text "<b>You can find it</b>: in the Jewelry box in the attic", :inline_format => true
+    #        pdf.text "<b>Note</b>: This was given to my sister before she died, by our" +
+    #          "grandmother. It was purchased at the Chicago World’s Fair in" +
+    #          "1933 and she wore it at our wedding. She wanted it to be carried" +
+    #          "down to the older women in our family. It’s never been appraised.", :inline_format => true
+    #        pdf.fill_color "7e6127"
+    #        pdf.move_down 30
+    #      end
+    #
+    #      pdf.stroke_horizontal_rule
+    #      pdf.move_down 12
+    #      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.image "#{Rails.root}/public/images/pdf_gift_2.png", :align => :left, :fit	=> [155, 125]
+    #      end
+    #      pdf.move_down 15
+    #      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.fill_color "000000"
+    #        pdf.text "<b>Grandfather Clock</b> - gift to Jason.", :inline_format => true
+    #        pdf.text "<b>You can find it</b>: In the living room", :inline_format => true
+    #        pdf.text "<b>Note</b>: Jason, I know you always loved this clock - I remember" +
+    #          "when you were 7 and were amazed that it ran without electricity! We" +
+    #          "bought this from an antique store in Brattleboro in 1979 - two years" +
+    #          "before you were born.", :inline_format => true
+    #        pdf.fill_color "7e6127"
+    #        pdf.move_down 30
+    #      end
+    #
+    #      pdf.stroke_horizontal_rule
+    #      pdf.move_down 12
+    #      pdf.bounding_box([0, pdf.cursor], :width => 155, :height => 125) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.image "#{Rails.root}/public/images/pdf_gift_3.png", :align => :left, :fit	=> [155, 125]
+    #      end
+    #      pdf.move_down 15
+    #      pdf.bounding_box([180, pdf.cursor + 130], :width => 270) do
+    #        #        pdf.transparent(0.5) { pdf.stroke_bounds }
+    #        pdf.fill_color "000000"
+    #        pdf.text "<b>1963 MGB Convertible</b> - gift to Walter.", :inline_format => true
+    #        pdf.text "<b>You can find it</b>: Storage locker 33C at Oakland U-Store", :inline_format => true
+    #        pdf.text "<b>Note</b>: Walter, hopefully you can get this thing to run again" +
+    #          "someday - the body is in great condition, which is the only" +
+    #          "reason I hung on to it. But, I don’t mind if you decide to sell" +
+    #          "it.", :inline_format => true
+    #        pdf.fill_color "7e6127"
+    #        pdf.move_down 30
+    #      end
+    #
+    #
+    #    end
 
     pdf.start_new_page
 
@@ -197,9 +197,12 @@ class Plan < ActiveRecord::Base
       pdf.text "#{last_will_and_trust.comment}" if last_will_and_trust.present?
     end
 
-    pdf.start_new_page
+    last_will_and_trust = user.default_plan.will_and_trusts.first
+    if last_will_and_trust.present? && last_will_and_trust.file.present? && (last_will_and_trust.file.to_s[-3,3] == 'jpg' || last_will_and_trust.file.to_s[-3,3] == 'png')
+      pdf.start_new_page
+      pdf.image "#{Rails.root}/public#{last_will_and_trust.file.to_s}", :position => :center
+    end
 
-    pdf.image "#{Rails.root}/public/images/logo.png", :position => :center
 
     pdf.start_new_page
 
