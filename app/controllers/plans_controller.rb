@@ -3,42 +3,46 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.xml
   def index
-    @plans = current_user.plans.all
-    @relation = Relationship.find_by_login_user_id(current_user.id)
-    @parent = User.find(@relation.user_id) if @relation.present?
-    @parent_plans = @parent.plans if @parent.present?
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @plans }
-    end
+    #    @plans = current_user.plans.all
+    #    @relation = Relationship.find_by_login_user_id(current_user.id)
+    #    @parent = User.find(@relation.user_id) if @relation.present?
+    #    @parent_plans = @parent.plans if @parent.present?
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @plans }
+    #    end
+    redirect_to publics_dashboard_path
   end
 
   # GET /plans/1
   # GET /plans/1.xml
   def show
-    @plan = Plan.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @plan }
-    end
+    #    @plan = Plan.find(params[:id])
+    #
+    #    respond_to do |format|
+    #      format.html # show.html.erb
+    #      format.xml  { render :xml => @plan }
+    #    end
+    redirect_to publics_dashboard_path
   end
 
   # GET /plans/new
   # GET /plans/new.xml
   def new
-    @plan = Plan.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @plan }
-    end
+    #    @plan = Plan.new
+    #
+    #    respond_to do |format|
+    #      format.html # new.html.erb
+    #      format.xml  { render :xml => @plan }
+    #    end
+    redirect_to publics_dashboard_path
   end
 
   # GET /plans/1/edit
   def edit
-    @plan = Plan.find(params[:id])
+    #    @plan = Plan.find(params[:id])
+    redirect_to publics_dashboard_path
   end
 
   # POST /plans

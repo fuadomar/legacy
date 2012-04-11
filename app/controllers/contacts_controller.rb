@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_filter :authenticate_user!, :except => [:new, :create]
+  load_and_authorize_resource
   # GET /contacts
   # GET /contacts.xml
   def index

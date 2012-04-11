@@ -1,14 +1,16 @@
 class InvestmentAccountsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /investment_accounts
   # GET /investment_accounts.xml
   def index
-    @investment_accounts = InvestmentAccount.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @investment_accounts }
-    end
+    #    @investment_accounts = InvestmentAccount.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @investment_accounts }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /investment_accounts/1

@@ -16,28 +16,31 @@ class PossessionsController < ApplicationController
   # GET /possessions/1
   # GET /possessions/1.xml
   def show
-    @possession = Possession.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @possession }
-    end
+    #    @possession = Possession.find(params[:id])
+    #
+    #    respond_to do |format|
+    #      format.html # show.html.erb
+    #      format.xml  { render :xml => @possession }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /possessions/new
   # GET /possessions/new.xml
   def new
-    @possession = Possession.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @possession }
-    end
+    #    @possession = Possession.new
+    #
+    #    respond_to do |format|
+    #      format.html # new.html.erb
+    #      format.xml  { render :xml => @possession }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /possessions/1/edit
   def edit
-    @possession = Possession.find(params[:id])
+    #    @possession = Possession.find(params[:id])
+    redirect_to possessions_path
   end
 
   # POST /possessions

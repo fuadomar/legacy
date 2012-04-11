@@ -48,7 +48,7 @@ class MemorialsController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to(@memorial, :notice => 'Memorial was successfully created.') }
+        format.html { redirect_to(edit_memorial_path(@memorial), :notice => 'Memorial was successfully created.') }
         format.xml  { render :xml => @memorial, :status => :created, :location => @memorial }
       else
         format.html { render :action => "new" }

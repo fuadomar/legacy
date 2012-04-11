@@ -1,14 +1,16 @@
 class InsurancesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /insurances
   # GET /insurances.xml
   def index
-    @insurances = Insurance.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @insurances }
-    end
+    #    @insurances = Insurance.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @insurances }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /insurances/1

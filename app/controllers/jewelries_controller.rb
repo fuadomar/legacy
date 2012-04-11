@@ -1,14 +1,16 @@
 class JewelriesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /jewelries
   # GET /jewelries.xml
   def index
-    @jewelries = Jewelry.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @jewelries }
-    end
+    #    @jewelries = Jewelry.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @jewelries }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /jewelries/1

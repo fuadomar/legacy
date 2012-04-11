@@ -1,14 +1,16 @@
 class OthersController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /others
   # GET /others.xml
   def index
-    @others = Other.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @others }
-    end
+    #    @others = Other.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @others }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /others/1

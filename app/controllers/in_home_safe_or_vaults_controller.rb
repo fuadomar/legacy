@@ -1,14 +1,16 @@
 class InHomeSafeOrVaultsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /in_home_safe_or_vaults
   # GET /in_home_safe_or_vaults.xml
   def index
-    @in_home_safe_or_vaults = InHomeSafeOrVault.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @in_home_safe_or_vaults }
-    end
+    #    @in_home_safe_or_vaults = InHomeSafeOrVault.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @in_home_safe_or_vaults }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /in_home_safe_or_vaults/1

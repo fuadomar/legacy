@@ -1,5 +1,6 @@
 class AgentsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /agents
   # GET /agents.xml
   def index
@@ -44,10 +45,11 @@ class AgentsController < ApplicationController
     success = false
     @medical_instruction = current_user.default_plan.medical_instructions.first if current_user.present?
     @agent = @medical_instruction.agents.new(params[:agent]) if @medical_instruction.present?
+    @agent.user_id = current_user.id if @agent.present?
     success = true if @agent.present? and @agent.save
 
     if(@agent.blank?)
-      @agent = Agent.new(params[:agent])
+      @agent = current_user.agents.new(params[:agent])
       success = true if @agent.save
       session[:agent_id] = @agent.id
     end

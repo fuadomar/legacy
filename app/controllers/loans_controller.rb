@@ -1,14 +1,16 @@
 class LoansController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /loans
   # GET /loans.xml
   def index
-    @loans = Loan.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @loans }
-    end
+    #    @loans = Loan.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @loans }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /loans/1

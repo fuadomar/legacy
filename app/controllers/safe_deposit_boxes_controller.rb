@@ -1,14 +1,16 @@
 class SafeDepositBoxesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /safe_deposit_boxes
   # GET /safe_deposit_boxes.xml
   def index
-    @safe_deposit_boxes = SafeDepositBox.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @safe_deposit_boxes }
-    end
+    #    @safe_deposit_boxes = SafeDepositBox.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @safe_deposit_boxes }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /safe_deposit_boxes/1

@@ -1,14 +1,16 @@
 class VehiclesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /vehicles
   # GET /vehicles.xml
   def index
-    @vehicles = Vehicle.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @vehicles }
-    end
+    #    @vehicles = Vehicle.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @vehicles }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /vehicles/1

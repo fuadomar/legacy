@@ -1,5 +1,6 @@
 class FinancialAccountsController < ApplicationController
   before_filter :authenticate_user!
+  #load_and_authorize_resource
   # GET /financial_accounts
   # GET /financial_accounts.xml
   def index
@@ -15,28 +16,31 @@ class FinancialAccountsController < ApplicationController
   # GET /financial_accounts/1
   # GET /financial_accounts/1.xml
   def show
-    @financial_account = FinancialAccount.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @financial_account }
-    end
+    #    @financial_account = FinancialAccount.find(params[:id])
+    #
+    #    respond_to do |format|
+    #      format.html # show.html.erb
+    #      format.xml  { render :xml => @financial_account }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /financial_accounts/new
   # GET /financial_accounts/new.xml
   def new
-    @financial_account = FinancialAccount.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @financial_account }
-    end
+    #    @financial_account = FinancialAccount.new
+    #
+    #    respond_to do |format|
+    #      format.html # new.html.erb
+    #      format.xml  { render :xml => @financial_account }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /financial_accounts/1/edit
   def edit
-    @financial_account = FinancialAccount.find(params[:id])
+    #    @financial_account = FinancialAccount.find(params[:id])
+    redirect_to financial_accounts_path
   end
 
   # POST /financial_accounts

@@ -1,5 +1,6 @@
 class WillAndTrustsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /will_and_trusts
   # GET /will_and_trusts.xml
   def index

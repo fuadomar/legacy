@@ -1,14 +1,16 @@
 class RealEstatesController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /real_estates
   # GET /real_estates.xml
   def index
-    @real_estates = RealEstate.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @real_estates }
-    end
+    #    @real_estates = RealEstate.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @real_estates }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /real_estates/1

@@ -1,14 +1,16 @@
 class CreditCardsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /credit_cards
   # GET /credit_cards.xml
   def index
-    @credit_cards = CreditCard.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @credit_cards }
-    end
+    #    @credit_cards = CreditCard.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @credit_cards }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /credit_cards/1

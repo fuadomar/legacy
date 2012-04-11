@@ -1,14 +1,16 @@
 class DebitCardsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /debit_cards
   # GET /debit_cards.xml
   def index
-    @debit_cards = DebitCard.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @debit_cards }
-    end
+    #    @debit_cards = DebitCard.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @debit_cards }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /debit_cards/1

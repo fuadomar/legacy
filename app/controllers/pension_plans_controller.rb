@@ -1,14 +1,16 @@
 class PensionPlansController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /pension_plans
   # GET /pension_plans.xml
   def index
-    @pension_plans = PensionPlan.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @pension_plans }
-    end
+    #    @pension_plans = PensionPlan.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @pension_plans }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /pension_plans/1

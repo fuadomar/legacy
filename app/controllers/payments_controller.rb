@@ -1,6 +1,11 @@
 class PaymentsController < ApplicationController
   before_filter :authenticate_user!
-  
+  load_and_authorize_resource
+
+  def index
+    redirect_to new_payment_path
+  end
+
   def new
     @payment = Payment.new
   end

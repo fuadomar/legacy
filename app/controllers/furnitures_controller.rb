@@ -1,14 +1,16 @@
 class FurnituresController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /furnitures
   # GET /furnitures.xml
   def index
-    @furnitures = Furniture.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @furnitures }
-    end
+    #    @furnitures = Furniture.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @furnitures }
+    #    end
+    redirect_to possessions_path
   end
 
   # GET /furnitures/1

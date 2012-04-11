@@ -1,14 +1,10 @@
 class ArtworksController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /artworks
   # GET /artworks.xml
   def index
-    @artworks = Artwork.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @artworks }
-    end
+    redirect_to possessions_path
   end
 
   # GET /artworks/1

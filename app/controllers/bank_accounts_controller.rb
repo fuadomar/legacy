@@ -1,14 +1,16 @@
 class BankAccountsController < ApplicationController
   before_filter :authenticate_user!
+  load_and_authorize_resource
   # GET /bank_accounts
   # GET /bank_accounts.xml
   def index
-    @bank_accounts = BankAccount.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @bank_accounts }
-    end
+    #    @bank_accounts = BankAccount.all
+    #
+    #    respond_to do |format|
+    #      format.html # index.html.erb
+    #      format.xml  { render :xml => @bank_accounts }
+    #    end
+    redirect_to financial_accounts_path
   end
 
   # GET /bank_accounts/1

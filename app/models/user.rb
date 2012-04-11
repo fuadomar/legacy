@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   has_many :relationships
   has_many :contacts
   has_many :payments
+  has_many :agents
 
   validates_presence_of :first_name, :last_name, :date_of_birth
 
