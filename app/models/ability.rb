@@ -69,7 +69,7 @@ class Ability
     #InHomeSafeOrVault
     can :create, InHomeSafeOrVault
     can :read, InHomeSafeOrVault do |vault|
-      furniture.possession_id == user.plans.first.possessions.first.id
+      vault.possession_id == user.plans.first.possessions.first.id
     end
     can :modify, InHomeSafeOrVault do |vault|
       vault.possession_id == user.plans.first.possessions.first.id
