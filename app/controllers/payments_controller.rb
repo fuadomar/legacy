@@ -12,7 +12,6 @@ class PaymentsController < ApplicationController
 
 
   def create
-    puts "stripe_token #{params[:payment].inspect}"
     @payment = current_user.payments.new(params[:payment])
     
     if @payment.save

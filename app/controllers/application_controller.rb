@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ssl_enabled?
-    !(Rails.env.development? || Rails.env.test?)
+    !(Rails.env.development? || Rails.env.test? || Rails.env.production?)
   end
 
   def https
