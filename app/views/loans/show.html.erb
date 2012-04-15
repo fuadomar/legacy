@@ -33,7 +33,7 @@
 
     <p>
       <b>Copy of loan:</b>
-      <%= File.basename(@loan.copy_of_loan.url) if @loan.copy_of_loan.present? %>
+      <%#= File.basename(@loan.copy_of_loan.url) if @loan.copy_of_loan.present? %>
       <%= link_to 'Download File', @loan.copy_of_loan.url, :target => '_blank' if @loan.copy_of_loan.present? %>
     </p>
 

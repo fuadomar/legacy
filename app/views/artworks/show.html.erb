@@ -14,7 +14,7 @@
 
     <p>
       <b>Document:</b>
-      <%= File.basename(@artwork.document.url) if @artwork.document.present? %>
+      <%#= File.basename(@artwork.document.url) if @artwork.document.present? %>
       <%= link_to 'Download File', @artwork.document.url, :target => '_blank' if @artwork.document.present? %>
     </p>
 

@@ -23,7 +23,7 @@
 
     <p>
       <b>Copy of title:</b>
-      <%= File.basename(@vehicle.copy_of_title.url) if @vehicle.copy_of_title.present? %>
+      <%#= File.basename(@vehicle.copy_of_title.url) if @vehicle.copy_of_title.present? %>
       <%= link_to 'Download File', @vehicle.copy_of_title.url, :target => '_blank' if @vehicle.copy_of_title.present? %>
     </p>
 

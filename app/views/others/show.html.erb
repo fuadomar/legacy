@@ -15,7 +15,7 @@
 
     <p>
       <b>Document:</b>
-      <%= File.basename(@other.document.url) if @other.document.present? %>
+      <%#= File.basename(@other.document.url) if @other.document.present? %>
       <%= link_to 'Download File', @other.document.url if @other.document.present? %>
     </p>
 

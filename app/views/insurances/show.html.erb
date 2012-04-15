@@ -43,7 +43,7 @@
 
     <p>
       <b>Copy of policy:</b>
-      <%= File.basename(@insurance.copy_of_policy.url) if @insurance.copy_of_policy.present? %>
+      <%#= File.basename(@insurance.copy_of_policy.url) if @insurance.copy_of_policy.present? %>
       <%= link_to 'Download File', @insurance.copy_of_policy.url, :target => '_blank' if @insurance.copy_of_policy.present? %>
     </p>
 
