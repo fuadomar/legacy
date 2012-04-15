@@ -7,8 +7,11 @@ class WillDocumentUploader < CarrierWave::Uploader::Base
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -22,10 +25,10 @@ class WillDocumentUploader < CarrierWave::Uploader::Base
   # process :scale => [200, 300]
   #
   def scale(width, height)
-#    manipulate! do |img|
-#      img.crop!(109, 0, width, height)
-#      img.resize!(298, 298)
-#    end
+    #    manipulate! do |img|
+    #      img.crop!(109, 0, width, height)
+    #      img.resize!(298, 298)
+    #    end
   end
 
   # Create different versions of your uploaded files:

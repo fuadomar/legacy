@@ -28,6 +28,10 @@ gem 'stripe'
 
 gem 'prawn', '0.12.0'
 
+#for aws s3
+gem "fog", "~> 1.3.1"
+gem 'aws-s3', :require => 'aws/s3'
+gem 'aws-sdk'
 # Use unicorn as the web server
 # gem 'unicorn'
 
