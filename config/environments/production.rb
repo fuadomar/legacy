@@ -1,6 +1,6 @@
 NasceniaRailsTemplate::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.default_url_options = { :host => 'www.mylegacyplan.org' }
+  config.action_mailer.default_url_options = { :host => 'ec2-23-21-1-121.compute-1.amazonaws.com' }
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests
