@@ -226,6 +226,11 @@ div#header-container {
     margin-bottom: 2px;
 }
 
+#landing-page #body-container .body .right-side-bar .title a{
+    color: #407fa7;
+    text-decoration: none;
+}
+
 #landing-page #body-container .body .right-side-bar .underline{
     background-color: #c4d3d7;
     height: 1px;
