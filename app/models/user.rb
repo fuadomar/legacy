@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    ['fuad@nascenia.com', 'faruk@nascenia.com', 'maruf@nascenia.com'].include?(email)
+    ['fuad@nascenia.com', 'faruk@nascenia.com', 'maruf@nascenia.com', 'christophertar@gmail.com'].include?(email)
   end
 
   #Handles leap years, leap seconds and all.
