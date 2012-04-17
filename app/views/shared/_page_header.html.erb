@@ -16,10 +16,14 @@
   </div>
 
   <div class="header_right">
-    <div class="logged">
-      Logged in as Owner
+    <div class="contact-us-container">
+      <div class="contact-us-button">
+        <%= link_to 'Contact Us', new_contact_path %>
+      </div>
+      <div class="logged">
+        Logged in as Owner
+      </div>
     </div>
-
     <div class="logout">
       <% if (current_user.present?) -%>
         <%= link_to image_tag('/images/logout_button.png'), destroy_user_session_path(), :method => :delete %>

@@ -82,6 +82,9 @@ NasceniaRailsTemplate::Application.routes.draw do
   get "publics/dashboard"
   get "publics/why_my_legacy_plan"
   get "publics/how_it_works"
+  
+  get "admin/cpanel"
+  get "admin/remove_user"
 
 
 

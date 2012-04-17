@@ -24,4 +24,19 @@ class NotificationMailer < ActionMailer::Base
     attachments["legacy_plan_#{user.first_name}.pdf"] = File.read(path)
     mail(:to => to, :subject => subject)
   end
+
+  def payment_status_of_yearly_plan(user)
+    @user = user
+    to = user.email
+    subject = "Subscription Status for MyLegacyPlan.org"
+    mail(:to => to, :subject => subject)
+  end
+
+  def payment_status_of_life_time_plan(user)
+    @user = user
+    to = user.email
+    subject = "Subscription Status for MyLegacyPlan.org"
+    mail(:to => to, :subject => subject)
+  end
+  
 end

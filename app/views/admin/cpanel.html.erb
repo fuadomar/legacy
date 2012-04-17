@@ -1,0 +1,35 @@
+<%= render :partial => 'shared/body_content_top',
+  :locals => { :title => 'Control Panel',
+  :heading => 'User List'} %>
+
+<div class="content-container admin-cpanel">
+  <% if @users.present? %>
+    <table class="user-list" border="0" cellspacing="1">
+      <tr class="header">
+        <th>Name</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+      <% @users.each_with_index do |user, index| %>
+        <%# if user.id != current_user.id %>
+          <tr class="<%= index%2 == 0 ? 'light-color-row' : '' %>">
+            <td class="name">
+              <%= user.full_name %>
+            </td>
+            <td class="email">
+              <%= user.email %>
+            </td>
+            <td align="center">
+              <%= link_to 'delete', admin_remove_user_path(:user_id => user.id), :confirm => 'Are you sure to delete all records of this user! you will not be able to undo this action!'  %>
+            </td>
+          </tr>
+        <%# end %>
+      <% end %>
+      <tr>
+        <td colspan="3" align="center">
+          <%= will_paginate @users %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>

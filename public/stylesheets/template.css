@@ -2217,24 +2217,24 @@ form.new_relationships .single-row .single-field .label {
 
 
 .edit-will{
-  width: 440px;
-  margin-left: auto;
-  margin-right: auto;
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .edit-will .top-pad img{
-  width: 444px;
-  height: 46px;
-  margin-bottom: -2px;
-  margin-left: -2px;
+    width: 444px;
+    height: 46px;
+    margin-bottom: -2px;
+    margin-left: -2px;
 }
 
 .edit-will .form{
-   padding: 15px;
-   border-left: 1px solid #D7D7D7;
-   border-right: 1px solid #D7D7D7;
-   border-bottom: 1px solid #D7D7D7;
-   border-radius: 3px;
+    padding: 15px;
+    border-left: 1px solid #D7D7D7;
+    border-right: 1px solid #D7D7D7;
+    border-bottom: 1px solid #D7D7D7;
+    border-radius: 3px;
 }
 
 .edit-will .form textarea{
@@ -2267,4 +2267,32 @@ form.new_relationships .single-row .single-field .label {
 form.forgot_password  .submit_button {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+
+/*            admin-cpanel  
+---------------------------------------------------------  */
+
+.admin-cpanel{
+
+}
+
+.admin-cpanel .user-list{
+    width: 600px;
+}
+
+.admin-cpanel .user-list .header{
+  background-color: #C1D5E4;
+}
+
+.admin-cpanel .user-list .name{
+    padding-left: 10px;
+}
+
+.admin-cpanel .user-list .email{
+    padding-left: 10px;
+}
+
+.admin-cpanel .user-list .light-color-row{
+    background-color: #F0F5F9;
 }

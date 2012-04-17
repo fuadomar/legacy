@@ -30,11 +30,11 @@ class User < ActiveRecord::Base
   #  has_many :agents
   #  has_many :medical_instructions
 
-  has_many :plans
-  has_many :relationships
-  has_many :contacts
-  has_many :payments
-  has_many :agents
+  has_many :plans, :dependent => :destroy
+  has_many :relationships, :dependent => :destroy
+  has_many :contacts, :dependent => :destroy
+  has_many :payments, :dependent => :destroy
+  has_many :agents, :dependent => :destroy
 
   validates_presence_of :first_name, :last_name, :date_of_birth
 
@@ -47,6 +47,9 @@ class User < ActiveRecord::Base
     return "#{first_name} #{last_name}"
   end
 
+  def admin?
+    ['fuad@nascenia.com', 'faruk@nascenia.com', 'maruf@nascenia.com'].include?(email)
+  end
 
   #Handles leap years, leap seconds and all.
   def age

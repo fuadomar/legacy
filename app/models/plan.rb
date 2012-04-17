@@ -1,12 +1,12 @@
 # encoding: utf-8
 class Plan < ActiveRecord::Base
   belongs_to :user
-  has_many :medical_instructions
-  has_many :memorials
-  has_many :sharing_rules
-  has_many :possessions
-  has_many :financial_accounts
-  has_many :will_and_trusts
+  has_many :medical_instructions, :dependent => :destroy
+  has_many :memorials, :dependent => :destroy
+  has_many :sharing_rules, :dependent => :destroy
+  has_many :possessions, :dependent => :destroy
+  has_many :financial_accounts, :dependent => :destroy
+  has_many :will_and_trusts, :dependent => :destroy
 
   validates :title, :presence => true
 

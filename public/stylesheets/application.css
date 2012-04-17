@@ -70,18 +70,39 @@ img{
     background: url('/images/header_bg.png');
 }
 
-#header .header_right .logged{
+#header .header_right .contact-us-container{
     float: left;
+}
+
+#header .header_right .contact-us-button{
+    font-family: "HelveticaNeue", Helvetica;
+    font-size: 11px;
+    color: #767575;
+    padding-top: 8px;
+    height: 24px;
+    padding-left: 10px;
+}
+
+#header .header_right .contact-us-button a{
+    text-decoration: none;
+    font-family: Lustria;
+    font-size: 16px;
+    color: #407fa7;
+}
+
+#header .header_right .logged{
     border: 2px solid #666;
     background-color: #888;
     margin-right: 5px;
-    margin-top: 42px;
+    margin-top: 10px;
     height: 22px;
     padding-left: 20px;
     padding-right: 20px;
     color: #fff;
     border-radius: 2px;
 }
+
+
 
 #header .header_right .logout{
     height: 40px;
@@ -230,7 +251,7 @@ img{
 }
 
 #body-container .body-content .title-container .row-2 .content{
-/*    float: left;*/
+    /*    float: left;*/
     font-family: OpenSans;
     font-size: 18px;
     color: #065c92;

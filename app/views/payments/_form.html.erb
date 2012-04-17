@@ -28,7 +28,7 @@
 
   <%= f.hidden_field :stripe_token %>
   <%= f.hidden_field :last_4_digits %>
-  <%= f.hidden_field :subscription_type, :value => 'simple_plan' %>
+  <%= f.hidden_field :subscription_type, :value => Payment::YEARLY_PLAN %>
 
   <noscript>
     This form requires Javascript to use
@@ -82,7 +82,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('#premium').click(function(){
-      $('#payment_subscription_type').val('life_time_plan');
+      $('#payment_subscription_type').val('<%= Payment::LIFE_TIME_PLAN %>');
     });
   });
 </script>

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   before_filter :authenticate_user!
-
+  before_filter :authorize_user!
 
   def edit
     @user = User.find(params[:id]) if current_user.present?
@@ -20,6 +20,11 @@ class ProfilesController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  protected
+  def authorize_user!
+    redirect_to root_path if(current_user.id.to_i != params[:id].to_i)
   end
 
 end

@@ -5,7 +5,13 @@ class Payment < ActiveRecord::Base
 
   before_save :update_stripe
 
+  after_save :send_payment_status
+
   validates :last_4_digits, :presence => true
+
+  YEARLY_PLAN = 'simple_plan'
+  LIFE_TIME_PLAN = 'life_time_plan'
+  
 
   def update_stripe
     if stripe_token.present?
@@ -16,13 +22,13 @@ class Payment < ActiveRecord::Base
         )
         self.last_4_digits = customer.active_card.last4
 
-        if self.subscription_type == 'simple_plan'
+        if self.subscription_type == YEARLY_PLAN
         response = customer.update_subscription({:plan => self.subscription_type})
-        elsif self.subscription_type == 'life_time_plan'
+        elsif self.subscription_type == LIFE_TIME_PLAN
           invoice = Stripe::InvoiceItem.create( :customer => customer,
             :amount => 14900,
             :currency => "usd",
-            :description => "life_time_plan" )
+            :description => LIFE_TIME_PLAN )
           self.transaction_number = invoice.id
         end
 
@@ -38,6 +44,11 @@ class Payment < ActiveRecord::Base
     elsif last_4_digits_changed?
       self.last_4_digits = last_4_digits_was
     end
+  end
+
+  def send_payment_status
+    NotificationMailer.payment_status_of_yearly_plan(self.user).deliver if self.subscription_type == YEARLY_PLAN
+    NotificationMailer.payment_status_of_life_time_plan(self.user).deliver if self.subscription_type == LIFE_TIME_PLAN
   end
 
 

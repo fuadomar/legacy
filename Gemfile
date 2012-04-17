@@ -36,7 +36,10 @@ gem 'aws-sdk'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+
+gem 'capistrano', '2.9.0'
+
+gem 'will_paginate', '2.3.15'
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
